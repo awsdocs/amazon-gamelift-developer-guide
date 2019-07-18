@@ -55,14 +55,14 @@ FlexMatch always tries to fill teams to the maximum player size but does create 
 Create a set of rule statements that define how to evaluate players for acceptance in to a match\. Rules might set requirements that apply to individual players, teams, or an entire match\. When GameLift processes a match request, it starts with the oldest player in the pool of available players and builds a match around that player\.
 + *name* \(required\) – This is a meaningful name that uniquely identifies the rule within a rule set\. Rule names are also referenced in event logs and metrics that track activity related to this rule\. 
 + *description* \(optional\) – Use this element to attach a free\-form text description\. This information is not used by the matchmaker\.
-+ *type* \(required\) – The type element identifies the operation to use when processing the rule\. Each rule type requires a set of additional properties\. For example, several rule types need a reference value to compare or measure a player's attributes against\. See a list of valid rule types and properties in [FlexMatch Rules Language](match-rules-reference.md)\. 
++ *type* \(required\) – The type element identifies the operation to use when processing the rule\. Each rule type requires a set of additional properties\. For example, several rule types need a reference value to measure a player's attributes against\. See a list of valid rule types and properties in [FlexMatch Rules Language](match-rules-reference.md)\. 
 + Rule type property \(may be required\) – Depending on the type of rule being defined, you may need to set certain rule properties\. For example, with distance and comparison rules, you must specify which player attribute to measure\. Learn more about properties and how to use the FlexMatch property expression language in [FlexMatch Rules Language](match-rules-reference.md)\.
 
 ### Relax Match Requirements Over Time<a name="match-rulesets-components-expansion"></a>
 
-Expansions allow you to relax the rules criteria over time when no valid matches are possible\. This feature ensures that a "best available" match can be made when a perfect match is not possible\. You might use an expansion to relax a player skill requirement, increase acceptable player latency levels, or decrease the minimum number of players required\. By relaxing your rules with an expansion, you are gradually expanding the pool of players that can be matched\. 
+Expansions allow you to relax match criteria over time when no valid matches are possible\. This feature ensures that a "best available" match can be made when a perfect match is not possible\. You might use an expansion to relax a player skill requirement, increase acceptable player latency levels, or decrease the minimum number of players required\. By relaxing your rules with an expansion, you are gradually expanding the pool of players that can be matched\. 
 + *target *\(required\) – Identify the rule set element to be relaxed\. You can relax a rule or a team property\.
-+ *steps *\(required\) – You can relax a rule in multiple stages\. For each step, specify the wait time and the new value to apply\. The total length of these expansion steps should fit within the allowed time for a match request, which is set in the matchmaking configuration\.
++ *steps *\(required\) – You can relax a rule in multiple stages\. For each step, specify the wait time and the new value to apply\. For rule set expansions, wait times are absolute, representing a number of seconds after match creations starts\. For expansions with multiple steps, each step's wait time must be larger than the previous step\. The last step's wait time cannot be longer than the time allowed for a match request, which is set in the matchmaking configuration\.
   + *waitTimeSeconds*
   + *value*
 
@@ -87,10 +87,10 @@ Add an algorithm component to the rule set\. This component configures the large
 + *strategy *\(required\) – Choose a matching strategy to use during match creation\. Options are "largestPopulation" \(the default\) and "fastestRegion"\. 
 
 **Largest population**  
-With this strategy, FlexMatch maintains the largest possible pool of available players by including all players who have acceptable latency values in at least one region\. With a large player pool, matches tend to fill more quickly, and matched players are more similar with regard to the balancing attribute\.
+With this strategy, FlexMatch maintains the largest possible player pool by including all players who have acceptable latency values in at least one region\. With a large player pool, matches tend to fill more quickly, and matched players are more similar with regard to the balancing attribute\. Players may be placed in games where their latency is less than ideal, although still within acceptable limits\.
 
 **Fastest region**  
-This strategy places a priority on getting players into matches that deliver the best possible latency for them\. FlexMatch groups available players based on the regions where they have the "best" that is, lowest, latency values, and then fills matches from those groups\. With this strategy, matches are filled from a smaller player pool\. As a result, matches may take longer to fill, and players in a match may vary more widely with regard to the balancing attribute\.
+This strategy places a priority on getting players into matches that deliver the best possible latency for them\. FlexMatch groups available players based on the regions where they report lowest latency values, and then tries to fill matches from these groups\. FlexMatch favors placing players in the fastest possible regions for them\. However, it may group players based on their second\- or third\-fastest regions \(or slower\) in order to create groups large enough to fill a match\. As a result, matches may take longer to fill\. In addition, players in a match that is created with this strategy may vary more widely with regard to the balancing attribute\.
 
 Here's an example:
 
@@ -101,6 +101,30 @@ Here's an example:
     "batchingPreference": "largestPopulation"
 },
 ```
+
+### Declare Player Attributes<a name="match-design-rulesets-large-attributes"></a>
+
+At a minimum, you must declare the player attribute that is used as a balancing attribute in the rule set algorithm\. Only attributes with data type "number" can be used as the balancing attribute\.
+
+In addition, you may want to pass certain player attributes to the game server to use when setting up the game session\. For example, you could pass a player's character choice, map preference, etc\. To pass on player attributes, declare them in the rule set and then include attribute values for each player in your matchmaking requests\. When GameLift passes the game session request to the game server, it includes the matchmaker data, which contains attribute values for all matched players\.
+
+### Define Teams<a name="match-design-rulesets-large-teams"></a>
+
+The process of defining team size and structure is the same as with small matches, but the way FlexMatch fills the teams is different\. This affects how what matches are likely to look like when only partially filled\. You may want to alter your minimum team sizes in response\.
+
+FlexMatch uses the following rules when assigning a player to a team\. First: look for teams that haven't yet reached their minimum player requirement\. Second: of those teams, find the one with the most open slots\. 
+
+For matches that define multiple equally sized teams, players are added sequentially to each team until full\. As a result, matches have similar numbers of players assigned to each team, even if the match is not full\. There is currently no way to force equally sized teams in large matches\. For matches with asymmetrically sized teams, the process is a bit more complex\. In this scenario, players initially get assigned to the largest teams with the most open slots\. Then, as the number of open slots become more evenly distributed across all teams, players start getting added to the smaller teams\.
+
+Lets walk through an example\. Say you have a rule set with three teams\. The Red and Blue teams are both set to maxPlayers=10, minPlayers=5\. The Green team is set to maxPlayers=3, minPlayers=2\. Here's the sequence for filling this match: 
+
+1. No team has reached minPlayers\. Red and Blue teams have 10 open slots, while Green has 3\. The first 10 players are assigned \(5 each\) to the Red and Blue teams\. Both teams have now reached minPlayers\.
+
+1. Green team has not yet reached minPlayers\. The next 2 players are assigned to the Green team\.
+
+1. All teams have now reached minPlayers\. Red and Blue teams have the most open slots, so the next 8 players are assigned \(4 each\) to the Red and Blue teams\.
+
+1. Once all three teams have 1 open slot available, the remaining 3 player slots are assigned in no particular order\.
 
 ### Set Latency Rule for Large Matches<a name="match-design-rulesets-large-rule"></a>
 
@@ -116,8 +140,23 @@ To create this rule, use the `latency` rule type with the property *maxLatency*\
     }],
 ```
 
-### Declare Player Attributes<a name="match-design-rulesets-large-attributes"></a>
+### Relax Large Match Requirements<a name="match-design-rulesets-large-relax"></a>
 
-At a minimum, you must declare the player attribute that is used as a balancing attribute in the rule set algorithm\. Only attributes with data type "number" can be used as the balancing attribute\.
+As with small matches, you can use expansions to relax match requirements over time when no valid matches are possible\. With large matches, you have the option to relax either latency rules or team player counts\. 
 
-Since a large\-match rule set does not use custom rules, you may not need to declare additional player attributes\. However, you may want to pass certain player attributes to the game server to use when setting up the game session\. For example, you might pass a player's character choice, map preference, etc\. To do this, declare those player attributes in the rule set, and include the attribute values for each player in your matchmaking requests\. When GameLift passes the game session request to the game server, it includes the matchmaker data, which contains attribute values for all matched players\.
+If you're using automatic match backfill for large matches, avoid relaxing your team player counts too quickly\. FlexMatch starts generating backfill requests only after a game session starts, which may not happen for several seconds after a match is created\. During that time, FlexMatch can create multiple partially filled new game sessions, especially when the player count rules are lowered\. As a result, you end up with more game sessions than you need and players spread too thinly across them\. Best practice is to give the first step in your player count expansion a longer wait time, long enough for your game session to start\. Since backfill requests are given higher priority with large matches, incoming players will be slotted into existing games before new game are started\. You may need to experiment to find the ideal wait time for your game\.
+
+Here's an example that gradually lowers the Yellow team's player count, with a longer initial wait time\. Keep in mind that wait times in rule set expansions are absolute, not compounded\. So the first expansion occurs at five seconds, and the second expansion occurs five seconds later, at ten seconds\.
+
+```
+"expansions": [{
+        "target": "teams[Yellow].minPlayers",
+        "steps": [{
+            "waitTimeSeconds": 5,
+            "value": 8
+        }, {
+            "waitTimeSeconds": 10,
+            "value": 5
+        }]
+    }]
+```
