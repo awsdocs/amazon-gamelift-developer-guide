@@ -14,10 +14,11 @@ You can create a new fleet of Realtime game servers to host game sessions for yo
    + **Fleet type** – Choose whether to use on\-demand or spot instances for this fleet\. Learn more about fleet types in [Choose Computing Resources](gamelift-ec2-instances.md)\.
    + **Metric group** – \(Optional\) Enter the name of a new or existing fleet metric group\. When using Amazon CloudWatch to track your Amazon GameLift metrics, you can aggregate the metrics for multiple fleets by adding them to the same metric group\.
    + **Instance role ARN** – \(Optional\) Enter the ARN value for an IAM role that you want to associated with this fleet\. This setting allows all instances in the fleet to assume the role, which extends access to a defined set of AWS services\. Learn more about how to [Access AWS Resources From Your Fleets](gamelift-sdk-server-resources.md)\.
+   + **Certificate type **– Choose whether to have GameLift generate a TLS certificate for the fleet\. With this feature enabled for a Realtime fleet, GameLift automatically authenticates the client/server connection and encrypts all communication between game client and server\. Once the fleet is created, you cannot change the certificate type\.
    + **Binary type** – Select the binary type "Script"\.
    + **Script** – Select the Realtime script you want to deploy from the dropdown list\.
 
-1. **Instance type**\. Select an Amazon EC2 instance type from the list\. The instance types listed vary depending several factors, including the current region, the operating system of the selected game build, and the fleet type \(on\-demand or spot\)\. Learn more about choosing an instance type in [Choose Computing Resources](gamelift-ec2-instances.md)\. Once this fleet is created, you cannot change the instance type\.
+1. **Instance type**\. Select an Amazon EC2 instance type from the list\. The instance types listed vary depending several factors, including the current region, the operating system of the selected game build, and the fleet type \(on\-demand or spot\)\. Learn more about choosing an instance type in [Choose Computing Resources](gamelift-ec2-instances.md)\. Once the fleet is created, you cannot change the instance type\.
 
 1. **Process management**\. Configure how you want server processes to run on each instance\.
 
@@ -43,10 +44,6 @@ You can create a new fleet of Realtime game servers to host game sessions for yo
       Set the following limits to determine how new game sessions are activated on the instances in this fleet:
       + **Max concurrent game session activation** – Limit the number of game sessions on an instance that can be activating at the same time\. This limit is useful when launching multiple new game sessions may have an impact on the performance of other game sessions running on the instance\.
       + **New activation timeout** – This setting limits the amount of time Amazon GameLift allows for a new game session to activate\. If the game session does not move to status ACTIVE, the game session activation process is terminated\. 
-
-1. **Resource creation limit \(optional\)**\. Set up a policy that limits the number of game sessions any one player can create in a specified period of time\. This limit protects your available fleet resources from excessive consumption\. To use this feature, requests for new game sessions must specify a creator\. To configure the policy, click **Add resource creation limits**\. To save the policy, click the green checkmark button on the right\.
-   + **Game sessions per policy period** – Specify the number of game sessions one player \(based on player ID\) is allowed to create during the policy period\. 
-   + **Policy period** – Specify the amount of time, in minutes, over which to limit game session creation per player\. Amazon GameLift evaluates each new game session request to determine whether the creator has exceeded the creation limit in the most recent span of time\.
 
 1. **Protection policy \(optional\)**\. Indicate whether or not to apply game session protection to instances in this fleet\. Protected instances are not terminated during a scale\-down event if they are hosting an active game session\. Using this setting applies a fleet\-wide protection policy; you can also set protection for individual game sessions when creating the game session\. 
 
@@ -75,6 +72,7 @@ $ aws gamelift create-fleet
     --ec2-instance-type "c4.large"
     --fleet-type "SPOT"
     --script-id "script-1111aaaa-22bb-33cc-44dd-5555eeee66ff"
+    --certificate-configuration "CertificateType=GENERATED"
     --runtime-configuration "GameSessionActivationTimeoutSeconds=60,
                              MaxConcurrentGameSessionActivations=2,
                              ServerProcesses=[{LaunchPath=/local/game/myRealtimeLaunchScript.js,
@@ -89,7 +87,7 @@ $ aws gamelift create-fleet
 *Copiable version:*
 
 ```
-aws gamelift create-fleet --name "SampleRealtimeFleet123" --description "A sample Realtime fleet" --ec2-instance-type "c4.large" --fleet-type "SPOT" --script-id "script-1111aaaa-22bb-33cc-44dd-5555eeee66ff" --runtime-configuration "GameSessionActivationTimeoutSeconds=60,MaxConcurrentGameSessionActivations=2,ServerProcesses=[{LaunchPath=/local/game/myRealtimeLaunchScript.js,Parameters=+map Winter444,ConcurrentExecutions=10}]" --new-game-session-protection-policy "FullProtection" --resource-creation-limit-policy "NewGameSessionsPerCreator=3,PolicyPeriodInMinutes=15" --MetricGroups "EMEAfleets"
+aws gamelift create-fleet --name "SampleRealtimeFleet123" --description "A sample Realtime fleet" --ec2-instance-type "c4.large" --fleet-type "SPOT" --script-id "script-1111aaaa-22bb-33cc-44dd-5555eeee66ff" --certificate-configuration "CertificateType=GENERATED" --runtime-configuration "GameSessionActivationTimeoutSeconds=60,MaxConcurrentGameSessionActivations=2,ServerProcesses=[{LaunchPath=/local/game/myRealtimeLaunchScript.js,Parameters=+map Winter444,ConcurrentExecutions=10}]" --new-game-session-protection-policy "FullProtection" --resource-creation-limit-policy "NewGameSessionsPerCreator=3,PolicyPeriodInMinutes=15" --MetricGroups "EMEAfleets"
 ```
 
 If the create\-fleet request is successful, Amazon GameLift returns a set of fleet attributes that includes the configuration settings you requested and a new fleet ID\. Amazon GameLift immediately initiates the fleet activation process and sets the fleet status to **New**\. You can track the fleet's status and view other fleet information using these CLI commands: 

@@ -74,3 +74,6 @@ Hosting resources on an instance can be found in the following locations:
 + **Game log files\.** Any log files your game server generates are stored in the `game` root directory at whatever directory path you designated\.
 + **Amazon GameLift hosting resources\.** Files used by the Amazon GameLift service to manage game hosting are located in a root directory called `Whitewater`\. These files should not be changed for any reason\. 
 + **Runtime configuration\.** The fleet runtime configuration is not accessible for individual instances\. To test changes to a runtime configuration \(launch path, launch parameters, maximum number of concurrent processes\), you must update the fleet\-wide runtime configuration \(see the AWS SDK action [UpdateRuntimeConfiguration](https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateRuntimeConfiguration.html) or the AWS CLI [update\-runtime\-configuration](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-runtime-configuration.html)\)\.
++ **TLS certificates\.** If the instance is on a fleet that has TLS certificate generation enabled, certificate files, including the certificate, certificate chain, private key, and root certificate, are stored in the following location:
+  + On Windows: `c:\\GameMetadata\Certificates`
+  + On Linux: `/local/gamemetadata/certificates/`

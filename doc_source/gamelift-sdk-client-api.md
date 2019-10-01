@@ -78,7 +78,7 @@ Add code to reserve player slots in active game sessions and connect game client
    + If you're using `StartGameSessionPlacement` to create game sessions, as described in the previous section, you can reserve slots for one or more players in the new game session\. 
    + Reserve player slots for one or more players using [CreatePlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreatePlayerSession.html) or [CreatePlayerSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreatePlayerSessions.html) with a game session ID\.
 
-   With both methods, Amazon GameLift first verifies that the game session is accepting new players and has an available player slot\. If successful, Amazon GameLift reserves a slot for the player, creates the new player session, and returns a [PlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_PlayerSession.html) object containing the IP address and port that a game client needs to connect to the game session\.
+   With both methods, Amazon GameLift first verifies that the game session is accepting new players and has an available player slot\. If successful, Amazon GameLift reserves a slot for the player, creates the new player session, and returns a [PlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_PlayerSession.html) object containing the DNS name, IP address, and port that a game client needs to connect to the game session\.
 
    A player session request must include a unique ID for each player\. See [Generate Player IDs](player-sessions-player-identifiers.md) for more on player IDs\.
 
@@ -86,6 +86,12 @@ Add code to reserve player slots in active game sessions and connect game client
 
 1. **Connect to a game session\.**
 
-   Add code to the game client to retrieve the `PlayerSession` object, which contains the game session's IP address and port\. Use this information to connect directly to the server process\. In order to claim the reserved player slot, the connection request must reference the player session ID\. Once connected, the game client and server process communicate directly, without involving Amazon GameLift\. This framework minimizes the amount of latency in gameplay\. 
+   Add code to the game client to retrieve the `PlayerSession` object, which contains the game session's connection information\. Use this information to establish a direct connection to the server process\. 
+   + You can connect using the specified port and either the DNS name or IP address assigned to the server process\. 
+**Note**  
+If your fleets have TLS certificate generation enabled, you must connect using the DNS name and port\. This is required even if you haven't implemented a server authentication process\. 
+   + If you're using player session IDs to reserve player slots and track player connections, you must reference the player session ID\. 
 
-   The server process maintains communication with the Amazon GameLift service about the player connection in order to track availability of player slots\. On initial connection, it contacts the service to verify that the player session ID is valid and in a reserved status\. If validated, the reservation is claimed and the player connection is accepted\. Later, when the player disconnects, the server process reports the dropped connection\.
+   Once connected, the game client and server process communicate directly without involving the GameLift service to communicate gameplay\. The server process maintains communication with the GameLift service to report player connection status, health status, etc\. On initial connection, it may contact the service to verify that the player session ID is valid and in a reserved status\. If validated, the reservation is claimed and the player connection is accepted\. Later, when the player disconnects, the server process reports the dropped connection\.
+
+   If you want to enable server authentication and encrypt data packets travelling between game client and the game session, you need to build this functionality\. When the TLS certificate generation feature is enabled for a new fleet, GameLift only gets the TLS certificate and creates DNS entries for each instance in the fleet\.

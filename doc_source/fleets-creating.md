@@ -22,9 +22,11 @@ After you create a new fleet, the fleet's status passes through several stages a
    + **Fleet type** – Choose whether to use on\-demand or spot instances for this fleet\. Learn more about fleet types in [Choose Computing Resources](gamelift-ec2-instances.md)\.
    + **Metric group** – \(Optional\) Enter the name of a new or existing fleet metric group\. When using Amazon CloudWatch to track your Amazon GameLift metrics, you can aggregate the metrics for multiple fleets by adding them to the same metric group\.
    + **Instance role ARN** – \(Optional\) Enter the ARN value for an IAM role that you want to associated with this fleet\. This setting allows all instances in the fleet to assume the role, which extends access to a defined set of AWS services\. Learn more about how to [Access AWS Resources From Your Fleets](gamelift-sdk-server-resources.md)\.
+   + **Certificate type** – Choose whether to have GameLift generate a TLS certificate for the fleet\. You can use a fleet TLS certificate to have your game client authenticate a game server when connecting, and encrypt all client/server communication\. For each instance in a TLS\-enabled fleet, GameLift also creates a new DNS entry with the certificate\. Use these resources to set up authentication and encryption for your game\. Once the fleet is created, you cannot change the certificate type\.
+   + **Binary type** – Select the binary type "Build"\. 
    + **Build** – If you used the **Create fleet from build feature**, the build information, including name, ID and operating system, is automatically filled in\. Otherwise, select a valid build from the dropdown list\.
 
-1. **Instance type**\. Select an Amazon EC2 instance type from the list\. The instance types listed vary depending several factors, including the current region, the operating system of the selected game build, and the fleet type \(on\-demand or spot\)\. Learn more about choosing an instance type in [Choose Computing Resources](gamelift-ec2-instances.md)\. Once this fleet is created, you cannot change the instance type\.
+1. **Instance type**\. Select an Amazon EC2 instance type from the list\. The instance types listed vary depending several factors, including the current region, the operating system of the selected game build, and the fleet type \(on\-demand or spot\)\. Learn more about choosing an instance type in [Choose Computing Resources](gamelift-ec2-instances.md)\. Once the fleet is created, you cannot change the instance type\.
 
 1. **Process management**\. Configure how you want server processes to run on each instance\.
 
@@ -49,16 +51,12 @@ After you create a new fleet, the fleet's status passes through several stages a
 
       Set the following limits to determine how new game sessions are activated on the instances in this fleet:
       + **Max concurrent game session activation** – Limit the number of game sessions on an instance that can be activating at the same time\. This limit is useful when launching multiple new game sessions may have an impact on the performance of other game sessions running on the instance\.
-      + **New activation timeout** – This setting limits the amount of time Amazon GameLift allows for a new game session activate\. If the game session does not complete activation an move to status ACTIVE, the game session activation is terminated\. 
+      + **New activation timeout** – This setting limits the amount of time Amazon GameLift allows for a new game session activate\. If the game session does not complete activation and move to status ACTIVE, the game session activation is terminated\. 
 
-1. **EC2 port settings**\. Click**Add port settings** to define access permissions for inbound traffic connecting to server processes deployed on this fleet\. You can create multiple port settings for a fleet\. At least one port setting must be set for the fleet before access is allowed\. If you don't specify port settings at this time, you can edit the fleet later\.
+1. **EC2 port settings**\. Click **Add port settings** to define access permissions for inbound traffic connecting to server processes deployed on this fleet\. You can create multiple port settings for a fleet\. At least one port setting must be set for the fleet before access is allowed\. If you don't specify port settings at this time, you can edit the fleet later\.
    + **Port range** – Specify a range of port numbers that your game servers can use to allow inbound connections\. A port range must use the format `nnnnn[-nnnnn]`, with values between 1025 and 60000\. Example: **1500** or **1500\-20000**\. 
    + **Protocol** – Select the type of communication protocol for the fleet to use\.
    + **IP address range** – Specify a range of IP addresses valid for instances in this fleet\. Use CIDR notation\. Example: **0\.0\.0\.0/0** \(This example allows access to anyone trying to connect\.\)
-
-1. In the **Resource creation limit** section, click **Add resource creation limits** to set up a policy that limits the number of game sessions any one player can create in a specified period of time\. This limit protects your available fleet resources from excessive consumption\. To use this feature, requests for new game sessions must specify a creator\. 
-   + **Game sessions per policy period** – Specify the number of game sessions one player \(based on player ID\) is allowed to create during the policy period\. 
-   + **Policy period** – Specify the amount of time, in minutes, over which to limit game session creation per player\. Amazon GameLift evaluates each new game session request to determine whether the creator has exceeded the creation limit in the most recent span of time\.
 
 1. In the **Protection policy** section, choose whether to apply game session protection to instances in this fleet\. Instances with protection are not terminated during a scale down event if they are hosting an active game session\. You can also set protection for individual game sessions\. Once the fleet is created, you can edit the fleet to change the fleet\-wide protection policy\.
 
@@ -74,11 +72,12 @@ To create a fleet with the AWS CLI, open a command line window and use the `crea
 The example `create-fleet` request shown below creates a new fleet with the following characteristics: 
 + The fleet will use c4\.large on\-demand instances with the operating system required for the selected game build\. 
 + It will deploy the specified game server build, which must be in a **Ready** status\.
++ TLS certificate generation is enabled\.
 + Each instance in the fleet will run ten identical processes of the game server concurrently, enabling each instance to host up to ten game sessions simultaneously\.
 + On each instance, Amazon GameLift will allow only two new game sessions to be activating at the same time\. It will also terminate any activating game session if it is not ready to host players within 300 seconds\.
 + All game sessions hosted on instances in this fleet have game session protection turned on\. It can be turned off for individual game sessions\. 
 + Individual players can create three new game sessions within a 15\-minute period\.
-+ Each game sessions hosted on this fleet will have a connection point that falls within the specified IP address and port ranges\.
++ Each game session hosted on this fleet will have a connection point that falls within the specified IP address and port ranges\.
 + Metrics for this fleet will be added to the EMEAfleets metric group, which \(in this example\) combines metrics for all fleets in EMEA regions\. 
 
 ```
@@ -88,6 +87,7 @@ $ aws gamelift create-fleet
     --ec2-instance-type "c4.large"
     --fleet-type "ON_DEMAND"
     --build-id "build-92f061ed-27c9-4a02-b1f4-6f85b2385620"
+    --certificate-configuration "CertificateType=GENERATED"
     --runtime-configuration "GameSessionActivationTimeoutSeconds=300,
                              MaxConcurrentGameSessionActivations=2,
                              ServerProcesses=[{LaunchPath=C:\game\Bin64.dedicated\MultiplayerSampleProjectLauncher_Server.exe,
@@ -104,7 +104,7 @@ $ aws gamelift create-fleet
 *Copiable version:*
 
 ```
-aws gamelift create-fleet --name "SampleFleet123" --description "The sample test fleet" --fleet-type "ON_DEMAND" --MetricGroups "EMEAfleets" --build-id "build-92f061ed-27c9-4a02-b1f4-6f85b2385620" --ec2-instance-type "c4.large" --runtime-configuration "GameSessionActivationTimeoutSeconds=300,MaxConcurrentGameSessionActivations=2,ServerProcesses=[{LaunchPath=C:\game\Bin64.dedicated\MultiplayerSampleProjectLauncher_Server.exe,Parameters=+sv_port 33435 +start_lobby,ConcurrentExecutions=10}]" --new-game-session-protection-policy "FullProtection" --resource-creation-limit-policy "NewGameSessionsPerCreator=3,PolicyPeriodInMinutes=15" --ec2-inbound-permissions "FromPort=33435,ToPort=33435,IpRange=0.0.0.0/0,Protocol=UDP" "FromPort=33235,ToPort=33235,IpRange=0.0.0.0/0,Protocol=UDP"
+aws gamelift create-fleet --name "SampleFleet123" --description "The sample test fleet" --fleet-type "ON_DEMAND" --MetricGroups "EMEAfleets" --build-id "build-92f061ed-27c9-4a02-b1f4-6f85b2385620" --certificate-configuration "CertificateType=GENERATED" --ec2-instance-type "c4.large" --runtime-configuration "GameSessionActivationTimeoutSeconds=300,MaxConcurrentGameSessionActivations=2,ServerProcesses=[{LaunchPath=C:\game\Bin64.dedicated\MultiplayerSampleProjectLauncher_Server.exe,Parameters=+sv_port 33435 +start_lobby,ConcurrentExecutions=10}]" --new-game-session-protection-policy "FullProtection" --resource-creation-limit-policy "NewGameSessionsPerCreator=3,PolicyPeriodInMinutes=15" --ec2-inbound-permissions "FromPort=33435,ToPort=33435,IpRange=0.0.0.0/0,Protocol=UDP" "FromPort=33235,ToPort=33235,IpRange=0.0.0.0/0,Protocol=UDP"
 ```
 
 If the create\-fleet request is successful, Amazon GameLift returns a set of fleet attributes that includes the configuration settings you requested and a new fleet ID\. Amazon GameLift immediately initiates the fleet activation process and sets the fleet status to **New**\. You can track the fleet's status and view other fleet information using these CLI commands: 

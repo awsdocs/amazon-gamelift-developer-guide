@@ -3,7 +3,7 @@
 The topics in this section detailed help with setting up and managing your game server hosting resources\. Whether you're using Amazon GameLift Realtime Servers or are deploying a fully custom game server, you will need to allocate resources, configure them, and manage ongoing scaling\.
 
 **Tip**  
-[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games\.](gamelift-explore.md)\.
+[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games](gamelift-explore.md)\.
 
 Here's a brief overview of the key terms and concepts for resource management with GameLift:
 

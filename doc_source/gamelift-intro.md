@@ -3,7 +3,7 @@
 Amazon GameLift is a fully managed service for deploying, operating, and scaling your session\-based multiplayer game servers in the cloud\. Amazon GameLift replaces the work required to host your own game servers, including buying and setting up hardware, and managing ongoing activity, security, storage, and performance tracking\. Auto\-scaling capabilities provide additional protection from having to pay for more resources than you need, while making sure you always have games available for new players to join with minimal waiting\. 
 
 **Tip**  
-[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games\.](gamelift-explore.md)\.
+[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games](gamelift-explore.md)\.
 
 ## Why Amazon GameLift?<a name="why-gamelift"></a>
 

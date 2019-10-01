@@ -139,6 +139,31 @@ Aws::GameLift::AwsStringOutcome sessionIdOutcome =
     Aws::GameLift::Server::GetGameSessionId();
 ```
 
+## GetInstanceCertificate\(\)<a name="integration-server-sdk-cpp-ref-getinstancecertificate"></a>
+
+Retrieves the file location of a pem\-encoded TLS certificate that is associated with the fleet and its instances\. This certificate is generated when a new fleet is created with the certificate configuration set to GENERATED\. Use this certificate to establish a secure connection with a game client and to encrypt client/server communication\. 
+
+### Syntax<a name="integration-server-sdk-cpp-ref-getinstancecertificate-syntax"></a>
+
+```
+GetInstanceCertificateOutcome GetInstanceCertificate();
+```
+
+### Parameters<a name="integration-server-sdk-cpp-ref-getinstancecertificate-parameter"></a>
+
+This action has no parameters\.
+
+### Return Value<a name="integration-server-sdk-cpp-ref-getinstancecertificate-return"></a>
+
+If successful, returns a `GetInstanceCertificateOutcome` object containing the location of the fleet's TLS certificate file, which is stored on the instance\. If not successful, returns an error message\.
+
+### Example<a name="integration-server-sdk-cpp-ref-getinstancecertificate-example"></a>
+
+```
+Aws::GameLift::GetInstanceCertificateOutcome certificateOutcome = 
+    Aws::GameLift::Server::GetInstanceCertificate();
+```
+
 ## GetSdkVersion\(\)<a name="integration-server-sdk-cpp-ref-getsdk"></a>
 
 Returns the current version number of the SDK in use\.

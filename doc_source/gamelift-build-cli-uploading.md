@@ -16,7 +16,7 @@ To troubleshoot fleet activation problems that might be related to build install
 
 ## Create a Build Install Script<a name="gamelift-build-cli-uploading-install"></a>
 
-Create an install script the for the operating system of your game build: 
+Create an install script for the operating system of your game build: 
 + Windows: create a batch file named "`install.bat`"\. 
 + Linux: create a shell script file named "`install.sh`"\.
 

@@ -7,7 +7,7 @@ Fleets are your hosting resources in the form of a set of EC2 instances\. To hos
 Most games in production require more than one fleet\. You need multiple fleets if, for example, you want to host players in more than one region, or if you have two or more versions of your game server build or script \(such as free and premium versions\)\. 
 
 **Tip**  
-[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games\.](gamelift-explore.md)\.
+[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games](gamelift-explore.md)\.
 
 Once you have a fleet up and running, you can create a [fleet alias](aliases-creating.md), add the fleet to a [game session queue](queues-intro.md), and [manage fleet capacity](fleets-manage-capacity.md)\.
 

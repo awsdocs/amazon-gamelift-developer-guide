@@ -20,19 +20,19 @@ When choosing an instance type for your game, consider the following: \(1\) the 
 
 ## On\-Demand versus Spot Instances<a name="gamelift-ec2-instances-spot"></a>
 
-When creating a new fleet, you designate the fleet type as using either **on\-demand** or **spot** instances\. On\-demand and spot instances offer exactly the same hardware and performance, based on the instance type chosen, and are configured in exactly the same way\. They differ in available supply and in cost\. 
+When creating a new fleet, you designate the fleet type as using either **On\-demand** or **Spot** instances\. On\-demand and Spot instances offer exactly the same hardware and performance, based on the instance type chosen, and are configured in exactly the same way\. They differ in availability and in cost\. 
 
 **On\-demand instances**  
-On\-demand instances are simply that: you request an instance and it is created for you\. You can always acquire an on\-demand instance when you need it and keep it as long as you want\. On\-demand instances have a fixed cost; you pay for the amount of time that you use them and there are no long\-term commitments\.
+On\-demand instances are simply that: you request an instance and it is created for you\. You can always acquire an On\-demand instance when you need it and you can keep it as long as you want\. On\-demand instances have a fixed cost—you pay for the amount of time that you use them and there are no long\-term commitments\.
 
 **Spot instances**  
-Spot instances offer a highly cost\-efficient alternative to on\-demand instances\. Spot instances use spare AWS computing capacity, so spot instances can cost significantly less than on\-demand instances\. There is one drawback to using spot instances: unlike on\-demand instances, spot prices fluctuate based on the current supply and demand for each instance type in each region\. As a result, spot instances may be interrupted by AWS with a two\-minute notification when AWS needs the capacity back\. 
+Spot instances can offer a highly cost\-efficient alternative to on\-demand instances\. Spot instances take advantage of currently unused AWS computing capacity, which is what can make them less expensive but also less available\. When using Spot instances, it is important to be aware of two key facts: \(1\) Spot prices fluctuate based on the supply and demand for each instance type in each region, and \(2\) Spot instances can potentially be interrupted by AWS with a two\-minute notification when AWS needs the capacity back\. 
 
-With Amazon GameLift FleetIQ, however, you can achieve cost savings while maintaining high game\-server availability\. When placing new game sessions, FleetIQ prioritizes the use of spot instances to locate the best available game server based on \(1\) instances with the highest cost savings, and \(2\) instances with historically low interruption rates\.
+Amazon GameLift FleetIQ, however, significantly mitigates the chance of interruptions, allowing you to achieve cost savings while maintaining high game server availability\. FleetIQ is responsible for finding the best available resources for each new game session\. When a fleet has Spot instances, FleetIQ prioritizes using instances with the highest cost savings and historically low interruption rates\. So, if your fleet includes a mixture of t2 and c4 Spot instances, and demand for t2 instances has recently been high, FleetIQ evaluates the t2 instance's interruption risk and may opt to use a larger c4 instance\.
 
-You can evaluate FleetIQ's performance using a set of queue metrics, as well as instance\- specific metrics on spot instances\. Learn more about [ Amazon GameLift metrics](monitoring-cloudwatch.md)\. You can also view pricing history for any instance type by using the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/)\. The **Spot history** page graphs on\-demand and spot pricing and calculates the relative cost savings with spot\. Use the controls to select an instance type, operating system, and a time range\. 
+You can evaluate FleetIQ's performance using a set of queue metrics, as well as instance\-specific metrics on spot instances\. Learn more about [Amazon GameLift metrics](monitoring-cloudwatch.md)\. You can also view pricing history for any instance type in the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/)\. The **Spot history** page graphs On\-demand and Spot pricing and calculates the relative cost savings with Spot instances\. Use the controls to select an instance type, operating system, and a time range\.
 
-Learn more about how to use spot instances in the [Spot Fleet Integration Guide](spot-tasks.md)\. 
+Learn more about how to use Spot instances in the [Spot Fleet Integration Guide](spot-tasks.md)\. 
 
 ## Instance Service Limits<a name="gamelift-service-limits"></a>
 

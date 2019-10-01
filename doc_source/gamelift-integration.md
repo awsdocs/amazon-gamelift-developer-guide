@@ -3,7 +3,7 @@
 This roadmap outlines the key steps to getting your multiplayer games with custom game servers up and running on GameLift\. If you're interested in using GameLift Realtime Servers, which lets you deploy your game client with our ready\-to\-deploy game servers, see [Get Started with Realtime Servers](realtime-plan.md)\.
 
 **Tip**  
-[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games\.](gamelift-explore.md)\.
+[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games](gamelift-explore.md)\.
 
 New to GameLift? We recommend that you read [What Is Amazon GameLift?](gamelift-intro.md) If you're unsure whether GameLift supports your operating systems and development environments, see the topics [Amazon GameLift SDKs](gamelift-supported.md) and [Game Engines and Amazon GameLift](integration-engines.md)\.
 

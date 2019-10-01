@@ -5,9 +5,30 @@ This C\# Realtime Client API reference can help you prepare your multiplayer gam
 + [Asynchronous Callbacks](realtime-sdk-csharp-ref-callbacks.md)
 + [Data Types](realtime-sdk-csharp-ref-datatypes.md)
 
+## Client\(\)<a name="realtime-sdk-csharp-ref-actions-client"></a>
+
+Initializes a new client to communicate with the Realtime server and identifies the type of connection to use\. 
+
+### Syntax<a name="integration-server-sdk-csharp-ref-actions-client-syntax"></a>
+
+```
+public Client(ClientConfiguration configuration)
+```
+
+### Parameters<a name="realtime-sdk-csharp-ref-actions-client-parameter"></a>
+
+**clientConfiguration**  
+Configuration details specifying the client/server connection type\. You can opt to call Client\(\) without this parameter; however, this approach results in an unsecured connection by default\.  
+Type: [ClientConfiguration](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-clientconfiguration)  
+Required: No
+
+### Return Value<a name="realtime-sdk-csharp-ref-actions-client-return"></a>
+
+Returns an instance of the Realtime client for use with communicating with the Realtime server\. 
+
 ## Connect\(\)<a name="realtime-sdk-csharp-ref-actions-connect"></a>
 
-Requests a connection to a server process that is hosting a game session\. A game client acquires a game session's connection information by either creating a new game session or finding an existing game session to join\. Connection information is included in a `GameSession` object, which is returned in response to a call to the *AWS SDK Amazon GameLift API* actions [StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html), [CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html), or [DescribeGameSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_SearchGameSessions.html) request\. 
+Requests a connection to a server process that is hosting a game session\. 
 
 ### Syntax<a name="integration-server-sdk-csharp-ref-actions-connect-syntax"></a>
 
@@ -18,7 +39,8 @@ public ConnectionStatus Connect(string endpoint, int remoteTcpPort, int listenPo
 ### Parameters<a name="realtime-sdk-csharp-ref-actions-connect-parameter"></a>
 
 **endpoint**  
-IP address of the game session to connect to\.  
+DNS name or IP address of the game session to connect to\. The endpoint is specified in a `GameSession` object, which is returned in response to a client call to the *AWS SDK Amazon GameLift API* actions [StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html), [CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html), or [DescribeGameSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_SearchGameSessions.html)\.   
+If the Realtime server is running on a fleet with a TLS certificate, you must use the DNS name\. 
 Type: String  
 Required: Yes
 

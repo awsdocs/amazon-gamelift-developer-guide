@@ -1,6 +1,6 @@
 # Manually Set Fleet Capacity<a name="fleets-updating-capacity"></a>
 
-When you create a new fleet, fleet capacity is automatically set to one instance\. In response, Amazon GameLift starts one new instance with game server processes as configured\. To change fleet capacity, you can either turn on auto\-scaling or you can manually set the number of instances you want for the fleet\. Learn more about [Managing Capacity and Scaling](gamelift-howitworks.md#gamelift-howitworks-capacity)\. 
+When you create a new fleet, fleet capacity is automatically set to one instance\. In response, Amazon GameLift starts one new instance with game server processes as configured\. To change fleet capacity, you can either turn on auto\-scaling or you can manually set the number of instances you want for the fleet\. Learn more about [Scaling Fleet Capacity](gamelift-howitworks.md#gamelift-howitworks-capacity)\. 
 
 Setting a fleet's capacity manually can be useful when auto\-scaling is not needed or when you need to hold capacity at an arbitrary number of instances temporarily or permanently\. When manually setting a desired capacity, keep in mind that this action will affect actual fleet capacity only if \(1\) there are no auto\-scaling policies for the fleet, or \(2\) auto\-scaling has been disabled\. If auto\-scaling is enabled, it will immediately reset the desired capacity based on its own scaling rules\. 
 

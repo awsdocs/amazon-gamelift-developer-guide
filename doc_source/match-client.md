@@ -17,9 +17,9 @@ We highly recommend that your game client make matchmaking requests through a cl
 
 To prepare your client service, do the following tasks:
 + **Add the GameLift API\.** Your client service uses functionality in the GameLift API, which is part of the AWS SDK\. See [For Client Services](gamelift-supported.md#gamelift-supported-clients) to learn more about the AWS SDK and download the latest version\. Add this SDK to your game client service project\.
-+ **Set up a matchmaking tickets system\.** All matchmaking requests must be assigned a unique ticket ID\. You need a mechanism to generate unique IDs and assigning them to new match requests\. A ticket ID and use any string format, up to a maximum of 128 characters\. 
-+ **Get matchmaker information\.** Get the name of the matchmaking configuration that you plan to use\. You also need the matchmaker's list of required player attributes\. 
-+ **Get player latency data\.** Set up a way to get updated latency data per player for each region where the player is likely to be placed\. 
++ **Set up a matchmaking tickets system\.** All matchmaking requests must be assigned a unique ticket ID\. You need a mechanism to generate unique IDs and assign them to new match requests\. A ticket ID can use any string format, up to a maximum of 128 characters\. 
++ **Get matchmaker information\.** Get the name of the matchmaking configuration that you plan to use\. You also need the matchmaker's list of required player attributes, which are defined in the matchmaker's rule set\. 
++ **Get player data\.** Set up a way to get relevant data for each player\. This includes player ID, player attribute values, and updated latency data for each region where the player is likely be slotted into a game\. 
 + **\(optional\) Enable match backfill\.** Decide how you want to backfill your existing matched games\. If your matchmakers have backfill mode set to "manual", you may want to add backfill support to your game\. If backfill mode is set to "automatic", you may need a way to turn it off for individual game sessions\. Learn more about managing match backfill in [Backfill Existing Games with FlexMatch](match-backfill.md)\.
 
 ## Request Matchmaking for Players<a name="match-client-start"></a>
@@ -33,7 +33,7 @@ The name of the matchmaking configuration to use for the request\. FlexMatch pla
 **Ticket ID**  
 A unique ticket ID assigned to the request\. Everything related to the request, including events and notifications, will reference the ticket ID\.   
 **Player data**  
-List of players you want to create a match for\. If you include multiple players in a request, FlexMatch creates a single match with all players and tries to assign them to the same team\. If no match is possible with all listed players, the request can never succeed\.   
+List of players that you want to create a match for\. If any of the players in the request do not meet match requirements, based on the match rules and latency minimums, the matchmaking request will never result in a successful match\. You can include up to ten players in a match request\. When there are multiple players in a request, FlexMatch tries to create a single match and assign all players to the same team \(randomly selected\)\. If a request contains too many players to fit in one of the match teams, the request will fail to be matched\. For example, if you've set up your matchmaker to create 2v2 matches \(two teams of two players\), you cannot send a matchmaking request containing more than two players\.  
 A player \(identified by their player ID\) can only be included in one active matchmaking request at a time\. When you create a new request for a player, any active matchmaking tickets with the same player ID are automatically canceled\.
 For each listed player, include the following data:  
   + *Player ID *– Each player must have a unique player ID, which you generate\. See [Generate Player IDs](player-sessions-player-identifiers.md)\. 

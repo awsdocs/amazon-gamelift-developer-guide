@@ -3,7 +3,7 @@
 All game clients must be configured to enable communication with the Amazon GameLift service, including specifics on which fleet to use, access credentials, how to connect, etc\. The simplest method is to create a batch file that sets the console variables listed as follows\.
 
 **Tip**  
-[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games\.](gamelift-explore.md)\.
+[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games](gamelift-explore.md)\.
 
 **To prepare the game client**
 

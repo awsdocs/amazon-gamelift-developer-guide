@@ -22,6 +22,10 @@ Set up your game client to find or start game sessions, request FlexMatch matchm
 
 1. Get the Realtime Client SDK, build it, and add it to your game client project\. See the README file for more information on SDK requirements and instructions on how to build the client libraries\. 
 
+1. Call [Client\(\)](realtime-sdk-csharp-ref-actions.md#realtime-sdk-csharp-ref-actions-client) with a client configuration that specifies the type of client/server connection to use\.
+**Note**  
+If you're connecting to a Realtime server that is running on a secured fleet with a TLS certificate, you must specify a secured connection type\.
+
 1. Add the following functionality to your game client\. See the [Realtime Servers Client API \(C\#\) Reference](realtime-sdk-csharp-ref.md) for more information\. 
    + Connect to and disconnect from a game 
      + [Connect\(\)](realtime-sdk-csharp-ref-actions.md#realtime-sdk-csharp-ref-actions-connect)
@@ -36,6 +40,8 @@ Set up your game client to find or start game sessions, request FlexMatch matchm
      + [LeaveGroup\(\)](realtime-sdk-csharp-ref-actions.md#realtime-sdk-csharp-ref-actions-leavegroup)
 
 1. Set up event handlers for the client callbacks as needed\. See [Realtime Servers Client API \(C\#\) Reference: Asynchronous Callbacks](realtime-sdk-csharp-ref-callbacks.md)\.
+
+When working with Realtime fleets that have TLS certificate generation enabled, the server is automatically authenticated using the TLS certificate\. TCP and UDP traffic is encrypted in flight to provide transport layer security\. TCP traffic is encrypted using TLS 1\.2, and UDP traffic is encrypted using DTLS 1\.2\.
 
 ## Game Client Examples<a name="realtime-client-examples"></a>
 
@@ -62,32 +68,43 @@ namespace Example
     class RealTimeClient
     {
         public Aws.GameLift.Realtime.Client Client { get; private set; }
-        public bool OnCloseReceived { get; private set; }
+        
         // An opcode defined by client and your server script that represents a custom message type
         private const int MY_TEST_OP_CODE = 10;
 
-        /// <summary>
-        /// Initialize a client for GameLift Realtime and connects to a player session.
-        /// </summary>
-        /// <param name="endpoint">The endpoint for the GameLift Realtime server to connect to</param>
-        /// <param name="tcpPort">The TCP port for the GameLift Realtime server</param>
-        /// <param name="localUdpPort">Local Udp listen port to use</param>
-        /// <param name="playerSessionId">The player session Id in use - from CreatePlayerSession</param>
-        /// <param name="connectionPayload"></param>
-        public RealTimeClient(string endpoint, int tcpPort, int localUdpPort, string playerSessionId, byte[] connectionPayload)
+        /// Initialize a client for GameLift Realtime and connect to a player session.
+        /// <param name="endpoint">The DNS name that is assigned to Realtime server</param>
+        /// <param name="remoteTcpPort">A TCP port for the Realtime server</param>
+        /// <param name="listeningUdpPort">A local port for listening to UDP traffic</param>
+        /// <param name="connectionType">Type of connection to establish between client and the Realtime server</param>
+        /// <param name="playerSessionId">The player session ID that is assiged to the game client for a game session </param>
+        /// <param name="connectionPayload">Developer-defined data to be used during client connection, such as for player authentication</param>
+       public RealTimeClient(string endpoint, int remoteTcpPort, int listeningUdpPort, ConnectionType connectionType,
+                    string playerSessionId, byte[] connectionPayload)
         {
-            this.OnCloseReceived = false;
+            // Create a client configuration to specify a secure or unsecure connection type
+            // Best practice is to set up a secure connection using the connection type RT_OVER_WSS_DTLS_TLS12.
+            ClientConfiguration clientConfiguration = new ClientConfiguration()
+	     {
+                // C# notation to set the field ConnectionType in the new instance of ClientConfiguration
+	         ConnectionType = connectionType
+	     };
 
-            ClientConfiguration clientConfiguration = ClientConfiguration.Default();
+            // Create a Realtime client with the client configuration            
+            Client = new Client(clientConfiguration);
 
-            Client = new Aws.GameLift.Realtime.Client(clientConfiguration);
-            Client.ConnectionOpen += new EventHandler(OnOpenEvent);
-            Client.ConnectionClose += new EventHandler(OnCloseEvent);
-            Client.GroupMembershipUpdated += new EventHandler<GroupMembershipEventArgs>(OnGroupMembershipUpdate);
-            Client.DataReceived += new EventHandler<DataReceivedEventArgs>(OnDataReceived);
+            // Initialize event handlers for the Realtime client
+            Client.ConnectionOpen += OnOpenEvent;
+            Client.ConnectionClose += OnCloseEvent;
+            Client.GroupMembershipUpdated += OnGroupMembershipUpdate;
+            Client.DataReceived += OnDataReceived;
 
-            ConnectionToken token = new ConnectionToken(playerSessionId, connectionPayload);
-            Client.Connect(endpoint, tcpPort, localUdpPort, token);
+            // Create a connection token to authenticate the client with the Realtime server
+            // Player session IDs can be retrieved using AWS SDK for GameLift
+            ConnectionToken connectionToken = new ConnectionToken(playerSessionId, connectionPayload);
+
+            // Initiate a connection with the Realtime server with the given connection information
+            Client.Connect(endpoint, remoteTcpPort, listeningUdpPort, connectionToken);
         }
 
         public void Disconnect()
@@ -130,7 +147,6 @@ namespace Example
          */
         public void OnCloseEvent(object sender, EventArgs e)
         {
-            OnCloseReceived = true;
         }
 
         /**

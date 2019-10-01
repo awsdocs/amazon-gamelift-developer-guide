@@ -45,7 +45,7 @@ Use the following AWS CLI commands to update a fleet:
 You can delete a fleet when it is no longer needed\. Deleting a fleet permanently removes all data associated with game sessions and player sessions, as well as collected metric data\. As an alternative, you can retain the fleet, disable auto\-scaling, and manually scale the fleet to 0 instances\.
 
 **Note**  
-If the fleet being deleted has a VPC peering connection, you first need to request authorization by calling [CreateVpcPeeringAuthorization](https://docs.aws.amazon.com/gamelift/lates/apireference/API_CreateVpcPeeringAuthorization.html)\. You do not need to explicitly delete the VPC peering connection\-\-this is done as part of the delete fleet process\. 
+If the fleet being deleted has a VPC peering connection, you first need to request authorization by calling [CreateVpcPeeringAuthorization](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateVpcPeeringAuthorization.html)\. You do not need to explicitly delete the VPC peering connection\-\-this is done as part of the delete fleet process\. 
 
 You can use either the Amazon GameLift console or the AWS CLI tool to delete a fleet\. 
 

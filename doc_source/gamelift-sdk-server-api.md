@@ -51,6 +51,10 @@ The `onStartGameSession` function takes a [GameSession](https://docs.aws.amazon.
 + Process the game property values specified by the game client in its request\. The game properties are contained in the `GameSession` object\.
 + At some point after the new game session is ready to accept players, the server process must call the server API action `ActivateGameSession()`\. In response to a successful call, the Amazon GameLift service changes the game session status to ACTIVE\. 
 
+## Retrieve a TLS Certificate<a name="gamelift-sdk-server-getcertificate"></a>
+
+If the game server is running on a fleet that has TLS certificate generation enabled, you can retrieve the TLS certificate and use it to establish a secure connection with a game client and encrypt client/server communication\. A copy of the certificate is stored on the instance\. To get the file location, call [GetInstanceCertificate\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-getinstancecertificate)\.
+
 ## Validate a New Player<a name="gamelift-sdk-server-validateplayer"></a>
 
 Add code to verify a player connection request with the Amazon GameLift service\. This code should run whenever a new player attempts to connect to the server process and before accepting the connection\. 

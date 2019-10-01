@@ -6,7 +6,7 @@ Queues are required with these Amazon GameLift features:
 + Matchmaking with FlexMatch \(see [Design a FlexMatch Matchmaker](match-tasks.md)\)
 + Spot fleets \(see [Spot Fleet Integration Guide](spot-tasks.md)\)
 
-Learn more about queues in [Placing Game Sessions](gamelift-howitworks.md#gamelift-howitworks-placing)\. For information on creating a queue, see [Create a Queue](queues-creating.md)\. For information on creating new game sessions with queues, see [Create Game Sessions](gamelift-sdk-client-api.md#gamelift-sdk-client-api-create)\. 
+Learn more about queues in [Running Game Sessions](gamelift-howitworks.md#gamelift-howitworks-placing)\. For information on creating a queue, see [Create a Queue](queues-creating.md)\. For information on creating new game sessions with queues, see [Create Game Sessions](gamelift-sdk-client-api.md#gamelift-sdk-client-api-create)\. 
 
 ## Why Use Queues?<a name="queues-design-benefits"></a>
 
@@ -27,6 +27,7 @@ A queue contains a list of destinations where game session placement requests ca
 + A queue should have at least two fleets and span at least two regions\. This design improves hosting resiliency by decreasing the impact of fleet or regional slowdowns and more efficiently managing unexpected changes in player demand\.
 + The list order of destinations in a queue matters\. If you include latency data in a game session placement request, Amazon GameLift re\-prioritizes the destinations to find available resources with \(1\) minimal player latency and \(2\) lowest spot price \(if relevant\)\. If you don't provide latency data, Amazon GameLift follows the destination list order\. In this situation, game sessions will usually be hosted on the first fleet listed and will only be placed on back\-up fleets when needed\. 
 + You need to decide where to create your queue \(in which region\)\. Ideally you're making game session placement requests through a game client service, such as a session directory service\. If so, we recommend that you create your queue in a region that is geographically near where the client service is deployed\. This arrangement minimizes latency when submitting game session placement requests\. 
++ A queue must not have fleets with different certificate configurations\. All fleets in the queue must have TLS certificate generation either enabled or disabled\.
 
 ## Design a Multi\-Region Queue<a name="queues-design-multiregion"></a>
 

@@ -5,6 +5,18 @@ This C\# Realtime Client API reference can help you prepare your multiplayer gam
 + [Asynchronous Callbacks](realtime-sdk-csharp-ref-callbacks.md)
 + Data Types
 
+## ClientConfiguration<a name="realtime-sdk-csharp-ref-datatypes-clientconfiguration"></a>
+
+Information about how the game client connects to a Realtime server\. 
+
+### Contents<a name="realtime-sdk-csharp-ref-datatypes-clientconfiguration-contents"></a>
+
+**ConnectionType**  
+Type of client/server connection to use, either secured or unsecured\. If you don't specify a connection type, the default is unsecured\.   
+When connecting to a Realtime server on a secured fleet with a TLS certificate, you must use the value RT\_OVER\_WSS\_DTLS\_TLS12\. 
+Type: A `ConnectionType` [enum]() value\.  
+Required: No
+
 ## ConnectionToken<a name="realtime-sdk-csharp-ref-datatypes-connectiontoken"></a>
 
 Information about the game client and/or player that is requesting a connection with a Realtime server\.
@@ -12,7 +24,7 @@ Information about the game client and/or player that is requesting a connection 
 ### Contents<a name="realtime-sdk-csharp-ref-datatypes-connectiontoken-contents"></a>
 
 **playerSessionId**  
-Unique ID issued by the Amazon GameLift service in response to a call to the AWS SDK Amazon GameLift API action [CreatePlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreatePlayerSession.html)\. The game client references this ID when connecting to the server process\.  
+Unique ID issued by GameLift when a new player session is created\. A player session ID is specified in a `PlayerSession` object, which is returned in response to a client call to the *AWS SDK Amazon GameLift API* actions [ StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html), [ CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html), [ DescribeGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionPlacement.html), or [ DescribePlayerSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribePlayerSessions.html)\.  
 Type: String  
 Required: No
 
@@ -111,6 +123,13 @@ Enums defined for the Realtime Client SDK are defined as follows:
 + CONNECTING Game client has sent a connection request and the Realtime server is processing it\.
 + DISCONNECTED\_CLIENT\_CALL – Game client was disconnected from the Realtime server in response to a [Disconnect\(\)](realtime-sdk-csharp-ref-actions.md#realtime-sdk-csharp-ref-actions-disconnect)request from the game client\.
 + DISCONNECTED – Game client was disconnected from the Realtime server for a reason other than a client disconnect call\.
+
+**ConnectionType**  
++ RT\_OVER\_WSS\_DTLS\_TLS12 – Secure connection type\. 
+
+  For use with Realtime servers that are running on a GameLift fleet with a TLS certificate generated\. When using a secure connection, TCP traffic is encrypted using TLS 1\.2, and UDP traffic is encrypted using DTLS 1\.2\.
++ RT\_OVER\_WS\_UDP\_UNSECURED – Non\-secure connection type\.
++ RT\_OVER\_WEBSOCKET – Non\-secure connection type\. This value is no longer preferred\.
 
 **DeliveryIntent**  
 + FAST – Delivered using a UDP channel\. 

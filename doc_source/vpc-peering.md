@@ -35,7 +35,7 @@ When setting up a peering, both VPCs must exist in the same region\. The VPC for
 
 **Authorize a VPC peering with non\-GameLift resources\.**
 
-   In this step, you are pre\-authorizing a future request from GameLift to peer with your VPC for non\-GameLift resources\. 
+   In this step, you are pre\-authorizing a future request from GameLift to peer with your VPC for non\-GameLift resources\. This step updates the security group for your VPC\.
 
    To authorize the VPC peering, call the GameLift service API [ CreateVpcPeeringAuthorization\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateVpcPeeringAuthorization.html) or use the AWS CLI command `create-vpc-peering-authorization`\. Make this call using the account that manages your non\-GameLift resources\. Identify the following information:
    + Peer VPC ID – This is for the VPC with your non\-GameLift resources\.
@@ -103,7 +103,7 @@ If you haven't already set up a VPC for your non\-GameLift resources,
 
 **Authorize a VPC peering with non\-GameLift resources\.**
 
-   When GameLift creates the new fleet and VPC, it will also send a request to peer with the VPC for your non\-GameLift resources\. You need to pre\-authorize that request\.
+   When GameLift creates the new fleet and VPC, it also sends a request to peer with the VPC for your non\-GameLift resources\. You need to pre\-authorize that request\. This step updates the security group for your VPC\.
 
    Using the account that manages your non\-GameLift resources, call the GameLift service API [ CreateVpcPeeringAuthorization\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateVpcPeeringAuthorization.html) or use the AWS CLI command `create-vpc-peering-authorization`\. Identify the following information:
    + Peer VPC ID – ID of the VPC with your non\-GameLift resources\.

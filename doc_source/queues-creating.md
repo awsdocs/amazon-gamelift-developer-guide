@@ -28,7 +28,7 @@ Create a queue from the AWS Management Console\.
 
       As you add policies, the console automatically reorders the polices based on the maximum player latency value, lowest value listed first\. This is the order in which the policies are enforced during a game session placement effort\. 
 
-1. Under **Destinations**, add one or more destinations to the queue\. A queue can contain fleets from multiple regions and with both on\-demand and spot fleets\. The only requirement is that all fleets must be running game builds that are compatible with the game clients that will use the queue, such as fleets in multiple regions that are running the same game build\. Fleets and aliases must exist before you can add them as destinations\.
+1. Under **Destinations**, add one or more destinations to the queue\. A queue can contain fleets from multiple regions and with both on\-demand and spot fleets\. All fleets in the queue must have the same certificate configuration \(either GENERATED or DISABLED\)\. All fleets should be running game builds that are compatible with the game clients that will use the queue, such as fleets in multiple regions that are running the same game build\. Fleets and aliases must exist before you can add them as destinations\.
 
    1. Choose **Add destination**\.
 
