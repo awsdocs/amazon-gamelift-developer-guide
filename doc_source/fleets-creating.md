@@ -30,9 +30,7 @@ After you create a new fleet, the fleet's status passes through several stages a
 
 1. **Process management**\. Configure how you want server processes to run on each instance\.
 
-   1. 
-
-**Server process allocation:**
+   * **Server process allocation:**
 
       Specify the type and number of game server processes you want to run on each instance\. Each fleet must have at least one server process configuration defined and can have multiple configurations\. For example, if your game build has multiple server executables, you must have a configuration for each executable\. 
       + **Launch path** – Type the path to the game executable in your build\. All launch paths must start with the game server location, which varies based on the operating system in use\. On Windows instances, game servers are built to the path `C:\game`\. On Linux instances, game servers are built to `/local/game`, so all launch paths must start with this location\. Examples: **C:\\game\\MyGame\\server\.exe** or **/local/game/MyGame/server\.exe**\.
@@ -45,10 +43,8 @@ After you create a new fleet, the fleet's status passes through several stages a
 
       The collection of server process configurations is called the fleet's runtime configuration\. It describes all server processes that will be running on each instance in this fleet at any given time\. 
 
-   1. 
-
-**Game session activation:**
-
+   * **Game session activation:**
+   
       Set the following limits to determine how new game sessions are activated on the instances in this fleet:
       + **Max concurrent game session activation** – Limit the number of game sessions on an instance that can be activating at the same time\. This limit is useful when launching multiple new game sessions may have an impact on the performance of other game sessions running on the instance\.
       + **New activation timeout** – This setting limits the amount of time Amazon GameLift allows for a new game session activate\. If the game session does not complete activation and move to status ACTIVE, the game session activation is terminated\. 
