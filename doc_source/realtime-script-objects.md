@@ -154,7 +154,7 @@ Player session ID that was referenced by the game client when it connected to th
 **Game message object**  
 Use these methods to access messages that are received by the Realtime server\. Messages received from game clients have the [RTMessage](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-rtmessage) structure\.
 
-## gameMessage\.opcode<a name="realtime-script-objects-gamemessageopcode"></a>
+## gameMessage\.opCode<a name="realtime-script-objects-gamemessageopcode"></a>
 
 Operation code contained in a message\.
 
