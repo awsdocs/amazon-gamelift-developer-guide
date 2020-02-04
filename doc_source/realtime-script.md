@@ -177,7 +177,7 @@ function onPlayerDisconnect(peerId) {
                                                 "Peer " + peerId + " disconnected");
     session.getPlayers().forEach((player, playerId) => {
         if (playerId != peerId) {
-            session.sendReliableMessage(outMessage, peerId);
+            session.sendReliableMessage(outMessage, playerId);
         }
     });
     activePlayers--;
