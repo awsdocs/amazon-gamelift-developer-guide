@@ -1,49 +1,53 @@
-# Set Fleet Capacity Limits<a name="fleets-capacity-limits"></a>
+# Set GameLift capacity limits<a name="fleets-capacity-limits"></a>
 
-Fleet size is determined by the number of instances it contains\. Each fleet has a defined minimum and maximum limit, which you can set as needed for your game\. All requests to change fleet capacity \(either by auto\-scaling or manual adjustment\) must fall within the current limits\. By default, limits on new fleets are set to a minimum of 0 instances and a maximum of 1 instance\. Before scaling up a fleet, you'll need to adjust the fleet's limits\. 
+When scaling hosting capacity for a fleet location, either manually or by auto\-scaling, you must consider the location's scaling limits\. All fleet locations have a minimum and maximum limit that define the allowed range for the location's capacity\. By default, limits on fleet locations are set to a minimum of 0 instances and a maximum of 1 instance\. Before you can scale a fleet location, you'll need to adjust the limits\. 
 
-If you're auto\-scaling a fleet, the maximum limit lets Amazon GameLift scale up the fleet as needed to accommodate player demand while also preventing runaway hosting costs, such as might occur during a DDOS attack\. Set up CloudWatch to alarm when capacity approaches the maximum limit, so you can evaluate the situation and manually adjust as needed\. \(You can also [set up a billing alert](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/monitor-charges.html) to monitor AWS costs\.\) The minimum limit is useful when you want to ensure that you always have some hosting availability at all times\. 
+If you're using auto\-scaling, the maximum limit allows GameLift scale up a fleet location to meet player demand but prevents runaway hosting costs, such as might occur during a DDOS attack\. Set up CloudWatch to alarm when capacity approaches the maximum limit, so you can evaluate the situation and manually adjust as needed\. \(You can also [set up a billing alert](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/monitor-charges.html) to monitor AWS costs\.\) The minimum limit is useful to maintain some hosting availability at all times, even when player demand is low\. 
 
-Limits also apply to manually scaled fleets\. Before you can adjust fleet capacity to a value outside the limit range, you must change the limits\. Since fleet capacity has such a significant effect on game availability and player experience, the limits feature provides an additional layer of control over capacity\. 
+You can set capacity limits for a fleet's locations in the [GameLift console](https://console.aws.amazon.com/gamelift/) or by using the AWS CLI\. The location's status must be **Active**\.
 
-You can set a fleet's capacity limits in the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/) or by using the AWS CLI\. The fleet's status must be **Active**\. 
+## To set capacity limits<a name="fleets-capacity-limits-console"></a>
 
-## To Set Capacity Limits \(Console\)<a name="fleets-capacity-limits-console"></a>
+------
+#### [ Console ]
 
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 
 1. On the **Fleets** page, click the name of an active fleet to open the fleet's detail page\. \(You can also access a fleet's detail page via the **Dashboard**\.\) 
 
-1. Open the **Scaling** tab to view historical scaling metrics and to view or change the current settings\. Scaling settings are located below the metrics graph\.
+1. Open the **Scaling** tab\. Capacity scaling settings are located in the **Scaling Limits** section\.
 
-1. Under **Instance Limits**, set minimum and maximum instance counts\. For each control, commit your changes by clicking the checkmark button ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/images/checkmark.png)\. 
+1. For each fleet location, set minimum and maximum instance counts\. After making a change, you must commit your changes by clicking the check mark button ![\[Image NOT FOUND\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/images/checkmark.png)\. 
 
-   If the fleet's current desired instance count is outside the new limit range, you'll get an error\. In this case, you must first adjust the fleet's desired instance count so that it falls inside the new limit range\. This can be done on the **Scaling** tab\. If the fleet uses auto\-scaling, you'll need to disable auto\-scaling, manually adjust the desired instance count and set the new limit range, and then re\-enable auto\-scaling\.
+   If the location's current desired instance count is outside the new limit range, you'll get an error\. In this case, you must first adjust the desired instance count so that it falls inside the new limit range\. If the fleet uses auto\-scaling, you'll need to disable auto\-scaling for the location, manually adjust the desired instance count, and set the new limit range, then re\-enable auto\-scaling\.
 
-The new limits are immediately reflected in the graph at the top of the **Scaling** tab\.
+The new limits are immediately reflected in the **Scaling History** graph\.
 
-## To Set Capacity Limits \(AWS CLI\)<a name="fleets-capacity-limits-cli"></a>
+------
+#### [ AWS CLI ]
 
-1. **Check current capacity settings\. **In a command line window, use the [describe\-fleet\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-capacity.html) command with the fleet ID of the fleet you want to change capacity for\. This command returns a [FleetCapacity](https://docs.aws.amazon.com/gamelift/latest/apireference/API_FleetCapacity.html) object that includes the current instance count and capacity limits\. Determine whether the new instance limits will accommodate the current desired instances setting\.
+1. **Check current capacity settings\.** In a command line window, use the [describe\-fleet\-location\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-location-capacity.html) command with the fleet ID and location that you want to change capacity for\. This command returns a [FleetCapacity](https://docs.aws.amazon.com/gamelift/latest/apireference/API_FleetCapacity.html) object that includes the location's current capacity settings\. Determine whether the new instance limits will accommodate the current desired instances setting\.
 
    ```
-   aws gamelift describe-fleet-capacity --fleet-id <unique fleet identifier>
+   AWS gamelift describe-fleet-location-capacity --fleet-id <fleet identifier> --location <location name>
    ```
 
 1. **Update limit settings\.** In a command line window, use the [ update\-fleet\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-capacity.html) command with the following parameters\. You can adjust both instance limits and desired instance count with the same command\.
 
    ```
-   --fleet-id <unique fleet identifier>
-   --max-size <maximum capacity for auto-scaling>
-   --min-size <minimum capacity for auto-scaling>
-   --desired-instances <fleet capacity as an integer>    [Optional]
+   --fleet-id <fleet identifier>
+   --location <location name>
+   --max-size <maximum capacity for scaling>
+   --min-size <minimum capacity for scaling>
+   --desired-instances <fleet capacity goal>    [Optional]
    ```
 
    Example:
 
    ```
-   aws gamelift update-fleet-capacity
+   AWS gamelift update-fleet-capacity
    --fleet-id fleet-2222bbbb-33cc-44dd-55ee-6666ffff77aa
+   --location us-west-2
    --max-size 10
    --min-size 1
    --desired-instances 10
@@ -52,7 +56,9 @@ The new limits are immediately reflected in the graph at the top of the **Scalin
    *Copyable version:*
 
    ```
-   aws gamelift update-fleet-capacity --fleet-id fleet-2222bbbb-33cc-44dd-55ee-6666ffff77aa --max-size 10 --min-size 1 --desired-instances 10 
+   AWS gamelift update-fleet-capacity --fleet-id fleet-2222bbbb-33cc-44dd-55ee-6666ffff77aa --location us-west-2 --max-size 10 --min-size 1 --desired-instances 10             
    ```
 
 If your request is successful, the fleet ID is returned\. If the new *max\-size* or *min\-size* value conflicts with the current *desired\-instances* setting, an error is returned\.
+
+------

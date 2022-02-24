@@ -7,7 +7,7 @@ Amazon GameLift provides a collection of tools and resources for you to use\.
 Use these tools to work with Amazon GameLift\. 
 
 **Amazon GameLift SDKs**  
-The Amazon GameLift SDKs contain the libraries needed to communicate with the Amazon GameLift service from your game clients, game servers and game services\. Versions of these SDKs are available with Lumberyard or you can download the latest versions separately\. See details in [Amazon GameLift SDKs](gamelift-supported.md)\. 
+The Amazon GameLift SDKs contain the libraries needed to communicate with the Amazon GameLift service from your game clients, game servers and game services\. Versions of these SDKs are available with Lumberyard or you can download the latest versions separately\. See details in [GameLift SDKs](gamelift-supported.md)\. 
 
 **Realtime Client SDK for Amazon GameLift **  
 For games using Realtime Servers, The Realtime Client SDK enables a game client to connect to a deployed Realtime server, join a game session, and keep its game state in sync with other players in the game\. Download the [SDK](https://aws.amazon.com/gamelift/getting-started/) and learn more about making API calls with the [Realtime Servers Client API \(C\#\) Reference](realtime-sdk-csharp-ref.md)\. 

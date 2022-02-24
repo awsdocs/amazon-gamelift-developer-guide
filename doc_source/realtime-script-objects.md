@@ -6,6 +6,7 @@ The Realtime interface provides access to the following objects:
 + session
 + player
 + gameMessage
++ configuration
 
 **Realtime Session object**  
 Use these methods to access server\-related information and perform server\-related actions\.
@@ -22,7 +23,7 @@ rtSession.getPlayers()
 
 ## broadcastGroupMembershipUpdate\(\)<a name="realtime-script-objects-broadcastgroup"></a>
 
-Triggers delivery of an updated group membership list to player group\. Specify which membership to broadcast \(groupIdToBroadcast\) and the group to receive the update \(targetGroupId\)\.
+Triggers delivery of an updated group membership list to player group\. Specify which membership to broadcast \(groupIdToBroadcast\) and the group to receive the update \(targetGroupId\)\. Group IDs must be a positive integer or "\-1" to indicate all groups\. See [Realtime Servers Script Example](realtime-script.md#realtime-script-examples) for an example of user\-defined group IDs\.
 
 ### Syntax<a name="realtime-script-objects-broadcastgroup-syntax"></a>
 
@@ -92,7 +93,7 @@ rtSession.sendMessage(gameMessage, targetPlayer)
 
 ## sendGroupMessage\(\)<a name="realtime-script-objects-sendgroupmessage"></a>
 
-Sends a message, created using `newTextGameMessage` or `newBinaryGameMessage`, from the Realtime server to all players in a player group using the UDP channel\. Identify the recipients using the group ID\.
+Sends a message, created using `newTextGameMessage` or `newBinaryGameMessage`, from the Realtime server to all players in a player group using the UDP channel\. Group IDs must be a positive integer or "\-1" to indicate all groups\. See [Realtime Servers Script Example](realtime-script.md#realtime-script-examples) for an example of user\-defined group IDs\.
 
 ### Syntax<a name="realtime-script-objects-sendgroupmessage-syntax"></a>
 
@@ -112,7 +113,7 @@ rtSession.sendReliableMessage(gameMessage, targetPlayer)
 
 ## sendReliableGroupMessage\(\)<a name="realtime-script-objects-sendreliablegroupmessage"></a>
 
-Sends a message, created using `newTextGameMessage` or `newBinaryGameMessage`, from the Realtime server to all players in a player group using the TCP channel\. Identify the recipients using the group ID\.
+Sends a message, created using `newTextGameMessage` or `newBinaryGameMessage`, from the Realtime server to all players in a player group using the TCP channel\. Group IDs which must be a positive integer or "\-1" to indicate all groups\. See [Realtime Servers Script Example](realtime-script.md#realtime-script-examples) for an example of user\-defined group IDs\.
 
 ### Syntax<a name="realtime-script-objects-sendreliablegroupmessage-syntax"></a>
 
@@ -140,19 +141,30 @@ Creates a new message containing binary data, to be sent from the server to play
 rtSession.newBinaryGameMessage(opcode, sender, binaryPayload)
 ```
 
-**Player object**  
+## Player object<a name="realtime-script-objects-player"></a>
+
 Access player\-related information\.
 
-## player\.peerId<a name="realtime-script-objects-playerpeerid"></a>
+### player\.peerId<a name="realtime-script-objects-playerpeerid"></a>
 
 Unique ID that is assigned to a game client when it connects to the Realtime server and joined the game session\.
 
-## player\.playerSessionId<a name="realtime-script-objects-playersessionid"></a>
+### player\.playerSessionId<a name="realtime-script-objects-playersessionid"></a>
 
 Player session ID that was referenced by the game client when it connected to the Realtime server and joined the game session\.
 
 **Game message object**  
 Use these methods to access messages that are received by the Realtime server\. Messages received from game clients have the [RTMessage](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-rtmessage) structure\.
+
+## getPayloadAsText\(\)<a name="realtime-script-objects-getpayloadastext"></a>
+
+Gets the game message payload as text\. 
+
+### Syntax<a name="realtime-script-objects-getpayloadastext-syntax"></a>
+
+```
+gameMessage.getPayloadAsText()
+```
 
 ## gameMessage\.opcode<a name="realtime-script-objects-gamemessageopcode"></a>
 
@@ -169,3 +181,19 @@ Peer ID of the game client that sent a message\.
 ## gameMessage\.reliable<a name="realtime-script-objects-gamemessagereliable"></a>
 
 Boolean indicating whether the message was sent via TCP \(true\) or UDP \(false\)\.
+
+## Configuration object<a name="realtime-script-objects-configuration"></a>
+
+The configuration object can be used to override default configurations\.
+
+### configuration\.maxPlayers<a name="realtime-script-objects-configuration-maxplayers"></a>
+
+The maximum number of client / server connections that can be accepted by RealTimeServers\.
+
+The default is 32\.
+
+### configuration\.pingIntervalTime<a name="realtime-script-objects-configuration-pingIntervalTime"></a>
+
+Time interval in milliseconds that server will attempt to send a ping to all connected clients to verify connections are healthy\.
+
+The defailt is 3000ms\.

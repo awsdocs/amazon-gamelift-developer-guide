@@ -1,10 +1,10 @@
-# Amazon GameLift Server API \(C\+\+\) Reference: Data Types<a name="integration-server-sdk-cpp-ref-datatypes"></a>
+# GameLift Server API reference for C\+\+: Data types<a name="integration-server-sdk-cpp-ref-datatypes"></a>
 
-This Amazon GameLift C\+\+ Server API reference can help you prepare your multiplayer game for use with Amazon GameLift\. For details on the integration process, see [Add Amazon GameLift to Your Game Server](gamelift-sdk-server-api.md)\.
+This GameLift C\+\+ Server API reference can help you prepare your multiplayer game for use with GameLift\. For details on the integration process, see [Add GameLift to your game server](gamelift-sdk-server-api.md)\.
 
 This API is defined in `GameLiftServerAPI.h`, `LogParameters.h`, and `ProcessParameters.h`\.
 + [Actions](integration-server-sdk-cpp-ref-actions.md)
-+ Data Types
++ Data types
 
 ## DescribePlayerSessionsRequest<a name="integration-server-sdk-cpp-ref-dataypes-playersessions"></a>
 
@@ -53,18 +53,18 @@ Required: No
 
 ## LogParameters<a name="integration-server-sdk-cpp-ref-dataypes-log"></a>
 
-This data type is used to identify which files generated during a game session that you want Amazon GameLift to upload and store once the game session ends\. This information is communicated to the Amazon GameLift service in a [ProcessReady\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-processready) call\.
+This data type is used to identify which files generated during a game session that you want GameLift to upload and store once the game session ends\. This information is communicated to the GameLift service in a [ProcessReady\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-processready) call\.
 
 ### Contents<a name="integration-server-sdk-cpp-ref-dataypes-log-contents"></a>
 
 **logPaths**  
-Directory paths to game server log files that you want Amazon GameLift to store for future access\. These files are generated during each game session\. File paths and names are defined in your game server and stored in the root game build directory\. For example, if your game build stores game session logs in a path like `MyGame\sessionlogs\`, then the log path would be `c:\game\MyGame\sessionLogs` \(on a Windows instance\) or `/local/game/MyGame/sessionLogs` \(on a Linux instance\)\.   
+Directory paths to game server log files that you want GameLift to store for future access\. These files are generated during each game session\. File paths and names are defined in your game server and stored in the root game build directory\. For example, if your game build stores game session logs in a path like `MyGame\sessionlogs\`, then the log path would be `c:\game\MyGame\sessionLogs` \(on a Windows instance\) or `/local/game/MyGame/sessionLogs` \(on a Linux instance\)\.   
 Type: std:vector<std::string>  
 Required: No
 
 ## ProcessParameters<a name="integration-server-sdk-cpp-ref-dataypes-process"></a>
 
-This data type contains the set of parameters sent to the Amazon GameLift service in a [ProcessReady\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-processready) call\.
+This data type contains the set of parameters sent to the GameLift service in a [ProcessReady\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-processready) call\.
 
 ### Contents<a name="integration-server-sdk-cpp-ref-dataypes-process-contents"></a>
 
@@ -79,28 +79,28 @@ Type: Aws::GameLift::Server::[LogParameters](#integration-server-sdk-cpp-ref-dat
 Required: No
 
 **onStartGameSession**  
-Name of callback function that the Amazon GameLift service calls to activate a new game session\. Amazon GameLift calls this function in response to the client request [CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html)\. The callback function passes a [GameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_GameSession.html) object \(defined in the *Amazon GameLift Service API Reference*\)\.   
+Name of callback function that the GameLift service invokes to activate a new game session\. GameLift calls this function in response to the client request [CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html)\. The callback function passes a [GameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_GameSession.html) object \(defined in the *GameLift Service API Reference*\)\.   
 Type: `const std::function<void(Aws::GameLift::Model::GameSession)> onStartGameSession`   
 Required: Yes
 
 **onProcessTerminate**  
-Name of callback function that the Amazon GameLift service calls to force the server process to shut down\. After calling this function, Amazon GameLift waits five minutes for the server process to shut down and respond with a [ProcessEnding\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-processending) call\. If no response is receive, it shuts down the server process\.  
+Name of callback function that the GameLift service invokes to force the server process to shut down\. After calling this function, GameLift waits five minutes for the server process to shut down and respond with a [ProcessEnding\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-processending) call\. If no response is receive, it shuts down the server process\.  
 Type: `std::function<void()> onProcessTerminate`  
 Required: No
 
 **onHealthCheck**  
-Name of callback function that the Amazon GameLift service calls to request a health status report from the server process\. Amazon GameLift calls this function every 60 seconds\. After calling this function Amazon GameLift waits 60 seconds for a response, and if none is received\. records the server process as unhealthy\.  
+Name of callback function that the GameLift service invokes to request a health status report from the server process\. GameLift calls this function every 60 seconds\. After calling this function GameLift waits 60 seconds for a response, and if none is received\. records the server process as unhealthy\.  
 Type: `std::function<bool()> onHealthCheck`  
 Required: No
 
 **onUpdateGameSession**  
-Name of callback function that the Amazon GameLift service calls to provide an updated game session object\. Amazon GameLift calls this function once a [ match backfill](match-backfill.md) request has been processed\. It passes a [GameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_GameSession.html) object, a status update \(`updateReason`\), and the match backfill ticket ID\.   
+Name of callback function that the GameLift service invokes to pass an updated game session object to the server process\. GameLift calls this function when a [match backfill](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html) request has been processed in order to provide updated matchmaker data\. It passes a [GameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_GameSession.html) object, a status update \(`updateReason`\), and the match backfill ticket ID\.   
 Type: `std::function<void(Aws::GameLift::Server::Model::UpdateGameSession)> onUpdateGameSession`   
 Required: No
 
 ## StartMatchBackfillRequest<a name="integration-server-sdk-cpp-ref-dataypes-startmatchbackfillrequest"></a>
 
-This data type is used to send a matchmaking backfill request\. The information is communicated to the Amazon GameLift service in a [StartMatchBackfill\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-startmatchbackfill) call\.
+This data type is used to send a matchmaking backfill request\. The information is communicated to the GameLift service in a [StartMatchBackfill\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-startmatchbackfill) call\.
 
 ### Contents<a name="integration-server-sdk-cpp-ref-dataypes-startbackfill-contents"></a>
 
@@ -110,7 +110,7 @@ Type: String
 Required: Yes
 
 **MatchmakingConfigurationArn**  
-Unique identifier, in the form of an ARN, for the matchmaker to use for this request\. To find the matchmaker that was used to create the original game session, look in the game session object, in the matchmaker data property\. Learn more about matchmaker data in [Work with Matchmaker Data](match-server.md#match-server-data)\.   
+Unique identifier, in the form of an ARN, for the matchmaker to use for this request\. To find the matchmaker that was used to create the original game session, look in the game session object, in the matchmaker data property\. Learn more about matchmaker data in [ Word with matchmaker data](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-server.html#match-server-data)\.   
 Type: String  
 Required: Yes
 
@@ -126,7 +126,7 @@ Required: No
 
 ## StopMatchBackfillRequest<a name="integration-server-sdk-cpp-ref-dataypes-stopmatchbackfillrequest"></a>
 
-This data type is used to cancel a matchmaking backfill request\. The information is communicated to the Amazon GameLift service in a [StopMatchBackfill\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-stopmatchbackfill) call\.
+This data type is used to cancel a matchmaking backfill request\. The information is communicated to the GameLift service in a [StopMatchBackfill\(\)](integration-server-sdk-cpp-ref-actions.md#integration-server-sdk-cpp-ref-stopmatchbackfill) call\.
 
 ### Contents<a name="integration-server-sdk-cpp-ref-dataypes-stopbackfill-contents"></a>
 

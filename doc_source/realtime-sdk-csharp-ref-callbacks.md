@@ -23,7 +23,7 @@ public void OnOpen()
 
 This method takes no parameters\.
 
-### Return Value<a name="realtime-sdk-csharp-ref-callbacks-onopen-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-callbacks-onopen-return"></a>
 
 This method does not return anything\. 
 
@@ -41,7 +41,7 @@ public void OnClose()
 
 This method takes no parameters\.
 
-### Return Value<a name="realtime-sdk-csharp-ref-callbacks-onclose-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-callbacks-onclose-return"></a>
 
 This method does not return anything\. 
 
@@ -59,7 +59,7 @@ private void OnError(byte[] args)
 
 This method takes no parameters\.
 
-### Return Value<a name="realtime-sdk-csharp-ref-callbacks-onerror-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-callbacks-onerror-return"></a>
 
 This method does not return anything\. 
 
@@ -80,7 +80,7 @@ Information related to message activity\.
 Type: [DataReceivedEventArgs](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-dataeventargs)  
 Required: Yes
 
-### Return Value<a name="realtime-sdk-csharp-ref-callbacks-ondata-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-callbacks-ondata-return"></a>
 
 This method does not return anything\. 
 
@@ -101,6 +101,6 @@ Information related to group membership activity\.
 Type: [GroupMembershipEventArgs](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-groupeventargs)  
 Required: Yes
 
-### Return Value<a name="realtime-sdk-csharp-ref-callbacks-ongroupupdate-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-callbacks-ongroupupdate-return"></a>
 
 This method does not return anything\. 

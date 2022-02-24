@@ -14,7 +14,7 @@ Information about how the game client connects to a Realtime server\.
 **ConnectionType**  
 Type of client/server connection to use, either secured or unsecured\. If you don't specify a connection type, the default is unsecured\.   
 When connecting to a Realtime server on a secured fleet with a TLS certificate, you must use the value RT\_OVER\_WSS\_DTLS\_TLS12\. 
-Type: A `ConnectionType` [enum]() value\.  
+Type: A `ConnectionType` [enum](#realtime-sdk-csharp-ref-datatypes-enums) value\.  
 Required: No
 
 ## ConnectionToken<a name="realtime-sdk-csharp-ref-datatypes-connectiontoken"></a>
@@ -24,7 +24,7 @@ Information about the game client and/or player that is requesting a connection 
 ### Contents<a name="realtime-sdk-csharp-ref-datatypes-connectiontoken-contents"></a>
 
 **playerSessionId**  
-Unique ID issued by GameLift when a new player session is created\. A player session ID is specified in a `PlayerSession` object, which is returned in response to a client call to the *AWS SDK Amazon GameLift API* actions [ StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html), [ CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html), [ DescribeGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionPlacement.html), or [ DescribePlayerSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribePlayerSessions.html)\.  
+Unique ID issued by GameLift when a new player session is created\. A player session ID is specified in a `PlayerSession` object, which is returned in response to a client call to the *GameLift API* actions [ StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html), [ CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html), [ DescribeGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionPlacement.html), or [ DescribePlayerSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribePlayerSessions.html)\.  
 Type: String  
 Required: No
 

@@ -1,7 +1,7 @@
-# Uploading Amazon GameLift Game Servers for Deployment<a name="gamelift-build-intro"></a>
+# Uploading builds and scripts to GameLift<a name="gamelift-build-intro"></a>
 
-Before setting up computing resources to host your Amazon GameLift\-enabled multiplayer game, you first need to upload a game server build—or, when using Realtime Servers, a set of server script files— to the Amazon GameLift service\. 
+Before deploying your GameLift\-enabled multiplayer game servers for hosting with the GameLift service, you need to upload your game server files\. The topics in this section provide guidance on preparing and uploading custom game server build files or Realtime Servers server script files\. When you upload files, you create a GameLift build or script resource, which you then deploy on fleets of hosting resources\.
 
 **Topics**
-+ [Upload a Custom Game Server Build to Amazon GameLift](gamelift-build-cli-uploading.md)
-+ [Upload a Realtime Servers Script to Amazon GameLift](realtime-script-uploading.md)
++ [Upload a custom server build to GameLift](gamelift-build-cli-uploading.md)
++ [Upload a Realtime Servers script to GameLift](realtime-script-uploading.md)

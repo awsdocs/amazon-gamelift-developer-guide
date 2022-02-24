@@ -55,7 +55,7 @@ The following example shows a CloudTrail log entry that demonstrates the `Create
                     "C:\\game\\serverErr.log",
                     "C:\\game\\serverOut.log"
                 ],
-                "eC2InstanceType": "c4.large",
+                "eC2InstanceType": "c5.large",
                 "serverLaunchPath": "C:\\game\\MyServer.exe",
                 "description": "Test fleet",
                 "serverLaunchParameters": "-paramX=baz",

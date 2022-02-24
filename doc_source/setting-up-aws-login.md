@@ -1,4 +1,4 @@
-# Set Up an AWS Account<a name="setting-up-aws-login"></a>
+# Set up an AWS account<a name="setting-up-aws-login"></a>
 
 Amazon GameLift is an AWS service, and you must have an AWS account to use Amazon GameLift\. Creating an AWS account is free\.
 

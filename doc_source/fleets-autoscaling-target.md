@@ -1,12 +1,15 @@
-# Auto\-Scale with Target Tracking<a name="fleets-autoscaling-target"></a>
+# Auto\-scale with target tracking<a name="fleets-autoscaling-target"></a>
 
 Target tracking adjusts capacity levels based on a single key fleet metric: "percent available game sessions"\. This metric measures the number of available game session slots at current capacity—additional game sessions that could be started immediately\. In effect, this metric represents the fleet's buffer against sudden increases in player demand\. 
 
 The primary reason for maintaining a capacity buffer is player wait time\. When game session slots are ready and waiting, the time it takes to get new players into game sessions can be measured in seconds\. If no resources are available, players must wait for existing game sessions to end or for new resources to become available\. The time required to start up new instances and server processes can be minutes\. 
 
-When setting up target tracking, you simply specify the size of the buffer you want the fleet to maintain\. Since the metric "percent available game sessions" measures the percentage of available resources, the actual buffer size is a percentage of the total fleet capacity\. Amazon GameLift adds or removes as many instances as are needed to maintain the target buffer size\. Choosing a buffer size depends on how you want to prioritize minimizing player wait time against controlling hosting costs\. With a large buffer, you minimize wait time but you also pay for extra resources that may not get used\. If your players are more tolerant of wait times, you can lower costs by setting a small buffer\. 
+When setting up target tracking, you simply specify the size of the buffer you want the fleet to maintain\. Since the metric "percent available game sessions" measures the percentage of available resources, the actual buffer size is a percentage of the total fleet capacity\. GameLift adds or removes as many instances as are needed to maintain the target buffer size\. Choosing a buffer size depends on how you want to prioritize minimizing player wait time against controlling hosting costs\. With a large buffer, you minimize wait time but you also pay for extra resources that may not get used\. If your players are more tolerant of wait times, you can lower costs by setting a small buffer\. 
 
-## Set Target Tracking \(Console\)<a name="fleets-autoscaling-policy-setting-console"></a>
+## To set target tracking<a name="fleets-autoscaling-policy-setting-console"></a>
+
+------
+#### [ Console ]
 
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 
@@ -20,9 +23,12 @@ When setting up target tracking, you simply specify the size of the buffer you w
 
 1. To turn on auto\-scaling for the fleet\. verify that the option to **Disable all scaling policies in the fleet** is unchecked\. If this option is checked, all policies, including the new target\-tracking policy, are disabled\. This state is reflected in the **Scaling policies** table\.
 
-## Set Target Tracking \(AWS CLI\)<a name="fleets-autoscaling-policy-setting-cli"></a>
+    
 
-1. **Set capacity limits\.** Set either or both limit values using the [update\-fleet\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-capacity.html) command\. For help, see [To Set Capacity Limits \(AWS CLI\)](fleets-capacity-limits.md#fleets-capacity-limits-cli)\.
+------
+#### [ AWS CLI ]
+
+1. **Set capacity limits\.** Set either or both limit values using the [update\-fleet\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-capacity.html) command\. For help, see [Set GameLift capacity limits](fleets-capacity-limits.md)\.
 
 1. **Create a new policy\.** Open a command\-line window and use the [put\-scaling\-policy](https://docs.aws.amazon.com/cli/latest/reference/gamelift/put-scaling-policy.html) command with your policy's parameter settings\. To update an existing policy, specify the policy's name and provide a complete version of the updated policy\.
 
@@ -37,7 +43,7 @@ When setting up target tracking, you simply specify the size of the buffer you w
    Example:
 
    ```
-   $aws gamelift put-scaling-policy
+   $AWS gamelift put-scaling-policy
    --fleet-id "fleet-2222bbbb-33cc-44dd-55ee-6666ffff77aa"
    --name "My_Target_Policy_1"
    --policy-type "TargetBased" 
@@ -48,5 +54,7 @@ When setting up target tracking, you simply specify the size of the buffer you w
    *Copyable version:*
 
    ```
-   $aws gamelift put-scaling-policy --fleet-id "fleet-2222bbbb-33cc-44dd-55ee-6666ffff77aa" --name "My_Target_Policy_1" --policy-type "TargetBased" --metric-name "PercentAvailableGameSessions" --target-configuration "TargetValue=5"
+   $AWS gamelift put-scaling-policy --fleet-id "fleet-2222bbbb-33cc-44dd-55ee-6666ffff77aa" --name "My_Target_Policy_1" --policy-type "TargetBased" --metric-name "PercentAvailableGameSessions" --target-configuration "TargetValue=5"
    ```
+
+------

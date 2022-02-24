@@ -1,14 +1,14 @@
-# Amazon GameLift Server API \(C\+\+\) Reference: Actions<a name="integration-server-sdk-cpp-ref-actions"></a>
+# GameLift Server API reference for C\+\+: Actions<a name="integration-server-sdk-cpp-ref-actions"></a>
 
-This Amazon GameLift C\+\+ Server API reference can help you prepare your multiplayer game for use with Amazon GameLift\. For details on the integration process, see [Add Amazon GameLift to Your Game Server](gamelift-sdk-server-api.md)\.
+This GameLift C\+\+ Server API reference can help you prepare your multiplayer game for use with GameLift\. For details on the integration process, see [Add GameLift to your game server](gamelift-sdk-server-api.md)\.
 
 This API is defined in `GameLiftServerAPI.h`, `LogParameters.h`, `ProcessParameters.h` \.
 + Actions
-+ [Data Types](integration-server-sdk-cpp-ref-datatypes.md)
++ [Data types](integration-server-sdk-cpp-ref-datatypes.md)
 
 ## AcceptPlayerSession\(\)<a name="integration-server-sdk-cpp-ref-acceptplayersession"></a>
 
-Notifies the Amazon GameLift service that a player with the specified player session ID has connected to the server process and needs validation\. Amazon GameLift verifies that the player session ID is valid—that is, that the player ID has reserved a player slot in the game session\. Once validated, Amazon GameLift changes the status of the player slot from RESERVED to ACTIVE\. 
+Notifies the GameLift service that a player with the specified player session ID has connected to the server process and needs validation\. GameLift verifies that the player session ID is valid—that is, that the player ID has reserved a player slot in the game session\. Once validated, GameLift changes the status of the player slot from RESERVED to ACTIVE\. 
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-acceptplayersession-syntax"></a>
 
@@ -23,7 +23,7 @@ Unique ID issued by the Amazon GameLift service in response to a call to the AWS
 Type: std::string  
 Required: No
 
-### Return Value<a name="integration-server-sdk-cpp-ref-acceptplayersession-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-acceptplayersession-return"></a>
 
 Returns a generic outcome consisting of success or failure with an error message\. 
 
@@ -49,7 +49,7 @@ void ReceiveConnectingPlayerSessionID (Connection& connection, const std::string
 
 ## ActivateGameSession\(\)<a name="integration-server-sdk-cpp-ref-activategamesession"></a>
 
-Notifies the Amazon GameLift service that the server process has started a game session and is now ready to receive player connections\. This action should be called as part of the `onStartGameSession()` callback function, after all game session initialization has been completed\.
+Notifies the GameLift service that the server process has started a game session and is now ready to receive player connections\. This action should be called as part of the `onStartGameSession()` callback function, after all game session initialization has been completed\.
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-activategamesession-syntax"></a>
 
@@ -61,7 +61,7 @@ GenericOutcome ActivateGameSession();
 
 This action has no parameters\.
 
-### Return Value<a name="integration-server-sdk-cpp-ref-activategamesession-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-activategamesession-return"></a>
 
 Returns a generic outcome consisting of success or failure with an error message\.
 
@@ -94,13 +94,13 @@ DescribePlayerSessionsOutcome DescribePlayerSessions (
 A [DescribePlayerSessionsRequest](integration-server-sdk-cpp-ref-datatypes.md#integration-server-sdk-cpp-ref-dataypes-playersessions) object describing which player sessions to retrieve\.  
 Required: Yes
 
-### Return Value<a name="integration-server-sdk-cpp-ref-describeplayersessions-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-describeplayersessions-return"></a>
 
-If successful, returns a `DescribePlayerSessionsOutcome` object containing a set of player session objects that fit the request parameters\. Player session objects have a structure identical to the AWS SDK Amazon GameLift API [PlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_PlayerSession.html) data type\.
+If successful, returns a `DescribePlayerSessionsOutcome` object containing a set of player session objects that fit the request parameters\. Player session objects have a structure identical to the AWS SDK GameLift API [PlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_PlayerSession.html) data type\.
 
 ### Example<a name="integration-server-sdk-cpp-ref-describeplayersessions-example"></a>
 
-This example illustrates a request for all player sessions actively connected to a specified game session\. By omitting `NextToken` and setting the `Limit` value to 10, Amazon GameLift returns the first 10 player sessions records matching the request\.
+This example illustrates a request for all player sessions actively connected to a specified game session\. By omitting `NextToken` and setting the `Limit` value to 10, GameLift returns the first 10 player sessions records matching the request\.
 
 ```
 // Set request parameters
@@ -118,6 +118,8 @@ Aws::GameLift::DescribePlayerSessionsOutcome playerSessionsOutcome =
 
 Retrieves a unique identifier for the game session currently being hosted by the server process, if the server process is active\. The identifier is returned in ARN format: `arn:aws:gamelift:<region>::gamesession/fleet-<fleet ID>/<ID string>`\. 
 
+For idle process that are not yet activated with a game session, the call returns `Success`=`True` and `GameSessionId`=`""` \(an empty string\)\.
+
 ### Syntax<a name="integration-server-sdk-cpp-ref-getgamesessionid-syntax"></a>
 
 ```
@@ -128,7 +130,7 @@ AwsStringOutcome GetGameSessionId();
 
 This action has no parameters\.
 
-### Return Value<a name="integration-server-sdk-cpp-ref-getgamesessionid-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-getgamesessionid-return"></a>
 
 If successful, returns the game session ID as an `AwsStringOutcome` object\. If not successful, returns an error message\.
 
@@ -153,7 +155,7 @@ GetInstanceCertificateOutcome GetInstanceCertificate();
 
 This action has no parameters\.
 
-### Return Value<a name="integration-server-sdk-cpp-ref-getinstancecertificate-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-getinstancecertificate-return"></a>
 
 If successful, returns a `GetInstanceCertificateOutcome` object containing the location of the fleet's TLS certificate file, which is stored on the instance\. If not successful, returns an error message\.
 
@@ -178,7 +180,7 @@ AwsStringOutcome GetSdkVersion();
 
 This action has no parameters\.
 
-### Return Value<a name="integration-server-sdk-cpp-ref-getsdk-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-getsdk-return"></a>
 
 If successful, returns the current SDK version as an `AwsStringOutcome` object\. The returned string includes the version number only \(ex\. "3\.1\.5"\)\. If not successful, returns an error message\.
 
@@ -191,9 +193,9 @@ Aws::GameLift::AwsStringOutcome SdkVersionOutcome =
 
 ## GetTerminationTime\(\)<a name="integration-server-sdk-cpp-ref-getterm"></a>
 
-Returns the time that a server process is scheduled to be shut down, if a termination time is available\. A server process takes this action after receiving an `onProcessTerminate()` callback from the Amazon GameLift service\. A server process may be shut down for several reasons: \(1\) process poor health, \(2\) when an instance is being terminated during a scale\-down event, or \(3\) when an instance is being terminated due to a [spot\-instance interruption](spot-tasks.md)\. 
+Returns the time that a server process is scheduled to be shut down, if a termination time is available\. A server process takes this action after receiving an `onProcessTerminate()` callback from the GameLift service\. GameLift may call `onProcessTerminate()` for the following reasons: \(1\) when the server process has reported poor health or has not responded to GameLift, \(2\) when terminating the instance during a scale\-down event, or \(3\) when an instance is being terminated due to a [Spot interruption](spot-tasks.md)\. 
 
-If the process has received an `onProcessTerminate()` callback, the value returned is the estimated termination time in epoch seconds\. If no termination time is available, the value returned is \-1, which indicates that the server process may be terminated at any time\. If the process has not received an `onProcessTerminate()` callback, the returned value will always be \-1\. Learn more about [shutting down a server process](gamelift-sdk-server-api.md#gamelift-sdk-server-terminate)\.
+If the process has received an `onProcessTerminate()` callback, the value returned is the estimated termination time\. If the process has not received an `onProcessTerminate()` callback, an error message is returned\. Learn more about [shutting down a server process](gamelift-sdk-server-api.md#gamelift-sdk-server-terminate)\.
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-getterm-syntax"></a>
 
@@ -205,9 +207,9 @@ AwsLongOutcome GetTerminationTime();
 
 This action has no parameters\.
 
-### Return Value<a name="integration-server-sdk-cpp-ref-getterm-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-getterm-return"></a>
 
-If successful, returns the current SDK version as an `AwsLongOutcome` object\. The value is either the termination time in epoch seconds, or the value \-1\. If not successful, returns an error message\.
+If successful, returns the termination time as an `AwsLongOutcome` object\. The value is the termination time, expressed in elapsed ticks since 0001 00:00:00\. For example, the date time value 2020\-09\-13 12:26:40 \-000Z is equal to 637355968000000000 ticks\. If no termination time is available, returns an error message\.
 
 ### Example<a name="integration-server-sdk-cpp-ref-getterm-example"></a>
 
@@ -218,7 +220,7 @@ Aws::GameLift::AwsLongOutcome TermTimeOutcome =
 
 ## InitSDK\(\)<a name="integration-server-sdk-cpp-ref-initsdk"></a>
 
-Initializes the Amazon GameLift SDK\. This method should be called on launch, before any other Amazon GameLift\-related initialization occurs\.
+Initializes the GameLift SDK\. This method should be called on launch, before any other GameLift\-related initialization occurs\.
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-initsdk-syntax"></a>
 
@@ -230,7 +232,7 @@ InitSDKOutcome InitSDK();
 
 This action has no parameters\.
 
-### Return Value<a name="integration-server-sdk-cpp-ref-initsdk-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-initsdk-return"></a>
 
 If successful, returns an InitSdkOutcome object indicating that the server process is ready to call [ProcessReady\(\)](#integration-server-sdk-cpp-ref-processready)\. 
 
@@ -243,7 +245,9 @@ Aws::GameLift::Server::InitSDKOutcome initOutcome =
 
 ## ProcessEnding\(\)<a name="integration-server-sdk-cpp-ref-processending"></a>
 
-Notifies the Amazon GameLift service that the server process is shutting down\. This method should exit with an exit code of 0; a non\-zero exit code results in an event message that the process did not exit cleanly\.
+Notifies the GameLift service that the server process is shutting down\. This method should be called after all other cleanup tasks, including shutting down all active game sessions\. This method should exit with an exit code of 0; a non\-zero exit code results in an event message that the process did not exit cleanly\.
+
+Once the method exits with a code of 0, you can terminate the process with a successful exit code\. You can also exit the process with an error code\. If you exit with an error code, the fleet event will indicated the process terminated abnormally \(`SERVER_PROCESS_TERMINATED_UNHEALTHY`\)\. 
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-processending-syntax"></a>
 
@@ -255,7 +259,7 @@ GenericOutcome ProcessEnding();
 
 This action has no parameters\.
 
-### Return Value<a name="integration-server-sdk-cpp-ref-processending-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-processending-return"></a>
 
 Returns a generic outcome consisting of success or failure with an error message\.
 
@@ -263,13 +267,17 @@ Returns a generic outcome consisting of success or failure with an error message
 
 ```
 Aws::GameLift::GenericOutcome outcome = Aws::GameLift::Server::ProcessEnding();
+if (outcome.Success)
+    exit(0);  // exit with success
+// otherwise, exit with error code
+exit(errorCode);
 ```
 
 ## ProcessReady\(\)<a name="integration-server-sdk-cpp-ref-processready"></a>
 
-Notifies the Amazon GameLift service that the server process is ready to host game sessions\. This method should be called after successfully invoking [InitSDK\(\)](#integration-server-sdk-cpp-ref-initsdk) and completing any setup tasks required before the server process can host a game session\.
+Notifies the GameLift service that the server process is ready to host game sessions\. Call this method after successfully invoking [InitSDK\(\)](#integration-server-sdk-cpp-ref-initsdk) and completing setup tasks that are required before the server process can host a game session\. This method should be called only once per process\.
 
-This call is synchronous\. To make an asynchronous call, use [ProcessReadyAsync\(\)](#integration-server-sdk-cpp-ref-processreadyasync)\. See [Prepare a Server Process](gamelift-sdk-server-api.md#gamelift-sdk-server-initialize) for more details\.
+This call is synchronous\. To make an asynchronous call, use [ProcessReadyAsync\(\)](#integration-server-sdk-cpp-ref-processreadyasync)\. See [Initialize the server process](gamelift-sdk-server-api.md#gamelift-sdk-server-initialize) for more details\.
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-processready-syntax"></a>
 
@@ -282,12 +290,12 @@ GenericOutcome ProcessReady(
 
 **processParameters**  
 A [ProcessParameters](integration-server-sdk-cpp-ref-datatypes.md#integration-server-sdk-cpp-ref-dataypes-process) object communicating the following information about the server process:  
-+ Names of callback methods, implemented in the game server code, that the Amazon GameLift service invokes to communicate with the server process\.
++ Names of callback methods, implemented in the game server code, that the GameLift service invokes to communicate with the server process\.
 + Port number that the server process is listening on\.
-+ Path to any game session\-specific files that you want Amazon GameLift to capture and store\.
++ Path to any game session\-specific files that you want GameLift to capture and store\.
 Required: Yes
 
-### Return Value<a name="integration-server-sdk-cpp-ref-processready-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-processready-return"></a>
 
 Returns a generic outcome consisting of success or failure with an error message\.
 
@@ -339,9 +347,9 @@ bool Server::onHealthCheck()
 
 ## ProcessReadyAsync\(\)<a name="integration-server-sdk-cpp-ref-processreadyasync"></a>
 
-Notifies the Amazon GameLift service that the server process is ready to host game sessions\. This method should be called once the server process is ready to host a game session\. The parameters specify the names of callback functions for Amazon GameLift to call in certain circumstances\. Game server code must implement these functions\.
+Notifies the GameLift service that the server process is ready to host game sessions\. This method should be called once the server process is ready to host a game session\. The parameters specify the names of callback functions for GameLift to call in certain circumstances\. Game server code must implement these functions\.
 
-This call is asynchronous\. To make a synchronous call, use [ProcessReady\(\)](#integration-server-sdk-cpp-ref-processready)\. See [Prepare a Server Process](gamelift-sdk-server-api.md#gamelift-sdk-server-initialize) for more details\.
+This call is asynchronous\. To make a synchronous call, use [ProcessReady\(\)](#integration-server-sdk-cpp-ref-processready)\. See [Initialize the server process](gamelift-sdk-server-api.md#gamelift-sdk-server-initialize) for more details\.
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-processreadyasync-syntax"></a>
 
@@ -354,12 +362,12 @@ GenericOutcomeCallable ProcessReadyAsync(
 
 **processParameters**  
 A [ProcessParameters](integration-server-sdk-cpp-ref-datatypes.md#integration-server-sdk-cpp-ref-dataypes-process) object communicating the following information about the server process:  
-+ Names of callback methods, implemented in the game server code, that the Amazon GameLift service invokes to communicate with the server process\.
++ Names of callback methods, implemented in the game server code, that the GameLift service invokes to communicate with the server process\.
 + Port number that the server process is listening on\.
-+ Path to any game session\-specific files that you want Amazon GameLift to capture and store\.
++ Path to any game session\-specific files that you want GameLift to capture and store\.
 Required: Yes
 
-### Return Value<a name="integration-server-sdk-cpp-ref-processreadyasync-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-processreadyasync-return"></a>
 
 Returns a generic outcome consisting of success or failure with an error message\.
 
@@ -407,7 +415,7 @@ bool onHealthCheck()
 
 ## RemovePlayerSession\(\)<a name="integration-server-sdk-cpp-ref-removeplayersession"></a>
 
-Notifies the Amazon GameLift service that a player with the specified player session ID has disconnected from the server process\. In response, Amazon GameLift changes the player slot to available, which allows it to be assigned to a new player\. 
+Notifies the GameLift service that a player with the specified player session ID has disconnected from the server process\. In response, GameLift changes the player slot to available, which allows it to be assigned to a new player\. 
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-removeplayersession-syntax"></a>
 
@@ -423,7 +431,7 @@ Unique ID issued by the Amazon GameLift service in response to a call to the AWS
 Type: std::string  
 Required: No
 
-### Return Value<a name="integration-server-sdk-cpp-ref-removeplayersession-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-removeplayersession-return"></a>
 
 Returns a generic outcome consisting of success or failure with an error message\.
 
@@ -436,9 +444,9 @@ Aws::GameLift::GenericOutcome disconnectOutcome =
 
 ## StartMatchBackfill\(\)<a name="integration-server-sdk-cpp-ref-startmatchbackfill"></a>
 
-Sends a request to find new players for open slots in a game session created with FlexMatch\. See also the AWS SDK action [StartMatchBackfill\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartMatchBackfill.html)\. With this action, match backfill requests can be initiated by a game server process that is hosting the game session\. Learn more about the FlexMatch backfill feature in [Backfill Existing Games with FlexMatch](match-backfill.md)\.
+Sends a request to find new players for open slots in a game session created with FlexMatch\. See also the AWS SDK action [StartMatchBackfill\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartMatchBackfill.html)\. With this action, match backfill requests can be initiated by a game server process that is hosting the game session\. Learn more about the [ FlexMatch backfill feature](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html)\.
 
-This action is asynchronous\. If new players are successfully matched, the Amazon GameLift service delivers updated matchmaker data using the callback function `OnUpdateGameSession()`\.
+This action is asynchronous\. If new players are successfully matched, the GameLift service delivers updated matchmaker data by invoking the callback function `OnUpdateGameSession()`\.
 
 A server process can have only one active match backfill request at a time\. To send a new request, first call [StopMatchBackfill\(\)](#integration-server-sdk-cpp-ref-stopmatchbackfill) to cancel the original request\.
 
@@ -453,13 +461,13 @@ StartMatchBackfillOutcome StartMatchBackfill (
 
 **StartMatchBackfillRequest**  
 A [StartMatchBackfillRequest](integration-server-sdk-cpp-ref-datatypes.md#integration-server-sdk-cpp-ref-dataypes-startmatchbackfillrequest) object that communicates the following information:  
-+ A ticket ID to assign to the backfill request\. This information is optional; if no ID is provided, Amazon GameLift will autogenerate one\.
++ A ticket ID to assign to the backfill request\. This information is optional; if no ID is provided, GameLift will autogenerate one\.
 + The matchmaker to send the request to\. The full configuration ARN is required\. This value can be acquired from the game session's matchmaker data\.
 + The ID of the game session that is being backfilled\.
 + Available matchmaking data for the game session's current players\.
 Required: Yes
 
-### Return Value<a name="integration-server-sdk-cpp-ref-startmatchbackfill-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-startmatchbackfill-return"></a>
 
 Returns a StartMatchBackfillOutcome object with the match backfill ticket or failure with an error message\. Ticket status can be tracked using the AWS SDK action [DescribeMatchmaking\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeMatchmaking.html)\.
 
@@ -488,7 +496,7 @@ void Server::OnUpdateGameSession(Aws::GameLift::Server::Model::GameSession gameS
 
 ## StopMatchBackfill\(\)<a name="integration-server-sdk-cpp-ref-stopmatchbackfill"></a>
 
-Cancels an active match backfill request that was created with [StartMatchBackfill\(\)](#integration-server-sdk-cpp-ref-startmatchbackfill)\. See also the AWS SDK action [StopMatchmaking\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StopMatchmaking.html)\. Learn more about the FlexMatch backfill feature in [Backfill Existing Games with FlexMatch](match-backfill.md)\.
+Cancels an active match backfill request that was created with [StartMatchBackfill\(\)](#integration-server-sdk-cpp-ref-startmatchbackfill)\. See also the AWS SDK action [StopMatchmaking\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StopMatchmaking.html)\. Learn more about the [ FlexMatch backfill feature](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-backfill.html)\.
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-stopmatchbackfill-syntax"></a>
 
@@ -506,7 +514,7 @@ A [StopMatchBackfillRequest](integration-server-sdk-cpp-ref-datatypes.md#integra
 + game session associated with the backfill request
 Required: Yes
 
-### Return Value<a name="integration-server-sdk-cpp-ref-stopmatchbackfill-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-stopmatchbackfill-return"></a>
 
 Returns a generic outcome consisting of success or failure with an error message\.
 
@@ -526,7 +534,11 @@ Aws::GameLift::GenericOutcome stopBackfillOutcome =
 
 ## TerminateGameSession\(\)<a name="integration-server-sdk-cpp-ref-terminategamesession"></a>
 
-Notifies the Amazon GameLift service that the server process has shut down the game session\. Since each server process hosts only one game session at a time, there's no need to specify which session\. This action should be called at the end of the game session shutdown process\. After calling this action, the server process can call [ProcessReady\(\)](#integration-server-sdk-cpp-ref-processready) to signal its availability to host a new game session\. Alternatively it can call [ProcessEnding\(\)](#integration-server-sdk-cpp-ref-processending) to shut down the server process and terminate the instance\.
+**This method is deprecated with version 4\.0\.1\. Instead, the server process should call [ProcessEnding\(\)](#integration-server-sdk-cpp-ref-processending) after a game sesion has ended\.**
+
+Notifies the GameLift service that the server process has ended the current game session\. This action is called when the server process will remain active and ready to host a new game session\. It should be called only after your game session termination procedure is complete, because it signals to GameLift that the server process is immediately available to host a new game session\. 
+
+This action is not called if the server process will be shut down after the game session stops\. Instead, call [ProcessEnding\(\)](#integration-server-sdk-cpp-ref-processending) to signal that both the game session and the server process are ending\. 
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-terminategamesession-syntax"></a>
 
@@ -538,23 +550,9 @@ GenericOutcome TerminateGameSession();
 
 This action has no parameters\.
 
-### Return Value<a name="integration-server-sdk-cpp-ref-terminategamesession-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-terminategamesession-return"></a>
 
 Returns a generic outcome consisting of success or failure with an error message\.
-
-### Example<a name="integration-server-sdk-cpp-ref-terminategamesession-example"></a>
-
-This example illustrates a server process at the end of a game session\.
-
-```
-// game-specific tasks required to gracefully shut down a game session, 
-// such as notifying players, preserving game state data, and other cleanup
-
-Aws::GameLift::GenericOutcome outcome = 
-    Aws::GameLift::Server::TerminateGameSession();
-Aws::GameLift::GenericOutcome outcome = 
-    Aws::GameLift::Server::ProcessReady(onStartGameSession, onProcessTerminate);
-```
 
 ## UpdatePlayerSessionCreationPolicy\(\)<a name="integration-server-sdk-cpp-ref-updateplayersessioncreationpolicy"></a>
 
@@ -571,12 +569,12 @@ GenericOutcome UpdatePlayerSessionCreationPolicy(
 
 **newPlayerSessionPolicy**  
 String value indicating whether the game session accepts new players\.   
-Type: [ Aws::GameLift::Model::PlayerSessionCreationPolicy](http://sdk.amazonaws.com/cpp/api/LATEST/namespace_aws_1_1_game_lift_1_1_model.html#afa8a7527defe9e7ca0caebc239182c53) enum\. Valid values include:   
+Type: [ Aws::GameLift::Model::PlayerSessionCreationPolicy](http://sdk.amazonaws.com/cpp/api/LATEST/namespace_aws_1_1_game_lift_1_1_model.html#afa8a7527defe9e7ca0caebc239182c43) enum\. Valid values include:   
 + **ACCEPT\_ALL** – Accept all new player sessions\.
 + **DENY\_ALL** – Deny all new player sessions\.
 Required: Yes
 
-### Return Value<a name="integration-server-sdk-cpp-ref-updateplayersessioncreationpolicy-return"></a>
+### Return value<a name="integration-server-sdk-cpp-ref-updateplayersessioncreationpolicy-return"></a>
 
 Returns a generic outcome consisting of success or failure with an error message\.
 

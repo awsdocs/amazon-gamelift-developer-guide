@@ -16,3 +16,4 @@ Client\.cs
 1. **Build the C\# SDK libraries\.** Locate the solution file `GameScaleLightweightClientSdkNet45.sln`\. See the `README.md` file for the C\# Server SDK for minimum requirements and additional build options\. In an IDE, load the solution file\. To generate the SDK libraries, restore the NuGet packages and build the solution\.
 
 1. **Add the Realtime Client libraries to your game client project\.** 
+

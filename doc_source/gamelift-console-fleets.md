@@ -1,6 +1,6 @@
 # View Your Fleets<a name="gamelift-console-fleets"></a>
 
-You can view information on all the fleets created to host your games on Amazon GameLift under your AWS account\. Fleets shown include only those created in the selected region\. From the **Fleets** page, you can create a new fleet or view additional detail on a selected fleet\. A fleet's [detail page]() contains usage information and metrics as well as game session and player session data; you can also edit the fleet record or terminate the fleet\.
+You can view information on all the fleets created to host your games on Amazon GameLift under your AWS account\. Fleets shown include only those created in the selected region\. From the **Fleets** page, you can create a new fleet or view additional detail on a selected fleet\. A fleet's [detail page](gamelift-console-fleets-metrics.md) contains usage information and metrics as well as game session and player session data; you can also edit the fleet record or terminate the fleet\.
 
 To view the **Fleets** page, choose **Fleets** from the Amazon GameLift console's menu bar\.
 

@@ -1,6 +1,6 @@
 # Creating a Realtime Script<a name="realtime-script"></a>
 
-To use Realtime Servers for your game, you need to provide a script \(in the form of some JavaScript code\) to configure and optionally customize a fleet of Realtime Servers\. This topic covers the key steps in creating a Realtime script\. Once the script is ready, upload it to the Amazon GameLift service and use it to create a fleet \(see [Upload a Realtime Servers Script to Amazon GameLift](realtime-script-uploading.md)\)\.
+To use Realtime Servers for your game, you need to provide a script \(in the form of some JavaScript code\) to configure and optionally customize a fleet of Realtime Servers\. This topic covers the key steps in creating a Realtime script\. Once the script is ready, upload it to the Amazon GameLift service and use it to create a fleet \(see [Upload a Realtime Servers script to GameLift](realtime-script-uploading.md)\)\.
 
 To prepare a script for use with Realtime Servers, add the following functionality to your Realtime script\.
 
@@ -17,60 +17,10 @@ Realtime Servers with the most basic configuration\-\-server process initializat
 ## Add Server\-Side Game Logic \(optional\)<a name="realtime-script-logic"></a>
 
 You can optionally add game logic to your Realtime script\. For example, you might do any or all of the following\. The script example code provides illustration\. See [Amazon GameLift Realtime Servers Script Reference](realtime-script-ref.md)\. 
-+ **Add event\-driven logic\.** Implement the callback functions to respond to client\-server events\. See [ Script Callbacks for Realtime ServersScript Callbacks  Look up options callback methods that can be implement in the script for Realtime Servers   You can provide custom logic to respond to events by implementing these callbacks in your Realtime script\.   init  Initializes the Realtime server and receives a Realtime server interface\.   Syntax 
-
-```
-init(rtsession)
-```     onMessage  Invoked when a received message is sent to the server\.   Syntax 
-
-```
-onMessage(gameMessage)
-```      onHealthCheck  Invoked to set the status of the game session health\. By default, health status is healthy \(or `true`\. This callback can be implemented to perform custom health checks and return a status\.  Syntax 
-
-```
-onHealthCheck()
-```    onStartGameSession  Invoked when a new game session starts, with a game session object passed in\.  Syntax 
-
-```
-onStartGameSession(session)
-```    onProcessTerminate  Invoked when the server process is being terminated by the Amazon GameLift service\. This can act as a trigger to exit cleanly from the game session\. There is no need to call `processEnding().`  Syntax 
-
-```
-onProcessTerminate()
-```    onPlayerConnect  Invoked when a player requests a connection and has passed initial validation\.   Syntax 
-
-```
-onPlayerConnect(connectMessage)
-```    onPlayerAccepted  Invoked when a player connection is accepted\.  Syntax 
-
-```
-onPlayerAccepted(player)
-```    onPlayerDisconnect  Invoked when a player disconnects from the game session, either by sending a disconnect request or by other means\.  Syntax 
-
-```
-onPlayerDisconnect(peerId)
-```    onProcessStarted  Invoked when a server process is started\. This callback allows the script to perform any custom tasks needed to prepare to host a game session\.   Syntax 
-
-```
-onProcessStarted(args)
-```    onSendToPlayer  Invoked when a message is received on the server from one player to be delivered to another player\. This process runs before the message is delivered\.   Syntax 
-
-```
-nSendToPlayer(gameMessage)
-```    onSendToGroup  Invoked when a message is received on the server from one player to be delivered to a group\. This process runs before the message is delivered\.   Syntax 
-
-```
-onSendToGroup(gameMessage))
-```    onPlayerJoinGroup  Invoked when a player sends a request to join a group\.  Syntax 
-
-```
-onPlayerJoinGroup(groupId, peerId)
-```    onPlayerLeaveGroup  Invoked when a player sends a request to leave a group\.  Syntax 
-
-```
-onPlayerLeaveGroup(groupId, peerId)
-```  ](realtime-script-callbacks.md) for a complete list of callbacks\.
++ **Add event\-driven logic\.** Implement the callback functions to respond to client\-server events\. See [Script Callbacks for Realtime Servers](realtime-script-callbacks.md) for a complete list of callbacks\.
 + **Trigger logic by sending messages to the server\.** Create a set of special operation codes for messages sent from game clients to the server, and add functions to handle receipt\. Use the callback `onMessage`, and parse the message content using the `gameMessage` interface \(see [gameMessage\.opcode](realtime-script-objects.md#realtime-script-objects-gamemessageopcode)\)\. 
++ Enable game logic to access your other AWS resources\. For details, see [Communicate with other AWS resources from your fleets](gamelift-sdk-server-resources.md)\.
++ Allow game logic to access fleet information for the instance it is running on\. For details, see [Get fleet data for a GameLift instance](gamelift-sdk-server-fleetinfo.md)\.
 
 ## Realtime Servers Script Example<a name="realtime-script-examples"></a>
 
@@ -84,7 +34,8 @@ This example illustrates a basic script needed to deploy Realtime Servers plus s
 
 // Example override configuration
 const configuration = {
-    pingIntervalTime: 30000
+    pingIntervalTime: 30000,
+    maxPlayers: 32
 };
 
 // Timing mechanism used to trigger end of game session. Defines how long, in milliseconds, between each tick in the example tick loop
@@ -106,8 +57,9 @@ const OP_CODE_CUSTOM_OP1_REPLY = 112;
 const OP_CODE_PLAYER_ACCEPTED = 113;
 const OP_CODE_DISCONNECT_NOTIFICATION = 114;
 
-// Example groups for user defined groups
+// Example groups for user-defined groups
 // Any positive group number can be defined here. These should match your client code.
+// When referring to user-defined groups, "-1" represents all groups, "0" is reserved.
 const RED_TEAM_GROUP = 1;
 const BLUE_TEAM_GROUP = 2;
 

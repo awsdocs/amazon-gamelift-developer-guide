@@ -1,28 +1,30 @@
-# Manage Fleet Records<a name="fleets-editing"></a>
+# Manage your GameLift fleets<a name="fleets-editing"></a>
 
-Use the Amazon GameLift console or the AWS CLI to manage your existing fleets, including updating the fleet's attributes, port settings, and runtime configuration\. You can also delete a fleet\.
+Use the GameLift console or the AWS CLI to update your fleet settings or delete a fleet\. You can update the following fleet settings: 
++ General fleet attributes\. Change fleet settings including name and description, game session protection, resource creation limits, and metric group\. These attributes apply to the entire fleet and, where relevant, to instances in all fleet locations\.
++ Port settings\. Add or remove inbound permissions for game servers in the fleet\. These settings define access permissions for inbound traffic that connects to game servers on the instances in all fleet locations\.
++ Runtime configuration\. Change the instructions that determine which server processes to run concurrently on an instance\. The runtime configuration is used by the instances in all fleet locations\. Updates are routinely provided to every instance\.
++ Remote locations\. Add or remove remote locations from a fleet\. A fleet's locations determine where fleet instances are deployed to host game sessions\.
 
-## Update a Fleet<a name="fleets-update"></a>
+## To update a fleet configuration<a name="fleets-update"></a>
 
-Use the **Edit fleet** page in the Amazon GameLift console to change a fleet's configuration\. All fleet properties can be changed except for the build ID and the instance type\. To change scaling settings, see [Auto\-Scale Fleet Capacity](fleets-autoscaling.md)\.
+You can update mutable fleet attributes, port settings and runtime configurations using the GameLift console or the AWS CLI\. To change scaling limits, see [Auto\-scale fleet capacity with GameLift](fleets-autoscaling.md)\.
 
 **Note**  
-An active fleet may be deployed with a build that has been deleted or is in an error state\. This does not affect the fleet's status or ability to host game sessions\. In this situation, you may see a Build status of **Deleted** or **Error** \(if an error occurred while retrieving the build info\)\. 
+It is possible for an active fleet to be deployed with a build that is currently in **Deleted** or **Error** status\. This does not affect the fleet's status or ability to host game sessions\. 
 
 ------
 #### [ GameLift Console ]
 
-**To update a fleet configuration**
-
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 
-1. Choose **Fleets** from the menu bar to view a list of fleets, and click on the name of the fleet you want to update\. A fleet must be in ACTIVE status before it can be edited\.
+1. Choose **Fleets** from the menu bar to view a list of fleets, and click on the name of the fleet you want to update\. A fleet must be in `ACTIVE` status before it can be edited\.
 
 1. On the Fleet detail page, under **Actions**, choose **Edit fleet**\.
 
-1. On the **Edit fleet** page, you can make the following updates \(see [Deploy a GameLift Fleet for a Custom Game Build](fleets-creating.md) for more detailed field descriptions\):
+1. On the **Edit fleet** page, you can make the following updates \(see [Deploy a GameLift fleet with a custom game build](fleets-creating.md) for more detailed field descriptions\):
    + Change the fleet attributes such as **Name** and **Description**\. 
-   + Add or remove **Metric groups**, which are are used in Amazon CloudWatch to track aggregated Amazon GameLift metrics for multiple fleets\.
+   + Add or remove **Metric groups**, which are used in Amazon CloudWatch to track aggregated GameLift metrics for multiple fleets\.
    + Change how you want server processes to run and host game sessions by updating the **Server process allocation** \(runtime configuration\) and game session activation settings\. 
    + Update the ** EC2 port settings** used to connect to server processes on this fleet\. 
    + Update **resource creation limit** settings\. 
@@ -33,6 +35,8 @@ An active fleet may be deployed with a build that has been deleted or is in an e
 ------
 #### [ AWS CLI ]
 
+ [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
+
 Use the following AWS CLI commands to update a fleet:
 + [update\-fleet\-attributes](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-attributes.html)
 + [update\-fleet\-port\-settings](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-port-settings.html)
@@ -40,31 +44,55 @@ Use the following AWS CLI commands to update a fleet:
 
 ------
 
-## Delete a Fleet<a name="fleets-deleting"></a>
+## To update fleet locations<a name="fleets-update-locations"></a>
+
+You can add or remove a fleet's remote locations using the GameLift console or the AWS CLI\. A fleet's home Region, which is where the fleet was created and resides, cannot be changes\.
+
+------
+#### [ GameLift Console ]
+
+1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
+
+1. Choose **Fleets** from the menu bar to view a list of fleets, and click on the name of the fleet you want to update\. A fleet must be in ACTIVE status before it can be edited\.
+
+1. On the Fleet detail page, open the **Locations** tab to view the fleet's locations\. This list includes the fleet's home Region \(labelled\) and all remote locations\. This view displays each location's current status, and number of active instances, game servers, and game sessions\.
+
+1. To add new remote locations, click **Add locations** and select the locations you want to deploy instances to\. This list does not include instances where the fleet's instance type is not available\. You can add some or all available locations to the fleet\. 
+
+1. With new locations selected, click **Save**\. The new locations are added to the list, with status set to `NEW`\. GameLift immediately begins provisioning an instance in each added location and preparing it to host game sessions\. As this process moves forward, the location status changes until it is `ACTIVE`\.
+
+1. To remove existing remote locations from the fleet, use the check boxes to select one or more listed locations\. 
+
+1. With one or more fleets selected, click **Actions > Remove locations**\. The removed locations remain in the list, with status set to `DELETING`\. GameLift immediately begins the process of terminating activity in the removed location\. If there are active instances that are hosting game sessions, GameLift used the game server termination process to gracefully end game sessions, terminate game servers, and shut down instances\.
+
+------
+#### [ AWS CLI ]
+
+ [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
+
+Use the following AWS CLI commands to update fleet locations:
++ [create\-fleet\-locations](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet-locations.html)
++ [delete\-fleet\-locations](https://docs.aws.amazon.com/cli/latest/reference/gamelift/delete-fleet-locations.html)
+
+------
+
+## To delete a fleet<a name="fleets-deleting"></a>
 
 You can delete a fleet when it is no longer needed\. Deleting a fleet permanently removes all data associated with game sessions and player sessions, as well as collected metric data\. As an alternative, you can retain the fleet, disable auto\-scaling, and manually scale the fleet to 0 instances\.
 
 **Note**  
-If the fleet being deleted has a VPC peering connection, you first need to request authorization by calling [CreateVpcPeeringAuthorization](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateVpcPeeringAuthorization.html)\. You do not need to explicitly delete the VPC peering connection\-\-this is done as part of the delete fleet process\. 
+If the fleet being deleted has a VPC peering connection, you first need to request authorization by calling [CreateVpcPeeringAuthorization](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateVpcPeeringAuthorization.html)\. You do not need to explicitly delete the VPC peering connection—this is done as part of the delete fleet process\. 
 
 You can use either the Amazon GameLift console or the AWS CLI tool to delete a fleet\. 
 
 ------
 #### [ GameLift Console ]
 
-**To delete a fleet**
-
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 
-1. Choose **Fleets** from the menu bar to view a list of fleets, and click on the name of the fleet you want to delete\. Only fleets in ACTIVE or ERROR status can be deleted\.
+1. Choose **Fleets** from the menu bar to view a list of fleets, and click on the name of the fleet you want to delete\. Only fleets in `ACTIVE` or `ERROR` status can be deleted\.
 
-1. On the **Fleet** detail page for your selected fleet, verify that the fleet has zero active instances\. If the fleet still has instances, go to the **Scaling** tab and do the following: 
-   + Check the box **Disable all scaling policies for the fleet**\. This action stops all auto\-scaling, which would counteract your manual scaling settings\.
-   + Manually adjust the desired instance count to "0"\.
-
-   It may take several minutes for the fleet to scale down\. If any instances have active game sessions with game session protection, you'll need to either wait for the game sessions to end, or stop protection for the active game sessions \(this can't be done in the Console, see [UpdateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateGameSession.html)\)\.
-
-1. Once the fleet is scaled down to zero active instances, you can delete the fleet\. At the top of the **Fleet** detail page, under **Actions**, choose **Terminate fleet**\.
+1. At the top of the **Fleet** detail page, under **Actions**, choose **Terminate fleet**\.
 
 1. In the **Terminate fleet** dialog box, confirm the deletion by typing the name of the fleet\.
 
@@ -73,18 +101,9 @@ You can use either the Amazon GameLift console or the AWS CLI tool to delete a f
 ------
 #### [ AWS CLI ]
 
-**To delete a fleet**
-
  [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
 
-1. In a command line window, call [describe\-fleet\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-capacity.html) and verify that the fleet to be deleted has been scaled down to zero active instances\. If the fleet still has active instances:
-
-   1. call [stop\-fleet\-actions](https://docs.aws.amazon.com/cli/latest/reference/gamelift/stop-fleet-actions.html) to disable auto\-scaling\. 
-
-   1. Call [update\-fleet\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-capacity.html) and set the parameter desired\-instances to "0"\. 
-
-   1. Wait for the fleet to scale down to zero active instances\. This may take several minutes\. If any instances have active game sessions with game session protection, you'll need to either wait for the game sessions to end, or stop protection for the active game sessions \(see [update\-game\-session](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-game-session.html)\)\.
-
-1. Once the fleet is scaled down, call [delete\-fleet](https://docs.aws.amazon.com/cli/latest/reference/gamelift/delete-fleet.html) to delete the fleet\.
+Use the following AWS CLI command to delete a fleet:
++ [delete\-fleet](https://docs.aws.amazon.com/cli/latest/reference/gamelift/delete-fleet.html)
 
 ------

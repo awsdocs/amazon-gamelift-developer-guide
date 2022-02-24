@@ -1,6 +1,6 @@
-# Add an Alias to a Amazon GameLift Fleet<a name="aliases-creating"></a>
+# Add an alias to a GameLift fleet<a name="aliases-creating"></a>
 
-An Amazon GameLift *alias* is used to abstract a fleet designation\. Fleet designations tell Amazon GameLift where to search for available resources when creating new game sessions for players\. By using aliases instead of specific fleet IDs, you can more easily and seamlessly switch player traffic from one fleet to another by changing the alias's target location\. 
+A GameLift *alias* is used to abstract a fleet designation\. Fleet designations tell Amazon GameLift where to search for available resources when creating new game sessions for players\. By using aliases instead of specific fleet IDs, you can more easily and seamlessly switch player traffic from one fleet to another by changing the alias's target location\. 
 
 There are two types of routing strategies for aliases:
 + **Simple** – A simple alias routes player traffic to a specified fleet ID\. You can update the fleet ID for an alias at any time\.
@@ -8,13 +8,13 @@ There are two types of routing strategies for aliases:
 
 Fleets have a finite lifespan, and there are several reasons why you'll need to switch out fleets during the life of a game\. Specifically, you can't update a fleet's game server build or change certain computing resource attributes \(instance types, spot/on\-demand usage\) on an existing fleet\. Instead, you need to create new fleets with the changes and then switch players to the new fleets\. With aliases, switching fleets has minimal impact on your game and is invisible to players\.
 
-Aliases are primarily useful in games that do not use queues\. Switching fleets in a queue is a simple matter of creating a new fleet, adding it to the queue, and removing the old fleet, none of which is visible to players\. In contrast, game clients that don't use queues must specify which fleet to use when communicating with the Amazon GameLift service\. Without aliases, a fleet switch requires updates to your game code and possibly the need to distribute updated game clients to players\. With aliases, you can avoid both\. 
+Aliases are primarily useful in games that do not use queues\. Switching fleets in a queue is a simple matter of creating a new fleet, adding it to the queue, and removing the old fleet, none of which is visible to players\. In contrast, game clients that don't use queues must specify which fleet to use when communicating with the GameLift service\. Without aliases, a fleet switch requires updates to your game code and possibly the need to distribute updated game clients to players\. With aliases, you can avoid both\. 
 
-## Create a New Alias<a name="aliases-creating-new"></a>
+When updating the fleet\-id an alias points to, there is a transition period of up to 2 min during which game sessions being placed on the alias may still end up on the old fleet\.
 
-You can create a new alias to resolve to a fleet\.
+## To create a new alias<a name="aliases-creating-new"></a>
 
-**To create a new alias**
+You can create an alias using either the GameLift console, as described here, or with the AWS CLI command [create\-alias](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-alias.html)\.
 
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 
@@ -32,11 +32,9 @@ You can create a new alias to resolve to a fleet\.
 
 1. Click **Configure alias**\.
 
-## Edit an Alias<a name="aliases-editing"></a>
+## To edit an alias<a name="aliases-editing"></a>
 
-Use the **Edit alias** page in the Amazon GameLift console to update the information for your alias\.
-
-**To edit an alias**
+You can edit an alias using either the GameLift console, as described here, or with the AWS CLI command [update\-alias](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-alias.html)\.
 
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 

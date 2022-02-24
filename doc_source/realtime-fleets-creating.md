@@ -1,6 +1,6 @@
 # Deploy a Realtime Servers Fleet<a name="realtime-fleets-creating"></a>
 
-You can create a new fleet of Realtime game servers to host game sessions for your game\. Realtime Servers fleets require that you create a Realtime script and upload it to Amazon GameLift\. If you have a custom game server build, see [Deploy a GameLift Fleet for a Custom Game Build](fleets-creating.md) for help creating a fleet with it\. Use either the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/) or the AWS Command Line Interface \(CLI\) to create a fleet\. You can change a fleet's configuration by [editing a fleet](fleets-editing.md)\.
+You can create a new fleet of Realtime game servers to host game sessions for your game\. Realtime Servers fleets require that you create a Realtime script and upload it to Amazon GameLift\. If you have a custom game server build, see [Deploy a GameLift fleet with a custom game build](fleets-creating.md) for help creating a fleet with it\. Use either the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/) or the AWS Command Line Interface \(CLI\) to create a fleet\. You can change a fleet's configuration by [editing a fleet](fleets-editing.md)\.
 
 ## Create a Realtime Fleet \(Console\)<a name="realtime-fleets-creating-console"></a>
 
@@ -11,14 +11,17 @@ You can create a new fleet of Realtime game servers to host game sessions for yo
 1. **Fleet Details**\.
    + **Name** – Create a meaningful fleet name so you can easily identify it in a list and in metrics\.
    + **Description** – \(Optional\) Add a short description for this fleet to further aid identification\.
-   + **Fleet type** – Choose whether to use on\-demand or spot instances for this fleet\. Learn more about fleet types in [Choose Computing Resources](gamelift-ec2-instances.md)\.
+   + **Fleet type** – Choose whether to use on\-demand or spot instances for this fleet\. Learn more about fleet types in [Choosing computing resources](gamelift-ec2-instances.md)\.
    + **Metric group** – \(Optional\) Enter the name of a new or existing fleet metric group\. When using Amazon CloudWatch to track your Amazon GameLift metrics, you can aggregate the metrics for multiple fleets by adding them to the same metric group\.
-   + **Instance role ARN** – \(Optional\) Enter the ARN value for an IAM role that you want to associated with this fleet\. This setting allows all instances in the fleet to assume the role, which extends access to a defined set of AWS services\. Learn more about how to [Access AWS Resources From Your Fleets](gamelift-sdk-server-resources.md)\.
+   + **Instance role ARN** – \(Optional\) Enter the ARN value for an IAM role that you want to associated with this fleet\. This setting allows all instances in the fleet to assume the role, which extends access to a defined set of AWS services\. Learn more about how to [Communicate with other AWS resources from your fleets](gamelift-sdk-server-resources.md)\. When creating a fleet with an instance role ARN, you must have IAM PassRole permission, as described in [IAM policy examples for GameLift](gamelift-iam-policy-examples.md)\.
    + **Certificate type **– Choose whether to have GameLift generate a TLS certificate for the fleet\. With this feature enabled for a Realtime fleet, GameLift automatically authenticates the client/server connection and encrypts all communication between game client and server\. Once the fleet is created, you cannot change the certificate type\.
    + **Binary type** – Select the binary type "Script"\.
    + **Script** – Select the Realtime script you want to deploy from the dropdown list\.
+   + **Home region** – Indicates the Region where the fleet is being created\. It is also where the selected build is located\. You can change the home Region by selecting a different Region in the Console's header\. Fleet instances are deployed in the fleet's home Region\.
 
-1. **Instance type**\. Select an Amazon EC2 instance type from the list\. The instance types listed vary depending several factors, including the current region, the operating system of the selected game build, and the fleet type \(on\-demand or spot\)\. Learn more about choosing an instance type in [Choose Computing Resources](gamelift-ec2-instances.md)\. Once the fleet is created, you cannot change the instance type\.
+1. **Instance type**\. Select an Amazon EC2 instance type from the list\. The instance types listed vary depending several factors, including the current region, the operating system of the selected game build, and the fleet type \(on\-demand or spot\)\. Learn more about choosing an instance type in [Choosing computing resources](gamelift-ec2-instances.md)\. Once the fleet is created, you cannot change the instance type\.
+
+1. **Location management**\. Select one or more additional remote locations to deploy instances to\. This option is available when creating a fleet in an AWS Region that supports multi\-location fleets \(see [Using GameLift in AWS Regions](gamelift-regions.md)\)\. The fleet deploys instances to its home Region, which is the Region where the fleet is being created\. If you select additional locations, fleet instances are also deployed in these locations\. Locations are disabled if the selected instance type is not available in that location\. 
 
 1. **Process management**\. Configure how you want server processes to run on each instance\.
 
@@ -47,15 +50,15 @@ You can create a new fleet of Realtime game servers to host game sessions for yo
 
 1. **Protection policy \(optional\)**\. Indicate whether or not to apply game session protection to instances in this fleet\. Protected instances are not terminated during a scale\-down event if they are hosting an active game session\. Using this setting applies a fleet\-wide protection policy; you can also set protection for individual game sessions when creating the game session\. 
 
-1. Once you've finished configuring the new fleet, click **Initialize fleet**\. Amazon GameLift assigns an ID to the new fleet and begins the fleet activation process\. You can view the new fleet's status on the **Fleets** page\. Once the fleet is active, you can [change the fleet's capacity](fleets-updating-capacity.md), runtime configuration, and other configuration settings as needed\.
+1. Once you've finished configuring the new fleet, click **Initialize fleet**\. Amazon GameLift assigns an ID to the new fleet and begins the fleet activation process\. You can view the new fleet's status on the **Fleets** page\. Once the fleet is active, you can [change the fleet's capacity](fleets-updating-capacity.md), runtime configuration, and other configuration settings as needed\. You can also add or remove remote locations\.
 
 ## Create a Realtime Fleet \(AWS CLI\)<a name="realtime-fleets-creating-aws-cli"></a>
 
 To create a Realtime fleet with the AWS CLI, open a command line window and use the `create-fleet` command to define a new fleet\. See complete documentation on this command in the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet.html)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
 
 The example `create-fleet` request shown below creates a new fleet with the following characteristics: 
-+ The fleet will use c4\.large spot instances\. 
-+ It will deploy the specified Realtime script\.
++ The fleet will use c5\.large spot instances\. 
++ It will deploy the specified Realtime script to the following locations: `us-west-2` \(home Region\) and `sa-east-1` \(remote location\)\.
 + Each instance in the fleet will run ten identical processes of the Realtime script concurrently, enabling each instance to host up to ten game sessions simultaneously\.
 + On each instance, Amazon GameLift will allow only two new game sessions to be activating at the same time\. It will also terminate any activating game session if it is not ready to host players within 60 seconds\.
 + All game sessions hosted on instances in this fleet have game session protection turned on\. It can be turned off for individual game sessions\. 
@@ -66,10 +69,12 @@ The example `create-fleet` request shown below creates a new fleet with the foll
 For Realtime Servers fleets, Amazon GameLift automatically sets TCP and UDP ranges for use by the Realtime servers\. You can view the automatic settings by calling the CLI command `describe-fleet-port-settings`\. 
 
 ```
-$ aws gamelift create-fleet
+$ AWS gamelift create-fleet
     --name "SampleRealtimeFleet123"
     --description "A sample Realtime fleet"
-    --ec2-instance-type "c4.large"
+    --ec2-instance-type "c5.large"
+    --region us-west-2
+    --locations "Location=sa-east-1"
     --fleet-type "SPOT"
     --script-id "script-1111aaaa-22bb-33cc-44dd-5555eeee66ff"
     --certificate-configuration "CertificateType=GENERATED"
@@ -81,25 +86,35 @@ $ aws gamelift create-fleet
     --new-game-session-protection-policy "FullProtection"
     --resource-creation-limit-policy "NewGameSessionsPerCreator=3,
                                       PolicyPeriodInMinutes=15"
-    --MetricGroups "EMEAfleets"
+    --metric-groups "EMEAfleets"
 ```
 
 *Copiable version:*
 
 ```
-aws gamelift create-fleet --name "SampleRealtimeFleet123" --description "A sample Realtime fleet" --ec2-instance-type "c4.large" --fleet-type "SPOT" --script-id "script-1111aaaa-22bb-33cc-44dd-5555eeee66ff" --certificate-configuration "CertificateType=GENERATED" --runtime-configuration "GameSessionActivationTimeoutSeconds=60,MaxConcurrentGameSessionActivations=2,ServerProcesses=[{LaunchPath=/local/game/myRealtimeLaunchScript.js,Parameters=+map Winter444,ConcurrentExecutions=10}]" --new-game-session-protection-policy "FullProtection" --resource-creation-limit-policy "NewGameSessionsPerCreator=3,PolicyPeriodInMinutes=15" --MetricGroups "EMEAfleets"
+AWS gamelift create-fleet --name "SampleRealtimeFleet123" --description "A sample Realtime fleet" --ec2-instance-type "c5.large" --region us-west-2 --locations "Location=sa-east-1" --fleet-type "SPOT" --script-id "script-1111aaaa-22bb-33cc-44dd-5555eeee66ff" --certificate-configuration "CertificateType=GENERATED" --runtime-configuration "GameSessionActivationTimeoutSeconds=60,MaxConcurrentGameSessionActivations=2,ServerProcesses=[{LaunchPath=/local/game/myRealtimeLaunchScript.js,Parameters=+map Winter444,ConcurrentExecutions=10}]" --new-game-session-protection-policy "FullProtection" --resource-creation-limit-policy "NewGameSessionsPerCreator=3,PolicyPeriodInMinutes=15" --metric-groups  "EMEAfleets"
 ```
 
-If the create\-fleet request is successful, Amazon GameLift returns a set of fleet attributes that includes the configuration settings you requested and a new fleet ID\. Amazon GameLift immediately initiates the fleet activation process and sets the fleet status to **New**\. You can track the fleet's status and view other fleet information using these CLI commands: 
+If the create\-fleet request is successful, Amazon GameLift returns a set of fleet attributes that includes the configuration settings you requested and a new fleet ID\. Amazon GameLift immediately initiates the fleet activation process and sets the fleet status and the location statuses to **New**\. You can track the fleet's status and view other fleet information using these CLI commands: 
+
+------
+#### [ AWS CLI ]
 + [describe\-fleet\-events](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-events.html)
 + [describe\-fleet\-attributes](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-attributes.html)
 + [describe\-fleet\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-capacity.html)
 + [describe\-fleet\-port\-settings](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-port-settings.html)
 + [describe\-fleet\-utilization](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-utilization.html)
 + [describe\-runtime\-configuration](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-runtime-configuration.html)
++ [describe\-fleet\-location\-attributes](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-location-attributes.html)
++ [describe\-fleet\-location\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-location-capacity.html)
++ [describe\-fleet\-location\-utilization](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-location-utilization.html)
 
-Once the fleet is active, you can change the fleet's capacity and other configuration settings as needed using these commands:
+You can change the fleet's capacity and other configuration settings as needed using these commands:
 + [update\-fleet\-attributes](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-attributes.html)
 + [update\-fleet\-capacity](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-capacity.html)
 + [update\-fleet\-port\-settings](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-port-settings.html)
 + [update\-runtime\-configuration](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-runtime-configuration.html)
++ [create\-fleet\-locations](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet-locations.html)
++ [delete\-fleet\-locations](https://docs.aws.amazon.com/cli/latest/reference/gamelift/delete-fleet-locations.html)
+
+------

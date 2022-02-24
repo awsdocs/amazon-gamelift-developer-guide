@@ -48,7 +48,7 @@ The **Metrics** tab shows a graphical representation of queue metrics over time\
 
 Queue metrics include a range of information describing placement activity across the entire queue, as well as successful placements broken down by region\. The region\-specific data is useful for tracking where your games are being hosted\. With queues that use FleetIQ and prioritize placements to minimize player latency and hosting costs, regional placement metrics can help to detect issues with the overall queue design\. 
 
-Queue metrics are also available in Amazon CloudWatch\. You can view the descriptions of all metrics at [Amazon GameLift Metrics for Queues](monitoring-cloudwatch.md#gamelift-metrics-queue)\.
+Queue metrics are also available in Amazon CloudWatch\. You can view the descriptions of all metrics at [GameLift metrics for queues](monitoring-cloudwatch.md#gamelift-metrics-queue)\.
 
 **To display metrics information in the graph**
 

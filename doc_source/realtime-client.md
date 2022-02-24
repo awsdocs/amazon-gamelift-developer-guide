@@ -10,9 +10,9 @@ There are two sets of tasks needed to prepare your game client:
 
 Set up your game client to find or start game sessions, request FlexMatch matchmaking, and reserve space for players in a game by creating player sessions\. As a best practice, create a client service and use it to make the direct requests to the Amazon GameLift service when triggered by a game client action\. The client service then relays relevant responses back to the game client\. 
 
-1. Add the AWS SDK to your client service project, initialize an Amazon GameLift client, and configure it to use the hosting resources in your fleets and/or queues\. The AWS SDK is available in several languages; see the Amazon GameLift SDKs [For Client Services](gamelift-supported.md#gamelift-supported-clients)\. 
+1. Add the AWS SDK to your client service project, initialize an Amazon GameLift client, and configure it to use the hosting resources in your fleets and/or queues\. The AWS SDK is available in several languages; see the Amazon GameLift SDKs [For client services](gamelift-supported.md#gamelift-supported-clients)\. 
 
-1. Add GameLift functionality to your client service\. For more detailed instructions, see [Add Amazon GameLift to Your Game Client](gamelift-sdk-client-api.md) and [Adding FlexMatch Matchmaking](match-intro.md)\. The best practice is to use game session placements to create new game sessions\. This method lets you take full advantage of GameLift's ability to quickly and intelligently place new game sessions, as well as use player latency data to minimize game lag\. At a minimum, your client service must be able to request new game sessions and handle game session data in response\. You may also want to add functionality to search for and get information on existing game sessions, and request player sessions, which effectively reserve a player slot in an existing game session\.
+1. Add GameLift functionality to your client service\. For more detailed instructions, see [Add Amazon GameLift to Your Game Client](gamelift-sdk-client-api.md) and [Adding FlexMatch matchmaking](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-intro.html)\. The best practice is to use game session placements to create new game sessions\. This method lets you take full advantage of GameLift's ability to quickly and intelligently place new game sessions, as well as use player latency data to minimize game lag\. At a minimum, your client service must be able to request new game sessions and handle game session data in response\. You may also want to add functionality to search for and get information on existing game sessions, and request player sessions, which effectively reserve a player slot in an existing game session\.
 
 1. Convey connection information back to the game client\. The backend game service receives game session and player session objects in response to requests to the Amazon GameLift service\. These objects contain information, in particular connection details \(IP address and port\) and player session ID, that the game client needs to connect to the game session running on a Realtime Server\. 
 
@@ -77,7 +77,7 @@ namespace Example
         /// <param name="remoteTcpPort">A TCP port for the Realtime server</param>
         /// <param name="listeningUdpPort">A local port for listening to UDP traffic</param>
         /// <param name="connectionType">Type of connection to establish between client and the Realtime server</param>
-        /// <param name="playerSessionId">The player session ID that is assiged to the game client for a game session </param>
+        /// <param name="playerSessionId">The player session ID that is assigned to the game client for a game session </param>
         /// <param name="connectionPayload">Developer-defined data to be used during client connection, such as for player authentication</param>
        public RealTimeClient(string endpoint, int remoteTcpPort, int listeningUdpPort, ConnectionType connectionType,
                     string playerSessionId, byte[] connectionPayload)

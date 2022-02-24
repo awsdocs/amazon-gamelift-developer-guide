@@ -1,6 +1,10 @@
-# Set Up a Role for Amazon GameLift Access<a name="setting-up-role"></a>
+# Set up a role for GameLift access<a name="setting-up-role"></a>
 
-Some GameLift features require you to extend limited access to your AWS resources\. This is done by creating an AWS Identity and Access Management \(IAM\) role\. A role specifies two things: \(1\) who can assume the role, and \(2\) which resources they can control while using the role\. This topic provides guidance on how to set up a role to extend access to the Amazon GameLift service\. 
+This topic refers to GameLift hosted solutions\. If you use GameLift FleetIQ to optimize game hosting on your EC2 instances, see [Set up your AWS account for GameLift FleetIQ](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-iam-permissions.html)\.
+
+Some GameLift features require you to extend limited access to your AWS resources\. This is done by creating an AWS Identity and Access Management \(IAM\) role\. A role specifies two things: \(1\) who can assume the role, and \(2\) which resources they can control while using the role\. This topic provides guidance on how to set up a role to extend access to the GameLift service\. 
+
+Users who make API calls that extend this role to GameLift must have IAM PassRole permissions, as illustrated in [Simple policy examples for administrators](gamelift-iam-policy-examples.md#iam-policy-simple-example)\.
 
 **To set up an IAM role for the GameLift service**
 
@@ -22,6 +26,33 @@ Currently, a service\-specific role for Amazon GameLift must be manually constru
          "Effect": "Allow",
          "Principal": {
            "Service": "gamelift.amazonaws.com"
+         },
+         "Action": "sts:AssumeRole"
+       }
+     ]
+   }
+   ```
+
+   If you need to access resources in your own account and you have a multi\-region fleet with locations in one of the opt\-in regions, add `gamelift.opt-in-region.amazonaws.com` to the role trust policy\. The following example includes the four supported opt\-in regions:
+   + `gamelift.ap-east-1.amazonaws.com`
+   + `gamelift.me-south-1.amazonaws.com`
+   + `gamelift.af-south-1.amazonaws.com`
+   + `gamelift.eu-south-1.amazonaws.com`
+
+   ```
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "Service": [
+             "gamelift.amazonaws.com",
+             "gamelift.ap-east-1.amazonaws.com",
+             "gamelift.me-south-1.amazonaws.com",
+             "gamelift.af-south-1.amazonaws.com",
+             "gamelift.eu-south-1.amazonaws.com" 
+           ]
          },
          "Action": "sts:AssumeRole"
        }

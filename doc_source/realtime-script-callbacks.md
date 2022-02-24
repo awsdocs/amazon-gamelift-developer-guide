@@ -99,7 +99,7 @@ Invoked when a message is received on the server from one player to be delivered
 ### Syntax<a name="realtime-script-callback-onsendtoplayer-syntax"></a>
 
 ```
-nSendToPlayer(gameMessage)
+onSendToPlayer(gameMessage)
 ```
 
 ## onSendToGroup<a name="realtime-script-callback-onsendtogroup"></a>

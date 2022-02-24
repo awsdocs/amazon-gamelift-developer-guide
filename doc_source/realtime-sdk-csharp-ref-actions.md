@@ -22,7 +22,7 @@ Configuration details specifying the client/server connection type\. You can opt
 Type: [ClientConfiguration](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-clientconfiguration)  
 Required: No
 
-### Return Value<a name="realtime-sdk-csharp-ref-actions-client-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-actions-client-return"></a>
 
 Returns an instance of the Realtime client for use with communicating with the Realtime server\. 
 
@@ -61,9 +61,9 @@ Optional information that identifies the requesting game client to the server pr
 Type: [ConnectionToken](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-connectiontoken)  
 Required: Yes
 
-### Return Value<a name="realtime-sdk-csharp-ref-actions-connect-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-actions-connect-return"></a>
 
-Returns a `ConnectionStatus` [enum]() value indicating the client's connection status\. 
+Returns a [ConnectionStatus](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-enums) enum value indicating the client's connection status\. 
 
 ## Disconnect\(\)<a name="realtime-sdk-csharp-ref-actions-disconnect"></a>
 
@@ -79,7 +79,7 @@ public void Disconnect()
 
 This action has no parameters\.
 
-### Return Value<a name="realtime-sdk-csharp-ref-actions-disconnect-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-actions-disconnect-return"></a>
 
 This method does not return anything\.
 
@@ -100,7 +100,7 @@ Developer\-defined operation code that identifies a game event or action, such a
 Type: Integer  
 Required: Yes
 
-### Return Value<a name="realtime-sdk-csharp-ref-actions-newmessage-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-actions-newmessage-return"></a>
 
 Returns an [RTMessage](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-rtmessage) object containing the specified operation code and default delivery method\. The delivery intent parameter is set to `FAST` by default\. 
 
@@ -121,7 +121,7 @@ Message object that specifies the target recipient, delivery method, and message
 Type: [RTMessage](realtime-sdk-csharp-ref-datatypes.md#realtime-sdk-csharp-ref-datatypes-rtmessage)  
 Required: Yes
 
-### Return Value<a name="realtime-sdk-csharp-ref-actions-sendmessage-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-actions-sendmessage-return"></a>
 
 This method does not return anything\. 
 
@@ -142,7 +142,7 @@ Unique ID that identifies the group to add the player to\. Group IDs are develop
 Type: Integer  
 Required: Yes
 
-### Return Value<a name="realtime-sdk-csharp-ref-actions-joingroup-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-actions-joingroup-return"></a>
 
 This method does not return anything\. Because this request is sent using the reliable \(TCP\) delivery method, a failed request triggers the callback [OnError\(\)](realtime-sdk-csharp-ref-callbacks.md#realtime-sdk-csharp-ref-callbacks-onerror)\. 
 
@@ -163,7 +163,7 @@ Unique ID identifying the group to remove the player from\. Group IDs are develo
 Type: Integer  
 Required: Yes
 
-### Return Value<a name="realtime-sdk-csharp-ref-actions-leavegroup-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-actions-leavegroup-return"></a>
 
 This method does not return anything\. Because this request is sent using the reliable \(TCP\) delivery method, a failed request triggers the callback [OnError\(\)](realtime-sdk-csharp-ref-callbacks.md#realtime-sdk-csharp-ref-callbacks-onerror)\.
 
@@ -184,6 +184,6 @@ Unique ID identifying the group to get membership information for\. Group IDs ar
 Type: Integer  
 Required: Yes
 
-### Return Value<a name="realtime-sdk-csharp-ref-actions-requestgroupmembership-return"></a>
+### Return value<a name="realtime-sdk-csharp-ref-actions-requestgroupmembership-return"></a>
 
 This method does not return anything\. 

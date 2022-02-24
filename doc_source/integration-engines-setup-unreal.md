@@ -1,14 +1,14 @@
 # Add Amazon GameLift to an Unreal Engine Game Server Project<a name="integration-engines-setup-unreal"></a>
 
-This topic helps you set up and use the Amazon GameLift Server SDK plugin for Unreal Engine in your game server projects\. If you're unsure whether Amazon GameLift supports the operating systems you're using, see [For Custom Game Servers](gamelift-supported.md#gamelift-supported-servers)\.
+This topic helps you set up and use the GameLift Server SDK plugin for Unreal Engine in your game server projects\. If you're unsure whether the GameLift service supports the operating systems you're using, see [For custom game servers](gamelift-supported.md#gamelift-supported-servers)\.
 
 ## Set Up the Unreal Engine Server SDK Plugin<a name="integration-engines-setup-unreal-setup"></a>
 
-Follow these steps to get the Amazon GameLift Server SDK plugin for Unreal Engine ready for your game server projects\.
+Follow these steps to get the GameLift Server SDK plugin for Unreal Engine ready for your game server projects\.
 
-**To set up the Amazon GameLift SDK plugin for Unreal Engine**
+**To set up the GameLift SDK plugin for Unreal Engine**
 
-1. **Download the [Amazon GameLift Server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [Amazon GameLift SDKs](gamelift-supported.md)\.
+1. **Download the [GameLift Server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [GameLift SDKs](gamelift-supported.md)\.
 
 1. **Build the C\+\+ Server SDK libraries for Unreal\.** The SDK download contains the source code for C\+\+ \(see `GameLift_<release date>\GameLift-SDK-Release-<version>\GameLift-cpp-ServerSDK-<version>`\)\. Check the README file in this directory for minimum requirements and additional information before building the SDK\.
 
@@ -41,7 +41,7 @@ Follow these steps to get the Amazon GameLift Server SDK plugin for Unreal Engin
 
    For more details on building the C\+\+ SDK, including minimum requirements and build options, see the `README.md` file included in the download\. 
 
-1. **Add the binaries to the Amazon GameLift plugin files\.** Open the directory for the plugin version of UE4 that you are working with \(for example, `GameLift-SDK-Release-3.3.0\GameLift-Unreal-plugin-3.3.0\UE4.21.1\GameLiftServerSDK`\)\. Copy the binary files that you created in Step 2 into the `ThirdParty` directory of the Unreal plugin:
+1. **Add the binaries to the GameLift plugin files\.** Open the directory for the plugin version of UE4 that you are working with \(for example, `GameLift-SDK-Release-3.3.3\GameLift-Unreal-plugin-3.3.3\UE4.25\GameLiftServerSDK`\)\. Copy the binary files that you created in Step 2 into the `ThirdParty` directory of the Unreal plugin:
 
    For Linux use these paths:
    + `.../ThirdParty/GameLiftServerSDK/Linux/x86_64-unknown-linux-gnu/aws-cpp-sdk-gamelift-server.so`
@@ -50,7 +50,7 @@ Follow these steps to get the Amazon GameLift Server SDK plugin for Unreal Engin
    + `...\ThirdParty\GameLiftServerSDK\Win64\aws-cpp-sdk-gamelift-server.dll`
    + `...\ThirdParty\GameLiftServerSDK\Win64\aws-cpp-sdk-gamelift-server.lib`
 
-1. **Import the Amazon GameLift plugin into a project\.** There are many ways to import a plugin into Unreal Engine\. The following method does not require the Unreal Editor\.
+1. **Import the GameLift plugin into a project\.** There are many ways to import a plugin into Unreal Engine\. The following method does not require the Unreal Editor\.
 
    1. Add the plugin to your game project\. The plugin files must contain everything in the plugin's `GameLiftServerSDK` directory, including the generated binary files\.
 
@@ -65,7 +65,7 @@ Follow these steps to get the Amazon GameLift Server SDK plugin for Unreal Engin
       ]
       ```
 
-   1. Add the plugin name as a dependency to your game's list of ModuleRules\. The following example shows a sample list of module names with the Amazon GameLift plugin added to it\.
+   1. Add the plugin name as a dependency to your game's list of ModuleRules\. The following example shows a sample list of module names with the GameLift plugin added to it\.
 
       ```
       using UnrealBuildTool;
@@ -79,19 +79,19 @@ Follow these steps to get the Amazon GameLift Server SDK plugin for Unreal Engin
       }
       ```
 
-## Add Amazon GameLift Code<a name="integration-engines-setup-unreal-code"></a>
+## Add GameLift Code<a name="integration-engines-setup-unreal-code"></a>
 
-For more information on adding Amazon GameLift functionality, see these topics: 
-+ [Add Amazon GameLift to Your Game Server](gamelift-sdk-server-api.md)
-+ [Amazon GameLift Server API Reference for Unreal Engine](integration-server-sdk-unreal-ref.md)
+For more information on adding GameLift functionality, see these topics: 
++ [Add GameLift to your game server](gamelift-sdk-server-api.md)
++ [GameLift Server API reference for Unreal Engine](integration-server-sdk-unreal-ref.md)
 
-When adding Amazon GameLift\-specific code to your Unreal Engine game project, enclose the code using the preprocessor flag `WITH_GAMELIFT=1`\. This flag ensures that only server builds invoke the Amazon GameLift backplane API and allows you to write code that is executed correctly regardless of the build target type you might produce with it\.
+When adding GameLift\-specific code to your Unreal Engine game project, enclose the code using the preprocessor flag `WITH_GAMELIFT=1`\. This flag ensures that only server builds invoke the GameLift backplane API and allows you to write code that is executed correctly regardless of the build target type you might produce with it\.
 
 Code enclosed with the `WITH_GAMELIFT=1` flag is only processed if the following are true: 
-+ The plugin found the Amazon GameLiftserver SDK binary files\.
++ The plugin found the GameLiftserver SDK binary files\.
 + The build is a game server: `Target.Type == TargetRules.TargetType.Server`
 
-The following code snippet illustrates how to initialize an Unreal Engine game server with Amazon GameLift\. 
+The following code snippet illustrates how to initialize an Unreal Engine game server with GameLift\. 
 
 ```
 //This is an example of a simple integration with GameLift server SDK that makes game server 
