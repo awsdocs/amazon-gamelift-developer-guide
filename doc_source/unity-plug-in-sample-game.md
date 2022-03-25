@@ -1,4 +1,4 @@
-# Importing and Running a Sample Game<a name="unity-plug-in-sample-game"></a>
+# Importing and running a sample game<a name="unity-plug-in-sample-game"></a>
 
 The Amazon GameLift Plug\-in for Unity includes a sample game you can use to explore the basics of integrating your game with Amazon GameLift\. In this section, you build the game client and game server and then test locally using GameLift Local\. You will see GameLift messages from the game server and game client in the log window\. 
 

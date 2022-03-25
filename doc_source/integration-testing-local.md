@@ -1,4 +1,4 @@
-# Testing Your Integration<a name="integration-testing-local"></a>
+# Testing your integration<a name="integration-testing-local"></a>
 
 Use GameLift Local to run a limited version of the managed GameLift service on a local device and test your game integration against it\. This tool is useful when doing iterative development on your game integration\. The alternative—uploading each new build to GameLift and configuring a fleet to host your game—can take 30 minutes or more each time\. 
 
@@ -16,9 +16,8 @@ GameLift local supports the following APIs:
 + CreatePlayerSessions
 + DescribeGameSessions
 + DescribePlayerSessions
-+ SearchGameSessions
 
-## Set Up GameLift Local<a name="integration-testing-local-start"></a>
+## Set up GameLift local<a name="integration-testing-local-start"></a>
 
 GameLift Local is provided as an executable `.jar` file bundled with the [Server SDK](https://aws.amazon.com/gamelift/getting-started/)\. It can be run on Windows or Linux and used with any GameLift\-supported language\.
 
@@ -26,7 +25,7 @@ Before running Local, you must also have the following installed\.
 + A build of the GameLift Server SDK version 3\.1\.5 or higher
 + Java 8 
 
-## Test a Game Server<a name="integration-testing-local-server"></a>
+## Test a game server<a name="integration-testing-local-server"></a>
 
 If you want to test your game server only, you can use the AWS CLI to simulate game client calls to the GameLift Local service\. This verifies that your game server is performing as expected with the following: 
 + The game server launches properly and initializes the GameLift Server SDK\.
@@ -64,8 +63,8 @@ If you want to test your game server only, you can use the AWS CLI to simulate g
    ```
 
    Potential error and warning messages include the following:
-   + Error: “ProcessReady did not find a process with pID: *<process ID>*\! Was InitSDK\(\) invoked?”
-   + Warning: “Process state already exists for process with pID: *<process ID>*\! Is ProcessReady\(\.\.\.\) invoked more than once?”
+   + Error: "ProcessReady did not find a process with pID: *<process ID>*\! Was InitSDK\(\) invoked?"
+   + Warning: "Process state already exists for process with pID: *<process ID>*\! Is ProcessReady\(\.\.\.\) invoked more than once?"
 
 1. **Start the AWS CLI\.**
 
@@ -118,7 +117,7 @@ If you want to test your game server only, you can use the AWS CLI to simulate g
    }
    ```
 
-## Test a Game Server and Client<a name="integration-testing-local-client"></a>
+## Test a game server and client<a name="integration-testing-local-client"></a>
 
 To check your full game integration, including connecting players to games, you can run both your game server and client locally\. This allows you to test programmatic calls from your game client to the GameLift Local\. You can verify the following actions: 
 + The game client is successfully making AWS SDK requests to the GameLift Local service, including to create game sessions, retrieve information on existing game sessions, and create player sessions\.
@@ -138,11 +137,11 @@ To check your full game integration, including connecting players to games, you 
 
 1. **Start your game server\.**
 
-   Start your GameLift\-integrated game server locally\. See [Test a Game Server](#integration-testing-local-server) for more detail on message logs\.
+   Start your GameLift\-integrated game server locally\. See [Test a game server](#integration-testing-local-server) for more detail on message logs\.
 
 1. **Configure your game client for Local and start it\.**
 
-   To use your game client with the GameLift Local service, you must make the following changes to your game client's setup, as described in [Set Up GameLift on a Client or Service](gamelift-sdk-client-api.md#gamelift-sdk-client-api-initialize):
+   To use your game client with the GameLift Local service, you must make the following changes to your game client's setup, as described in [Set up GameLift on a client or service](gamelift-sdk-client-api.md#gamelift-sdk-client-api-initialize):
    + Change the `ClientConfiguration` object to point to your Local endpoint, such as `http://localhost:9080`\.
    + Set a target fleet ID value\. For Local, you do not need a real fleet ID; set the target fleet to any valid string \(`^fleet-\S+`\), such as `fleet-1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d`\.
    + Set AWS credentials\. For Local, you do not need real AWS credentials; you can set the access key and secret key to any string\. 
@@ -175,7 +174,7 @@ To check your full game integration, including connecting players to games, you 
 Previous guidance was to call `TerminateGameSession()` when ending a game session\. This method is deprecated with GameLift Server SDK v4\.0\.1\. See [End a game session](gamelift-sdk-server-api.md#gamelift-sdk-server-shutdownsession)\. 
    + **Server process is terminated** – GameLift Local log messages should show that your game server calls `ProcessEnding()`\. An AWS CLI call to `DescribeGameSessions()` should reflect a status change from `Active` to `Terminated` \(or `Terminating`\)\.
 
-## Variations with Local<a name="integration-testing-local-special"></a>
+## Variations with local<a name="integration-testing-local-special"></a>
 
 When using GameLift Local, keep in mind the following:
 + Unlike the GameLift web service, Local does not track a server's health status and initiate the `onProcessTerminate` callback\. Local simply stops logging health reports for the game server\.

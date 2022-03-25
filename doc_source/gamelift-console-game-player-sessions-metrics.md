@@ -1,6 +1,6 @@
-# View Data on Game and Player Sessions<a name="gamelift-console-game-player-sessions-metrics"></a>
+# View data on game and player sessions<a name="gamelift-console-game-player-sessions-metrics"></a>
 
-You can view information about the games running on a fleet and as well as individual players\. For more information about game sessions and player sessions, see [How Players Connect to Games](game-sessions-intro.md)\. 
+You can view information about the games running on a fleet and as well as individual players\. For more information about game sessions and player sessions, see [How players connect to games](game-sessions-intro.md)\. 
 
 **To view game session data**
 

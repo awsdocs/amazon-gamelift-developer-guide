@@ -1,14 +1,14 @@
-# Add Amazon GameLift to a Unity Game Server Project<a name="integration-engines-unity-using"></a>
+# Add Amazon GameLift to a unity game server project<a name="integration-engines-unity-using"></a>
 
 This topic helps you set up the GameLift C\# Server SDK in your Unity game server projects\. If you're unsure whether the managed GameLift service supports the operating systems you're using, see [For custom game servers](gamelift-supported.md#gamelift-supported-servers)\.
 
-## Set up the C\# Server SDK for Unity<a name="integration-engines-unity-setup"></a>
+## Set up the C\# server SDK for unity<a name="integration-engines-unity-setup"></a>
 
 Follow these steps to build the GameLift Server SDK for C\# and add it to your Unity game server projects\.
 
-**To set up the GameLift Server SDK for Unity**
+**To set up the GameLift server SDK for unity**
 
-1. **Download the [GameLift Server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [GameLift SDKs](gamelift-supported.md)\. The Server SDK zip file includes the C\# Server SDK, with source files so that you can build the SDK as needed for your project\. 
+1. **Download the [GameLift server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [GameLift SDKs](gamelift-supported.md)\. The Server SDK zip file includes the C\# Server SDK, with source files so that you can build the SDK as needed for your project\. 
 
 1. **Build the C\# SDK libraries\.** In an IDE, load the C\# Server SDK solution file that you want to use\. Use the IDE's functionality to restore NuGet files for the project\. See the `README.md` file for the C\# Server SDK for minimum requirements and additional build options\. Build the solution to generate the C\# SDK libraries\.
 
@@ -17,11 +17,11 @@ Follow these steps to build the GameLift Server SDK for C\# and add it to your U
 
 1. **Add the GameLift libraries to your Unity project\.** In the Unity Editor, import the libraries that were produced by the solution build into the `Assets/Plugins` directory of your project\. See the `README.md` file for a complete list of the libraries for the SDK version that you're using\.
 
-## Add GameLift Server Code<a name="integration-engines-unity-code"></a>
+## Add GameLift server code<a name="integration-engines-unity-code"></a>
 
 For more information on adding GameLift functionality, see these topics: 
 + [Add GameLift to your game server](gamelift-sdk-server-api.md)
-+ [GameLift Server API reference for C\#](integration-server-sdk-csharp-ref.md)
++ [GameLift server API reference for C\#](integration-server-sdk-csharp-ref.md)
 
 The following code example uses a `MonoBehavior` to illustrate a simple game server initialization with GameLift\.
 

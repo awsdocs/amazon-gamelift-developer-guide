@@ -12,5 +12,5 @@ AWS provides the following monitoring tools to watch Amazon GameLift, report whe
 
 **Topics**
 + [Monitor GameLift with Amazon CloudWatch](monitoring-cloudwatch.md)
-+ [Logging Amazon GameLift API Calls with AWS CloudTrail](logging-using-cloudtrail.md)
++ [Logging Amazon GameLift API calls with AWS CloudTrail](logging-using-cloudtrail.md)
 + [Logging server messages in Amazon GameLift](logging-server-messages.md)

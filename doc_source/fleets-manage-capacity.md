@@ -13,7 +13,7 @@ The topics in this section provide detailed help with the following tasks:
 + [Manage rule\-based auto\-scaling \(advanced feature\)](fleets-autoscaling-rule.md)
 + [Temporarily disable auto\-scaling](fleets-updating-capacity.md#fleets-updating-capacity-disable)
 
-Most fleet scaling activities can be done using the GameLift console\. You can also use the AWS SDK or AWS CLI with the [GameLift Service API](https://docs.aws.amazon.com/gamelift/latest/apireference/)\. 
+Most fleet scaling activities can be done using the GameLift console\. You can also use the AWS SDK or AWS CLI with the [GameLift service API](https://docs.aws.amazon.com/gamelift/latest/apireference/)\. 
 
 ## To manage fleet capacity in the console<a name="fleet-manage-capacity-howto"></a>
 

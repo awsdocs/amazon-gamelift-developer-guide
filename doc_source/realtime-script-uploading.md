@@ -19,7 +19,7 @@ For uploading, you can store your zipped script files in either a local file dir
 If you have your script files stored locally, you can opt to upload them to GameLift from there\. Use either the GameLift console or the AWS CLI tool to create the script resource\. 
 
 ------
-#### [  GameLift Console ]
+#### [  GameLift console ]
 
 **To create a script resource**
 
@@ -38,7 +38,7 @@ If you have your script files stored locally, you can opt to upload them to Game
 ------
 #### [ AWS CLI ]
 
-To create a script with the AWS CLI, open a command line window and use the `create-script` command to define the new script and upload your server script files\. See complete documentation on this command in the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-script.html)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
+To create a script with the AWS CLI, open a command line window and use the `create-script` command to define the new script and upload your server script files\. See complete documentation on this command in the [AWS CLI command reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-script.html)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
 
 **To create a script resource**
 
@@ -79,7 +79,7 @@ GameLift currently does not support uploading from Amazon S3 buckets with names 
 1. **Create a script\.** Use either the Console or the AWS CLI to create a new script record\. To make this request, you must have IAM PassRole permission, as described in [IAM policy examples for GameLift](gamelift-iam-policy-examples.md)\. 
 
 ------
-#### [ GameLift Console ]
+#### [ GameLift console ]
 
 1. Use the GameLift main menu to open the **Scripts: Create script** page to access the script creation form\.
 
@@ -98,7 +98,7 @@ GameLift currently does not support uploading from Amazon S3 buckets with names 
 ------
 #### [ AWS CLI ]
 
-Use the `create-script` command to define the new script and upload your server script files\. See complete documentation on this command in the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-script.html)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
+Use the `create-script` command to define the new script and upload your server script files\. See complete documentation on this command in the [AWS CLI command reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-script.html)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
 
 1. Open a command line window and switch to a directory where you can use the AWS CLI tool\. 
 

@@ -1,21 +1,21 @@
-# Deploying a Scenario<a name="unity-plug-in-scenario"></a>
+# Deploying a scenario<a name="unity-plug-in-scenario"></a>
 
 The Amazon GameLift Plug\-in for Unity includes the following pre\-built sample scenarios you can customize for your game:
 + **Auth Only** — This scenario creates a game backend service that performs only player authentication and no game server capability\. It creates a Amazon Cognito user pool to store player authentication information and an Amazon API Gateway REST endpoint\-backed AWS Lambda handlers to start a game and view game connection information\. The Lambda handler always returns a 501 Error \(Unimplemented\) 
 + **Single\-Region Fleet** — This scenario creates a game backend service with a single GameLift fleet\. After the player authenticates and starts a game \(with a `POST` request to `/start_game`\), an AWS Lambda handler searches for an existing viable game session with an open player slot on the fleet via `gamelift::SearchGameSession`\. If an open slot is not found, the Lambda creates a new game session via `gamelift::CreateGameSession`\. Once a game start is requested, the game client should poll the backend with `POST` requests to `/get_game_connection` to receive a viable game session\. 
 + **Multi\-Region Fleets with Queue and Custom Matchmaker** — In this scenario, Amazon GameLift queues are used in conjunction with a custom matchmaker\. The custom matchmaker forms matches by grouping up the oldest players in the waiting pool\. Once the placement is done, GameLift publishes a message to the Amazon Simple Notification Service topic in the backend service, triggering a Lambda function to store placement details along with game conection details to a Amazon DynamoDB table\. Subquent `GetGameConnection` calls read from this table and return the connection information to the game client\. 
 + **SPOT Fleets with Queue and Custom Matchmaker** — This scenario is the same as Multi\-Region Fleets with Queue and Custom Matchmaker except it configures three fleets\. Two of the fleets are Spot fleets containing nuanced instance types to provide durability for Spot unavilabilities\. The third fleet is an On\-Demand fleet to serve as a backup in case the other Spot fleets go unavailable\. Using a GameLift queue can keep availability high and cost low\. For more information and best practices about queues, see [Setting up GameLift queues for game session placement](queues-intro.md)\. 
-+ **FlexMatch** — On `StartGame` requests, a Lambda creates a matchmaking ticket via `gamelift:StartMatchmaking`\. A separate Lambda listens to FlexMatch Match events similar to the queue example above\. This deployment scenario also uses a low frequency poller to describe incomplete tickets via `gamelift::DescribeMatchmaking`\. The incomplete tickets are periodically described so they are not discarded by GameLift\. This is a best practice recommended by [Track Matchmaking Events](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html#match-client-track)\. For more information about FlexMatch, see [What is GameLift FlexMatch](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-intro.html)\. 
++ **FlexMatch** — On `StartGame` requests, a Lambda creates a matchmaking ticket via `gamelift:StartMatchmaking`\. A separate Lambda listens to FlexMatch Match events similar to the queue example above\. This deployment scenario also uses a low frequency poller to describe incomplete tickets via `gamelift::DescribeMatchmaking`\. The incomplete tickets are periodically described so they are not discarded by GameLift\. This is a best practice recommended by [Track matchmaking events](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-client.html#match-client-track)\. For more information about FlexMatch, see [What is GameLift FlexMatch](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-intro.html)\. 
 
 Each sample scenario uses an AWS CloudFormation template to create a stack with all of the resources needed for the sample game\. You can remove the resources by deleting the corresponding AWS CloudFormation stack\.
 
 **Topics**
-+ [Updating AWS Credentials](#unity-plug-in-configure-creds)
-+ [Updating Account Bootstrap](#unity-plug-in-scenario-boot)
-+ [Deploying a Sample Game Scenario](#unity-plug-in-scenario-deploy)
-+ [Deleting Resources Created by the Scenario](#unity-plug-in-scenario-delete)
++ [Updating AWS credentials](#unity-plug-in-configure-creds)
++ [Updating account bootstrap](#unity-plug-in-scenario-boot)
++ [Deploying a sample game scenario](#unity-plug-in-scenario-deploy)
++ [Deleting resources created by the scenario](#unity-plug-in-scenario-delete)
 
-## Updating AWS Credentials<a name="unity-plug-in-configure-creds"></a>
+## Updating AWS credentials<a name="unity-plug-in-configure-creds"></a>
 
 The Amazon GameLift Plug\-in for Unity requires security credentials to deploy a scenario\. You can choose to create new credentials or using existing credentials\.
 
@@ -35,7 +35,7 @@ For more information about configuring credentials, see [Understanding and getti
 
 1. In the **Update AWS Credentials** window, select **Update Credentials Profile**\. 
 
-## Updating Account Bootstrap<a name="unity-plug-in-scenario-boot"></a>
+## Updating account bootstrap<a name="unity-plug-in-scenario-boot"></a>
 
 The bootstrap location is an Amazon S3 bucket used during deployment\. It is used to store game server assets and other dependencies\. The AWS Region you select for the bucket must be the same Region you will use for the sample scenario deployment\.
 
@@ -53,7 +53,7 @@ For more information about Amazon S3 buckets, see [Creating, configuring, and wo
 
    Select **Create new Amazon S3 bucket** to create a new Amazon Simple Storage Service bucket, then select a **Policy**\. The policy specifies when the Amazon S3 bucket will be expire\. Choose **Create** to create the bucket\. 
 
-## Deploying a Sample Game Scenario<a name="unity-plug-in-scenario-deploy"></a>
+## Deploying a sample game scenario<a name="unity-plug-in-scenario-deploy"></a>
 
 You can use a sample scenario to test your game in the cloud\. Each scenario uses a AWS CloudFormation template to create a stack with all of the required resources\. Many of the scenarios require a game server executable and build path\. When the scenario is deployed, some game assets are copied to the bootstrap location as part of deployment\.
 
@@ -89,7 +89,7 @@ You must configure AWS credentials and an AWS account bootstrap to deploy a scen
 
    Use the API Gateway endpoint value to specify **API Gateway Endpoint** and the Amazon Cognito client ID to specify the **Coginito Client ID**\. Select the same AWS Region you used for the scenario deployment\. You can then rebuild and run the sample game client using the deployed scenario resources\. 
 
-## Deleting Resources Created by the Scenario<a name="unity-plug-in-scenario-delete"></a>
+## Deleting resources created by the scenario<a name="unity-plug-in-scenario-delete"></a>
 
 To delete the resources created for the scenario, you must delete the corresponding AWS CloudFormation stack\. 
 

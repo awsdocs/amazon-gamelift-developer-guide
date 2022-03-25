@@ -19,7 +19,7 @@ When remotely accessing individual GameLift instances, keep in mind the followin
 
 You can access remote instances that are running either Windows or Linux\. To connect to a Windows instance, use a remote desktop protocol \(RDP\) client\. To connect to a Linux instance, use an SSH client\. 
 
- Use the AWS CLI get the information you need to access a remote instance\. For help, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/) You can also use the AWS SDK, with documentation available in the [GameLift Service API Reference](https://docs.aws.amazon.com/gamelift/latest/apireference/)\.
+ Use the AWS CLI get the information you need to access a remote instance\. For help, see the [AWS CLI command reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/) You can also use the AWS SDK, with documentation available in the [GameLift service API reference](https://docs.aws.amazon.com/gamelift/latest/apireference/)\.
 
 1. Open 
 

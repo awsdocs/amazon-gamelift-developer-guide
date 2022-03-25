@@ -1,6 +1,6 @@
 # Deploy a GameLift fleet with a custom game build<a name="fleets-creating"></a>
 
-If you're using Realtime Servers for your game, see [Deploy a Realtime Servers Fleet](realtime-fleets-creating.md)\.
+If you're using Realtime Servers for your game, see [Deploy a Realtime Servers fleet](realtime-fleets-creating.md)\.
 
 You can create and deploy a new fleet to host game servers for any game build that has been uploaded to the GameLift service and is in a **Ready** status\. <a name="fleets-creating-builds-fleets-page"></a><a name="fleets-creating-aws-cli"></a>
 
@@ -30,7 +30,7 @@ After you create a new fleet, the fleet's status passes through several stages a
 
 1. **Instance type**\. Select an Amazon EC2 instance type from the list\. The instance types listed vary depending several factors, including the current region, the operating system of the selected game build, and the fleet type \(on\-demand or spot\)\. Learn more about choosing an instance type in [Choosing computing resources](gamelift-ec2-instances.md)\. Once the fleet is created, you cannot change the instance type\.
 
-1. **Location management**\. Select one or more additional remote locations to deploy instances to\. This option is available when creating a fleet in an AWS Region that supports multi\-location fleets \(see [Using GameLift in AWS Regions](gamelift-regions.md)\)\. The fleet deploys instances to its home Region, which is the Region where the fleet is being created\. If you select additional locations, fleet instances are also deployed in these locations\. Locations are disabled if the selected instance type is not available in that location\. 
+1. **Location management**\. Select one or more additional remote locations to deploy instances to\. This option is available when creating a fleet in an AWS Region that supports multi\-location fleets \(see [Using GameLift in AWS regions](gamelift-regions.md)\)\. The fleet deploys instances to its home Region, which is the Region where the fleet is being created\. If you select additional locations, fleet instances are also deployed in these locations\. Locations are disabled if the selected instance type is not available in that location\. 
 **Important**  
 Starting on February 28, 2022, you must enable an opt\-in Region for your AWS account before you can include that Region in a new multi\-location fleet\.  
 If you have a multi\-location fleet created before February 28, 2022, and your fleet includes instances in an opt\-in Region that you did not previously enable for your AWS account, those instances will remain unaffected\.
@@ -76,7 +76,7 @@ You can update the fleet's metadata and configuration at any time, regardless of
 ------
 #### [ AWS CLI ]
 
-To create a fleet with the AWS CLI, open a command line window and use the `create-fleet` command to define a new fleet\. See complete documentation on this command in the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet.html)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
+To create a fleet with the AWS CLI, open a command line window and use the `create-fleet` command to define a new fleet\. See complete documentation on this command in the [AWS CLI command reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet.html)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
 
 The example `create-fleet` request shown below creates a new fleet with the following characteristics: 
 + The fleet will use c5\.large On\-Demand Instances with the operating system that is appropriate for the selected game build\. 

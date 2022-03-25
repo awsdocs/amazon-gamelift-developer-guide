@@ -1,4 +1,4 @@
-# Tutorial: Set up a game session queue for Spot Instances<a name="tutorial-queues-spot"></a>
+# Tutorial: Set up a game session queue for Spot instances<a name="tutorial-queues-spot"></a>
 
 **Introduction**  
 This tutorial describes how to set up game session placement for games that are deployed on low\-cost Spot fleets\. GameLift uses queues to field game session placement requests, locate available game servers to host them, and start the new game sessions\. When building queues for Spot fleets, you need to take additional steps to minimize Spot interruptions and maintain continual game server availability for your players\. This tutorial follows best practices and provides tips on building queues for Spot fleets\. 
@@ -41,7 +41,7 @@ Build a set of fleets to host games for your player segment\. Create fleets in R
 + **Use the same or a similar game build or script for all fleets\.** The queue might put players into game sessions on any fleet in the queue\. Players must be able to play in any game session on any fleet\. 
 + **Use the same TLS certificate setting for all fleets\.** Game clients that connect to game sessions in your fleets need to have compatible communication protocols\. 
 
-When you're ready to build your fleets, see [Deploy a GameLift fleet with a custom game build](fleets-creating.md) or [Deploy a Realtime Servers Fleet](realtime-fleets-creating.md) for detailed instructions on using the GameLift console or the AWS CLI to create new fleets\.
+When you're ready to build your fleets, see [Deploy a GameLift fleet with a custom game build](fleets-creating.md) or [Deploy a Realtime Servers fleet](realtime-fleets-creating.md) for detailed instructions on using the GameLift console or the AWS CLI to create new fleets\.
 
 **Tip**  
 We highly recommend including the fleet type \(Spot or On\-demand\) in your fleet names\. This makes it much easier to identify fleet types when viewing a list of fleets\.
@@ -129,4 +129,4 @@ With this policy, our queue looks for placements with optimal latency \(under 50
 
 Congratulations\! If you've followed the steps in this tutorial, you now have a game session queue that is scoped for a particular segment of your player population\. It uses Spot fleets effectively and is resilient when rare Spot interruptions occur\. In addition, your queue's fleets are strategically prioritized and you've added hard latency limits to protect players from bad gameplay experiences\.
 
-You can now use the queue to place game sessions for the player segment it serves\. When making game session placement requests for these players, you must reference this game session queue name in the request\. For more information on making game session placement requests, see [Create Game Sessions](gamelift-sdk-client-api.md#gamelift-sdk-client-api-create) or [Integrating a Game Client for Realtime Servers](realtime-client.md)\.
+You can now use the queue to place game sessions for the player segment it serves\. When making game session placement requests for these players, you must reference this game session queue name in the request\. For more information on making game session placement requests, see [Create game sessions](gamelift-sdk-client-api.md#gamelift-sdk-client-api-create) or [Integrating a game client for Realtime Servers](realtime-client.md)\.

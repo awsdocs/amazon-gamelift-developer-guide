@@ -7,5 +7,5 @@ Create a new fleet and deploy your custom game server build or Realtime Servers 
 
 **Topics**
 + [Deploy a GameLift fleet with a custom game build](fleets-creating.md)
-+ [Deploy a Realtime Servers Fleet](realtime-fleets-creating.md)
++ [Deploy a Realtime Servers fleet](realtime-fleets-creating.md)
 + [How GameLift fleet creation works](fleets-creation-workflow.md)

@@ -1,4 +1,4 @@
-# Using GameLift in AWS Regions<a name="gamelift-regions"></a>
+# Using GameLift in AWS regions<a name="gamelift-regions"></a>
 
 GameLift is available in multiple AWS Regions\. For a complete list, see [Amazon GameLift endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/gamelift.html)\. A global AWS account allows you to work with resources in most Regions\.
 

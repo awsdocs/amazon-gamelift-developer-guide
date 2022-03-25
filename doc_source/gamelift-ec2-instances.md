@@ -14,7 +14,7 @@ The cost of resources depends on the operating system in use\. Learn more about 
 
 ## Instance types<a name="gamelift-ec2-instances-type"></a>
 
-A fleet's instance type determines the kind of hardware that will be used for every instance in the fleet\. Instance types offer different combinations of computing power, memory, storage, and networking capabilities\. With GameLift you have a wide range of instance type options to choose from\. To learn more about the capabilities of each instance type, see [Amazon EC2 Instance Types](https://aws.amazon.com/ec2/instance-types/)\. 
+A fleet's instance type determines the kind of hardware that will be used for every instance in the fleet\. Instance types offer different combinations of computing power, memory, storage, and networking capabilities\. With GameLift you have a wide range of instance type options to choose from\. To learn more about the capabilities of each instance type, see [Amazon EC2 instance types](https://aws.amazon.com/ec2/instance-types/)\. 
 
 Consider the geographic locations where you plan to deploy your game servers\. Instance type availability varies by AWS Region\. In addition, check the service limits on the number of instance an AWS account can use, which are applied per instance type, per Region\. You can view a list of available instance types and service limits using the methods described in [Instance service quotas](#gamelift-service-limits)\. 
 

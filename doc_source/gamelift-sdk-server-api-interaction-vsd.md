@@ -1,4 +1,4 @@
-# Amazon GameLift–Game Server/Client Interactions<a name="gamelift-sdk-server-api-interaction-vsd"></a>
+# Amazon GameLift–Game Server/Client interactions<a name="gamelift-sdk-server-api-interaction-vsd"></a>
 
 The diagram below outlines API interactions that occur when managing multiplayer game session tasks using the managed GameLift solution\. 
 

@@ -2,7 +2,7 @@
 
 Your custom game server needs to interact with the GameLift service, and potentially other resources, once it is deployed and running on GameLift instances\. This section provides guidance on how to integrate your game server software with GameLift\.
 
-Integrating your game server is Step 2 on the [Get Started with Custom Servers](gamelift-integration.md) roadmap\. These topics assume that you've created an AWS account and have an existing game server project\.
+Integrating your game server is Step 2 on the [Get started with custom servers](gamelift-integration.md) roadmap\. These topics assume that you've created an AWS account and have an existing game server project\.
 
 The topics in this section describe how to handle the following integration tasks: 
 + Establish communication between the GameLift service and your deployed and running game servers\.
@@ -15,6 +15,6 @@ Topics
 + [Communicate with other AWS resources from your fleets](gamelift-sdk-server-resources.md)
 + [Get fleet data for a GameLift instance](gamelift-sdk-server-fleetinfo.md)
 + GameLift Server SDK references:
-  + [GameLift Server API reference for C\+\+](integration-server-sdk-cpp-ref.md)
-  + [GameLift Server API reference for C\#](integration-server-sdk-csharp-ref.md)
-  + [GameLift Server API reference for Unreal Engine](integration-server-sdk-unreal-ref.md)
+  + [GameLift server API reference for C\+\+](integration-server-sdk-cpp-ref.md)
+  + [GameLift server API reference for C\#](integration-server-sdk-csharp-ref.md)
+  + [GameLift server API reference for Unreal Engine](integration-server-sdk-unreal-ref.md)

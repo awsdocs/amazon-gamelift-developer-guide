@@ -1,10 +1,10 @@
-# Deploy a Realtime Servers Fleet<a name="realtime-fleets-creating"></a>
+# Deploy a Realtime Servers fleet<a name="realtime-fleets-creating"></a>
 
 You can create a new fleet of Realtime game servers to host game sessions for your game\. Realtime Servers fleets require that you create a Realtime script and upload it to Amazon GameLift\. If you have a custom game server build, see [Deploy a GameLift fleet with a custom game build](fleets-creating.md) for help creating a fleet with it\. Use either the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/) or the AWS Command Line Interface \(CLI\) to create a fleet\. You can change a fleet's configuration by [editing a fleet](fleets-editing.md)\.
 
-## Create a Realtime Fleet \(Console\)<a name="realtime-fleets-creating-console"></a>
+## Create a realtime fleet \(console\)<a name="realtime-fleets-creating-console"></a>
 
-**To create a Realtime fleet with the Amazon GameLift console:**
+**To create a realtime fleet with the Amazon GameLift console:**
 
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\. Go to the **Fleets: Create fleet** page to configure a new fleet\. 
 
@@ -21,7 +21,7 @@ You can create a new fleet of Realtime game servers to host game sessions for yo
 
 1. **Instance type**\. Select an Amazon EC2 instance type from the list\. The instance types listed vary depending several factors, including the current region, the operating system of the selected game build, and the fleet type \(on\-demand or spot\)\. Learn more about choosing an instance type in [Choosing computing resources](gamelift-ec2-instances.md)\. Once the fleet is created, you cannot change the instance type\.
 
-1. **Location management**\. Select one or more additional remote locations to deploy instances to\. This option is available when creating a fleet in an AWS Region that supports multi\-location fleets \(see [Using GameLift in AWS Regions](gamelift-regions.md)\)\. The fleet deploys instances to its home Region, which is the Region where the fleet is being created\. If you select additional locations, fleet instances are also deployed in these locations\. Locations are disabled if the selected instance type is not available in that location\. 
+1. **Location management**\. Select one or more additional remote locations to deploy instances to\. This option is available when creating a fleet in an AWS Region that supports multi\-location fleets \(see [Using GameLift in AWS regions](gamelift-regions.md)\)\. The fleet deploys instances to its home Region, which is the Region where the fleet is being created\. If you select additional locations, fleet instances are also deployed in these locations\. Locations are disabled if the selected instance type is not available in that location\. 
 
 1. **Process management**\. Configure how you want server processes to run on each instance\.
 
@@ -52,9 +52,9 @@ You can create a new fleet of Realtime game servers to host game sessions for yo
 
 1. Once you've finished configuring the new fleet, click **Initialize fleet**\. Amazon GameLift assigns an ID to the new fleet and begins the fleet activation process\. You can view the new fleet's status on the **Fleets** page\. Once the fleet is active, you can [change the fleet's capacity](fleets-updating-capacity.md), runtime configuration, and other configuration settings as needed\. You can also add or remove remote locations\.
 
-## Create a Realtime Fleet \(AWS CLI\)<a name="realtime-fleets-creating-aws-cli"></a>
+## Create a realtime fleet \(AWS CLI\)<a name="realtime-fleets-creating-aws-cli"></a>
 
-To create a Realtime fleet with the AWS CLI, open a command line window and use the `create-fleet` command to define a new fleet\. See complete documentation on this command in the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet.html)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
+To create a Realtime fleet with the AWS CLI, open a command line window and use the `create-fleet` command to define a new fleet\. See complete documentation on this command in the [AWS CLI command reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet.html)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
 
 The example `create-fleet` request shown below creates a new fleet with the following characteristics: 
 + The fleet will use c5\.large spot instances\. 

@@ -18,7 +18,7 @@ Consider the following guidelines and best practices:
 
 ## Best practices for queues with Spot fleets<a name="queues-design-spot"></a>
 
-If your queue includes Spot fleets, you want to set up a resilient queue that takes advantage of cost savings with Spot fleets while minimizing the effect of game session interruptions\. For help correctly building fleets and game session queues for use with Spot fleets, see [Tutorial: Set up a game session queue for Spot Instances](tutorial-queues-spot.md)\. For more information about Spot instances, see [Using Spot Instances with GameLift](spot-tasks.md)\.
+If your queue includes Spot fleets, you want to set up a resilient queue that takes advantage of cost savings with Spot fleets while minimizing the effect of game session interruptions\. For help correctly building fleets and game session queues for use with Spot fleets, see [Tutorial: Set up a game session queue for Spot instances](tutorial-queues-spot.md)\. For more information about Spot instances, see [Using Spot Instances with GameLift](spot-tasks.md)\.
 
 In addition to the general best practices in the previous section, consider these Spot\-specific best practices:
 + Include at least one Spot fleet and one On\-Demand fleet to cover all the geographic locations where you want to support players\. This design is critical to minimizing the impact of potential Spot interruptions\. It ensures that game sessions can be placed in any location, even when no Spot fleets are currently viable there\. At a minimum, every queue should have at least one On\-Demand fleet\.

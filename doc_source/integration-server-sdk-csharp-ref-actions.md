@@ -1,4 +1,4 @@
-# GameLift Server API \(C\#\) reference: Actions<a name="integration-server-sdk-csharp-ref-actions"></a>
+# GameLift server API \(C\#\) reference: Actions<a name="integration-server-sdk-csharp-ref-actions"></a>
 
 This GameLift C\# Server API reference can help you prepare your multiplayer game for use with GameLift\. For details on the integration process, see [Add GameLift to your game server](gamelift-sdk-server-api.md)\.
 

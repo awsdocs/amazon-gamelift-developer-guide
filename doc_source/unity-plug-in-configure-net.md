@@ -1,4 +1,4 @@
-# Configuring \.NET Settings<a name="unity-plug-in-configure-net"></a>
+# Configuring \.NET settings<a name="unity-plug-in-configure-net"></a>
 
 This section describes how to configure your project to use \.NET 4\.x\. The Amazon GameLift Plug\-in for Unity requires \.NET 4\.x\.
 

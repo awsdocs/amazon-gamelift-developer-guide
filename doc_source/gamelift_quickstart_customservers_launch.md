@@ -1,9 +1,9 @@
-# Prepare for Launch<a name="gamelift_quickstart_customservers_launch"></a>
+# Prepare for launch<a name="gamelift_quickstart_customservers_launch"></a>
 
-When you start preparing for your game launch, you should review the [Testing Phase Checklist](gamelift_quickstart_customservers_test_checklist.md) and the [Launch Phase Checklist](gamelift_quickstart_customservers_launch_checklist.md)\. At minimum, you should consider the following:
+When you start preparing for your game launch, you should review the [Testing phase checklist](gamelift_quickstart_customservers_test_checklist.md) and the [Launch phase checklist](gamelift_quickstart_customservers_launch_checklist.md)\. At minimum, you should consider the following:
 + Raise Amazon GameLift and other AWS service quotas to ensure that the live environment can scale up to the maximum size of your expected peak\. For more information about GameLift service quotas, see [https://docs.aws.amazon.com/general/latest/gr/gamelift.html](https://docs.aws.amazon.com/general/latest/gr/gamelift.html)\. 
 + Fill out the launch questionnaire\. It is located in the AWS Management Console under **GameLift**\|**Service Limits**\. This will help the GameLift team understand your requirements for API limits\.
 + Check that the ports that are open on live fleets match the range of ports that could possibly be used by any server on the fleet instances and are open to 0\.0\.0\.0/0\.
-+ Check that RDP port 3389 and SSH port 22 are closed or limited to a small address range reflecting the developer’s public IP address range\(s\)\.
++ Check that RDP port 3389 and SSH port 22 are closed or limited to a small address range reflecting the developer's public IP address range\(s\)\.
 + Enable full protection for your production fleets, pre\-warm \(scale out\) fleet capacity, and set a high enough maximum limit to accommodate for an unexpected peak\.
 + At minimum, do some simple load testing to give you an idea of how your system behaves in production\. This could be done with a headless build of your client that runs a built\-in script for requesting a session, joining a session, doing some basic in\-game actions, and leaving the session\. One simple way to run your test clients is using AWS Fargate to run the clients in serverless containers\. This testing should be done against your backend service to load test both the backend as well as the GameLift resources\.

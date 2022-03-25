@@ -1,4 +1,4 @@
-# What Is Amazon GameLift?<a name="gamelift-intro"></a>
+# What is Amazon GameLift?<a name="gamelift-intro"></a>
 
 Amazon GameLift enables developers to deploy, operate, and scale dedicated, low\-cost servers in the cloud for session\-based, multiplayer games\. Built on AWS global computing infrastructure, GameLift helps deliver high\-performance, high\-reliability, low\-cost game servers while dynamically scaling your resource usage to meet worldwide player demand\. 
 
@@ -45,7 +45,7 @@ To learn more about how the GameLift hosting solution works, see [How GameLift w
 
 Use Realtime Servers to stand up games that don't need custom\-built game servers\. This lightweight server solution provides ready\-to\-go game servers that can be configured to fit your game\. You can deploy game servers with anything from minimal configuration settings to custom logic that is specific to your game and players\. 
 
-To learn more about how GameLift hosting with Realtime Servers works, see [How Realtime Servers Work](realtime-howitworks.md)\.
+To learn more about how GameLift hosting with Realtime Servers works, see [How Realtime Servers work](realtime-howitworks.md)\.
 
 **Key features**
 + Use GameLift management features, including auto\-scaling, multi\-region queues, game session placement with FleetIQ, game session logging, and metrics\. 
@@ -59,7 +59,7 @@ To learn more about how GameLift hosting with Realtime Servers works, see [How R
 
 GameLift FleetIQ optimizes the use of low\-cost Spot Instances for cloud\-based game hosting\. With this feature, you can work directly with your hosting resources in Amazon EC2 and Auto Scaling and take advantage of GameLift optimizations to deliver inexpensive, resilient game hosting for your players\. This solution is designed for game developers who need more flexibility than is offered in the fully managed GameLift solutions\. 
 
-To learn more about how GameLift FleetIQ works with Amazon EC2 and Auto Scaling for game hosting, see the [ GameLift FleetIQ Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)\.
+To learn more about how GameLift FleetIQ works with Amazon EC2 and Auto Scaling for game hosting, see the [ GameLift FleetIQ guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)\.
 
 **Key features**
 + Get optimized Spot balancing using GameLift FleetIQ prediction algorithms\.

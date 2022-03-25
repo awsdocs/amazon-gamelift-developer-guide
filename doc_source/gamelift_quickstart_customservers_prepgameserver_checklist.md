@@ -1,4 +1,4 @@
-# Onboarding Phase Checklist<a name="gamelift_quickstart_customservers_prepgameserver_checklist"></a>
+# Onboarding phase checklist<a name="gamelift_quickstart_customservers_prepgameserver_checklist"></a>
 
 Use the following checklists to keep track of onboarding phase items\. Items marked **\[Critical\]** are critical for your production launch\. 
 + **\[Critical\]** Make sure that the game clients \(game executable running on the player machines\) are not making AWS SDK calls directly to Amazon GameLift APIs\. Requests should be authenticated through a backend service\.

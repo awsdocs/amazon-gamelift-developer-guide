@@ -1,14 +1,14 @@
-# Add Amazon GameLift to an Unreal Engine Game Server Project<a name="integration-engines-setup-unreal"></a>
+# Add Amazon GameLift to an unreal engine game server project<a name="integration-engines-setup-unreal"></a>
 
 This topic helps you set up and use the GameLift Server SDK plugin for Unreal Engine in your game server projects\. If you're unsure whether the GameLift service supports the operating systems you're using, see [For custom game servers](gamelift-supported.md#gamelift-supported-servers)\.
 
-## Set Up the Unreal Engine Server SDK Plugin<a name="integration-engines-setup-unreal-setup"></a>
+## Set up the unreal engine server SDK plugin<a name="integration-engines-setup-unreal-setup"></a>
 
 Follow these steps to get the GameLift Server SDK plugin for Unreal Engine ready for your game server projects\.
 
-**To set up the GameLift SDK plugin for Unreal Engine**
+**To set up the GameLift SDK plugin for unreal engine**
 
-1. **Download the [GameLift Server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [GameLift SDKs](gamelift-supported.md)\.
+1. **Download the [GameLift server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [GameLift SDKs](gamelift-supported.md)\.
 
 1. **Build the C\+\+ Server SDK libraries for Unreal\.** The SDK download contains the source code for C\+\+ \(see `GameLift_<release date>\GameLift-SDK-Release-<version>\GameLift-cpp-ServerSDK-<version>`\)\. Check the README file in this directory for minimum requirements and additional information before building the SDK\.
 
@@ -79,11 +79,11 @@ Follow these steps to get the GameLift Server SDK plugin for Unreal Engine ready
       }
       ```
 
-## Add GameLift Code<a name="integration-engines-setup-unreal-code"></a>
+## Add GameLift code<a name="integration-engines-setup-unreal-code"></a>
 
 For more information on adding GameLift functionality, see these topics: 
 + [Add GameLift to your game server](gamelift-sdk-server-api.md)
-+ [GameLift Server API reference for Unreal Engine](integration-server-sdk-unreal-ref.md)
++ [GameLift server API reference for Unreal Engine](integration-server-sdk-unreal-ref.md)
 
 When adding GameLift\-specific code to your Unreal Engine game project, enclose the code using the preprocessor flag `WITH_GAMELIFT=1`\. This flag ensures that only server builds invoke the GameLift backplane API and allows you to write code that is executed correctly regardless of the build target type you might produce with it\.
 

@@ -1,28 +1,28 @@
-# Creating a Realtime Script<a name="realtime-script"></a>
+# Creating a Realtime script<a name="realtime-script"></a>
 
 To use Realtime Servers for your game, you need to provide a script \(in the form of some JavaScript code\) to configure and optionally customize a fleet of Realtime Servers\. This topic covers the key steps in creating a Realtime script\. Once the script is ready, upload it to the Amazon GameLift service and use it to create a fleet \(see [Upload a Realtime Servers script to GameLift](realtime-script-uploading.md)\)\.
 
 To prepare a script for use with Realtime Servers, add the following functionality to your Realtime script\.
 
-## Manage Game Session Life\-Cycle \(required\)<a name="realtime-script-init"></a>
+## Manage game session life\-cycle \(required\)<a name="realtime-script-init"></a>
 
 At a minimum, a Realtime script must include the `Init()` function, which prepares the Realtime server to start a game session\. It is also highly recommended that you also provide a way to terminate game sessions, to ensure that new game sessions can continue to be started on your fleet\.
 
-The `Init()` callback function, when called, is passed a Realtime session object, which contains an interface for the Realtime server\. See [Realtime Servers Interface](realtime-script-objects.md) for more details on this interface\.
+The `Init()` callback function, when called, is passed a Realtime session object, which contains an interface for the Realtime server\. See [Realtime Servers interface](realtime-script-objects.md) for more details on this interface\.
 
 To gracefully end a game session, the script must also call the Realtime server's `session.processEnding` function\. This requires some mechanism to determine when to end a session\. The script example code illustrates a simple mechanism that checks for player connections and triggers game session termination when no players have been connected to the session for a specified length of time\.
 
 Realtime Servers with the most basic configuration\-\-server process initialization and termination\-\-essentially act as stateless relay servers\. The Realtime server relays messages and game data between game clients that are connected to the game, but takes no independent action to process data or perform logic\. You can optionally add game logic, triggered by game events or other mechanisms, as needed for your game\.
 
-## Add Server\-Side Game Logic \(optional\)<a name="realtime-script-logic"></a>
+## Add server\-side game logic \(optional\)<a name="realtime-script-logic"></a>
 
-You can optionally add game logic to your Realtime script\. For example, you might do any or all of the following\. The script example code provides illustration\. See [Amazon GameLift Realtime Servers Script Reference](realtime-script-ref.md)\. 
-+ **Add event\-driven logic\.** Implement the callback functions to respond to client\-server events\. See [Script Callbacks for Realtime Servers](realtime-script-callbacks.md) for a complete list of callbacks\.
+You can optionally add game logic to your Realtime script\. For example, you might do any or all of the following\. The script example code provides illustration\. See [Amazon GameLift Realtime Servers script reference](realtime-script-ref.md)\. 
++ **Add event\-driven logic\.** Implement the callback functions to respond to client\-server events\. See [Script callbacks for Realtime Servers](realtime-script-callbacks.md) for a complete list of callbacks\.
 + **Trigger logic by sending messages to the server\.** Create a set of special operation codes for messages sent from game clients to the server, and add functions to handle receipt\. Use the callback `onMessage`, and parse the message content using the `gameMessage` interface \(see [gameMessage\.opcode](realtime-script-objects.md#realtime-script-objects-gamemessageopcode)\)\. 
 + Enable game logic to access your other AWS resources\. For details, see [Communicate with other AWS resources from your fleets](gamelift-sdk-server-resources.md)\.
 + Allow game logic to access fleet information for the instance it is running on\. For details, see [Get fleet data for a GameLift instance](gamelift-sdk-server-fleetinfo.md)\.
 
-## Realtime Servers Script Example<a name="realtime-script-examples"></a>
+## Realtime Servers script example<a name="realtime-script-examples"></a>
 
 ### <a name="realtime-script-examples-custom"></a>
 
@@ -129,7 +129,7 @@ function onPlayerDisconnect(peerId) {
                                                 "Peer " + peerId + " disconnected");
     session.getPlayers().forEach((player, playerId) => {
         if (playerId != peerId) {
-            session.sendReliableMessage(outMessage, peerId);
+            session.sendReliableMessage(outMessage, playerId);
         }
     });
     activePlayers--;

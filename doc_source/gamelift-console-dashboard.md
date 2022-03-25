@@ -1,4 +1,4 @@
-# View Your Current Amazon GameLift Status<a name="gamelift-console-dashboard"></a>
+# View your current Amazon GameLift status<a name="gamelift-console-dashboard"></a>
 
 The **Dashboard** provides a grid view showing the following:
 + Builds

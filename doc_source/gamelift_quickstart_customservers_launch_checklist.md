@@ -1,4 +1,4 @@
-# Launch Phase Checklist<a name="gamelift_quickstart_customservers_launch_checklist"></a>
+# Launch phase checklist<a name="gamelift_quickstart_customservers_launch_checklist"></a>
 
 Use the following checklists to keep track of launch phase items\. Items marked **\[Critical\]** are critical for your production launch\.
 + **\[Critical\]** Set the fleet protection policy to full protection on all live fleets so that scaling down cannot evict an active game session\.

@@ -1,4 +1,4 @@
-# Deploy your Amazon GameLift Resources<a name="gamelift_quickstart_customservers_deploy"></a>
+# Deploy your Amazon GameLift resources<a name="gamelift_quickstart_customservers_deploy"></a>
 
 To deploy your Amazon GameLift resources, complete the following tasks:
 + **Package and upload your custom game server build to the GameLift service**\. You only need to upload to the home Region of your fleet, and it will automatically be distributed to any additional locations that you choose\. For more information, see [Upload a custom server build to GameLift](gamelift-build-cli-uploading.md)\.
@@ -9,7 +9,7 @@ To deploy your Amazon GameLift resources, complete the following tasks:
 + **Enable automatic scaling to manage your fleet's hosting capacity for expected player demand**\. For more information, see [Scaling GameLift hosting capacity](fleets-manage-capacity.md)\. 
 + **\[optional\] Set up a FlexMatch matchmaker with a set of custom matchmaking rules for your game**\. For more information, see [FlexMatch integration roadmap](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-tasks.html) \. 
 
-To reduce any manual errors and to simplify the global deployment of your GameLift resources, we recommend you use [ Infrastructure as Code](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/infrastructure-as-code.html) to define all of the resources\. GameLift hosting supports AWS CloudFormation so you can define your resources with YAML or JSON templates and deploy one or more stacks of those resources across multiple Regions\. You can parameterize the template for any deployment\-specific configurations\. 
+To reduce any manual errors and to simplify the global deployment of your GameLift resources, we recommend you use [ Infrastructure as code](https://docs.aws.amazon.com/whitepapers/latest/introduction-devops-aws/infrastructure-as-code.html) to define all of the resources\. GameLift hosting supports AWS CloudFormation so you can define your resources with YAML or JSON templates and deploy one or more stacks of those resources across multiple Regions\. You can parameterize the template for any deployment\-specific configurations\. 
 
 In addition to Infrastructure as Code, we recommend you use a Continuous Integration / Continuous Delivery \(CI/CD\) tool like AWS CodePipeline or open\-source tools such as Jenkins to manage the deployment of your AWS CloudFormation stacks\. This will help you deploy either automatically or with an approval step whenever your game server binary is built\. 
 

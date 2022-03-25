@@ -1,6 +1,6 @@
-# Realtime Servers Client API \(C\#\) Reference: Data Types<a name="realtime-sdk-csharp-ref-datatypes"></a>
+# Realtime Servers client API \(C\#\) reference: Data types<a name="realtime-sdk-csharp-ref-datatypes"></a>
 
-This C\# Realtime Client API reference can help you prepare your multiplayer game for use with Realtime Servers deployed on Amazon GameLift fleets\. For details on the integration process, see [Get Started with Realtime Servers](realtime-plan.md)\.
+This C\# Realtime Client API reference can help you prepare your multiplayer game for use with Realtime Servers deployed on Amazon GameLift fleets\. For details on the integration process, see [Get started with Realtime Servers](realtime-plan.md)\.
 + [Synchronous Actions](realtime-sdk-csharp-ref-actions.md)
 + [Asynchronous Callbacks](realtime-sdk-csharp-ref-callbacks.md)
 + Data Types

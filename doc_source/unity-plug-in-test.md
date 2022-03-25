@@ -1,16 +1,16 @@
-# Testing Your Game Locally<a name="unity-plug-in-test"></a>
+# Testing your game locally<a name="unity-plug-in-test"></a>
 
 You can test builds of your game server on your local machine\. Once you launch your game server, you can launch your game client and debug GameLift methods and other interactions\.
 
 **Topics**
-+ [Configuring Local Testing](#unity-plug-in-test-cfgtesting)
-+ [Testing Your Game Locally](#unity-plug-in-test-cfgtesting)
++ [Configuring local testing](#unity-plug-in-test-cfgtesting)
++ [Testing your game locally](#unity-plug-in-test-cfgtesting)
 
-## Configuring Local Testing<a name="unity-plug-in-test-cfgtesting"></a>
+## Configuring local testing<a name="unity-plug-in-test-cfgtesting"></a>
 
 Amazon GameLift Local is a client\-side debugging tool that emulates a subset of the GameLift API on your local development machine\. You can use GameLift Local to verify code changes in seconds, without a network connection\.
 
-**To configure GameLift Local**
+**To configure GameLift local**
 
 1. In Unity, in the Plug\-in for Unity tab, select the **Test** tab\.
 
@@ -30,7 +30,7 @@ Amazon GameLift Local is a client\-side debugging tool that emulates a subset of
 
 1. The Plug\-in for Unity can launch your game server\. Select **Open Local Test UI** and then specify the **Game Server \.exe File Path**, and then choose **Deploy and Run**\. You can stop your game server by choosing **Stop** or by closing the game server windows\. 
 
-## Testing Your Game Locally<a name="unity-plug-in-test-cfgtesting"></a>
+## Testing your game locally<a name="unity-plug-in-test-cfgtesting"></a>
 
 The Amazon GameLift Plug\-in for Unity makes it easy to launch your game server for local testing\. You can launch as many game clients as you need to test your game\.
 

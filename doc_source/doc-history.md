@@ -5,7 +5,7 @@ The following table describes important changes to the Amazon GameLift documenta
 
 ****  
 
-| Date | Change | Documentation updates | API Versions Updated | 
+| Date | Change | Documentation updates | API versions updated | 
 | --- | --- | --- | --- | 
 | April 16, 2020 | Updates [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html) |  **Developer Guide: ** [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html)  |  Server SDK 4\.0\.0  | 
 | April 2, 2020 | New Feature [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html) |  **Developer Guide: ** [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html) **Service API Reference \(AWS SDK\):** [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/doc-history.html)  |  AWS SDK: 2020\-04\-02  | 

@@ -1,4 +1,4 @@
-# Post\-launch Phase Checklist<a name="gamelift_quickstart_customservers_launch_postchecklist"></a>
+# Post\-launch phase checklist<a name="gamelift_quickstart_customservers_launch_postchecklist"></a>
 
 Use the following checklists to keep track of launch phase items\. Items marked **\[Critical\]** are critical for your production launch\. 
 +  Tune scaling rules so that you are able to minimize idle capacity and, at the same time, supply all players with games\.

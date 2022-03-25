@@ -1,4 +1,4 @@
-# View Your Queues<a name="queues-console"></a>
+# View your queues<a name="queues-console"></a>
 
 You can view information on all existing game session placement [queues](queues-intro.md)\. Queues shown include only those created in the selected region\. From the **Queues** page, you can create a new queue, delete existing queues, or open a details page for a selected queue\. A **Queue** detail page contains the queue's configuration and metrics data\. You can also edit or delete the queue\.
 
@@ -11,9 +11,9 @@ You can view information on all existing game session placement [queues](queues-
    + **Queue timeout** – Maximum length of time, in seconds, that a game session placement request remains in the queue before timing out\.
    + **Destinations in queue** – Number of fleets listed in the queue configuration\. New game sessions can be placed on any fleet in the queue\.
 
-1. To view details for a queue, including metrics, choose the queue name\. For more information on the queue details page, see [View Queue Details](#queues-console-detail)\.
+1. To view details for a queue, including metrics, choose the queue name\. For more information on the queue details page, see [View queue details](#queues-console-detail)\.
 
-## View Queue Details<a name="queues-console-detail"></a>
+## View queue details<a name="queues-console-detail"></a>
 
 You can access detailed information on any queue, including the queue configuration and metrics\. To open a **Queue** detail page, go to the main **Queues** page and choose a queue name\.
 
@@ -36,13 +36,13 @@ When Amazon GameLift searches the destinations for available resources to host a
 
 To add, edit, or delete destinations, choose **Actions**, **Edit queue**\.
 
-### Player Latency Policies<a name="queues-console-detail-policies"></a>
+### Player latency policies<a name="queues-console-detail-policies"></a>
 
 The **Player latency policies** tab shows all policies that have been defined for the queue\. Policies are listed in the order they are enforced during a game session placement effort\.
 
 To add, edit, or delete player latency policies, choose **Actions**, **Edit queue**\.
 
-### Queue Metrics<a name="queues-console-detail-metrics"></a>
+### Queue metrics<a name="queues-console-detail-metrics"></a>
 
 The **Metrics** tab shows a graphical representation of queue metrics over time\.
 

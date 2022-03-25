@@ -1,35 +1,35 @@
-# Add Amazon GameLift to Your Game Client<a name="gamelift-sdk-client-api"></a>
+# Add Amazon GameLift to your game client<a name="gamelift-sdk-client-api"></a>
 
 Integrate GameLift into game components that need to acquire game session information, create new game sessions, and/or join players to games\. Depending on your game architecture, this functionality is usually placed in client services that handle tasks such as player authentication, matchmaking, or game session placement\.
 
-To integrate GameLift functionality into your game, use the AWS SDK, which includes APIs for GameLift\. The AWS SDK is available in C\+\+, C\#, and several other languages\. For details on the AWS SDK, version information, and language support, see [For client services](gamelift-supported.md#gamelift-supported-clients)\. You can find general information about the GameLift APIs in the *[GameLift Service API Reference](https://docs.aws.amazon.com/gamelift/latest/apireference/)*\. For language\-specific versions, see the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/) or the [AWS SDK for C\+\+ API Reference](https://sdk.amazonaws.com/cpp/api/LATEST/)\.
+To integrate GameLift functionality into your game, use the AWS SDK, which includes APIs for GameLift\. The AWS SDK is available in C\+\+, C\#, and several other languages\. For details on the AWS SDK, version information, and language support, see [For client services](gamelift-supported.md#gamelift-supported-clients)\. You can find general information about the GameLift APIs in the *[GameLift service API reference](https://docs.aws.amazon.com/gamelift/latest/apireference/)*\. For language\-specific versions, see the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/) or the [AWS SDK for C\+\+ API Reference](https://sdk.amazonaws.com/cpp/api/LATEST/)\.
 
 **Note**  
 Interested in adding matchmaking to your game? See the [GameLift FlexMatch Developer Guide](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/) for detailed information on how to set up matchmaking for your GameLift hosted game\.
 
-## Set Up GameLift on a Client or Service<a name="gamelift-sdk-client-api-initialize"></a>
+## Set up GameLift on a client or service<a name="gamelift-sdk-client-api-initialize"></a>
 
 You add code to initialize a GameLift client and store some key settings for use with GameLift\. This code needs to be located so that it runs before any GameLift\-dependent code, such as on launch\. 
 
 **Note**  
-To set up your game client for testing with GameLift Local, see [Testing Your Integration](integration-testing-local.md)\.
+To set up your game client for testing with GameLift Local, see [Testing your integration](integration-testing-local.md)\.
 
 1. Decide whether to use the default client configuration or create custom settings\. For custom settings, you must create a custom client configuration object\. See [http://sdk.amazonaws.com/cpp/api/LATEST/struct_aws_1_1_client_1_1_client_configuration.html](http://sdk.amazonaws.com/cpp/api/LATEST/struct_aws_1_1_client_1_1_client_configuration.html) \(C\+\+\) or [AmazonGameLiftConfig](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/GameLift/TGameLiftConfig.html) \(C\#\)\.
 
-   A client configuration specifies a target region and endpoint\. The region determines which resources \(fleets, queues, matchmakers, etc\.\) GameLift interacts with when responding to requests\. The default client configuration specifies the US East \(N\. Virginia\) region\. To use any other region, create a custom configuration\. See this [list of AWS regions supported by GameLift](https://docs.aws.amazon.com/general/latest/gr/rande.html#gamelift_region) for names and endpoints\. If your client or service needs to make requests for multiple regions, create a separate client configuration object for each target region and each as needed\. See [Using Regions with the AWS SDKs](https://aws.amazon.com/articles/3912) for language\-specific examples\.
+   A client configuration specifies a target region and endpoint\. The region determines which resources \(fleets, queues, matchmakers, etc\.\) GameLift interacts with when responding to requests\. The default client configuration specifies the US East \(N\. Virginia\) region\. To use any other region, create a custom configuration\. See this [list of AWS regions supported by GameLift](https://docs.aws.amazon.com/general/latest/gr/rande.html#gamelift_region) for names and endpoints\. If your client or service needs to make requests for multiple regions, create a separate client configuration object for each target region and each as needed\. See [Using regions with the AWS SDKs](https://aws.amazon.com/articles/3912) for language\-specific examples\.
 
 1. Initialize a GameLift client\. Call [Aws::GameLift::GameLiftClient\(\)](http://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_game_lift_1_1_game_lift_client.html) \(C\+\+\) or [AmazonGameLiftClient\(\)](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/GameLift/TGameLiftClient.html) \(C\#\) with either a default client configuration or a custom configuration\. 
 
-1. Add a mechanism to generate a unique identifier for each player\. GameLift requires a unique player ID to connect to a game session\. For more details, see [Generate Player IDs](player-sessions-player-identifiers.md)\.
+1. Add a mechanism to generate a unique identifier for each player\. GameLift requires a unique player ID to connect to a game session\. For more details, see [Generate player IDs](player-sessions-player-identifiers.md)\.
 
 1. Collect and store the following information to use when contacting GameLift:
    + **Target fleet** – Most GameLift API requests must specify a fleet, such as when getting information on available game sessions or managing game sessions and player sessions\. How you define the optimal target fleet \(for example, setting a static fleet, or choosing a fleets based on a device's physical location\)\. To specify a target fleet, use either a fleet ID or an alias ID that points to the target fleet\. Fleet aliases are highly useful in that you can switch players from one fleet to another without issuing a game client update\. The combination of target fleet and region \(specified in the client configuration\) uniquely identifies the fleet\. 
    + **Target queue** – If your game uses multi\-fleet queues to place new game sessions, you can specify which queue to use\. To specify a target queue, use the queue name\. The queue must be configured in the region 
-   + **AWS credentials** – All calls to the GameLift service must provide credentials for the AWS account that hosts the game\. This is the account you used to set up your GameLift fleets, and you should have created an [IAM user or user group for players](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-iam-policy-intro.html) with a permissions policy\. You need to create an [Aws::Auth::AWSCredentials](http://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_auth_1_1_a_w_s_credentials.html) \(C\+\+\) object containing an IAM access key and secret key for the player user group\. For help finding the keys, see [Managing Access Keys for IAM Users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)\. 
+   + **AWS credentials** – All calls to the GameLift service must provide credentials for the AWS account that hosts the game\. This is the account you used to set up your GameLift fleets, and you should have created an [IAM user or user group for players](https://docs.aws.amazon.com/gamelift/latest/developerguide/gamelift-iam-policy-intro.html) with a permissions policy\. You need to create an [Aws::Auth::AWSCredentials](http://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_auth_1_1_a_w_s_credentials.html) \(C\+\+\) object containing an IAM access key and secret key for the player user group\. For help finding the keys, see [Managing access keys for IAM users](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html)\. 
 
-## Get Game Sessions<a name="gamelift-sdk-client-api-find"></a>
+## Get game sessions<a name="gamelift-sdk-client-api-find"></a>
 
-Add code to discover available game sessions and manage game sessions settings and metadata\. See [Game and Player Session Features](game-sessions-intro.md#game-sessions-intro-features) for more on game session features\.
+Add code to discover available game sessions and manage game sessions settings and metadata\. See [Game and player session features](game-sessions-intro.md#game-sessions-intro-features) for more on game session features\.
 
 **Search for active game sessions\.** 
 
@@ -47,7 +47,7 @@ Use any of the following operations to retrieve or update game session informati
 + [UpdateGameSession\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateGameSession.html) – Change a game session's metadata and settings as needed\.
 + [GetGameSessionLogUrl](https://docs.aws.amazon.com/gamelift/latest/apireference/API_GetGameSessionLogUrl.html) – Access stored game session logs\. 
 
-## Create Game Sessions<a name="gamelift-sdk-client-api-create"></a>
+## Create game sessions<a name="gamelift-sdk-client-api-create"></a>
 
 Add code to start new game sessions on your deployed fleets and make them available to players\. There are two options for creating game sessions, depending on whether you are deploying your game in multiple regions or in a single region\. 
 
@@ -67,19 +67,19 @@ When you use this method to create a game session, specify a fleet ID or alias I
 
 If you use the GameLift resource protection feature to limit the number of game sessions one player can create, you'll need to specify the game session creator's player ID\. 
 
-## Join a Player to a Game Session<a name="gamelift-sdk-client-api-join"></a>
+## Join a player to a game session<a name="gamelift-sdk-client-api-join"></a>
 
 Add code to reserve player slots in active game sessions and connect game clients to game sessions\. 
 
 1. **Reserve a player slot in a game session\.** 
 
-   To reserve a player slot, create a new player session for the game session\. See [How Players Connect to Games](game-sessions-intro.md) for more on player sessions\. You have two ways to create new player sessions:
+   To reserve a player slot, create a new player session for the game session\. See [How players connect to games](game-sessions-intro.md) for more on player sessions\. You have two ways to create new player sessions:
    + If you're using `StartGameSessionPlacement` to create game sessions, as described in the previous section, you can reserve slots for one or more players in the new game session\. 
    + Reserve player slots for one or more players using [CreatePlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreatePlayerSession.html) or [CreatePlayerSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreatePlayerSessions.html) with a game session ID\.
 
    With both methods, GameLift first verifies that the game session is accepting new players and has an available player slot\. If successful, GameLift reserves a slot for the player, creates the new player session, and returns a [PlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_PlayerSession.html) object containing the DNS name, IP address, and port that a game client needs to connect to the game session\.
 
-   A player session request must include a unique ID for each player\. See [Generate Player IDs](player-sessions-player-identifiers.md) for more on player IDs\.
+   A player session request must include a unique ID for each player\. See [Generate player IDs](player-sessions-player-identifiers.md) for more on player IDs\.
 
    Optionally, a player session request can include a set of custom player data\. This data is stored in the newly created player session object, which can be retrieved by calling [DescribePlayerSessions\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribePlayerSessions.html)\. It is also passed from the GameLift service to the game server when the player connects directly to the game session\. Player data is not used by GameLift; it is a simple string of characters that is available to your game components for interpretation\. When requesting multiple player sessions, you can provide a string of player data for each player, mapped to the player ID in the request\.
 
@@ -90,6 +90,6 @@ Add code to reserve player slots in active game sessions and connect game client
    + If your fleets have TLS certificate generation enabled, you must connect using the DNS name and port\. This is required even if you haven't implemented a server authentication process\. 
    + If your game server is set up to validate incoming player connections, you must reference the player session ID\. 
 
-   Once connected, the game client and server process communicate directly without involving the GameLift service\. The server process maintains communication with the GameLift service to report player connection status, health status, etc\. If the game server validates incoming players, it verifies that the player session ID matches a reserved slot in the game session, and either accepts of denies the player cconnection\. When the player disconnects, the server process reports the dropped connection\.
+   Once connected, the game client and server process communicate directly without involving the GameLift service\. The server process maintains communication with the GameLift service to report player connection status, health status, etc\. If the game server validates incoming players, it verifies that the player session ID matches a reserved slot in the game session, and either accepts or denies the player cconnection\. When the player disconnects, the server process reports the dropped connection\.
 
    If you want to enable server authentication and encrypt data packets travelling between game client and the game session, you need to build this functionality\. When the TLS certificate generation feature is enabled for a new fleet, GameLift only gets the TLS certificate and creates DNS entries for each instance in the fleet\.

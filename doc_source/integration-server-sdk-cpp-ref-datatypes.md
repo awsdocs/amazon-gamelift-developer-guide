@@ -1,4 +1,4 @@
-# GameLift Server API reference for C\+\+: Data types<a name="integration-server-sdk-cpp-ref-datatypes"></a>
+# GameLift server API reference for C\+\+: Data types<a name="integration-server-sdk-cpp-ref-datatypes"></a>
 
 This GameLift C\+\+ Server API reference can help you prepare your multiplayer game for use with GameLift\. For details on the integration process, see [Add GameLift to your game server](gamelift-sdk-server-api.md)\.
 
@@ -33,7 +33,7 @@ Type: String
 Required: No
 
 **PlayerId**  
-Unique identifier for a player\. Player IDs are defined by the developer\. See [Generate Player IDs](player-sessions-player-identifiers.md)\.  
+Unique identifier for a player\. Player IDs are defined by the developer\. See [Generate player IDs](player-sessions-player-identifiers.md)\.  
 Type: String  
 Required: No
 
@@ -58,7 +58,7 @@ This data type is used to identify which files generated during a game session t
 ### Contents<a name="integration-server-sdk-cpp-ref-dataypes-log-contents"></a>
 
 **logPaths**  
-Directory paths to game server log files that you want GameLift to store for future access\. These files are generated during each game session\. File paths and names are defined in your game server and stored in the root game build directory\. For example, if your game build stores game session logs in a path like `MyGame\sessionlogs\`, then the log path would be `c:\game\MyGame\sessionLogs` \(on a Windows instance\) or `/local/game/MyGame/sessionLogs` \(on a Linux instance\)\.   
+Directory paths to game server log files that you want GameLift to store for future access\. These files are generated during each game session\. File paths and names are defined in your game server and stored in the root game build directory\. The log paths must be absolute\. For example, if your game build stores game session logs in a path like `MyGame\sessionlogs\`, then the log path would be `c:\game\MyGame\sessionLogs` \(on a Windows instance\) or `/local/game/MyGame/sessionLogs` \(on a Linux instance\)\.   
 Type: std:vector<std::string>  
 Required: No
 
@@ -116,7 +116,7 @@ Required: Yes
 
 **Players**  
 A set of data representing all players who are currently in the game session\. The matchmaker uses this information to search for new players who are good matches for the current players\. See the *Amazon GameLift API Reference Guide* for a description of the Player object format\. To find player attributes, IDs, and team assignments, look in the game session object, in the matchmaker data property\. If latency is used by the matchmaker, gather updated latency for the current region and include it in each player's data\.   
-Type: std:vector[<Player>](https://docs.aws.amazon.com/gamelift/latest/apireference/API_Player.html)  
+Type: std:vector[<player>](https://docs.aws.amazon.com/gamelift/latest/apireference/API_Player.html)  
 Required: Yes
 
 **TicketId**  

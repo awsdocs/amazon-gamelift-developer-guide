@@ -6,7 +6,7 @@ A rule\-based policy makes the following statement: "If a fleet metric meets or 
 
 ## Manage rule\-based policies<a name="fleets-autoscaling-policy-setting-cli"></a>
 
-Create, update, or delete rule\-based policies using the AWS SDK or AWS CLI with the [GameLift Service API](https://docs.aws.amazon.com/gamelift/latest/apireference/)\. You can view all active policies in the GameLift console\. 
+Create, update, or delete rule\-based policies using the AWS SDK or AWS CLI with the [GameLift service API](https://docs.aws.amazon.com/gamelift/latest/apireference/)\. You can view all active policies in the GameLift console\. 
 
 To temporarily disable all scaling policies for a fleet, use the AWS CLI command [stop\-fleet\-actions](https://docs.aws.amazon.com/cli/latest/reference/gamelift/stop-fleet-actions.html)\. 
 

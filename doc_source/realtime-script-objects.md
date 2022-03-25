@@ -1,6 +1,6 @@
-# Realtime Servers Interface<a name="realtime-script-objects"></a>
+# Realtime Servers interface<a name="realtime-script-objects"></a>
 
-When a Realtime script initializes, an interface to the Realtime server is returned\. This topic describes the properties and methods available through the interface\. Learn more about writing Realtime scripts and view a detailed script example in [Creating a Realtime Script](realtime-script.md)\.
+When a Realtime script initializes, an interface to the Realtime server is returned\. This topic describes the properties and methods available through the interface\. Learn more about writing Realtime scripts and view a detailed script example in [Creating a Realtime script](realtime-script.md)\.
 
 The Realtime interface provides access to the following objects:
 + session
@@ -23,7 +23,7 @@ rtSession.getPlayers()
 
 ## broadcastGroupMembershipUpdate\(\)<a name="realtime-script-objects-broadcastgroup"></a>
 
-Triggers delivery of an updated group membership list to player group\. Specify which membership to broadcast \(groupIdToBroadcast\) and the group to receive the update \(targetGroupId\)\. Group IDs must be a positive integer or "\-1" to indicate all groups\. See [Realtime Servers Script Example](realtime-script.md#realtime-script-examples) for an example of user\-defined group IDs\.
+Triggers delivery of an updated group membership list to player group\. Specify which membership to broadcast \(groupIdToBroadcast\) and the group to receive the update \(targetGroupId\)\. Group IDs must be a positive integer or "\-1" to indicate all groups\. See [Realtime Servers script example](realtime-script.md#realtime-script-examples) for an example of user\-defined group IDs\.
 
 ### Syntax<a name="realtime-script-objects-broadcastgroup-syntax"></a>
 
@@ -93,7 +93,7 @@ rtSession.sendMessage(gameMessage, targetPlayer)
 
 ## sendGroupMessage\(\)<a name="realtime-script-objects-sendgroupmessage"></a>
 
-Sends a message, created using `newTextGameMessage` or `newBinaryGameMessage`, from the Realtime server to all players in a player group using the UDP channel\. Group IDs must be a positive integer or "\-1" to indicate all groups\. See [Realtime Servers Script Example](realtime-script.md#realtime-script-examples) for an example of user\-defined group IDs\.
+Sends a message, created using `newTextGameMessage` or `newBinaryGameMessage`, from the Realtime server to all players in a player group using the UDP channel\. Group IDs must be a positive integer or "\-1" to indicate all groups\. See [Realtime Servers script example](realtime-script.md#realtime-script-examples) for an example of user\-defined group IDs\.
 
 ### Syntax<a name="realtime-script-objects-sendgroupmessage-syntax"></a>
 
@@ -113,7 +113,7 @@ rtSession.sendReliableMessage(gameMessage, targetPlayer)
 
 ## sendReliableGroupMessage\(\)<a name="realtime-script-objects-sendreliablegroupmessage"></a>
 
-Sends a message, created using `newTextGameMessage` or `newBinaryGameMessage`, from the Realtime server to all players in a player group using the TCP channel\. Group IDs which must be a positive integer or "\-1" to indicate all groups\. See [Realtime Servers Script Example](realtime-script.md#realtime-script-examples) for an example of user\-defined group IDs\.
+Sends a message, created using `newTextGameMessage` or `newBinaryGameMessage`, from the Realtime server to all players in a player group using the TCP channel\. Group IDs which must be a positive integer or "\-1" to indicate all groups\. See [Realtime Servers script example](realtime-script.md#realtime-script-examples) for an example of user\-defined group IDs\.
 
 ### Syntax<a name="realtime-script-objects-sendreliablegroupmessage-syntax"></a>
 

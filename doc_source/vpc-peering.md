@@ -5,27 +5,27 @@ This topic provides guidance on how to set up a VPC peering connection between y
 **Note**  
 VPC peering is an advanced feature\. To learn about preferred options for enabling your game servers to communicate directly and privately with your other AWS resources, see [Communicate with other AWS resources from your fleets](gamelift-sdk-server-resources.md)\.
 
-If you’re already familiar with Amazon VPCs and VPC peering, understand that setting up peering with GameLift game servers is somewhat different\. You don’t have access to the VPC that contains your game servers—it is controlled by the GameLift service—so you can't directly request VPC peering for it\. Instead, you first pre\-authorize the VPC with your non\-GameLift resources to accept a peering request from the GameLift service\. Then you trigger GameLift to request the VPC peering that you just authorized\. GameLift handles the tasks of creating the peering connection, setting up the route tables, and configuring the connection\.
+If you're already familiar with Amazon VPCs and VPC peering, understand that setting up peering with GameLift game servers is somewhat different\. You don't have access to the VPC that contains your game servers—it is controlled by the GameLift service—so you can't directly request VPC peering for it\. Instead, you first pre\-authorize the VPC with your non\-GameLift resources to accept a peering request from the GameLift service\. Then you trigger GameLift to request the VPC peering that you just authorized\. GameLift handles the tasks of creating the peering connection, setting up the route tables, and configuring the connection\.
 
 ## To set up VPC peering for an existing fleet<a name="vpc-peering-existing"></a>
 
 1. 
 
-**Get AWS Account ID\(s\) and credentials\.**
+**Get AWS account ID\(s\) and credentials\.**
 
    You need an ID and sign\-in credentials for the following AWS accounts\. You can find AWS account IDs by signing into the [AWS Management Console](https://console.aws.amazon.com/) and viewing your account settings\. To get credentials, go to the IAM console\.
    + AWS account that you use to manage your GameLift game servers\.
    + AWS account that you use to manage your non\-GameLift resources\. 
 
-   If you’re using the same account for GameLift and non\-GameLift resources, you need ID and credentials for that account only\.
+   If you're using the same account for GameLift and non\-GameLift resources, you need ID and credentials for that account only\.
 
 1. 
 
 **Get identifiers for each VPC\.**
 
    Get the following information for the two VPCs to be peered: 
-   + VPC for your GameLift game servers – This is your GameLift fleet ID\. Your game servers are deployed in GameLift on a fleet of EC2 instances\. A fleet is automatically placed in its own VPC, which is managed by the GameLift service\. You don’t have direct access to the VPC, so it is identified by the fleet ID\. 
-   + VPC for your non\-GameLift AWS resources – You can establish a VPC peering with any resources that run on AWS and are managed by an AWS account that you have access to\. If you haven’t already created a VPC for these resources, see [Getting Started with Amazon VPC](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html)\. Once you have created a VPC, you can find the VPC ID by signing into the [AWS Management Console](https://console.aws.amazon.com/) for Amazon VPC and viewing your VPCs\.
+   + VPC for your GameLift game servers – This is your GameLift fleet ID\. Your game servers are deployed in GameLift on a fleet of EC2 instances\. A fleet is automatically placed in its own VPC, which is managed by the GameLift service\. You don't have direct access to the VPC, so it is identified by the fleet ID\. 
+   + VPC for your non\-GameLift AWS resources – You can establish a VPC peering with any resources that run on AWS and are managed by an AWS account that you have access to\. If you haven't already created a VPC for these resources, see [Getting started with Amazon VPC](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html)\. Once you have created a VPC, you can find the VPC ID by signing into the [AWS Management Console](https://console.aws.amazon.com/) for Amazon VPC and viewing your VPCs\.
 **Note**  
 When setting up a peering, both VPCs must exist in the same region\. The VPC for your GameLift fleet game servers is in the same region as the fleet\.
 
@@ -39,7 +39,7 @@ When setting up a peering, both VPCs must exist in the same region\. The VPC for
    + Peer VPC ID – This is for the VPC with your non\-GameLift resources\.
    + GameLift AWS account ID – This is the account that you use to manage your GameLift fleet\. 
 
-   Once you’ve authorized a VPC peering, the authorization remains valid for 24 hours unless revoked\. You can manage your VPC peering authorizations using the following operations:
+   Once you've authorized a VPC peering, the authorization remains valid for 24 hours unless revoked\. You can manage your VPC peering authorizations using the following operations:
    + [DescribeVpcPeeringAuthorizations\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeVpcPeeringAuthorizations.html) \(AWS CLI `describe-vpc-peering-authorizations`\)\.
    + [DeleteVpcPeeringAuthorization\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DeleteVpcPeeringAuthorization.html) \(AWS CLI `delete-vpc-peering-authorization`\)\.
 
@@ -71,19 +71,19 @@ You can create a new GameLift fleet and request a VPC peering connection at the 
 
 1. 
 
-**Get AWS Account ID\(s\) and credentials\.**
+**Get AWS account ID\(s\) and credentials\.**
 
    You need an ID and sign\-in credentials for the following two AWS accounts\. You can find AWS account IDs by signing into the [AWS Management Console](https://console.aws.amazon.com/) and viewing your account settings\. To get credentials, go to the IAM console\.
    + AWS account that you use to manage your GameLift game servers\.
    + AWS account that you use to manage your non\-GameLift resources\. 
 
-   If you’re using the same account for GameLift and non\-GameLift resources, you need ID and credentials for that account only\.
+   If you're using the same account for GameLift and non\-GameLift resources, you need ID and credentials for that account only\.
 
 1. 
 
 **Get the VPC ID for your non\-GameLift AWS resources\.**
 
-   If you haven’t already created a VPC for these resources, do so now \(see [Getting Started with Amazon VPC](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html)\)\. Be sure that you create the new VPC in the same region where you plan to create your new fleet\. If your non\-GameLift resources are managed under a different AWS account or user/user group than the one you use with GameLift, you'll need to use these account credentials when requesting authorization in the next step\. 
+   If you haven't already created a VPC for these resources, do so now \(see [Getting started with Amazon VPC](https://docs.aws.amazon.com/vpc/latest/userguide/getting-started-ipv4.html)\)\. Be sure that you create the new VPC in the same region where you plan to create your new fleet\. If your non\-GameLift resources are managed under a different AWS account or user/user group than the one you use with GameLift, you'll need to use these account credentials when requesting authorization in the next step\. 
 
    Once you have created a VPC, you can locate the VPC ID in Amazon VPC console by viewing your VPCs\.
 
@@ -97,7 +97,7 @@ You can create a new GameLift fleet and request a VPC peering connection at the 
    + Peer VPC ID – ID of the VPC with your non\-GameLift resources\.
    + GameLift AWS account ID – ID of the account that you use to manage your GameLift fleet\. 
 
-   Once you’ve authorized a VPC peering, the authorization remains valid for 24 hours unless revoked\. You can manage your VPC peering authorizations using the following operations:
+   Once you've authorized a VPC peering, the authorization remains valid for 24 hours unless revoked\. You can manage your VPC peering authorizations using the following operations:
    + [DescribeVpcPeeringAuthorizations\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeVpcPeeringAuthorizations.html) \(AWS CLI `describe-vpc-peering-authorizations`\)\.
    + [DeleteVpcPeeringAuthorization\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DeleteVpcPeeringAuthorization.html) \(AWS CLI `delete-vpc-peering-authorization`\)\.
 
@@ -148,7 +148,7 @@ If you're having trouble establishing a VPC peering connection for your GameLift
 + An authorization for the requested connection was not found: 
   + Check the status of a VPC authorization for the non\-GameLift VPC\. It might not exist or it might have expired\.
   + Check the regions of the two VPCs you're trying to peer\. If they're not in the same region, they can't be peered\. 
-+ The CIDR blocks \(see [ Invalid VPC Peering Connection Configurations](https://docs.aws.amazon.com/vpc/latest/peering/invalid-peering-configurations.html#overlapping-cidr)\) of your two VPCs are overlapping\. The IPv4 CIDR blocks that are assigned to peered VPCs cannot overlap\. The CIDR block of the VPC for your GameLift fleet is automatically assigned and can’t be changed, so you'll need to change the CIDR block for of the VPC for your non\-GameLift resources\. To resolve this issue: 
++ The CIDR blocks \(see [ Invalid VPC peering connection configurations](https://docs.aws.amazon.com/vpc/latest/peering/invalid-peering-configurations.html#overlapping-cidr)\) of your two VPCs are overlapping\. The IPv4 CIDR blocks that are assigned to peered VPCs cannot overlap\. The CIDR block of the VPC for your GameLift fleet is automatically assigned and can't be changed, so you'll need to change the CIDR block for of the VPC for your non\-GameLift resources\. To resolve this issue: 
   + Look up this CIDR block for your GameLift fleet by calling `DescribeVpcPeeringConnections()`\.
   + Go to the Amazon VPC console, find the VPC for your non\-GameLift resources, and change the CIDR block so that they don't overlap\.
 + The new fleet did not activate \(when requesting VPC peering with a new fleet\)\. If the new fleet failed to progress to **Active** status, there is no VPC to peer with, so the peering connection cannot succeed\.

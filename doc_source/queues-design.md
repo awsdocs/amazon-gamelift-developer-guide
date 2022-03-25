@@ -6,7 +6,7 @@ Queues are required with these GameLift features:
 + Matchmaking with FlexMatch \(see [FlexMatch integration with GameLift hosting](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-tasks.html)\)
 + Spot fleets \(see [Using Spot Instances with GameLift](spot-tasks.md)\)
 
-For more information about queues, see [Running game sessions](gamelift-howitworks.md#gamelift-howitworks-placing)\. For information on creating a queue, see [Create a game session queue](queues-creating.md)\. For information on creating new game sessions with queues, see [Create Game Sessions](gamelift-sdk-client-api.md#gamelift-sdk-client-api-create)\. For help creating queues for Spot fleets, see [Tutorial: Set up a game session queue for Spot Instances](tutorial-queues-spot.md)\.
+For more information about queues, see [Running game sessions](gamelift-howitworks.md#gamelift-howitworks-placing)\. For information on creating a queue, see [Create a game session queue](queues-creating.md)\. For information on creating new game sessions with queues, see [Create game sessions](gamelift-sdk-client-api.md#gamelift-sdk-client-api-create)\. For help creating queues for Spot fleets, see [Tutorial: Set up a game session queue for Spot instances](tutorial-queues-spot.md)\.
 
 ## Design multiple queues as needed<a name="queues-design-players"></a>
 
@@ -19,7 +19,7 @@ Depending on your game and players, you may need to create more than one queue\.
 
 ## Build a multi\-Region queue<a name="queues-design-multiregion"></a>
 
-A multi\-Region design is recommended for all queues\. This design can improve placement speed and hosting resiliency, and is critical when you want to use player latency data to put players into game sessions with optimal gameplay experiences\. If you're building multi\-Region queues that use Spot fleets, see [Tutorial: Set up a game session queue for Spot Instances](tutorial-queues-spot.md)\.
+A multi\-Region design is recommended for all queues\. This design can improve placement speed and hosting resiliency, and is critical when you want to use player latency data to put players into game sessions with optimal gameplay experiences\. If you're building multi\-Region queues that use Spot fleets, see [Tutorial: Set up a game session queue for Spot instances](tutorial-queues-spot.md)\.
 
 One option is to add a [multi\-location fleet](gamelift-regions.md#gamelift-regions-hosting) to a queue\. The queue is able to place game sessions in any of the fleet's locations\. You don't need to add more fleets to increase Regional coverage, although you might want to add other fleets with different configurations or home Regions for redundancy\. If you're using multi\-location Spot fleet, follow best practices and include an On\-Demand fleet that includes the same locations\.
 
@@ -88,7 +88,7 @@ In this example, the first policy is in force for the first 2 minutes, the secon
 
 ## Evaluate queue metrics<a name="queues-design-metrics"></a>
 
-Use metrics to evaluate how well your queues are performing\. You can view queue\-specific metrics in the GameLift console \([View Queue Details](queues-console.md#queues-console-detail)\) or in Amazon CloudWatch\. For descriptions of queue metrics, see [GameLift metrics for queues](monitoring-cloudwatch.md#gamelift-metrics-queue)\. 
+Use metrics to evaluate how well your queues are performing\. You can view queue\-specific metrics in the GameLift console \([View queue details](queues-console.md#queues-console-detail)\) or in Amazon CloudWatch\. For descriptions of queue metrics, see [GameLift metrics for queues](monitoring-cloudwatch.md#gamelift-metrics-queue)\. 
 
 Queue metrics can provide insight in three main areas:
 + **Overall queue performance** – Metrics indicate how successfully a queue is responding to placement requests and help to identify when and why placements are failing\. For queues with manually scaled fleets, metrics average wait times and queue depth can indicate when capacity for a queue might need to be adjusted\.

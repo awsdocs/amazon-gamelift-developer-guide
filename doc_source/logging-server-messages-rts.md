@@ -64,7 +64,7 @@ You can output custom messages in the [script for your Realtime Servers](realtim
    logger.cxfatal("This is my customer experience fatal error message...");
    ```
 
-For an example of the logging statements in a script, see [Realtime Servers Script Example](realtime-script.md#realtime-script-examples)\.
+For an example of the logging statements in a script, see [Realtime Servers script example](realtime-script.md#realtime-script-examples)\.
 
 The output in the log files indicates the type of message \(`DEBUG`, `INFO`, `WARN`, `ERROR`, `FATAL`, `CXFATAL`\), as shown in the following lines from an example log:
 
@@ -100,11 +100,11 @@ This list is ordered from least severe \(`debug`\) to most severe \(`cxfatal`\)\
 You can set the logging level for your fleet when you create it or after it is running\. Changing your fleet's logging level after it is running will only affect logs for game sessions created after the update\. Logs for any exisitng game sessions won't be affected\. If you don't set a logging level when you create your fleet, your servers will set the logging level to `info` by default\. Refer to the following sections for instructions to set the logging level\.
 
 **Setting the logging level when creating a Realtime Servers fleet \(Console\)**  
-Follow the instructions at [Create a Realtime Fleet \(Console\)](realtime-fleets-creating.md#realtime-fleets-creating-console) to create your fleet, with the following addition:
+Follow the instructions at [Create a realtime fleet \(console\)](realtime-fleets-creating.md#realtime-fleets-creating-console) to create your fleet, with the following addition:
 + In the **Server process allocation** substep of the **Process management** step, provide the logging level key\-value pair \(such as `loggingLevel:error`\) as a value for **Launch parameters**\. Use a non\-alphanumeric character \(except comma\) to separate the logging level from any additional parameters \(for example, `loggingLevel:error +map Winter444`\)\.
 
 **Setting the logging level when creating a Realtime Servers fleet \(AWS CLI\)**  
-Follow the instructions at [Create a Realtime Fleet \(AWS CLI\)](realtime-fleets-creating.md#realtime-fleets-creating-aws-cli) to create your fleet, with the following addition:
+Follow the instructions at [Create a realtime fleet \(AWS CLI\)](realtime-fleets-creating.md#realtime-fleets-creating-aws-cli) to create your fleet, with the following addition:
 + In the argument to the `--runtime-configuration` parameter for `[create\-fleet](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet.html)`, provide the logging level key\-value pair \(such as `loggingLevel:error`\) as a value for `Parameters`\. Use a non\-alphanumeric character \(except comma\) to separate the logging level from any additional parameters\. See the following example:
 
 ```

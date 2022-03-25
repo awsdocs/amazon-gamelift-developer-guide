@@ -1,11 +1,11 @@
-# Realtime Servers Client API \(C\#\) Reference: Asynchronous Callbacks<a name="realtime-sdk-csharp-ref-callbacks"></a>
+# Realtime Servers client API \(C\#\) reference: Asynchronous callbacks<a name="realtime-sdk-csharp-ref-callbacks"></a>
 
-Use this C\# Realtime Client API reference to help you prepare your multiplayer game for use with Realtime Servers deployed on Amazon GameLift fleets\. For details on the integration process, see [Get Started with Realtime Servers](realtime-plan.md)\.
+Use this C\# Realtime Client API reference to help you prepare your multiplayer game for use with Realtime Servers deployed on Amazon GameLift fleets\. For details on the integration process, see [Get started with Realtime Servers](realtime-plan.md)\.
 + [Synchronous Actions](realtime-sdk-csharp-ref-actions.md)
 + Asynchronous Callbacks
 + [Data Types](realtime-sdk-csharp-ref-datatypes.md)
 
-A game client needs to implement these callback methods to respond to events\. The Realtime server invokes these callbacks to send game\-related information to the game client\. Callbacks for the same events can also be implemented with custom game logic in the Realtime server script\. See [Script Callbacks for Realtime Servers](realtime-script-callbacks.md)\.
+A game client needs to implement these callback methods to respond to events\. The Realtime server invokes these callbacks to send game\-related information to the game client\. Callbacks for the same events can also be implemented with custom game logic in the Realtime server script\. See [Script callbacks for Realtime Servers](realtime-script-callbacks.md)\.
 
 Callback methods are defined in `ClientEvents.cs`\.
 

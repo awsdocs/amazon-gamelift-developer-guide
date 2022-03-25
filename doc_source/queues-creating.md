@@ -2,7 +2,7 @@
 
 Queues are used to place new game sessions with the best available hosting resources across multiple fleets and regions\. To learn more about building queues for your game, see [Design a game session queue](queues-design.md)\.
 
-In a game client, new game sessions are started with queues by using placement requests\. Learn more about game session placement in [Create Game Sessions](gamelift-sdk-client-api.md#gamelift-sdk-client-api-create)\.
+In a game client, new game sessions are started with queues by using placement requests\. Learn more about game session placement in [Create game sessions](gamelift-sdk-client-api.md#gamelift-sdk-client-api-create)\.
 
 When updating the queue destination in a queue, there is a short transition period \(up to 30 seconds\) during which game sessions placed on the queue destinations may still end up on the old fleet\. 
 
@@ -51,12 +51,12 @@ Game session queues that are created using the Console have the following charac
 You can use the AWS Command Line Interface \(AWS CLI\) to create a queue\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
 
 **To create a queue**
-+ Open a command line window and use the `create-game-session-queue` command to define a new queue\. For more information, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-game-session-queue.html)\.
++ Open a command line window and use the `create-game-session-queue` command to define a new queue\. For more information, see the [AWS CLI command reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-game-session-queue.html)\.
 
 The following example creates a game session queue that has two fleet destinations and allows up to five minutes for the placement process\. Fleets are listed as destinations and identified by either a fleet ARN or alias ARN\. All fleets and aliases must already exist\. The queue is configured with a filter configuration, a custom priority configuration, and a notification target for tracking placement events\. The priority configuration looks at hosting cost first, followed location, applied by the defined order\.
 
 **Note**  
-You can get fleet and alias ARN values by calling either [describe\-fleet\-attributes](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-attributes.html) or [describe\-alias](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-alias.html) with the fleet or alias ID\. For more information on ARN \(Amazon Resource Name\) formats, see [ARNs and AWS Service Namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)\.
+You can get fleet and alias ARN values by calling either [describe\-fleet\-attributes](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-fleet-attributes.html) or [describe\-alias](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-alias.html) with the fleet or alias ID\. For more information on ARN \(Amazon Resource Name\) formats, see [ARNs and AWS service namespaces](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html)\.
 
 ```
 $ AWS gamelift create-game-session-queue 
@@ -78,7 +78,7 @@ AWS gamelift create-game-session-queue --name "Sample test queue" --timeout-in-s
 If the `create-game-session-queue` request is successful, GameLift returns a [GameSessionQueue](https://docs.aws.amazon.com/gamelift/latest/apireference/API_GameSessionQueue.html) object with the new queue configuration\. You can now submit requests to the queue using [StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html)\. 
 
 **To create a queue with player latency policies**
-+ Open a command line window and use the `create-game-session-queue` command to define a new queue\. For more information, see the [AWS CLI Command Reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-game-session-queue.html)\.
++ Open a command line window and use the `create-game-session-queue` command to define a new queue\. For more information, see the [AWS CLI command reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-game-session-queue.html)\.
 
 The following example creates a queue with a 10\-minute timeout, three destinations, and a set of player latency policies\. In this example, the first player latency policy is in force for the first two minutes, the second policy is in force for the third and fourth minute, and the third policy is in force for six minutes until the placement request times out\. 
 

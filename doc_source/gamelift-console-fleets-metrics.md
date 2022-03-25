@@ -9,7 +9,7 @@ On this page you can also take the following actions:
 + Set or change target\-tracking auto\-scaling\. On the **Scaling** page, enable the target\-tracking policy and set a buffer size\.
 + Shut down a fleet\. Choose **Actions: Terminate fleet**\.
 
-## Fleet Summary<a name="fleets-summary"></a>
+## Fleet summary<a name="fleets-summary"></a>
 
 The summary table includes the following information:
 + **Status** – Current status of the fleet, which may be **New**, **Downloading**, **Building**, and **Active**\. A fleet must be active before it can host game sessions or accept player connections\.
@@ -37,7 +37,7 @@ The **Metrics** tab displays a graphical representation of fleet metrics over ti
    + **Instance Counts** – These metrics track changes in capacity and utilization at the instance level over time \(also shown on the Scaling tab\)\.
    + **Game** – These metrics show fleet activity and utilization at the game session level over time\.
    + **Server processes** – These metrics track the status and health of server processes across the fleet\. The GameLift service regularly polls each active server process for its health\.
-   + **Instance performance** – These metrics reflect performance of the fleet's computing resources\. See detailed descriptions of each metric at [EC2 Instance Metrics](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html)\.
+   + **Instance performance** – These metrics reflect performance of the fleet's computing resources\. See detailed descriptions of each metric at [EC2 instance metrics](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/viewing_metrics_with_cloudwatch.html)\.
 
 1. Use the following filters, shown above the graph area, to change how metric data is displayed:
    + **Location** – View aggregate metrics for an entire fleet, or view metrics for an individual fleet location\.
@@ -85,7 +85,7 @@ This section covers information about auto\-scaling policies that are applied to
 
 ## Game sessions<a name="fleets-game-sessions-tab"></a>
 
-The **Game sessions** tab lists past and present game sessions hosted on the fleet, including some detail information\. Click a game session ID to access additional game session information, including player sessions\. See [View Data on Game and Player Sessions](gamelift-console-game-player-sessions-metrics.md) for more details\.
+The **Game sessions** tab lists past and present game sessions hosted on the fleet, including some detail information\. Click a game session ID to access additional game session information, including player sessions\. See [View data on game and player sessions](gamelift-console-game-player-sessions-metrics.md) for more details\.
 
 ## Capacity allocation<a name="fleets-launch-tab"></a>
 

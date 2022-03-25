@@ -1,4 +1,4 @@
-# Create Game Sessions with Queues<a name="gamelift-sdk-client-queues"></a>
+# Create game sessions with queues<a name="gamelift-sdk-client-queues"></a>
 
 This set of features lets you place new game sessions more efficiently across Amazon GameLift resources, and better supports matchmaking services\. Previously, new game session requests were limited to a single fleet \([StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html)\), and the request failed if the fleet was at full capacity or otherwise compromised\. 
 

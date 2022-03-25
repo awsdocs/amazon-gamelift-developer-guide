@@ -1,4 +1,4 @@
-# Data Protection in GameLift<a name="data-protection"></a>
+# Data protection in GameLift<a name="data-protection"></a>
 
 If you're using GameLift FleetIQ as a standalone feature with Amazon EC2, also refer to [Security in Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
@@ -22,7 +22,7 @@ GameLift\-specific data is handled as follows:
 **Note**  
 If you provide custom player IDs in your requests, it is expected that these values are anonymized UUIDs and contain no identifying player information\.
 
-For more information about data protection, see the [AWS Shared Responsibility Model and GDPR](http://aws.amazon.com/blogs/security/the-aws-shared-responsibility-model-and-gdpr/) blog post on the *AWS Security Blog*\.
+For more information about data protection, see the [AWS shared responsibility model and GDPR](http://aws.amazon.com/blogs/security/the-aws-shared-responsibility-model-and-gdpr/) blog post on the *AWS Security Blog*\.
 
 ## Encryption at rest<a name="encryption-at-rest"></a>
 
@@ -30,7 +30,7 @@ At\-rest encryption of GameLift\-specific data is handled as follows:
 + Game server builds and scripts are stored in Amazon S3 buckets with server\-side encryption\.
 + Customer\-supplied data is stored in GameLift in an encrypted format\.
 
-## Encryption in Transit<a name="encryption-in-transit"></a>
+## Encryption in transit<a name="encryption-in-transit"></a>
 
 Connections to the GameLift APIs are made over a secure \(SSL\) connection and authenticated using [AWS Signature Version 4](https://docs.aws.amazon.com/general/latest/gr/signature-version-4.html) \(when connecting through the AWS CLI or AWS SDK, signing is handled automatically\)\. Authentication is managed using the IAM\-defined access policies for the security credentials that are used to make the connection\.
 

@@ -1,8 +1,8 @@
-# View Your Aliases<a name="gamelift-console-aliases"></a>
+# View your aliases<a name="gamelift-console-aliases"></a>
 
 You can view information on all of the fleet aliases you have created and take actions on them on the Aliases page\. Aliases shown include only those created for the selected region\.
 
-## Alias Catalog<a name="gamelift-console-aliases-catalog"></a>
+## Alias catalog<a name="gamelift-console-aliases-catalog"></a>
 
 All created aliases are shown on the Aliases catalog page\. To view the Aliases page, choose **Aliases** from the Amazon GameLift console's menu bar\. 
 
@@ -11,7 +11,7 @@ The Aliases page provides summary information on all builds, including type\. Fr
 + Filter and sort the aliases list\. Use the controls at the top of the table\.
 + View alias details\. Click an alias name to open the alias detail page\.
 
-## Alias Detail<a name="gamelift-console-aliases-detail"></a>
+## Alias detail<a name="gamelift-console-aliases-detail"></a>
 
 Access an alias's detail page from either the console dashboard or the Aliases catalog page by clicking the alias name\. The Alias detail page displays a summary of information on the alias\. 
 

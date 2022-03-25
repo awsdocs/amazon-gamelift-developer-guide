@@ -1,4 +1,4 @@
-# Hosting Components Overview<a name="gamelift_quickstart_customservers_overview"></a>
+# Hosting components overview<a name="gamelift_quickstart_customservers_overview"></a>
 
 This section provides a high\-level overview of the different components in a custom server\. It also provides an example game session placement flow\. 
 

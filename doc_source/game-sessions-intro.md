@@ -1,10 +1,10 @@
-# How Players Connect to Games<a name="game-sessions-intro"></a>
+# How players connect to games<a name="game-sessions-intro"></a>
 
 A *game session* is an instance of your game running on Amazon GameLift\. To play your game, players can either find and join an existing game session or create a new game session and join it\. Players join by creating a *player session* for the game session\. If the game session is open for players—that is, it is accepting new players and has an open player slot—Amazon GameLift reserves a slot for the player and provides connection information back to the player\. The player can then connect to the game session and claim the reserved slot\.
 
-For detailed information on creating and managing games sessions and player sessions, see [Add Amazon GameLift to Your Game Client](gamelift-sdk-client-api.md)\. 
+For detailed information on creating and managing games sessions and player sessions, see [Add Amazon GameLift to your game client](gamelift-sdk-client-api.md)\. 
 
-## Game and Player Session Features<a name="game-sessions-intro-features"></a>
+## Game and player session features<a name="game-sessions-intro-features"></a>
 
 Amazon GameLift provides several features related to game and player sessions:
 
@@ -34,4 +34,4 @@ Use session search and sort to find the best match for a prospective player or a
 
 Have Amazon GameLift automatically store logs for completed game sessions\. Set up log storage when integrating Amazon GameLift into your game servers\. You can access stored logs by downloading them through the Amazon GameLift console or programmatically with the AWS SDK for Amazon GameLift\.
 
-Use the Amazon GameLift console to view detailed information on game sessions, including session metadata and settings as well as player session data\. For each game session, you can view a list of player sessions along with total times played\. You can also view metrics data and graphs that track the number of active game sessions and player sessions over time\. See more information at [View Data on Game and Player Sessions](gamelift-console-game-player-sessions-metrics.md) and [Metrics](gamelift-console-fleets-metrics.md#fleets-metrics-tab)\.
+Use the Amazon GameLift console to view detailed information on game sessions, including session metadata and settings as well as player session data\. For each game session, you can view a list of player sessions along with total times played\. You can also view metrics data and graphs that track the number of active game sessions and player sessions over time\. See more information at [View data on game and player sessions](gamelift-console-game-player-sessions-metrics.md) and [Metrics](gamelift-console-fleets-metrics.md#fleets-metrics-tab)\.

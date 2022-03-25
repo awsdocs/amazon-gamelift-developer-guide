@@ -14,7 +14,7 @@ You can update mutable fleet attributes, port settings and runtime configuration
 It is possible for an active fleet to be deployed with a build that is currently in **Deleted** or **Error** status\. This does not affect the fleet's status or ability to host game sessions\. 
 
 ------
-#### [ GameLift Console ]
+#### [ GameLift console ]
 
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 
@@ -49,7 +49,7 @@ Use the following AWS CLI commands to update a fleet:
 You can add or remove a fleet's remote locations using the GameLift console or the AWS CLI\. A fleet's home Region, which is where the fleet was created and resides, cannot be changes\.
 
 ------
-#### [ GameLift Console ]
+#### [ GameLift console ]
 
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 
@@ -86,7 +86,7 @@ If the fleet being deleted has a VPC peering connection, you first need to reque
 You can use either the Amazon GameLift console or the AWS CLI tool to delete a fleet\. 
 
 ------
-#### [ GameLift Console ]
+#### [ GameLift console ]
 
 1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 

@@ -1,4 +1,4 @@
-# Generate Player IDs<a name="player-sessions-player-identifiers"></a>
+# Generate player IDs<a name="player-sessions-player-identifiers"></a>
 
 The managed GameLift service uses a player session to represent a player connected to a game session\. A player session must be created each time a player connects to a game session\. When a player leaves a game, the player session ends and is not reused\.
 
@@ -12,4 +12,4 @@ bool includeDashes = true;
 string playerId = AZ::Uuid::CreateRandom().ToString<string>(includeBrackets, includeDashes);
 ```
 
-You can view player sessions by Player ID in the [AWS Management Console](https://console.aws.amazon.com/gamelift) for GameLift\. For more information on player sessions, see [View Data on Game and Player Sessions](gamelift-console-game-player-sessions-metrics.md)\. 
+You can view player sessions by Player ID in the [AWS Management Console](https://console.aws.amazon.com/gamelift) for GameLift\. For more information on player sessions, see [View data on game and player sessions](gamelift-console-game-player-sessions-metrics.md)\. 

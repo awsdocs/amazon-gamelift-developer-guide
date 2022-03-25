@@ -1,6 +1,6 @@
 # GameLift and game client/server interactions<a name="gamelift-sdk-interactions"></a>
 
-This topic describes the interactions between a client app service, a game server, and the GameLift service\. See also the [Amazon GameLift–Game Server/Client Interactions](gamelift-sdk-server-api-interaction-vsd.md) diagram\. 
+This topic describes the interactions between a client app service, a game server, and the GameLift service\. See also the [Amazon GameLift–Game Server/Client interactions](gamelift-sdk-server-api-interaction-vsd.md) diagram\. 
 
 ## Setting up a new server process<a name="gamelift-sdk-interactions-launch"></a>
 

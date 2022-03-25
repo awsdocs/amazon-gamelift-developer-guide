@@ -1,14 +1,14 @@
 # GameLift SDKs<a name="gamelift-supported"></a>
 
-This topic describes the SDKs for use with managed GameLift solutions for custom game server builds and Realtime Servers\. To learn more about other GameLift solutions, see [What Is Amazon GameLift?](gamelift-intro.md)\. 
+This topic describes the SDKs for use with managed GameLift solutions for custom game server builds and Realtime Servers\. To learn more about other GameLift solutions, see [What is Amazon GameLift?](gamelift-intro.md)\. 
 
 Use GameLift software development kits \(SDKs\) to develop GameLift\-enabled multiplayer game servers, game clients and game services that need to communicate with the GameLift service\. 
 
-For detailed information on using the GameLift SDKs with your game engine, see [Game Engines and Amazon GameLift](integration-engines.md)\. For the latest version information on GameLift SDKs and SDK compatibility, see [GameLift release notes](release-notes.md)\.
+For detailed information on using the GameLift SDKs with your game engine, see [Game engines and Amazon GameLift](integration-engines.md)\. For the latest version information on GameLift SDKs and SDK compatibility, see [GameLift release notes](release-notes.md)\.
 
 ## For custom game servers<a name="gamelift-supported-servers"></a>
 
-Create and deploy 64\-bit custom game servers with the *GameLift Server SDK*\. This SDK enables the GameLift service to deploy and manage game server processes across your GameLift hosting resources\. [Download the Server SDK](https://aws.amazon.com/gamelift/getting-started/) and learn about how to [Add GameLift to your game server](gamelift-sdk-server-api.md) projects\. See [GameLift release notes](release-notes.md) for version\-specific information\.
+Create and deploy 64\-bit custom game servers with the *GameLift Server SDK*\. This SDK enables the GameLift service to deploy and manage game server processes across your GameLift hosting resources\. [Download the server SDK](https://aws.amazon.com/gamelift/getting-started/) and learn about how to [Add GameLift to your game server](gamelift-sdk-server-api.md) projects\. See [GameLift release notes](release-notes.md) for version\-specific information\.
 
 **SDK support**
 
@@ -32,7 +32,7 @@ Use the GameLift Server SDK to create game servers that run on the following pla
 
 ## For Realtime Servers<a name="gamelift-supported-realtime"></a>
 
-Configure and deploy Realtime servers to host your multiplayer games, and enable your game clients to connect to them with the *GameLift Realtime Client SDK*\. Game clients use this SDK to exchange messages with a Realtime server and with other game clients that are connected to the server\. [Download the Realtime Client SDK](https://aws.amazon.com/gamelift/getting-started/) and learn about [how to use it with your game clients](realtime-client.md)\. 
+Configure and deploy Realtime servers to host your multiplayer games, and enable your game clients to connect to them with the *GameLift Realtime Client SDK*\. Game clients use this SDK to exchange messages with a Realtime server and with other game clients that are connected to the server\. [Download the Realtime client SDK](https://aws.amazon.com/gamelift/getting-started/) and learn about [how to use it with your game clients](realtime-client.md)\. 
 
 **SDK support**
 

@@ -1,8 +1,8 @@
-# Script Callbacks for Realtime Servers<a name="realtime-script-callbacks"></a>
+# Script callbacks for Realtime Servers<a name="realtime-script-callbacks"></a>
 
 You can provide custom logic to respond to events by implementing these callbacks in your Realtime script\.
 
-## init<a name="realtime-script-callback-init"></a>
+## Init<a name="realtime-script-callback-init"></a>
 
 Initializes the Realtime server and receives a Realtime server interface\. 
 

@@ -1,6 +1,6 @@
-# How Realtime Servers Work<a name="realtime-howitworks"></a>
+# How Realtime Servers work<a name="realtime-howitworks"></a>
 
-This topic provides an overview of the managed Amazon GameLift with Realtime Servers solution\. It discusses when it is a good fit for your game, and explains how Realtime Servers supports multiplayer gaming\. To learn more about other GameLift solutions, see [What Is Amazon GameLift?](gamelift-intro.md)\. 
+This topic provides an overview of the managed Amazon GameLift with Realtime Servers solution\. It discusses when it is a good fit for your game, and explains how Realtime Servers supports multiplayer gaming\. To learn more about other GameLift solutions, see [What is Amazon GameLift?](gamelift-intro.md)\. 
 
 ## What are Realtime Servers?<a name="realtime-howitworks-whatis"></a>
 
@@ -10,29 +10,29 @@ Key features include:
 + **Full network stack for game client/server interaction\.** Realtime Servers makes use of TCP and UDP channels for messaging\. You can also opt to use built\-in server authentication and data packet encryption by enabling GameLift\-generated TLS certificates\.
 + **Core game server functionality\.** A Realtime server starts \(and stops\) game sessions, manages game and match data, and accepts client connections\. The game server maintains a synchronized game session state by receiving game state information from each client and relaying it to other clients in the game session\.
 + **Integrated with the GameLift service\.** A Realtime server is set up to communicate with the GameLift service, which triggers the Realtime server to start game sessions, validate players when they connect, and collects player connection status and game health state from the game server\. In contrast, this functionality must be implemented in a custom game server\. 
-+ **Customizable server logic\.** You can configure your Realtime servers and customize them with server\-side game logic as best fits your game\. Alternatively, provide a minimal configuration and to use them as simple relay servers\. Learn more about [Customizing a Realtime Server](#realtime-howitworks-scripts)\.
++ **Customizable server logic\.** You can configure your Realtime servers and customize them with server\-side game logic as best fits your game\. Alternatively, provide a minimal configuration and to use them as simple relay servers\. Learn more about [Customizing a Realtime server](#realtime-howitworks-scripts)\.
 + **Live updates to Realtime configurations and server logic\.** Update your Realtime server configuration at any time\. GameLift regularly checks for updated configuration scripts, so once you upload a new version, it is quickly deployed to your fleet and used with all new game sessions\. 
 + **FlexMatch matchmaking\.** Game clients that use Realtime Servers can make use of all FlexMatch matchmaking features, including for large matches\. 
 + **Flexible control of hosting resources\.** For games that are deployed with Realtime Servers, you can use all GameLift management features, including auto\-scaling, multi\-region queues, game session placement with FleetIQ, game session logging, and metrics\. You determine how your hosting resources are utilized\. 
 + **Range of computing resource options\.** Realtime servers run on Linux\. You choose the type of computing hardware for your fleet and whether to use Spot or On\-Demand instances\. 
 + **AWS reliability\.** As with all of GameLift, hosting resources with Realtime Servers bring the high level of quality, security, and reliability of AWS\.
 
-Set up Realtime servers by creating a fleet of hosting resources and providing a configuration script\. Learn more about creating Realtime servers and how to prepare your game client in [Get Started with Realtime Servers](realtime-plan.md)\.
+Set up Realtime servers by creating a fleet of hosting resources and providing a configuration script\. Learn more about creating Realtime servers and how to prepare your game client in [Get started with Realtime Servers](realtime-plan.md)\.
 
-## Choosing Realtime Servers for Your Game<a name="realtime-howitworks-gametype"></a>
+## Choosing Realtime Servers for your game<a name="realtime-howitworks-gametype"></a>
 
 Choosing Realtime Servers instead of building a custom game server primarily comes down to your game's need for server complexity\. Unless your game needs complicated server\-side game logic, split\-second computations for gameplay physics, or other custom capabilities, Realtime Servers may be the better solution for your game\. Games that use Realtime Servers to best effect include lighter weight games or games that manage a higher percentage of the computational work on the game client\. Examples include messaging games, turn\-based strategy games, and many types of mobile games\. Realtime Servers, coupled with the use of FleetIQ, provides effective tools to minimize player latency suitable for nearly all game types\.
 
-## Key Components<a name="realtime-howitworks-components"></a>
+## Key components<a name="realtime-howitworks-components"></a>
 
-When working with Realtime Servers, you work with the following components\. Learn more about these components and how they work together in [Game Architecture with Realtime Servers](realtime-architecture.md)\.
+When working with Realtime Servers, you work with the following components\. Learn more about these components and how they work together in [Game architecture with Realtime Servers](realtime-architecture.md)\.
 + A **Realtime server** provides client/server networking for your game\. It starts game sessions when triggered by the GameLift service, requests validation for players when they connect, and reports back on the status player connections and game health\. The server relays game state data between all connected players, and executes custom game logic if provided\. 
 + A **game client** is your game's software running on a player's device\. The game client \(through a client service\) makes requests to the GameLift service to find game sessions to join or to start new ones, and connects to a Realtime server to participate in a game\. Once connected, a game client can send and receive data, through the Realtime server, with other players in the game\.
 + A **Realtime script** provides configuration settings and optional custom game logic for your game\. The script may contain minimal configuration settings or have more complex game logic\. The Realtime script is deployed along with the Realtime server when starting up new hosting resources\. Scripts are written in Node\.js\-based JavaScript\. 
 + The **GameLift service** manages the computing resources needed to host your Realtime servers and makes it possible for players to connect to games\. It regulates the number of resources for player demand, handles player join requests by finding and reserving player slots in active game sessions, triggers Realtime servers to start game sessions, and validates players when they connect to a game server\. The service also collects metrics on Realtime server health and player usage\. 
 + A **game session** is an instance of your game, run on a Realtime server\. Players connect to a game session to play the game and interact with the other players\. 
 
-## How Realtime Servers Manages Game Sessions<a name="realtime-howitworks-servers"></a>
+## How Realtime Servers manages game sessions<a name="realtime-howitworks-servers"></a>
 
 GameLift manages game sessions with Realtime Servers in the same way that it handles game sessions with fully custom game servers\. Players, using a game client, send requests to create new game sessions or to find and join existing game sessions\. Most methods for creating game sessions, including game session placement and FlexMatch matchmaking, are available with Realtime Servers \(match backfill is not yet available\)\.
 
@@ -40,7 +40,7 @@ A Realtime server, once it is deployed on a fleet of hosting instances, maintain
 
 You have the option of adding custom logic for game session management by building it into the Realtime script\. You might write code to access server\-specific objects, add event\-driven logic using callbacks, or add logic based on non\-event scenarios, such as a timer or status check\. For example, you might want to or access game session objects, or trigger an action when a game session starts or ends\.
 
-## How Realtime Clients and Servers Interact<a name="realtime-howitworks-interactions"></a>
+## How Realtime clients and servers interact<a name="realtime-howitworks-interactions"></a>
 
 During a game session, the interaction between game clients in the game is done by messaging\. Game clients use messages to exchange activity, game state, and relevant game data\. Game clients send messages to the Realtime server, which then relays the messages among the game clients\. Game clients communicate with the server using the Realtime Client SDK, which must be integrated into your game client\. The Client SDK defines a set of synchronous API calls that allow clients to connect to games, send and receive messages, and disconnect from games\. It also defines a set of asynchronous callbacks, which can be implemented on the game client to enable the client to respond to certain events\. 
 
@@ -60,7 +60,7 @@ You can opt to create Realtime Servers fleets with TLS certificate generation tu
 
 With Realtime Servers, server authentication and data packet encryption is already built into the service, and is enabled when you turn on TLS certificate generation\. When the game client tries to connect with a Realtime server, the server automatically responds with the TLS certificate, which the client validates\. Encryption is handled using TLS for TCP \(Websockets\) communication and DTLS for UDP traffic\.
 
-## Customizing a Realtime Server<a name="realtime-howitworks-scripts"></a>
+## Customizing a Realtime server<a name="realtime-howitworks-scripts"></a>
 
 In its most basic form, a Realtime server performs as a stateless relay server\. The Realtime server relays packets of messages and game data between the game clients that are connected to the game, but does not evaluate messages, process data, or perform any gameplay logic\. Used in this way, each game client maintains its own view of the game state and provides updates to other players via the relay server\. Each game client is responsible for incorporating these updates and reconciling its own game state\. 
 
@@ -73,9 +73,9 @@ A set of server\-side callbacks are defined for Realtime scripts\. Implement the
 + Take action, such as notifying all players, when a player leaves a group or disconnects from the server\.
 + Evaluate the content of game session objects or message objects and use the data\.
 
-## Deploying and Updating Realtime Servers<a name="realtime-howitworks-deployment"></a>
+## Deploying and updating Realtime Servers<a name="realtime-howitworks-deployment"></a>
 
-Realtime Servers is powered by GameLift’s dedicated server resources\. There is no difference in stability and security provided\. As with all servers, latency can be minimized by using GameLift’s matchmaking and queues with Fleet IQ, which optimizes game session placement based on player locations\.
+Realtime Servers is powered by GameLift's dedicated server resources\. There is no difference in stability and security provided\. As with all servers, latency can be minimized by using GameLift's matchmaking and queues with Fleet IQ, which optimizes game session placement based on player locations\.
 
 When deploying Realtime Servers games with GameLift, the process is nearly identical to deploying traditional game servers on GameLift\. You create fleets of computing resources and deploy them with your Realtime script, which contains configuration details and optional custom logic\. Using GameLift, you choose the type of fleets to use, manage fleet capacity, and control how game server processes are started and run on your fleets\. The detailed description of game hosting in [How GameLift works](gamelift-howitworks.md) represents game hosting with Realtime Servers as well as with custom game servers\.
 

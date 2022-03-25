@@ -1,4 +1,4 @@
-# Standalone Game Session Servers with WebSockets\-based Backend<a name="gamelift_quickstart_customservers_designbackend_arch_websockets"></a>
+# Standalone game session servers with WebSockets\-based backend<a name="gamelift_quickstart_customservers_designbackend_arch_websockets"></a>
 
 The serveless architecture can be modified to use API Gateway WebSockets with GameLift\. Using this architecture, you can make matchmaking requests with WebSockets, and push notifications of matchmaking completion \(or failure\) using server\-initiated messages over WebSockets\. This architecture improves performance by having a two\-way communication between the client and the server\. The matchmaking result is received immediately after success\. WebSockets increases complexity because the WebSocket connections from clients need to be managed with a set of AWS Lambda functions \(`OnConnect` and `OnDisconnect`\)\. A database like Amazon DynamoDB is needed to store the connections\. 
 

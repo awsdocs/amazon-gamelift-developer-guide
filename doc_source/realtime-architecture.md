@@ -1,4 +1,4 @@
-# Game Architecture with Realtime Servers<a name="realtime-architecture"></a>
+# Game architecture with Realtime Servers<a name="realtime-architecture"></a>
 
 The diagram shown below illustrates the key components of a game architecture that is hosted using the managed GameLift with Realtime Servers solution\.
 

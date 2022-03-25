@@ -1,4 +1,4 @@
-# Standalone Game Session Servers with a Serverless Backend<a name="gamelift_quickstart_customservers_designbackend_arch_serverless"></a>
+# Standalone game session servers with a serverless backend<a name="gamelift_quickstart_customservers_designbackend_arch_serverless"></a>
 
 You can use a serverless backend with your standalone game session servers in GameLift\.
 

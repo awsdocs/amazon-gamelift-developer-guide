@@ -102,7 +102,7 @@ Create and manage VPC peering connections between your GameLift hosting resource
 
 ## Start game sessions and join players<a name="reference-awssdk-sessions"></a>
 
-Call these operations from your game client service to start new game sessions, get information on existing game sessions, and join players to game sessions\. These operations are for use with custom game servers that are hosted on GameLift\. If you're using Realtime Servers, manage game sessions using the [Realtime Servers Client API \(C\#\) Reference](realtime-sdk-csharp-ref.md)\.
+Call these operations from your game client service to start new game sessions, get information on existing game sessions, and join players to game sessions\. These operations are for use with custom game servers that are hosted on GameLift\. If you're using Realtime Servers, manage game sessions using the [Realtime Servers client API \(C\#\) reference](realtime-sdk-csharp-ref.md)\.
 + **Start new game sessions for one or more players\.** 
   + [StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html) – Ask GameLift to find the best available hosting resources and start a new game session\. This is the preferred method for creating new game sessions\. It relies on game session queues to track hosting availability across multiple regions, and uses FleetIQ algorithms to prioritize placements based on player latency, hosting cost, location, etc\. 
   + [DescribeGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionPlacement.html) – Get details and status on a placement request\.
