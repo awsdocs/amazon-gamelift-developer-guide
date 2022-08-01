@@ -22,7 +22,7 @@ The following tasks must be completed to enable your game server or other applic
 
    A service role can only be specified during fleet creation\. Once the fleet is created, you cannot add or change the role ARN\. Only one ARN can be provided to a fleet\.
 
-   For help with providing a service role ARN to a fleet, see [Deploy a GameLift fleet with a custom game build](fleets-creating.md)\.
+   For help with providing a service role ARN to a fleet, see [Deploy a fleet](fleets-creating.md)\.
 
 1. **Add code to your application to assume the service role\.** Any application that is running on a GameLift instance can assume an IAM role, if one is associated with the fleet\. This includes game servers and other executables, such as install scripts and daemons\. An application can access resources during fleet creation and build installation, when starting or stopping service process and game sessions, or in response to game events\. 
 

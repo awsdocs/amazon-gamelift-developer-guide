@@ -1,22 +1,22 @@
 # Add Amazon GameLift to your game client<a name="gamelift-sdk-client-api"></a>
 
-Integrate GameLift into game components that need to acquire game session information, create new game sessions, and/or join players to games\. Depending on your game architecture, this functionality is usually placed in client services that handle tasks such as player authentication, matchmaking, or game session placement\.
+Integrate Amazon GameLift into game components that need game session information, create new game sessions, and add players to games\. Depending on your game architecture, this functionality is in backend services that handle tasks such as player authentication, matchmaking, or game session placement\.
 
 To integrate GameLift functionality into your game, use the AWS SDK, which includes APIs for GameLift\. The AWS SDK is available in C\+\+, C\#, and several other languages\. For details on the AWS SDK, version information, and language support, see [For client services](gamelift-supported.md#gamelift-supported-clients)\. You can find general information about the GameLift APIs in the *[GameLift service API reference](https://docs.aws.amazon.com/gamelift/latest/apireference/)*\. For language\-specific versions, see the [AWS SDK for \.NET API Reference](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/) or the [AWS SDK for C\+\+ API Reference](https://sdk.amazonaws.com/cpp/api/LATEST/)\.
 
 **Note**  
 Interested in adding matchmaking to your game? See the [GameLift FlexMatch Developer Guide](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/) for detailed information on how to set up matchmaking for your GameLift hosted game\.
 
-## Set up GameLift on a client or service<a name="gamelift-sdk-client-api-initialize"></a>
+## Set up GameLift on a game client or backend service<a name="gamelift-sdk-client-api-initialize"></a>
 
-You add code to initialize a GameLift client and store some key settings for use with GameLift\. This code needs to be located so that it runs before any GameLift\-dependent code, such as on launch\. 
+You add code to initialize a game client and store key settings for use with GameLift\. This code needs to run before any code dependent on GameLift, such as on launch\. 
 
 **Note**  
 To set up your game client for testing with GameLift Local, see [Testing your integration](integration-testing-local.md)\.
 
-1. Decide whether to use the default client configuration or create custom settings\. For custom settings, you must create a custom client configuration object\. See [http://sdk.amazonaws.com/cpp/api/LATEST/struct_aws_1_1_client_1_1_client_configuration.html](http://sdk.amazonaws.com/cpp/api/LATEST/struct_aws_1_1_client_1_1_client_configuration.html) \(C\+\+\) or [AmazonGameLiftConfig](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/GameLift/TGameLiftConfig.html) \(C\#\)\.
+1. Decide whether to use the default client configuration or create custom settings\. For custom settings, you create a custom client configuration object\. See [http://sdk.amazonaws.com/cpp/api/LATEST/struct_aws_1_1_client_1_1_client_configuration.html](http://sdk.amazonaws.com/cpp/api/LATEST/struct_aws_1_1_client_1_1_client_configuration.html) \(C\+\+\) or [AmazonGameLiftConfig](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/GameLift/TGameLiftConfig.html) \(C\#\)\.
 
-   A client configuration specifies a target region and endpoint\. The region determines which resources \(fleets, queues, matchmakers, etc\.\) GameLift interacts with when responding to requests\. The default client configuration specifies the US East \(N\. Virginia\) region\. To use any other region, create a custom configuration\. See this [list of AWS regions supported by GameLift](https://docs.aws.amazon.com/general/latest/gr/rande.html#gamelift_region) for names and endpoints\. If your client or service needs to make requests for multiple regions, create a separate client configuration object for each target region and each as needed\. See [Using regions with the AWS SDKs](https://aws.amazon.com/articles/3912) for language\-specific examples\.
+   A client configuration specifies a target location and endpoint\. The location determines which resources \(fleets, queues, matchmakers, etc\.\) GameLift interacts with when responding to requests\. The default client configuration specifies the US East \(N\. Virginia\) Region\. To use any other location, create a custom configuration\. See this [list of AWS Regions supported by GameLift](https://docs.aws.amazon.com/general/latest/gr/rande.html#gamelift_region) for names and endpoints\. If your game client or backend service needs to make requests for multiple locations, create a separate client configuration object for each target location\. See [Using Regions with the AWS SDKs](https://aws.amazon.com/articles/3912) for language\-specific examples\.
 
 1. Initialize a GameLift client\. Call [Aws::GameLift::GameLiftClient\(\)](http://sdk.amazonaws.com/cpp/api/LATEST/class_aws_1_1_game_lift_1_1_game_lift_client.html) \(C\+\+\) or [AmazonGameLiftClient\(\)](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/GameLift/TGameLiftClient.html) \(C\#\) with either a default client configuration or a custom configuration\. 
 
@@ -51,9 +51,9 @@ Use any of the following operations to retrieve or update game session informati
 
 Add code to start new game sessions on your deployed fleets and make them available to players\. There are two options for creating game sessions, depending on whether you are deploying your game in multiple regions or in a single region\. 
 
-**Create a game session using a multi\-region queue\.** 
+**Create a game session in a multi\-location queue\.** 
 
-Use [StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html) to place a request for a new game session in a queue\. To use this feature, you'll need to set up a queue, which determines where \(on which fleets\) the new game session can be placed\. A queue processes a game session placement request by trying each possible fleet, in turn, until it finds one with available resources to host the new game session\. For more detailed information on queues and how to use them, see  [Design a game session queue](queues-design.md)\.
+Use [StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html) to place a request for a new game session in a queue\. To use this feature, create a queue, which determines where GameLift places the new game session\. A queue processes a game session placement request by trying each possible fleet until it finds one with available resources to host the new game session\. For more detailed information on queues and how to use them, see [Setting up GameLift queues for game session placement](queues-intro.md)\.
 
 When creating a game session placement, specify the name of the queue to use, a game session name, a maximum number of concurrent players for the game, and an optional set of game properties\. You can optionally provide a list of players to automatically join to the game session\. If you include player latency data for relevant regions, GameLift uses this information to place the new game session on a fleet that provides the best possible gameplay experience for players\. 
 

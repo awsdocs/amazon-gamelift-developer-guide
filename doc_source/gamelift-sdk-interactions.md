@@ -1,6 +1,6 @@
-# GameLift and game client/server interactions<a name="gamelift-sdk-interactions"></a>
+# GameLift and game client server interactions<a name="gamelift-sdk-interactions"></a>
 
-This topic describes the interactions between a client app service, a game server, and the GameLift service\. See also the [Amazon GameLift–Game Server/Client interactions](gamelift-sdk-server-api-interaction-vsd.md) diagram\. 
+This topic describes the interactions between a backend service, a game server, and the GameLift service\. See also the [Amazon GameLift–Game Server/Client interactions](gamelift-sdk-server-api-interaction-vsd.md) diagram\. 
 
 ## Setting up a new server process<a name="gamelift-sdk-interactions-launch"></a>
 
@@ -18,13 +18,13 @@ This topic describes the interactions between a client app service, a game serve
 
 ## Creating a game session<a name="gamelift-sdk-interactions-start"></a>
 
-1. The **Client app** calls the client API action `StartGameSessionPlacement()`\.
+1. The **backend service** calls the client API action `StartGameSessionPlacement()`\.
 
-1. The **GameLift service** creates a new `GameSessionPlacement` ticket with status PENDING and returns it to the requesting client app\.
+1. The **GameLift service** creates a new `GameSessionPlacement` ticket with status PENDING and returns it to the requesting backend service\.
 
-1. The **Client app** obtains placement ticket status from a queue\. For more information, see [Set up event notification for game session placement](queue-notification.md)\. 
+1. The **backend service** obtains placement ticket status from a queue\. For more information, see [Set up event notification for game session placement](queue-notification.md)\. 
 
-1. The **GameLift service** intitates game session placement, selecting an appropriate fleet and searching for an active server process in the fleet with 0 game sessions\. When a server process is located, GameLift does the following: 
+1. The **GameLift service** starts game session placement, selecting an appropriate fleet and searching for an active server process in the fleet with 0 game sessions\. When a server process is located, GameLift does the following: 
    + Creates a `GameSession` object with the game session settings and player data from the placement request and status ACTIVATING\.
    + Invokes the `onStartGameSession` callback on the server process\. It passes the `GameSession` object with information that the server process may need to set up the game session\.
    + Changes the server process's number of game sessions to 1\.
@@ -35,19 +35,19 @@ This topic describes the interactions between a client app service, a game serve
    + Updates the `GameSession` object with connection information for the server process \(including the port setting that was reported with `ProcessReady()`\) and changes the status to ACTIVE\.
    + Updates the `GameSessionPlacement` ticket with the connection information and sets the ticket status to FULFILLED\.
 
-1. The **Client app** detects the updated ticket status and is able to use the connection information to connect to the server process and join the game session\.
+1. The **backend service** detects the updated ticket status and is able to use the connection information to connect the game client to the server process and join the game session\.
 
 ## Adding a player to a game session<a name="gamelift-sdk-interactions-add-player"></a>
 
 This sequence describes the process of adding a player to an existing game session\. Player sessions can also be requested as part of a game session placement request\.
 
-1. The **Client app** calls the client API action `CreatePlayerSession()` with a game session ID\.
+1. The **backend service** calls the client API action `CreatePlayerSession()` with a game session ID\.
 
 1. The **GameLift service** checks the game session status \(must be ACTIVE\), and looks for an open player slot in the game session\. If a slot is available, it does the following:
    + Creates a new `PlayerSession` object and sets its status to RESERVED\.
-   + Responds to the client app request with the `PlayerSession` object\.
+   + Responds to the backend service request with the `PlayerSession` object\.
 
-1. The **Client app** connects directly to the server process with the player session ID\.
+1. The **backend service** connects the game client directly to the server process with the player session ID\.
 
 1. The **server process** calls the Server API action `AcceptPlayerSession()` to validate the player session ID\. If validated, the GameLift service passes the `PlayerSession` object to the server process\. The server process either accepts or rejects the connection\.
 
@@ -57,7 +57,7 @@ This sequence describes the process of adding a player to an existing game sessi
 
 ## Removing a player from a game session<a name="gamelift-sdk-interactions-remove-player"></a>
 
-1. The **Client app** disconnects from the server process\.
+1. The **backend service** disconnects the game client from the server process\.
 
 1. The **server process** detects the lost connection and calls the server API action `RemovePlayerSession()`\.
 

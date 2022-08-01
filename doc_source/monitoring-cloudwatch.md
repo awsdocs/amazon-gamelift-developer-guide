@@ -17,8 +17,8 @@ GameLift supports filtering metrics by the following dimensions\.
 |  `FleetId`  |  Filter metrics for a single fleet\. This dimension can be used with all fleet metrics for instances, server processes, game sessions, and player sessions\.   | 
 |  `MetricGroup`  |  Filter metrics for a collection of fleets\. Add a fleet to a metric group by adding the metric group name to the fleet's attributes \(see [UpdateFleetAttributes\(\)](https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateFleetAttributes.html)\)\. This dimension can be used with all fleet metrics for instances, server processes, game sessions, and player sessions\.  | 
 |  `QueueName`  |  Filter metrics for a single queue\. This dimension is used with metrics for game session queues only\.   | 
-|  `MatchmakingConfigurationName`  |  Filter metrics for a single matchmaking configuration\. This dimension is used with metrics for matchmaking configurations\.   | 
-|  `MatchmakingConfigurationName-RuleName`  |  Filter metrics for an intersect of a matchmaking configuration and matchmaking rule\. This dimension is used with metrics for matchmaking rules only\.   | 
+|  `ConfigurationName`  |  Filter metrics for a single matchmaking configuration\. This dimension is used with metrics for matchmaking configurations\.   | 
+|  `ConfigurationName-RuleName`  |  Filter metrics for an intersect of a matchmaking configuration and matchmaking rule\. This dimension is used with metrics for matchmaking rules only\.   | 
 |  `InstanceType`  |  Filter metrics for an EC2 instance type designation, such as "c4\.large"\. This dimension is used with metrics for spot instances\.   | 
 |  `OperatingSystem`  |  Filter metrics for an instance's operating system This dimension is used with metrics for spot instances\.   | 
 | `GameServerGroup` | Filter FleetIQ metrics for a game server group\. | 

@@ -21,7 +21,7 @@ GenericOutcome AcceptPlayerSession(String playerSessionId)
 **playerSessionId**  
 Unique ID issued by GameLift when a new player session is created\. A player session ID is specified in a `PlayerSession` object, which is returned in response to a client call to the *GameLift API* actions [ StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html), [ CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html), [ DescribeGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionPlacement.html), or [ DescribePlayerSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribePlayerSessions.html)\.  
 Type: String  
-Required: No
+Required: Yes
 
 ### Return value<a name="integration-server-sdk-csharp-ref-acceptplayersession-return"></a>
 
@@ -142,7 +142,7 @@ var getGameSessionIdOutcome = GameLiftServerAPI.GetGameSessionId();
 
 ## GetInstanceCertificate\(\)<a name="integration-server-sdk-csharp-ref-getinstancecertificate"></a>
 
-Retrieves the file location of a pem\-encoded TLS certificate that is associated with the fleet and its instances\. This certificate is generated when a new fleet is created with the certificate configuration set to GENERATED\. Use this certificate to establish a secure connection with a game client and to encrypt client/server communication\. 
+Retrieves the file location of a pem\-encoded TLS certificate that is associated with the fleet and its instances\. AWS Certificate Manager generates this certificate when you create a new fleet with the certificate configuration set to GENERATED\. Use this certificate to establish a secure connection with a game client and to encrypt client/server communication\. 
 
 ### Syntax<a name="integration-server-sdk-csharp-ref-getinstancecertificate-syntax"></a>
 
@@ -156,7 +156,9 @@ This action has no parameters\.
 
 ### Return value<a name="integration-server-sdk-csharp-ref-getinstancecertificate-return"></a>
 
-If successful, returns a `GetInstanceCertificateOutcome` object containing the location of the fleet's TLS certificate file, which is stored on the instance\. If not successful, returns an error message\.
+If successful, returns a `GetInstanceCertificateOutcome` object containing the location of the fleet's TLS certificate file and certificate chain, which are stored on the instance\. A root certificate file, extracted from the certificate chain, is also stored on the instance\. If not successful, returns an error message\. 
+
+For more information about the certificate and certificate chain data, see [GetCertificate Response Elements](https://docs.aws.amazon.com/acm/latest/APIReference/API_GetCertificate.html#API_GetCertificate_ResponseElements) in the AWS Certificate Manager API Reference\.
 
 ### Example<a name="integration-server-sdk-csharp-ref-getinstancecertificate-example"></a>
 
@@ -350,7 +352,7 @@ GenericOutcome RemovePlayerSession(String playerSessionId)
 **playerSessionId**  
 Unique ID issued by GameLift when a new player session is created\. A player session ID is specified in a `PlayerSession` object, which is returned in response to a client call to the *GameLift API* actions [ StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html), [ CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html), [ DescribeGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionPlacement.html), or [ DescribePlayerSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribePlayerSessions.html)\.  
 Type: String  
-Required: No
+Required: Yes
 
 ### Return value<a name="integration-server-sdk-csharp-ref-removeplayersession-return"></a>
 

@@ -145,7 +145,7 @@ Once your game server has been integrated with GameLift, you must upload the bui
                 "s3:GetObject",
                 "s3:GetObjectVersion"
             ],
-            "Resource": arn:aws:s3:::bucket-name/object-name"
+            "Resource": "arn:aws:s3:::bucket-name/object-name"
         }
     ]
 }

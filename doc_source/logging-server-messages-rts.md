@@ -100,11 +100,11 @@ This list is ordered from least severe \(`debug`\) to most severe \(`cxfatal`\)\
 You can set the logging level for your fleet when you create it or after it is running\. Changing your fleet's logging level after it is running will only affect logs for game sessions created after the update\. Logs for any exisitng game sessions won't be affected\. If you don't set a logging level when you create your fleet, your servers will set the logging level to `info` by default\. Refer to the following sections for instructions to set the logging level\.
 
 **Setting the logging level when creating a Realtime Servers fleet \(Console\)**  
-Follow the instructions at [Create a realtime fleet \(console\)](realtime-fleets-creating.md#realtime-fleets-creating-console) to create your fleet, with the following addition:
+Follow the instructions at [Deploy a fleet](fleets-creating.md) to create your fleet, with the following addition:
 + In the **Server process allocation** substep of the **Process management** step, provide the logging level key\-value pair \(such as `loggingLevel:error`\) as a value for **Launch parameters**\. Use a non\-alphanumeric character \(except comma\) to separate the logging level from any additional parameters \(for example, `loggingLevel:error +map Winter444`\)\.
 
 **Setting the logging level when creating a Realtime Servers fleet \(AWS CLI\)**  
-Follow the instructions at [Create a realtime fleet \(AWS CLI\)](realtime-fleets-creating.md#realtime-fleets-creating-aws-cli) to create your fleet, with the following addition:
+Follow the instructions at [Deploy a fleet](fleets-creating.md) to create your fleet, with the following addition:
 + In the argument to the `--runtime-configuration` parameter for `[create\-fleet](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet.html)`, provide the logging level key\-value pair \(such as `loggingLevel:error`\) as a value for `Parameters`\. Use a non\-alphanumeric character \(except comma\) to separate the logging level from any additional parameters\. See the following example:
 
 ```
@@ -116,11 +116,11 @@ Follow the instructions at [Create a realtime fleet \(AWS CLI\)](realtime-fleets
 ```
 
 **Setting the logging level for a running Realtime Servers fleet \(Console\)**  
-Follow the instructions at [To update a fleet configuration](fleets-editing.md#fleets-update) to update your fleet using the GameLift Console, with the following addition:
+Follow the instructions at [Update a fleet configuration](fleets-editing.md#fleets-update) to update your fleet using the GameLift Console, with the following addition:
 + On the **Edit fleet** page, under **Server process allocation**, provide the logging level key\-value pair \(such as `loggingLevel:error`\) as a value for **Launch parameters**\. Use a non\-alphanumeric character \(except comma\) to separate the logging level from any additional parameters \(for example, `loggingLevel:error +map Winter444`\)\.
 
 **Setting the logging level for a running Realtime Servers fleet \(AWS CLI\)**  
-Follow the instructions at [To update a fleet configuration](fleets-editing.md#fleets-update) to update your fleet using the AWS CLI, with the following addition:
+Follow the instructions at [Update a fleet configuration](fleets-editing.md#fleets-update) to update your fleet using the AWS CLI, with the following addition:
 + In the argument to the `--runtime-configuration` parameter for `[update\-runtime\-configuration](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-runtime-configuration.html)`, provide the logging level key\-value pair \(such as `loggingLevel:error`\) as a value for `Parameters`\. Use a non\-alphanumeric character \(except comma\) to separate the logging level from any additional parameters\. See the following example:
 
 ```

@@ -1,6 +1,6 @@
 # Game session placement events<a name="queue-events"></a>
 
-GameLift emits events for each game session placement request as it is processed\. You can publish these events to an Amazon SNS topic, as described in [Set up event notification for game session placement](queue-notification.md)\. These events are also emitted to Amazon CloudWatch Events in near real time and on a best\-effort basis\.
+Amazon GameLift emits events for each game session placement request as it is processed\. You can publish these events to an Amazon SNS topic, as described in [Set up event notification for game session placement](queue-notification.md)\. These events are also emitted to Amazon CloudWatch Events in near real time and on a best\-effort basis\.
 
 This topic describes the structure of game session placement events and provides an example for each event type\. For more information on the status of game session placement requests, see [GameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_GameSessionPlacement.html) in the *Amazon GameLift API Reference*\.
 

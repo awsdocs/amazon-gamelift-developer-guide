@@ -21,7 +21,7 @@ You can access remote instances that are running either Windows or Linux\. To co
 
  Use the AWS CLI get the information you need to access a remote instance\. For help, see the [AWS CLI command reference](https://docs.aws.amazon.com/cli/latest/reference/gamelift/)\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/) You can also use the AWS SDK, with documentation available in the [GameLift service API reference](https://docs.aws.amazon.com/gamelift/latest/apireference/)\.
 
-1. Open 
+1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
 
 1. **Find the ID of the instance you want to connect to\.** When requesting access, you must specify an instance ID\. Use the AWS CLI command [describe\-instances](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-instances.html) \(or the API call [DescribeInstances](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeInstances.html)\) with a fleet ID to get information on all instances in the fleet\. For help, including example requests and responses, see the CLI or API reference guides\. 
 

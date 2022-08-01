@@ -11,12 +11,11 @@ The following policy example covers access to all GameLift\-related resources \(
 
 ```
 {
-"Version": "2012-10-17",
-"Statement":
-  { 
-    "Effect": "Allow", 
-    "Action": "gamelift:*", 
-    "Resource": "*" 
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
+    "Action": "gamelift:*",
+    "Resource": "*"
   }
 }
 ```
@@ -26,15 +25,14 @@ If you choose to use a [multi\-location fleet](gamelift-regions.md#gamelift-regi
 
 ```
 {
-"Version": "2012-10-17",
-"Statement":
-  { 
-    "Effect": "Allow", 
+  "Version": "2012-10-17",
+  "Statement": {
+    "Effect": "Allow",
     "Action": [
       "ec2:DescribeRegions",
       "gamelift:*"
-    ], 
-    "Resource": "*" 
+    ],
+    "Resource": "*"
   }
 }
 ```
@@ -44,21 +42,24 @@ This policy example provides access to GameLift\-related resources as above\. It
 
 ```
 {
-"Version": "2012-10-17",
-"Statement":[
-  {
-    "Effect": "Allow", 
-    "Action": "gamelift:*", 
-    "Resource": "*" 
-  },
-  {
-    "Effect": "Allow",
-    "Action": "iam:PassRole",
-    "Resource": "*",
-    "Condition": {
-        "StringEquals": {"iam:PassedToService": "gamelift.amazonaws.com"}
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "gamelift:*",
+      "Resource": "*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "iam:PassRole",
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "iam:PassedToService": "gamelift.amazonaws.com"
+        }
       }
-  }]
+    }
+  ]
 }
 ```
 
@@ -71,19 +72,19 @@ This policy example is for a game client service that uses game session queues a
 
 ```
 {
-"Version": "2012-10-17",
-"Statement":
-  { 
-    "SID": "PlayerPermissionsForGameSessionPlacements",
-    "Effect": "Allow", 
-    "Action": [ 
-          "gamelift:StartGameSessionPlacement", 
-          "gamelift:DescribeGameSessionPlacement", 
-          "gamelift:StopGameSessionPlacement", 
-          "gamelift:CreatePlayerSession", 
-          "gamelift:CreatePlayerSessions", 
-          "gamelift:DescribeGameSessions" ], 
-    "Resource": "*" 
+  "Version": "2012-10-17",
+  "Statement": {
+    "Sid": "PlayerPermissionsForGameSessionPlacements",
+    "Effect": "Allow",
+    "Action": [
+      "gamelift:StartGameSessionPlacement",
+      "gamelift:DescribeGameSessionPlacement",
+      "gamelift:StopGameSessionPlacement",
+      "gamelift:CreatePlayerSession",
+      "gamelift:CreatePlayerSessions",
+      "gamelift:DescribeGameSessions"
+    ],
+    "Resource": "*"
   }
 }
 ```
@@ -93,19 +94,19 @@ This policy example is for a game client or client service that uses GameLift Fl
 
 ```
 {
-"Version": "2012-10-17",
-"Statement":
-  { 
-    "SID": "PlayerPermissionsForGameSessionMatchmaking",
-    "Effect": "Allow", 
-    "Action": [ 
-          "gamelift:StartMatchmaking", 
-          "gamelift:DescribeMatchmaking", 
-          "gamelift:StopMatchmaking", 
-          "gamelift:AcceptMatch", 
-          "gamelift:StartMatchBackfill", 
-          "gamelift:DescribeGameSessions" ], 
-    "Resource": "*" 
+  "Version": "2012-10-17",
+  "Statement": {
+    "Sid": "PlayerPermissionsForGameSessionMatchmaking",
+    "Effect": "Allow",
+    "Action": [
+      "gamelift:StartMatchmaking",
+      "gamelift:DescribeMatchmaking",
+      "gamelift:StopMatchmaking",
+      "gamelift:AcceptMatch",
+      "gamelift:StartMatchBackfill",
+      "gamelift:DescribeGameSessions"
+    ],
+    "Resource": "*"
   }
 }
 ```
@@ -115,19 +116,19 @@ This policy example is for a game client or client service that creates new game
 
 ```
 {
-"Version": "2012-10-17",
-"Statement":
-  { 
-    "SID": "PlayerPermissionsForManualGameSessions",
-    "Effect": "Allow", 
-    "Action": [ 
-          "gamelift:CreateGameSession", 
-          "gamelift:DescribeGameSessions", 
-          "gamelift:SearchGameSessions", 
-          "gamelift:CreatePlayerSession", 
-          "gamelift:CreatePlayerSessions", 
-          "gamelift:DescribePlayerSessions" ], 
-    "Resource": "*" 
+  "Version": "2012-10-17",
+  "Statement": {
+    "Sid": "PlayerPermissionsForManualGameSessions",
+    "Effect": "Allow",
+    "Action": [
+      "gamelift:CreateGameSession",
+      "gamelift:DescribeGameSessions",
+      "gamelift:SearchGameSessions",
+      "gamelift:CreatePlayerSession",
+      "gamelift:CreatePlayerSessions",
+      "gamelift:DescribePlayerSessions"
+    ],
+    "Resource": "*"
   }
 }
 ```

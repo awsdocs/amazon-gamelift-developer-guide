@@ -8,7 +8,7 @@ Are you using FlexMatch for matchmaking? You can add Spot fleets to your existin
 
 1. **Design a game session queue with a "Spot\-optimized" configuration\.** Managing game session placement with a queue is always a best practice, and it's required when using Spot Instances\. For this step, you need to identify which Regions/locations the queue will place game sessions into, and select the right combination of instance types \(hardware\) for your game servers\. This information tells you the types of fleets you'll need to set up\. For help designing a queue that optimizes Spot availability and resiliency, see [Best practices for queues with Spot fleets](queues-best-practices.md#queues-design-spot)\.
 
-1. **Create the fleets for your Spot\-optimized queue\.** Based on your queue design, create fleets to deploy your game servers to your desired locations and instance types\. Spot fleets and On\-Demand fleets can have identical configurations other than the fleet type designation\. See [Deploy a GameLift fleet with a custom game build](fleets-creating.md) for help creating and configuring new fleets\.
+1. **Create the fleets for your Spot\-optimized queue\.** Based on your queue design, create fleets to deploy your game servers to your desired locations and instance types\. Spot fleets and On\-Demand fleets can have identical configurations other than the fleet type designation\. See [Deploy a fleet](fleets-creating.md) for help creating and configuring new fleets\.
 **Note**  
 We recommend that you include the fleet type \(Spot or On\-Demand\) in the fleet name\. This will make it easy to identify Spot or On\-Demand fleets in a long list of fleet names, such as when adding fleets to a queue\. 
 

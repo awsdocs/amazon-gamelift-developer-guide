@@ -1,10 +1,10 @@
 # Design a game session queue<a name="queues-design"></a>
 
-A GameLift game session queue is a key component in your game management layer\. A queue is responsible for processing new game session requests, locating a game server to host a new game session, and prompting the game server to start the game session\. The way you design your queue determines \(1\) where GameLift can search for available game servers, and \(2\) how GameLift prioritizes available game servers to find an optimal placement for the request\. The goal of this topic is to help you design a queue that delivers the best possible experience to your players and efficiently uses the hosting resources you provision and pay for\. 
+A GameLift game session queue is a key component in your game management layer\. For more information about queues and how they work, see [Setting up GameLift queues for game session placement](queues-intro.md)\. Your queue design determines where GameLift searches for available game servers and how GameLift prioritizes available game servers to find an optimal placement for the request\. The goal of this topic is to help you design a queue that delivers the best possible experience to your players and efficiently uses the hosting resources you provision and pay for\. 
 
 Queues are required with these GameLift features:
-+ Matchmaking with FlexMatch \(see [FlexMatch integration with GameLift hosting](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-tasks.html)\)
-+ Spot fleets \(see [Using Spot Instances with GameLift](spot-tasks.md)\)
++ [Matchmaking with FlexMatch](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-tasks.html)
++ [Using Spot Instances with GameLift](spot-tasks.md)
 
 For more information about queues, see [Running game sessions](gamelift-howitworks.md#gamelift-howitworks-placing)\. For information on creating a queue, see [Create a game session queue](queues-creating.md)\. For information on creating new game sessions with queues, see [Create game sessions](gamelift-sdk-client-api.md#gamelift-sdk-client-api-create)\. For help creating queues for Spot fleets, see [Tutorial: Set up a game session queue for Spot instances](tutorial-queues-spot.md)\.
 

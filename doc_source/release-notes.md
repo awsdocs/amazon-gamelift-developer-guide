@@ -1,22 +1,16 @@
 # GameLift release notes<a name="release-notes"></a>
 
-The GameLift release notes provide details about new features, updates, and fixes related to the service\. These may also involve changes to the following components:
-+ AWS SDK GameLift API and CLI commands
-+ GameLift Server SDK for use with managed GameLift and custom game servers
-+ GameLift Client SDK for use with Realtime Servers
-+ GameLift Console
+The GameLift release notes provide details about new features, updates, and fixes related to the service\.
 
 ## SDK versions<a name="release-notes-history"></a>
 
 The following tabs list all GameLift releases with SDK versions\. There is no requirement to use comparable SDKs for your game server and client integrations\. However, earlier versions of one SDK may not fully support the latest features in another\. For more information about GameLift SDKs, see [GameLift SDKs](gamelift-supported.md)\.
 
 **Note**  
-If you're currently uploading a game server build or creating a build resource with the AWS SDK using Signature Version 2 for request authentication, you should move to using Signature Version 4\. Support is ending for Signature Version 2, as described in [AWS signature version 2 turned off for Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#UsingAWSSDK-sig2-deprecation)\.
+Resource creation using the AWS SDK with Signature Version 2 is no longer supported\. For more information, see [AWS signature version 2 turned off for Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#UsingAWSSDK-sig2-deprecation)\.
 
-### Current version<a name="release-notes-latest"></a>
+**Current version**
 
-
-****  
 
 | Release | AWS SDK version | Server SDK version | Realtime client SDK version | GameLift local |  |  | C\# SDK | C\+\+ SDK | Unreal plugin |  |  | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
@@ -67,11 +61,19 @@ If you're currently uploading a game server build or creating a build resource w
 
 The following release notes are in chronological order, with the latest updates listed first\. GameLift was first released in 2016\. For release notes dated earlier than those listed here, see the release date links in [SDK versions](#release-notes-history)\.
 
+### June 28, 2022: GameLift launches a new console experience<a name="release-notes-06302022"></a>
+
+The new GameLift console includes these improvements:
++ **Improved navigation** – The new navigation pane facilitates navigation between GameLift resources\.
++ **GameLift landing page** – The new landing page provides links to helpful documentation, displays a high\-level overview of GameLift, and provides support through links to documentation, frequently asked questions, and AWS re:Post\.
++ **Improved Amazon CloudWatch metrics** – GameLift metrics are now available in both the GameLift console and your CloudWatch dashboards\. This update also includes new metrics for performance, utilization, and player sessions\.
+
+**Learn more:**
++ [Viewing your game data in the console](gamelift-console-intro.md)
++ [Managing GameLift hosting resources](resources-intro.md)
++ [Building a FlexMatch matchmaker](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/matchmaker-build.html)
+
 ### February 15, 2022: FlexMatch adds compound rule and additional improvements<a name="release-notes-02152022"></a>
-
-*GameLift releases new features for the FlexMatch matchmaking process\. *
-
-**Release date:** February 15, 2022
 
 FlexMatch users now have access to the following features:
 + **Compound rule** – Added support for compound matchmaking rules for matches of 40 or fewer players\. You can now use logical statements to create a compound rule to form a match\. Without a compound rule in your rule set, to form a match, all the rules in the rule set must be true\. With compound rules, you can choose which rules to apply using the following logical operators: `and`, `or`, `not`, and `xor`\.
@@ -84,22 +86,15 @@ FlexMatch users now have access to the following features:
   + [FlexMatch property expressions](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-rules-reference-property-expression.html)
 + [AttributeValue: SL](https://docs.aws.amazon.com/gamelift/latest/apireference/API_AttributeValue.html#gamelift-Type-AttributeValue-SL)
 
-### October 28, 2021: GameLift adds support for multi\-Region fleets in the osaka Region; GameLift FleetIQ adds support for AWS Graviton2 processors<a name="release-notes-10282021"></a>
+### October 28, 2021: GameLift adds support for multi\-Region fleets in the Asia Pacific \(Osaka\) Region; GameLift FleetIQ adds support for AWS Graviton2 processors<a name="release-notes-10282021"></a>
 
-*Added GameLift support for multi\-Region fleets in the Osaka Region and GameLift FleetIQ support for AWS Graviton2 processors\.*
-
-**Release date:** October 28, 2021
-
-GameLift is now available in the Asia Pacific \(Osaka\) AWS Region\. Game developers can now deploy instances in Osaka using GameLift multi\-Region fleet\. 
+GameLift is now available in the Asia Pacific \(Osaka\) Region\. Game developers can now deploy instances in Osaka using GameLift multi\-Region fleet\. 
 
 You can now use Graviton2\-hosted game servers, based on the Arm\-based processor architecture, to achieve increased performance at a lower cost when compared to the equivalent Intel\-based compute options\.
 
-GameLift FleetIQ instances powered by AWS Graviton2 processors include the c6g, m6g, and r6g instance families\. Available Regions are Asia Pacific \(Mumbai\), Asia Pacific \(Seoul\), Asia Pacific \(Singapore\), Asia Pacific \(Sydney\), Asia Pacific \(Tokyo\), Canada \(Central\), Europe \(Frankfurt\), Europe \(Ireland\), Europe \(London\), South America \(Sao Paulo\), US East \(N\. Virginia\), US East \(Ohio\), and US West \(N\. California\), US West \(Oregon\)\.
+**Highlights:**
 + GameLift is now available in the Asia Pacific \(Osaka\) Region\.
-+ GameLift FleetIQ game server groups can now be configured to manage the Graviton2 instance families c6g, m6g, and r6g\. Supported Amazon EC2 instance types, as listed for the GameServerGroup [InstanceDefinition](https://docs.aws.amazon.com/gamelift/latest/apireference/API_InstanceDefinition.html), now include the following:
-  + c6g\.medium, c6g\.large, c6g\.xlarge, c6g\.2xlarge, c6g\.4xlarge, c6g\.8xlarge, c6g\.12xlarge, c6g\.16xlarge 
-  + m6g\.medium, m6g\.large, m6g\.xlarge, m6g\.2xlarge, m6g\.4xlarge, m6g\.8xlarge, m6g\.12xlarge, m6g\.16xlarge
-  + r6g\.medium, r6g\.large, r6g\.xlarge, r6g\.2xlarge, r6g\.4xlarge, r6g\.8xlarge, r6g\.12xlarge, r6g\.16xlarge
++ GameLift FleetIQ game server groups can now be configured to manage the Graviton2 instance families c6g, m6g, and r6g\.
 
 **Learn more:**
 + [GameLift multi\-Region fleet](https://aws.amazon.com/blogs/gametech/amazon-gamelift-is-now-easier-to-manage-fleets-across-regions)
@@ -108,16 +103,12 @@ GameLift FleetIQ instances powered by AWS Graviton2 processors include the c6g, 
 
 ### September 20, 2021: GameLift adds support for the Plug\-in for Unity<a name="release-notes-09202021"></a>
 
-*Amazon GameLift now provides an Amazon GameLift Plug\-in for Unity that you can use to integrate GameLift into your Unity game\.*
-
-**Release date:** September 20, 2021
-
 The Amazon GameLift Unity Plug\-in version 1\.0\.0 contains libraries and native UI that makes it easier to access GameLift resources and integrate GameLift into your Unity game\. You can use the Amazon GameLift Plug\-in for Unity to access GameLift APIs and deploy AWS CloudFormation templates for common gaming scenarios\. The plugin also includes a sample game that works with the sample scenarios\. You can use GameLift Local to see messages passed between the game client and the game server to learn how a typical game interacts with GameLift\.
 
 The Plug\-in for Unity supports Unity 2019\.4 LTS and 2020\.3 LTS\.
 
 Highlights:
-+ Learn the basics of integrating a game with GameLift with the sample game provided with the Plug\-in for Unity\. Build, run, and modify the sample with different scenarios, or create your own\. 
++ Build, run, and modify a sample game with different scenarios, or create your own\. 
 + Deploy sample AWS CloudFormation scenarios for typical game scenarios including auth only, single\-Region fleet, multi\-Region fleets with queue and custom matchmaker, Spot Fleets with queue and custom matchmaker, and FlexMatch\.
 
 **Learn more:**
@@ -125,13 +116,7 @@ Highlights:
 
 ### June 30, 2021: FlexMatch adds batchDistance rule<a name="release-notes-06302021"></a>
 
-*Amazon GameLift now supports the new batchDistance rule type, making it easier to balance players by different attributes \(such as skill or maps\), create simpler syntax for common rules, and create expansions based on batch distance over time\.*
-
-**Release date:** June 30, 2021
-
-Added the batchDistance rule type, which you can use to specify a string or numeric attribute, bringing a host of benefits to each segment\.
-
-When playing multiplayer games, players expect to enter sessions quickly and exit sessions with a sense of accomplishment\. To achieve this thrill for players, a good matchmaker must group together players based on their attributes, including skill level, playstyle, and latency\. Often times, players get grouped in either large matches \(>40 players\) or small matches \(up to 40\)\. The new batchDistance rule type can help\.
+You can use the batchDistance rule type to specify a string or numeric attribute, bringing a host of benefits to each segment\.
 
 Highlights:
 + For large matches \(>40 players\), instead of evenly balancing players by skill only, you can now get that same balance based on skill, modes, and maps\. Ensure that everyone in the match is in a skill band, band multiple numeric attributes such as league or playstyle, and group according to string attributes such as map or game mode\. You can also create expansions over time\. For example, you can create an expansion to allow a greater skill level range to enter the match the longer the player is waiting\. 
@@ -144,10 +129,6 @@ Highlights:
   + [Rule set examples](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-examples.html)
 
 ### June 3, 2021: GameLift realtime client SDK and server SDK updates<a name="release-notes-06032021"></a>
-
-*Amazon GameLift now supports IL2CPP in the RTS Client SDK, building the native libraries as frameworks, supports DescribePlayerSessions and GetInstanceCertificate in the Unreal Plugin, and adds Server SDK support for Unreal version 4\.26\.*
-
-**Release date:** June 3, 2021
 
 **Updated SDK versions:** AWS SDK [1\.8\.168](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.168)
 
@@ -167,10 +148,6 @@ Highlights:
 
 ### March 23, 2021: GameLift adds notifications to game session placement<a name="release-notes-03232021"></a>
 
-*Amazon GameLift now provides event notification for tracking game session placement requests\. *
-
-**Release date:** March 23, 2021
-
 **Updated SDK versions:** AWS SDK [1\.8\.168](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.168)
 
 You can now use events to monitor game session placement activity for a game session queue\. Create an Amazon Simple Notification Service \(Amazon SNS\) topic to publish event notifications, or set up event tracking using CloudWatch Events\.
@@ -189,10 +166,6 @@ Highlights:
 
 ### March 16, 2021: GameLift adds multi\-Region fleets, six new regions<a name="release-notes-03162021"></a>
 
-*Amazon GameLift broadens global coverage for game hosting, adding six new AWS Regions and introducing multi\-Region fleets, which can manage game server deployment across multiple locations\.*
-
-**Release date:** March 16, 2021
-
 **Updated SDK versions:** AWS SDK [1\.8\.163](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.163)
 
 GameLift managed hosting is now available in 21 AWS Regions\. The new Regions are Cape Town \(`af-south-1`\), Bahrain \(`me-south-1`\), Hong Kong \(`ap-east-1`\), Milan \(`eu-south-1`\), Paris \(`eu-west-3`\), and Stockholm \(`eu-north-1`\)\.
@@ -200,11 +173,11 @@ GameLift managed hosting is now available in 21 AWS Regions\. The new Regions ar
 With the new GameLift multi\-location fleets feature, you can now set up a single fleet to host your game servers in any or all of 20 GameLift\-supported Regions \(Beijing Region excepted\)\. This feature aims to significantly reduce the work required to set up and maintain GameLift hosting resources globally\. Multi\-location fleets can be created in the following AWS Regions: `us-east-1` \(N\. Virginia\), `us-west-2` \(Oregon\), `eu-central-1` \(Frankfurt\), `eu-west-1` \(Ireland\), `ap-southeast-2` \(Sydney\), `ap-northeast-1` \(Tokyo\), and `ap-northeast-2` \(Seoul\)\. In all other Regions, you can continue to set up single\-location fleets as needed\. All fleets that were created before this release are single\-location fleets\. Using multi\-location fleets does not affect your hosting costs\. GameLift pricing is based on the type, location, and volume of instances that you use\. \(For more information, see [GameLift pricing](http://aws.amazon.com/gamelift/pricing/)\.\) AWS CloudFormation support for multi\-location fleets will be available soon\.
 
 **Note**  
-Multi\-location fleets are not available in the China Region\. GameLift resources that reside in a China Region cannot interact with or be used by resources in other GameLift Regions\.
+Multi\-location fleets are not available in the China Regions\. GameLift resources that reside in China Regions cannot interact with or be used by resources in other GameLift Regions\.
 
 Highlights: 
 + With a multi\-location fleet, explicitly add a list of remote locations\. GameLift deploys instances of the same type and configuration, including the build and runtime configuration, to the fleet's home Region and all added locations\. 
-+ Adjust capacity settings and scaling for each location independently\. Auto scaling policies apply to an entire fleet, but you can turn them on or off by location\.
++ Adjust capacity settings and scaling for each location independently\. Auto\-scaling policies apply to an entire fleet, but you can turn them on or off by location\.
 + Start new game sessions at specific fleet locations\. When using game session queues or matchmaking to place game sessions, you can now prioritize where new game sessions start by location, hosting cost, and player latency\.
 + Get hosting metrics in the GameLift console, aggregated for all locations in a fleet or broken out by each fleet location\. 
 
@@ -226,10 +199,6 @@ Highlights:
 
 ### February 9, 2021: GameLift extends support for AMD instances, standalone FlexMatch<a name="release-notes-02092021"></a>
 
-**Customers in China \(Beijing\) and all GameLift FleetIQ customers can now use AMD instances\. GameLift FlexMatch as a standalone matchmaking solution is now available in China \(Beijing\), and FlexMatch matchmaking notification now supports Amazon SNS FIFO topics\.**
-
-**Release date:** February 9, 2021
-
 **Updated SDK versions:** AWS SDK [1\.8\.139](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.139)
 
 This release includes the following updates:
@@ -250,10 +219,6 @@ This release includes the following updates:
 
 ### December 22, 2020: GameLift server SDK supports unreal engine 4\.25 and unity 2020<a name="release-notes-12222020"></a>
 
-*Amazon GameLift releases an updated Server SDK to support game server development with Unreal Engine 4\.25 and verifies support for Unity 2020\.*
-
-**Release date:** December 22, 2020
-
 **Updated SDK versions:** GameLift Server SDK 4\.0\.2, Unreal plugin version 3\.3\.3
 
 The latest version of the GameLift Server SDK contains the following components:
@@ -263,10 +228,6 @@ The latest version of the GameLift Server SDK contains the following components:
 Download the latest version of the GameLift Server SDK at [ Amazon GameLift getting started](https://aws.amazon.com/gamelift/getting-started)\.
 
 ### November 24, 2020: GameLift FlexMatch now available for games hosted anywhere<a name="release-notes-11242020"></a>
-
-*Amazon GameLift extends availability of the FlexMatch matchmaking service to multiplayer games that use any hosting solution, including peer\-to\-peer, on\-premises, or cloud services\.*
-
-**Release date:** November 24, 2020
 
 **Updated SDK versions:** AWS SDK [1\.8\.95](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.95)
 
@@ -297,10 +258,6 @@ The GameLift documentation has been expanded\. To find all GameLift content and 
 
 ### November 24, 2020: AMD instances now available on GameLift<a name="release-notes-11242020-2"></a>
 
-*Amazon GameLift now offers AMD instance families for additional cost savings with multiplayer game hosting*\.
-
-**Release date:** November 24, 2020
-
 **Updated SDK versions:** AWS SDK [1\.8\.95](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.95)
 
 The list of Amazon EC2 instance types supported by GameLift now includes three new instance families: C5a, M5a, and R5a\. These families consist of AMD compute\-optimized instances that are powered by AMD EPYC processors running at frequencies up to 3\.3\. GHz\. The AMD instances are x86 compatible; games that are currently running on GameLift can be deployed to AMD instance types without alteration\. The new instances are available in the following AWS Regions: US East \(N\. Virginia and Ohio\), US West \(Oregon and N\. California\), Central Canada \(Montreal\), South America \(Sao Paulo\), EU Central \(Frankfurt\), EU West \(London and Ireland\), Asia Pacific South \(Mumbai\), Asia Pacific Northeast \(Seoul and Tokyo\), and Asia Pacific Southeast \(Singapore and Sydney\)\.
@@ -318,10 +275,6 @@ The new AMD instances include:
 
 ### November 11, 2020: Version update to GameLift server SDK<a name="release-notes-11112020"></a>
 
-*Amazon GameLift releases updated Server SDK to fix issue with `StartMatchBackfill()`*
-
-**Release date:** November 11, 2020
-
 **Updated SDK versions:** GameLift Server SDK 4\.0\.2
 
 The new Server SDK version 4\.0\.2 fixes a known issue with the API operation `StartMatchBackfill()`\. This operation now returns a correct response to a match backfill request\. 
@@ -331,10 +284,6 @@ The issue did not affect the match backfill process, and there is no change to h
 Download the latest version of the GameLift Server SDK at [ Amazon GameLift getting started](https://aws.amazon.com/gamelift/getting-started)\.
 
 ### November 5, 2020: New FlexMatch algorithm customizations<a name="release-notes-11052020"></a>
-
-*Amazon GameLift releases customization options for FlexMatch matchmaking process\.*
-
-**Release date:** November 5, 2020
 
 FlexMatch users can now adjust the following default behaviors for the matchmaking process\. These customizations are set in a matchmaking rule set\. There are no changes to the GameLift SDKs\.
 + Prioritize backfill tickets: You can choose to raise or lower how match backfill tickets are prioritized when searching for acceptable matches\. Prioritizing backfill tickets is useful when the auto\-backfill feature is enabled\. Use the algorithm property `backfillPriority`\.
@@ -348,10 +297,6 @@ GameLift Developer Guide
 + [Rule set schema](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-ruleset-schema.html) – This topic now has detailed reference information for each rule set component\.
 
 ### September 17, 2020: GameLift updates server SDK<a name="release-notes-09172020"></a>
-
-*Amazon GameLift releases minor updates to the Server SDK*\.
-
-**Release date:** September 17, 2020
 
 **Updated SDK versions:** GameLift Server SDK 4\.0\.1
 
@@ -369,10 +314,6 @@ The new Server SDK contains the following updates:
 Download the latest version of the GameLift Server SDK at [ Amazon GameLift getting started](https://aws.amazon.com/gamelift/getting-started)\.
 
 ### August 27, 2020: GameLift FleetIQ for game hosting with Amazon EC2 \(general availability\)<a name="release-notes-08272020"></a>
-
-*Amazon GameLift extends its FleetIQ for Spot Instance optimization\.*
-
-**Release date:** August 27, 2020
 
 **Updated SDK versions:** AWS SDK [1\.8\.36](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.36)
 
@@ -393,10 +334,6 @@ This general availability release includes the following updates to the GameLift
 
 ### April 16, 2020: GameLift updates server SDK for unity and unreal engine<a name="release-notes-04022020"></a>
 
-*Amazon GameLift releases an updated Server SDK to support game server development with Unity 2019 and Unreal Engine 4\.24\.*
-
-**Release date:** April 16, 2020
-
 **Updated SDK versions:** GameLift Server SDK 4\.0\.0, GameLift Local 1\.0\.5
 
 The latest version of the GameLift Server SDK contains the following updated components:
@@ -408,10 +345,6 @@ Download the latest version of the GameLift Server SDK at [ Amazon GameLift gett
 
 ### April 2, 2020: GameLift FleetIQ available for game hosting on EC2 \(public preview\)<a name="release-notes-04162020"></a>
 
-*Amazon GameLift extends its FleetIQ for Spot Instance optimization\.*
-
-**Release date:** April 02, 2020
-
 **Updated SDK versions:** AWS SDK [1\.7\.310](https://github.com/aws/aws-sdk-cpp/releases/tag/1.7.310)
 
 The GameLift FleetIQ feature optimizes the viability of low\-cost Spot Instances for use with game hosting\. This feature is now extended for customers who want to manage their hosting resources directly rather than through the managed GameLift service\. This solution supports the use of containers or other AWS services such as AWS Shield and Amazon Elastic Container Service \(Amazon ECS\)\.
@@ -421,10 +354,6 @@ The GameLift FleetIQ feature optimizes the viability of low\-cost Spot Instances
 [GameTech blog post](https://aws.amazon.com/blogs/gametech/gamelift-in-2020-major-update-now-available-in-preview/) on GameLift FleetIQ
 
 ### December 19, 2019: Improved AWS resource management for GameLift resources<a name="release-notes-12192019"></a>
-
-*Amazon GameLift adds new ARN values and tagging support\.*
-
-**Release date:** December 19, 2019
 
 **Updated SDK versions:** AWS SDK [1\.7\.249](https://github.com/aws/aws-sdk-cpp/releases/tag/1.7.249)
 
@@ -438,10 +367,6 @@ In addition, GameLift resources now support tagging\. You can use tags to organi
 + [ Amazon resource names](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*
 
 ### November 14, 2019: New AWS CloudFormation templates, updates in china \(beijing\) Region<a name="release-notes-11142019"></a>
-
-*Amazon GameLift expands use of AWS CloudFormation templates to help automate GameLift resource management\.*
-
-**Release date:** December 19, 2019
 
 **Updated SDK versions:** AWS SDK [1\.7\.210](https://github.com/aws/aws-sdk-cpp/releases/tag/1.7.210)
 

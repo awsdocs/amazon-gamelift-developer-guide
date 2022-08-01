@@ -1,29 +1,29 @@
 # View your aliases<a name="gamelift-console-aliases"></a>
 
-You can view information on all of the fleet aliases you have created and take actions on them on the Aliases page\. Aliases shown include only those created for the selected region\.
+The **Alias** page displays information about the fleet aliases you created in your current Region\. To view the aliases page, choose **Aliases** in the navigation pane\. 
 
-## Alias catalog<a name="gamelift-console-aliases-catalog"></a>
+You can do the following on the aliases page:
++ Create a new alias\. Choose **Create alias**\.
++ Filter and sort the aliases table\. Use the controls at the top of the table\.
++ View alias details\. Choose an alias name to open the alias detail page\.
++ Delete an alias\. Choose an alias and then choose **Delete**\.
 
-All created aliases are shown on the Aliases catalog page\. To view the Aliases page, choose **Aliases** from the Amazon GameLift console's menu bar\. 
+## Alias details<a name="gamelift-console-aliases-detail"></a>
 
-The Aliases page provides summary information on all builds, including type\. From this page you can: 
-+ Create a new alias\. click **Create alias**\.
-+ Filter and sort the aliases list\. Use the controls at the top of the table\.
-+ View alias details\. Click an alias name to open the alias detail page\.
-
-## Alias detail<a name="gamelift-console-aliases-detail"></a>
-
-Access an alias's detail page from either the console dashboard or the Aliases catalog page by clicking the alias name\. The Alias detail page displays a summary of information on the alias\. 
+The alias details page displays information about the alias\. 
 
 From this page you can: 
-+ Edit an alias, including changing the name, description, and the fleet ID the alias is associated with\. Click **Actions: Edit alias**\.
-+ View information on the fleet the alias is currently associated with\. This includes the fleet's status and current utilization \(active game sessions and players\)\. 
-+ Delete an alias\. Click **Actions: Delete alias**\.
++ Edit an alias\. Choose **Edit**\.
++ View the fleets you associated with the alias\.
++ Delete an alias\. Choose **Delete**\.
 
 Alias detail information includes: 
-+ **Type** – The routing option for the alias, which can be one of these:
-  + **Simple** – A simple alias routes a player to games on an associated fleet\. You can update the alias to point to a different fleet at any time\.
-  + **Terminal** – A terminal alias does not point to a fleet\. Instead it passes a message back to the client\. This alias type is useful for gracefully notifying players when a set of game servers is no longer available\. For example, a terminal alias might inform players that their game clients are out of date and provide upgrade options\. 
-+ **Alias ID** – The unique number used to identify the alias\.
++ **ID** – The unique number used to identify the alias\.
 + **Description** – The description of the alias\.
-+ **Date created** – The date and time the alias was created\.
++ **ARN** – The Amazon Resource Name of the alias\.
++ **Creation** – The date and time the alias was created\.
++ **Last updated** – The date and time that the alias was last updated\.
++ **Routing type** – The routing type for the alias, which can be one of these:
+  + **Simple** – Routes player traffic to a specified fleet ID\. You can update the fleet ID for an alias at any time\.
+  + **Terminal** – Passes a message back to the client\. For example, you can direct players who are using an out\-of\-date client to a location where they can get an upgrade\.
++ **Tags** – Key and value pairs used to identify the alias\.

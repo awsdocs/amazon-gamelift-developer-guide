@@ -8,5 +8,5 @@ The topics in this section contain detailed instruction on how to add the necess
 + [Game engines and Amazon GameLift](integration-engines.md)
 + [Integrating your game server for Amazon GameLift](gamelift-sdk-server.md)
 + [Integrating your game client for Amazon GameLift](gamelift-sdk-client.md)
-+ [GameLift and game client/server interactions](gamelift-sdk-interactions.md)
++ [GameLift and game client server interactions](gamelift-sdk-interactions.md)
 + [Testing your integration](integration-testing-local.md)

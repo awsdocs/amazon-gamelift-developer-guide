@@ -20,4 +20,4 @@ Common automated steps of GameLift resources deployment for a new game server ve
 + After the new fleet is successfully deployed, removing the previous version fleet\(s\) from your GameLift queue and replacing with the new fleet\(s\)
 + After the old fleet\(s\) have successfully terminated all game sessions, deleting the AWS CloudFormation stack\(s\) of these fleet\(s\)
 
-Alternatively, you can use the AWS Cloud Development Kit \(CDK\) to define your GameLift resources with TypeScript, Python, or other supported programming language\. You can use the AWS CLI to deploy and update the resources with generated AWS CloudFormation templates\.
+Alternatively, you can use the AWS Cloud Development Kit \(AWS CDK\) to define your GameLift resources with TypeScript, Python, or other supported programming language\. You can use the AWS CLI to deploy and update the resources with generated AWS CloudFormation templates\.

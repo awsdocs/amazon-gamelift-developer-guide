@@ -21,7 +21,7 @@ GenericOutcome AcceptPlayerSession(const std::string& playerSessionId);
 **playerSessionId**  
 Unique ID issued by the Amazon GameLift service in response to a call to the AWS SDK Amazon GameLift API action [CreatePlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreatePlayerSession.html)\. The game client references this ID when connecting to the server process\.  
 Type: std::string  
-Required: No
+Required: Yes
 
 ### Return value<a name="integration-server-sdk-cpp-ref-acceptplayersession-return"></a>
 
@@ -143,7 +143,7 @@ Aws::GameLift::AwsStringOutcome sessionIdOutcome =
 
 ## GetInstanceCertificate\(\)<a name="integration-server-sdk-cpp-ref-getinstancecertificate"></a>
 
-Retrieves the file location of a pem\-encoded TLS certificate that is associated with the fleet and its instances\. This certificate is generated when a new fleet is created with the certificate configuration set to GENERATED\. Use this certificate to establish a secure connection with a game client and to encrypt client/server communication\. 
+Retrieves the file location of a pem\-encoded TLS certificate that is associated with the fleet and its instances\. AWS Certificate Manager generates this certificate when you create a new fleet with the certificate configuration set to GENERATED\. Use this certificate to establish a secure connection with a game client and to encrypt client/server communication\. 
 
 ### Syntax<a name="integration-server-sdk-cpp-ref-getinstancecertificate-syntax"></a>
 
@@ -157,7 +157,9 @@ This action has no parameters\.
 
 ### Return value<a name="integration-server-sdk-cpp-ref-getinstancecertificate-return"></a>
 
-If successful, returns a `GetInstanceCertificateOutcome` object containing the location of the fleet's TLS certificate file, which is stored on the instance\. If not successful, returns an error message\.
+If successful, returns a `GetInstanceCertificateOutcome` object containing the location of the fleet's TLS certificate file and certificate chain, which are stored on the instance\. A root certificate file, extracted from the certificate chain, is also stored on the instance\. If not successful, returns an error message\. 
+
+For more information about the certificate and certificate chain data, see [GetCertificate Response Elements](https://docs.aws.amazon.com/acm/latest/APIReference/API_GetCertificate.html#API_GetCertificate_ResponseElements) in the AWS Certificate Manager API Reference\.
 
 ### Example<a name="integration-server-sdk-cpp-ref-getinstancecertificate-example"></a>
 
@@ -429,7 +431,7 @@ GenericOutcome RemovePlayerSession(
 **playerSessionId**  
 Unique ID issued by the Amazon GameLift service in response to a call to the AWS SDK Amazon GameLift API action [CreatePlayerSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreatePlayerSession.html)\. The game client references this ID when connecting to the server process\.  
 Type: std::string  
-Required: No
+Required: Yes
 
 ### Return value<a name="integration-server-sdk-cpp-ref-removeplayersession-return"></a>
 

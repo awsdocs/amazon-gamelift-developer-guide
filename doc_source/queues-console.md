@@ -1,64 +1,57 @@
 # View your queues<a name="queues-console"></a>
 
-You can view information on all existing game session placement [queues](queues-intro.md)\. Queues shown include only those created in the selected region\. From the **Queues** page, you can create a new queue, delete existing queues, or open a details page for a selected queue\. A **Queue** detail page contains the queue's configuration and metrics data\. You can also edit or delete the queue\.
+You can view information on all existing game session placement queues\. The queues page shows queues created in your current Region\. From the **Queues** page, you can create a new queue, delete existing queues, or open a details page for a selected queue\. Each queue details page contains the queue's configuration and metrics data\. For more information about queues, see [Setting up GameLift queues for game session placement](queues-intro.md)\.
 
-**To view the **Queues** page**
-
-1. Choose **Queues** from the Amazon GameLift console's menu\.
-
-   The **Queues** page displays the following summary information for each queue:
-   + **Queue name** – The name assigned to the queue\. Requests for new game sessions specify a queue by this name\.
-   + **Queue timeout** – Maximum length of time, in seconds, that a game session placement request remains in the queue before timing out\.
-   + **Destinations in queue** – Number of fleets listed in the queue configuration\. New game sessions can be placed on any fleet in the queue\.
-
-1. To view details for a queue, including metrics, choose the queue name\. For more information on the queue details page, see [View queue details](#queues-console-detail)\.
+The queues page displays the following summary information for each queue:
++ **Queue name** – The name assigned to the queue\. Requests for new game sessions specify a queue by this name\.
++ **Queue timeout** – Maximum length of time, in seconds, that a game session placement request remains in the queue before timing out\.
++ **Destinations in queue** – Number of fleets listed in the queue configuration\. GameLift places new game sessions on any fleet in the queue\.
 
 ## View queue details<a name="queues-console-detail"></a>
 
-You can access detailed information on any queue, including the queue configuration and metrics\. To open a **Queue** detail page, go to the main **Queues** page and choose a queue name\.
+You can access detailed information on any queue, including the queue configuration and metrics\. To open a queue details page, go to the **Queues** page and choose a queue name\.
 
 The queue detail page displays a summary table and tabs containing additional information\. On this page you can do the following: 
-+ Update the queue's configuration, list of destinations and player latency policies\. Choose **Actions**, **Edit queue**\. 
-+ Remove a queue\. After a queue is removed, all requests for new game sessions that reference that queue name will fail\. \(Note that deleted queues can be restored by simply creating a queue with the deleted queue's name\.\) Choose **Actions**, **Delete queue**\.
++ Update the queue's configuration, list of destinations and player latency policies\. Choose **Edit**\. 
++ Delete a queue\. After you delete a queue, all requests for new game sessions that reference that queue name will fail\. Choose **Delete**\.
+**Note**  
+To restore a deleted queue, create a new queue with the deleted queue's name\.
 
-### Summary<a name="queues-console-detail-summary"></a>
+### Details<a name="queues-console-detail-summary"></a>
 
-The summary table includes the following information:
-+ **Queue name** – The name assigned to the queue\. Requests for new game sessions specify a queue by this name\.
-+ **Queue timeout** – Maximum length of time, in seconds, that a game session placement request remains in the queue before timing out\.
-+ **Destinations in queue** – Number of fleets listed in the queue configuration\. New game sessions can be placed on any fleet in the queue\.
+**Overview**  
+The **Overview** section displays the queue's Amazon Resource Name \(**ARN**\) and the **Timeout**\. You can use the ARN when referencing the queue in other actions or areas of GameLift\. The timeout is the maxiumum length of time, in seconds, that a game session placement request remains in the queue before timing out\.
 
-### Destinations<a name="queues-console-detail-destinations"></a>
+**Event notification**  
+The **Event notification** section lists the **SNS topic** GameLift publishes event notifications to and the **Event data** that is added to all events created by this queue\.
 
-The **Destinations** tab shows all fleets or aliases listed for the queue\. Fleets are identified by either a fleet ARN or an alias ARN, which specifies the fleet or alias ID and the region\.
+**Tags**  
+The **Tags** table displays the keys and values used to tag the resource\. For more information about tagging, see [Tagging AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html)\.
 
-When Amazon GameLift searches the destinations for available resources to host a new game session, it searches in the order listed here\. As long as there is capacity on the first destination listed, new game sessions are placed there\. This is the default order for destinations\. You can have individual game session placement requests override the default order by providing player latency data\. This data tells Amazon GameLift to search for an available destination with the lowest average player latency\. 
-
-To add, edit, or delete destinations, choose **Actions**, **Edit queue**\.
-
-### Player latency policies<a name="queues-console-detail-policies"></a>
-
-The **Player latency policies** tab shows all policies that have been defined for the queue\. Policies are listed in the order they are enforced during a game session placement effort\.
-
-To add, edit, or delete player latency policies, choose **Actions**, **Edit queue**\.
-
-### Queue metrics<a name="queues-console-detail-metrics"></a>
+### Metrics<a name="queues-console-detail-metrics"></a>
 
 The **Metrics** tab shows a graphical representation of queue metrics over time\.
 
-Queue metrics include a range of information describing placement activity across the entire queue, as well as successful placements broken down by region\. The region\-specific data is useful for tracking where your games are being hosted\. With queues that use FleetIQ and prioritize placements to minimize player latency and hosting costs, regional placement metrics can help to detect issues with the overall queue design\. 
+Queue metrics include a range of information describing placement activity across the queue, including successful placements organized by Region\. You can use Region data to understand where you are hosting your games\. Regional placement metrics can help to detect issues with the overall queue design\. 
 
-Queue metrics are also available in Amazon CloudWatch\. You can view the descriptions of all metrics at [GameLift metrics for queues](monitoring-cloudwatch.md#gamelift-metrics-queue)\.
+Queue metrics are also available in Amazon CloudWatch\. For descriptions of available metrics, see [GameLift metrics for queues](monitoring-cloudwatch.md#gamelift-metrics-queue)\.
 
-**To display metrics information in the graph**
+### Destinations<a name="queues-console-detail-destinations"></a>
 
-1. Click one or more of the metric names that are listed to the left of the graph area\. Metric names shown in black are displayed in the graph, while those shown in gray are turned off\. Use the color key to identify which graphed line matches a selected metric\. 
+The **Destinations** tab shows all fleets or aliases listed for the queue\.
 
-1. Use the following filters, shown above the graph area, to change how metric data is displayed:
-   + **Data** and **Period** – Offers two options for selecting a date range:
-     + Use **Relative** to select a period of time relative to the current time, such as **Last hour**, **Last day**, **Last week**\. 
-     + Use **Absolute** to specify a period with an arbitrary start and end date/time\.
-   + **Granularity** – Select a length of time to aggregate data points\.
-   + **Refresh rate** – Select how often you want the graph display to be updated\. You can refresh the graph any time by clicking the refresh button in the graph's upper right corner\.
-   + **Time zone** – Select which time format to use in the graph display: **UTC** \(universal coordinated time\) or **Browser time** \(local time\)\.
-   + **Show points** – Toggle to display discrete data points as circles or display lines only\.
+When Amazon GameLift searches the destinations for available resources to host a new game session, it searches the default order listed here\. As long as there is capacity on the first destination listed, GameLift places new game sessions there\. You can have individual game session placement requests override the default order by providing player latency data\. This data tells Amazon GameLift to search for an available destination with the lowest average player latency\. For more information about designing your queues, see [Design a game session queue](queues-design.md)\.
+
+### Session placement<a name="queues-console-detail-policies"></a>
+
+**Player latency policies**  
+The **Player latency policies** section shows all policies that the queue uses\. The tables lists the policies in the order they're enforced\.
+
+**Locations**  
+The **Locations** section shows the locations that this queue can put a game session in\.
+
+**Priority**  
+The **Priority** section shows the order that the queue evaluates a game sessions details\.
+
+**Location order**  
+The **Location order** section shows the default order that the queue uses when placing game sessions\. The queue uses this order if you haven't defined other types of priority\.

@@ -5,7 +5,9 @@ The managed GameLift service continually collects data for active games to help 
 **Topics**
 + [View your current Amazon GameLift status](gamelift-console-dashboard.md)
 + [View your builds](gamelift-console-builds.md)
++ [View your scripts](gamelift-console-scripts.md)
 + [View your fleets](gamelift-console-fleets.md)
 + [View fleet details](gamelift-console-fleets-metrics.md)
 + [View data on game and player sessions](gamelift-console-game-player-sessions-metrics.md)
 + [View your aliases](gamelift-console-aliases.md)
++ [View your queues](queues-console.md)

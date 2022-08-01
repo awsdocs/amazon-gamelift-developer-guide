@@ -1,7 +1,7 @@
 # Setting up<a name="setting-up-intro"></a>
 
 **Tip**  
-[Learn more about ways to explore Amazon GameLift features, including Realtime Servers, using sample games](gamelift-explore.md)\.
+To learn more about GameLift features, including Realtime Servers, [try out the GameLift sample games](gamelift-explore.md)\.
 
 **Topics**
 + [Set up an AWS account](setting-up-aws-login.md)

@@ -1,30 +1,29 @@
 # View your builds<a name="gamelift-console-builds"></a>
 
-You can view information about all the game server builds you have uploaded to Amazon GameLift and take actions on them\. Builds shown include only those uploaded for the selected region\.
+On the **Builds** page of the [GameLift console](https://console.aws.amazon.com/gamelift/), you can view information about and manage all the game server builds that you've uploaded to GameLift\. In the navigation pane, choose **Hosting**, **Builds**\.
 
-## Build catalog<a name="gamelift-console-builds-catalog"></a>
+The **Builds** page shows the following information for each build:
 
-Uploaded builds are shown on the **Builds** page\. To view this page, choose **Builds** from the Amazon GameLift console menu bar\.
+**Note**  
+The **Builds** page shows builds in your current AWS Region only\.
++ **Name** – The name associated with the uploaded build\.
++ **Status** – The status of the build\. Displays one of three status messages:
+  + **Initialized** – The upload hasn't started or is still in progress\.
+  + **Ready** – The build is ready for fleet creation\.
+  + **Failed** – The build timed out before GameLift received the binaries\.
++ **Creation time** – The date and time that you uploaded the build to GameLift\.
++ **Build ID** – The unique ID assigned to the build on upload\.
++ **Version** – The version label associated with the uploaded build\.
++ **Operating system** – The OS that the build runs on\. The build OS determines which operating system GameLift installs on a fleet's instances\.
++ **Size** – The size, in megabytes \(MB\), of the build file uploaded to GameLift\.
++ **Fleets** – The number of fleets deployed with the build\.
 
-The **Builds** page provides the following summary information for all builds: 
-+ **Status** – Displays one of three possible status messages:
-  + **Initialized** – The build has been created, but the upload has not yet started or the upload is still in progress\.
-  + **Ready** – The build has been successfully received and is ready for fleet creation\.
-  + **Failed** – The build timed out before the binaries were received\.
-+ **Build name** – Name associated with the uploaded build\. A build name is provided when uploading the build to Amazon GameLift, and can be changed using the AWS SDK action [UpdateBuild](https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateBuild.html)\.
-+ **Build ID** – Unique ID assigned to the build on upload\.
-+ **Version** – Version label associated with the uploaded build\. A build name is provided when uploading the build to Amazon GameLift, and can be changed using the AWS SDK action [UpdateBuild](https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateBuild.html)\.
-+ **OS** – Operating system that the build runs on\. The build OS determines what operating system is installed on a fleet's instances\.
-+ **Size** – Size, in megabytes \(MB\) of the build file uploaded to Amazon GameLift\.
-+ **Date created** – Date and time that the build was uploaded to Amazon GameLift\.
-+ **Fleets** – Number of fleets currently deployed with this build\.
-
-From this page you can do any of the following: 
-+ Create a new fleet from a build\. Select a build and click **Create fleet from build**\.
-+ Delete a build\. Select a build and click **Delete build**\.
+From this page you can do any of the following:
++ View build details\. Choose a build's name to open its build details page\.
++ Create a new fleet from a build\. Select a build, and then choose **Create fleet**\.
 + Filter and sort the build list\. Use the controls at the top of the table\.
-+ View build details\. Click a build name to open the build detail page\.
++ Delete a build\. Select a build, and then choose **Delete**\.
 
-## Build detail<a name="gamelift-console-builds-detail"></a>
+## Build details<a name="gamelift-console-builds-detail"></a>
 
-Access a build's detail page from either the console dashboard or the **Builds** page by clicking the build name\. The **Build** detail page displays the same build summary information as the Builds page\. It also shows a list of fleets created with the build\. This list is essentially the fleets catalog, filtered by build\. It includes the same summary information as the [**Fleets** page](gamelift-console-fleets.md)\.
+On the **Builds** page, choose a build's name to open its details page\. The **Overview** section of the details page displays the same build summary information as the **Builds** page\. The **Fleets** section shows a list of fleets created with the build, including the same summary information as the [**Fleets** page](gamelift-console-fleets.md)\.

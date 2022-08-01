@@ -141,7 +141,7 @@ To check your full game integration, including connecting players to games, you 
 
 1. **Configure your game client for Local and start it\.**
 
-   To use your game client with the GameLift Local service, you must make the following changes to your game client's setup, as described in [Set up GameLift on a client or service](gamelift-sdk-client-api.md#gamelift-sdk-client-api-initialize):
+   To use your game client with the GameLift Local service, you must make the following changes to your game client's setup, as described in [Set up GameLift on a game client or backend service](gamelift-sdk-client-api.md#gamelift-sdk-client-api-initialize):
    + Change the `ClientConfiguration` object to point to your Local endpoint, such as `http://localhost:9080`\.
    + Set a target fleet ID value\. For Local, you do not need a real fleet ID; set the target fleet to any valid string \(`^fleet-\S+`\), such as `fleet-1a2b3c4d-5e6f-7a8b-9c0d-1e2f3a4b5c6d`\.
    + Set AWS credentials\. For Local, you do not need real AWS credentials; you can set the access key and secret key to any string\. 

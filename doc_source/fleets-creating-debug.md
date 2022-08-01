@@ -4,7 +4,7 @@ This topic provides guidance on fleet configuration issues for a GameLift manage
 
 ## Fleet creation issues<a name="fleets-creating-debug-creation"></a>
 
-When a fleet is created, the GameLift service initiates a workflow that deploys a new instance in each of the fleet's locations and prepares it to run you game servers\. For a detailed description, see [How GameLift fleet creation works](fleets-creation-workflow.md)\. A fleet cannot host game sessions and players until it reaches **Active** status\. This section discusses the most common issues that prevent fleets from becoming active\.
+When a fleet is created, the GameLift service initiates a workflow that deploys a new instance in each of the fleet's locations and prepares it to run you game servers\. For a detailed description, see [How GameLift fleet creation works](fleets-creating-all.md#fleets-creation-workflow)\. A fleet cannot host game sessions and players until it reaches **Active** status\. This section discusses the most common issues that prevent fleets from becoming active\.
 
 **Downloading and validating**  
 During this phase, fleet creation may fail if there are issues with the extracted build files, the installation script won't run, or if the executable\(s\) designated in the runtime configuration is not included in the build files\. GameLift provides logs related to each of these issues\.
@@ -18,7 +18,7 @@ Issues that cause failure during the build phase are almost certainly due to pro
 The most common fleet creation problems occur during the **Activating** phase\. During this phase, a number of elements are being tested, including the game server's viability, the runtime configuration settings, and the game server's ability to interact with the GameLift service using the Server SDK\. Common issues that come up during fleet activation include: 
 
 **Server processes fail to start\.**  
-First check that you've correctly set the launch path and optional launch parameters in the fleet's runtime configuration\. You can view the fleet's current runtime configuration using either the GameLift console \(see the **Fleet** detail page, [**Capacity allocation**](gamelift-console-fleets-metrics.md#fleets-launch-tab)\) tab or by calling the AWS CLI command [describe\-runtime\-configuration](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-runtime-configuration.html)\. If the runtime configuration looks correct, check for issues with your game build files and/or installation script\.
+First check that you've correctly set the launch path and optional launch parameters in the fleet's runtime configuration\. You can view the fleet's current runtime configuration using either the **Fleet** detail page, [Details](gamelift-console-fleets-metrics.md#fleets-summary)\)section or by calling the AWS CLI command [describe\-runtime\-configuration](https://docs.aws.amazon.com/cli/latest/reference/gamelift/describe-runtime-configuration.html)\. If the runtime configuration looks correct, check for issues with your game build files and/or installation script\.
 
 **Server processes start but fleet fails to activate\.**  
 If server processes start and run successfully, but the fleet does not move to **Active** status, a likely cause is that the server process is failing to notify GameLift that it is ready to host game sessions\. Check that your game server is correctly calling the Server API action `ProcessReady()` \(see [Initialize the server process](gamelift-sdk-server-api.md#gamelift-sdk-server-initialize)\)\.

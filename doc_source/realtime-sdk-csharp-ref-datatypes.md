@@ -26,7 +26,7 @@ Information about the game client and/or player that is requesting a connection 
 **playerSessionId**  
 Unique ID issued by GameLift when a new player session is created\. A player session ID is specified in a `PlayerSession` object, which is returned in response to a client call to the *GameLift API* actions [ StartGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_StartGameSessionPlacement.html), [ CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html), [ DescribeGameSessionPlacement](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionPlacement.html), or [ DescribePlayerSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribePlayerSessions.html)\.  
 Type: String  
-Required: No
+Required: Yes
 
 **payload**  
 Developer\-defined information to be communicated to the Realtime server on connection\. This includes any arbitrary data that might be used for a custom sign\-in mechanism\. For examples, a payload may provide authentication information to be processed by the Realtime server script before allowing a client to connect\.  
