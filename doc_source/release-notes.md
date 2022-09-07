@@ -4,7 +4,7 @@ The GameLift release notes provide details about new features, updates, and fixe
 
 ## SDK versions<a name="release-notes-history"></a>
 
-The following tabs list all GameLift releases with SDK versions\. There is no requirement to use comparable SDKs for your game server and client integrations\. However, earlier versions of one SDK may not fully support the latest features in another\. For more information about GameLift SDKs, see [GameLift SDKs](gamelift-supported.md)\.
+The following tabs list all GameLift releases with SDK versions\. There is no requirement to use comparable SDKs for your game server and client integrations\. However, earlier versions of one SDK may not fully support the latest features in another\. For more information about GameLift SDKs, see [Download Amazon GameLift SDKs](gamelift-supported.md)\.
 
 **Note**  
 Resource creation using the AWS SDK with Signature Version 2 is no longer supported\. For more information, see [AWS signature version 2 turned off for Amazon S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/UsingAWSSDK.html#UsingAWSSDK-sig2-deprecation)\.
@@ -60,6 +60,17 @@ Resource creation using the AWS SDK with Signature Version 2 is no longer suppor
 ## Release notes<a name="release-notes-summary"></a>
 
 The following release notes are in chronological order, with the latest updates listed first\. GameLift was first released in 2016\. For release notes dated earlier than those listed here, see the release date links in [SDK versions](#release-notes-history)\.
+
+### August 25, 2022: GameLift launches support for Local Zones<a name="release-notes-08252022"></a>
+
+GameLift is now available in eight Local Zones in the United States, so you can deploy your fleets closer to players\. You can use all managed GameLift features with Local Zones by adding the Local Zones to your fleets\.
+
+Local Zones extend AWS resources and services to the edge of the cloud, near large population, industry, and information technology \(IT\) centers\. This means that you can deploy applications that require single\-digit millisecond latency closer to end users or to on\-premises data centers\.
+
+**Learn more:**
++ [Local Zones](gamelift-regions.md#gamelift-regions-local-zones)
++ [Fleet location](gamelift-ec2-instances.md#gamelift-ec2-instances-location)
++ [Deploy a fleet](fleets-creating.md)
 
 ### June 28, 2022: GameLift launches a new console experience<a name="release-notes-06302022"></a>
 
@@ -189,7 +200,7 @@ Highlights:
   + Updated game session placement operations, with new priority and filtering capability: [CreateGameSessionQueue](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSessionQueue.html), [DescribeGameSessionQueues](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionQueues.html), [UpdateGameSessionQueue](https://docs.aws.amazon.com/gamelift/latest/apireference/API_UpdateGameSessionQueue.html)
   + Updated game session creation operations, with new location support: [CreateGameSession](https://docs.aws.amazon.com/gamelift/latest/apireference/API_CreateGameSession.html), [DescribeGameSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessions.html), [DescribeGameSessionDetails](https://docs.aws.amazon.com/gamelift/latest/apireference/API_DescribeGameSessionDetails.html), [SearchGameSessions](https://docs.aws.amazon.com/gamelift/latest/apireference/API_SearchGameSessions.html)
 + [GameLift Developer Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/;):
-  + [Using GameLift in AWS regions](gamelift-regions.md) \(updated\)
+  + [GameLift hosting in AWS Regions and Local Zones](gamelift-regions.md) \(updated\)
   + [GameLift fleet design guide](fleets-design.md) \(new\)
 
     [Scaling GameLift hosting capacity](fleets-manage-capacity.md) \(updated\)
@@ -366,7 +377,7 @@ In addition, GameLift resources now support tagging\. You can use tags to organi
 + [Tagging AWS resources](https://docs.aws.amazon.com/general/latest/gr/aws_tagging.html) in the *AWS General Reference*
 + [ Amazon resource names](https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html) in the *AWS General Reference*
 
-### November 14, 2019: New AWS CloudFormation templates, updates in china \(beijing\) Region<a name="release-notes-11142019"></a>
+### November 14, 2019: New AWS CloudFormation templates, updates in China \(Beijing\) Region<a name="release-notes-11142019"></a>
 
 **Updated SDK versions:** AWS SDK [1\.7\.210](https://github.com/aws/aws-sdk-cpp/releases/tag/1.7.210)
 

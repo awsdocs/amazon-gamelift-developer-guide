@@ -8,7 +8,7 @@ Follow these steps to build the GameLift Server SDK for C\# and add it to your U
 
 **To set up the GameLift server SDK for unity**
 
-1. **Download the [GameLift server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [GameLift SDKs](gamelift-supported.md)\. The Server SDK zip file includes the C\# Server SDK, with source files so that you can build the SDK as needed for your project\. 
+1. **Download the [GameLift server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [Download Amazon GameLift SDKs](gamelift-supported.md)\. The Server SDK zip file includes the C\# Server SDK, with source files so that you can build the SDK as needed for your project\. 
 
 1. **Build the C\# SDK libraries\.** In an IDE, load the C\# Server SDK solution file that you want to use\. Use the IDE's functionality to restore NuGet files for the project\. See the `README.md` file for the C\# Server SDK for minimum requirements and additional build options\. Build the solution to generate the C\# SDK libraries\.
 

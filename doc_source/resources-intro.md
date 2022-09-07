@@ -3,7 +3,7 @@
 This section provides detailed information on setting up GameLift managed resources to run your game servers and enable them to host game sessions for players\. Whether you're deploying a fully custom game server or working with Realtime Servers, you need to configure and deploy resources, scale capacity to meet player demand, and set up a way to locate available resources to host new game sessions\. 
 
 **Tip**  
-To learn more about GameLift features, including Realtime Servers, [try out the GameLift sample games](gamelift-explore.md)\.
+For more information about GameLift features, including Realtime Servers, [try out the GameLift sample games](gamelift-explore.md)\.
 
 Here's a summary of process required to set up GameLift resources for managed hosting\. The topics in this section discuss how to design and build each resource\.
 

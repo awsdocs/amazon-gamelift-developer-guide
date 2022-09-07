@@ -1,4 +1,4 @@
-# Resilience in GameLift<a name="disaster-recovery-resiliency"></a>
+# Resilience in<a name="disaster-recovery-resiliency"></a>
 
 If you're using GameLift FleetIQ as a standalone feature with Amazon EC2, also refer to [Security in Amazon EC2](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-security.html) in the *Amazon EC2 User Guide for Linux Instances*\.
 
@@ -6,8 +6,8 @@ The AWS global infrastructure is built around AWS Regions and Availability Zones
 
 For more information about AWS Regions and Availability Zones, see [AWS global infrastructure](http://aws.amazon.com/about-aws/global-infrastructure/)\.
 
-In addition to the AWS global infrastructure, GameLift offers the following features to help support your data resiliency needs:
+In addition to the AWS global infrastructure, offers the following features to help support your data resiliency needs:
 + **Multi\-region queues** – GameLift game session queues are used to place new game sessions with available hosting resources\. Queues that span multiple Regions are able to redirect game session placements in the event of a regional outage\. For more information and best practices on creating game session queues, see [Design a game session queue](queues-design.md)\.
 + **Automatic capacity scaling** – Maintain the health and availability of your hosting resources by using GameLift scaling tools\. These tools provide a range of options that let you adjust fleet capacity to fit the needs of your game and players\. For more information on scaling, see [Scaling GameLift hosting capacity](fleets-manage-capacity.md)\.
 + **Distribution across instances** – GameLift distributes incoming traffic across multiple instances, depending on fleet size\. As a best practice, games in production should have multiple instances to maintain availability in case an instance becomes unhealthy or unresponsive\.
-+ **Amazon S3 storage** – Game server builds and scripts that are uploaded to GameLift are stored in Amazon S3 using the Standard storage class, which uses multiple data center replications to increase resilience\. Game session logs are also stored in Amazon S3 using the Standard storage class\.
++ **Amazon S3 storage** – Game server builds and scripts that are uploaded to are stored in Amazon S3 using the Standard storage class, which uses multiple data center replications to increase resilience\. Game session logs are also stored in Amazon S3 using the Standard storage class\.

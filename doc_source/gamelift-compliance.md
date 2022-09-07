@@ -1,10 +1,10 @@
-# Compliance validation for GameLift<a name="gamelift-compliance"></a>
+# Compliance validation for<a name="gamelift-compliance"></a>
 
-GameLift is not in scope of any AWS compliance programs\.
+ is not in scope of any AWS compliance programs\.
 
 Third\-party auditors assess the security and compliance of AWS services as part of multiple AWS compliance programs, such as SOC, PCI, FedRAMP, and HIPAA\.
 
-To learn whether or other AWS services are within the scope of specific compliance programs, see [AWS Services in Scope by Compliance Program](http://aws.amazon.com/compliance/services-in-scope/)\. For general information, see [AWS Compliance Programs](http://aws.amazon.com/compliance/programs/)\.
+To learn whether GameLift or other AWS services are within the scope of specific compliance programs, see [AWS Services in Scope by Compliance Program](http://aws.amazon.com/compliance/services-in-scope/)\. For general information, see [AWS Compliance Programs](http://aws.amazon.com/compliance/programs/)\.
 
 You can download third\-party audit reports using AWS Artifact\. For more information, see [Downloading Reports in AWS Artifact](https://docs.aws.amazon.com/artifact/latest/ug/downloading-documents.html)\.
 

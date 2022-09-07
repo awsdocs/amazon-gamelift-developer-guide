@@ -571,7 +571,7 @@ GenericOutcome UpdatePlayerSessionCreationPolicy(
 
 **newPlayerSessionPolicy**  
 String value indicating whether the game session accepts new players\.   
-Type: [ Aws::GameLift::Model::PlayerSessionCreationPolicy](http://sdk.amazonaws.com/cpp/api/LATEST/namespace_aws_1_1_game_lift_1_1_model.html#afa8a7527defe9e7ca0caebc239182c43) enum\. Valid values include:   
+Type: [ Aws::GameLift::Model::PlayerSessionCreationPolicy](https://sdk.amazonaws.com/cpp/api/LATEST/namespace_aws_1_1_game_lift_1_1_model.html#afa8a7527defe9e7ca0caebc239182c43) enum\. Valid values include:   
 + **ACCEPT\_ALL** – Accept all new player sessions\.
 + **DENY\_ALL** – Deny all new player sessions\.
 Required: Yes

@@ -1,9 +1,7 @@
-# Launch phase checklist<a name="gamelift_quickstart_customservers_launch_checklist"></a>
+# Launch<a name="gamelift_quickstart_customservers_launch_checklist"></a>
 
-Use the following checklists to keep track of launch phase items\. Items marked **\[Critical\]** are critical for your production launch\.
-+ **\[Critical\]** Set the fleet protection policy to full protection on all live fleets so that scaling down cannot evict an active game session\.
-+ **\[Critical\]** As you are ready for players to start joining, pre\-warm the fleets by scaling them up to a level that can accommodate the launch spike\. You can set the minimum amount relatively high for your launch and reduce it when you have more stable traffic\. Optionally, to scale up in preparation for the release, you can disable automatic scaling and manually set a desired fleet capacity\. When the traffic has stabilized, you can re\-enable automatic scaling\. This helps keep your minimum instance amount at a lower level through the launch\.
-+ **\[Critical\]** Set fleet maximum sizes sufficiently high to accommodate at least peak anticipated demand\. We recommend that you include a good margin, typically double, for unanticipated demand\.
-+  Monitor everything very carefully as the first players arrive\. Encourage the whole team to participate in the event in a war room\.
-+  Matchmakers, including FlexMatch, tend to behave less optimally with small player pools and their behavior changes subtly with scale and global player distribution, so monitor particularly whether matching times are acceptable\.
-+  Monitor that player latency is within tolerable limits, and players are getting a good experience\.
+Use the following checklists to keep track of launch items\. Items marked **\[Critical\]** are critical for your production launch\.
++ **\[Critical\]** Set the fleet protection policy to full protection on all live fleets so that scaling down doesn't stop active game sessions\.
++ **\[Critical\]** Set fleet maximum sizes sufficiently high to accommodate at least peak anticipated demand\. We recommend that you double your maximum size for unanticipated demand\.
++ Encourage the whole team to participate in the event in a launch room to monitor your game launch\.
++ Monitor player latency and player experience\.

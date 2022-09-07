@@ -31,7 +31,7 @@ You can update mutable fleet attributes, port settings, and runtime configuratio
 ------
 #### [ AWS CLI ]
 
- [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
+ 
 
 Use the following AWS CLI commands to update a fleet:
 + [update\-fleet\-attributes](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-fleet-attributes.html)
@@ -64,7 +64,7 @@ You can add or remove a fleet's remote locations using the GameLift console or t
 ------
 #### [ AWS CLI ]
 
- [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
+ 
 
 Use the following AWS CLI commands to update fleet locations:
 + [create\-fleet\-locations](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-fleet-locations.html)
@@ -97,7 +97,7 @@ You can use either the Amazon GameLift console or the AWS CLI tool to delete a f
 ------
 #### [ AWS CLI ]
 
- [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/)
+ 
 
 Use the following AWS CLI command to delete a fleet:
 + [delete\-fleet](https://docs.aws.amazon.com/cli/latest/reference/gamelift/delete-fleet.html)

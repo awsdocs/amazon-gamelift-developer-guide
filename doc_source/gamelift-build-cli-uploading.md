@@ -81,7 +81,7 @@ sudo systemctl enable amazon-cloudwatch-agent.service
 ## Package your game build files<a name="gamelift-build-packaging"></a>
 
 Before uploading your configured game server to GameLift for hosting, package the game build files into a build directory\. This directory must include all components required to run your game servers and host game sessions, including the following:
-+ **Game server binaries** – The binary files required to run the game server\. A build can include binaries for multiple game servers built to run on the same platform\. For a list of supported platforms, see [GameLift SDKs](gamelift-supported.md)\.
++ **Game server binaries** – The binary files required to run the game server\. A build can include binaries for multiple game servers built to run on the same platform\. For a list of supported platforms, see [Download Amazon GameLift SDKs](gamelift-supported.md)\.
 + **Dependencies** – Any dependent files that your game server executables require to run\. Examples include assets, configuration files, and dependent libraries\.
 + **Install script** – A script file to handle tasks that are required to fully install your game build on GameLift hosting servers\. Place this file at the root of the build directory\. GameLift runs the install script as part of fleet creation\.
 
@@ -175,7 +175,7 @@ You can store your build files in Amazon S3 and upload them to GameLift from the
 
 1. **Store your build files in Amazon S3\.** Create a \.zip file containing the packaged build files and upload it to an S3 bucket in your AWS account\. Take note of the bucket label and the file name—you'll need these when creating a GameLift build\.
 
-1. **Give GameLift access to your build files\.** Create an IAM role by following the instructions in [Set up a role for GameLift access](setting-up-role.md)\. Your IAM role specifies which entities \(such as GameLift\) can assume the role\. It also defines a set of permissions for limited access to your AWS resources\. After you've created the role, take note of the new role's Amazon Resource Name \(ARN\), which you'll need when creating a build\.
+1. **Give GameLift access to your build files\.** Create an IAM role by following the instructions in [Access a game build file in Amazon S3](security_iam_id-based-policy-examples.md#security_iam_id-based-policy-examples-access-storage-loc)\. Your IAM role specifies which entities \(such as GameLift\) can assume the role\. It also defines a set of permissions for limited access to your AWS resources\. After you've created the role, take note of the new role's Amazon Resource Name \(ARN\), which you'll need when creating a build\.
 
 1. **Create a build\.** Use the GameLift console or the AWS CLI to create a new build record\. You must have the `PassRole` permission, as described in [IAM policy examples for GameLift](gamelift-iam-policy-examples.md)\.
 

@@ -16,7 +16,7 @@ The diagram shows the process of getting players into games running on the GameL
 
 1. The Lambda function requests player data from a DynamoDB NoSQL table\. The Amazon Cognito identity can be used to securely request the correct player data because the authenticated identity is provided in the request context data\.
 
-1. With the correct player data for any additional information like player skill level, the Lambda function requests a match through FlexMatch matchmaking\. You can define a FlexMatch matchmaking configuration with JSON\-based configuration documents\. The game client can send latency data against the different Regions and can allow latency\-based matchmaking\.
+1. With the correct player data for any additional information such as player skill level, the Lambda function requests a match through FlexMatch matchmaking\. You can define a FlexMatch matchmaking configuration with JSON\-based configuration documents\. The game client can send latency data against the different Regions and can allow latency\-based matchmaking\.
 
 1. After FlexMatch matches a suitable group of players with suitable latency to a Region, it requests a game session placement through a GameLift queue\. The queue has fleets with one or more Region locations registered to it\.
 

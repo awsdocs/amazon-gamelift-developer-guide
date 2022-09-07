@@ -92,7 +92,7 @@ You can store your script files in an Amazon S3 bucket and upload them to GameLi
 **Note**  
 GameLift doesn't support uploading from S3 buckets with names that contain a period \(\.\)\.
 
-1. **Give GameLift access to your script files\.** To create an AWS Identity and Access Management \(IAM\) role that allows GameLift to access the S3 bucket containing your server script, follow the instructions in [Set up a role for GameLift access](setting-up-role.md)\. After you create the new role, take note of its name, which you need when creating a script\.
+1. **Give GameLift access to your script files\.** To create an AWS Identity and Access Management \(IAM\) role that allows GameLift to access the S3 bucket containing your server script, follow the instructions in [Set up an IAM service role for GameLift](setting-up-role.md)\. After you create the new role, take note of its name, which you need when creating a script\.
 
 1. **Create a script\.** Use the GameLift console or the AWS CLI to create a new script record\. To make this request, you must have the IAM `PassRole` permission, as described in [IAM policy examples for GameLift](gamelift-iam-policy-examples.md)\.
 

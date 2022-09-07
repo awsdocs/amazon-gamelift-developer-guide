@@ -8,7 +8,7 @@ Follow these steps to get the GameLift Server SDK plugin for Unreal Engine ready
 
 **To set up the GameLift SDK plugin for unreal engine**
 
-1. **Download the [GameLift server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [GameLift SDKs](gamelift-supported.md)\.
+1. **Download the [GameLift server SDK](https://aws.amazon.com/gamelift/getting-started)\.** To verify that your game system requirements are supported, see [Download Amazon GameLift SDKs](gamelift-supported.md)\.
 
 1. **Build the C\+\+ Server SDK libraries for Unreal\.** The SDK download contains the source code for C\+\+ \(see `GameLift_<release date>\GameLift-SDK-Release-<version>\GameLift-cpp-ServerSDK-<version>`\)\. Check the README file in this directory for minimum requirements and additional information before building the SDK\.
 

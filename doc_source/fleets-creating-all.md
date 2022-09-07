@@ -3,7 +3,7 @@
 Create a new fleet and deploy your custom game server build or Realtime Servers for hosting\. You can deploy any game build or script resource that has been successfully uploaded to the Amazon GameLift service\. 
 
 **Tip**  
-To learn more about GameLift features, including Realtime Servers, [try out the GameLift sample games](gamelift-explore.md)\.
+For more information about GameLift features, including Realtime Servers, [try out the GameLift sample games](gamelift-explore.md)\.
 
 **Topics**
 + [How GameLift fleet creation works](#fleets-creation-workflow)

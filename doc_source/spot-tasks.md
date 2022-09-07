@@ -1,6 +1,6 @@
 # Using Spot Instances with GameLift<a name="spot-tasks"></a>
 
-When setting up your hosting resources, you have the option of using Spot Instances, On\-Demand Instances, or a combination\. Learn more about how GameLift uses Spot Instances in [On\-Demand versus Spot Instances](gamelift-ec2-instances.md#gamelift-ec2-instances-spot)\. If you choose to use Spot fleets, you'll need to make a few adjustments to your game integration\.
+When setting up your hosting resources, you have the option of using Spot Instances, On\-Demand Instances, or a combination\. Learn more about how GameLift uses Spot Instances in [On\-Demand Instances versus Spot Instances](gamelift-ec2-instances.md#gamelift-ec2-instances-spot)\. If you choose to use Spot fleets, you'll need to make a few adjustments to your game integration\.
 
 Are you using FlexMatch for matchmaking? You can add Spot fleets to your existing game session queues for matchmaking placements\.
 

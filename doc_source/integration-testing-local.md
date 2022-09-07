@@ -68,7 +68,7 @@ If you want to test your game server only, you can use the AWS CLI to simulate g
 
 1. **Start the AWS CLI\.**
 
-   Once your game server successfully calls `ProcessReady()`, you can start making client calls\. Open another command prompt window and start the AWS CLI tool\. [Get and install the AWS Command Line Interface tool\.](https://aws.amazon.com/cli/) The AWS CLI by default uses the GameLift web service endpoint\. You must override this with the Local endpoint in every request using the `--endpoint-url` parameter, as shown in the following example request\.
+   Once your game server successfully calls `ProcessReady()`, you can start making client calls\. Open another command prompt window and start the AWS CLI tool\. The AWS CLI by default uses the GameLift web service endpoint\. You must override this with the Local endpoint in every request using the `--endpoint-url` parameter, as shown in the following example request\.
 
    ```
    AWS gamelift describe-game-sessions --endpoint-url http://localhost:9080  --fleet-id fleet-123

@@ -4,13 +4,13 @@
 *****Copyright &copy; Amazon Web Services, Inc. and/or its affiliates. All rights reserved.*****
 
 -----
-Amazon's trademarks and trade dress may not be used in 
-     connection with any product or service that is not Amazon's, 
-     in any manner that is likely to cause confusion among customers, 
-     or in any manner that disparages or discredits Amazon. All other 
-     trademarks not owned by Amazon are the property of their respective
-     owners, who may or may not be affiliated with, connected to, or 
-     sponsored by Amazon.
+Amazon's trademarks and trade dress may not be used in
+connection with any product or service that is not Amazon's,
+in any manner that is likely to cause confusion among customers,
+or in any manner that disparages or discredits Amazon. All other
+trademarks not owned by Amazon are the property of their respective
+owners, who may or may not be affiliated with, connected to, or
+sponsored by Amazon.
 
 -----
 ## Contents
@@ -23,29 +23,27 @@ Amazon's trademarks and trade dress may not be used in
 + [Setting up](setting-up-intro.md)
    + [Set up an AWS account](setting-up-aws-login.md)
       + [IAM policy examples for GameLift](gamelift-iam-policy-examples.md)
-   + [Set up a role for GameLift access](setting-up-role.md)
-   + [GameLift SDKs](gamelift-supported.md)
-   + [Tools and resources](gamelift-components.md)
+      + [Set up an IAM service role for GameLift](setting-up-role.md)
+   + [Download Amazon GameLift SDKs](gamelift-supported.md)
    + [Setting up AWS billing alerts](gamelift-billing-alerts.md)
-   + [Using GameLift in AWS regions](gamelift-regions.md)
+   + [GameLift hosting in AWS Regions and Local Zones](gamelift-regions.md)
 + [Getting started with Amazon GameLift](getting-started-intro.md)
    + [Explore Amazon GameLift](gamelift-explore.md)
    + [Get started with custom servers](gamelift-integration.md)
       + [Hosting components overview](gamelift_quickstart_customservers_overview.md)
       + [Prepare your custom game server](gamelift_quickstart_customservers_prepgameserver.md)
-      + [Test the integration locally with Amazon GameLift local](gamelift_quickstart_customservers_test.md)
-      + [Plan your global GameLift resources deployment](gamelift_quickstart_customservers_plan.md)
-      + [Deploy your Amazon GameLift resources](gamelift_quickstart_customservers_deploy.md)
+      + [Test the integration locally with GameLift Local](gamelift_quickstart_customservers_test.md)
+      + [Plan the deployment of your global GameLift resources](gamelift_quickstart_customservers_plan.md)
+      + [Deploy your GameLift resources](gamelift_quickstart_customservers_deploy.md)
       + [Design your backend service](gamelift_quickstart_customservers_designbackend.md)
          + [Standalone game session servers with a serverless backend](gamelift_quickstart_customservers_designbackend_arch_serverless.md)
-         + [Standalone game session servers with WebSockets-based backend](gamelift_quickstart_customservers_designbackend_arch_websockets.md)
+         + [Standalone game session servers with WebSocket-based backend](gamelift_quickstart_customservers_designbackend_arch_websockets.md)
       + [Define and implement metrics and logs solutions](gamelift_quickstart_customservers_metrics.md)
-      + [Prepare for launch](gamelift_quickstart_customservers_launch.md)
-      + [Checklists](gamelift_quickstart_customservers_checklist.md)
-         + [Onboarding phase checklist](gamelift_quickstart_customservers_prepgameserver_checklist.md)
-         + [Testing phase checklist](gamelift_quickstart_customservers_test_checklist.md)
-         + [Launch phase checklist](gamelift_quickstart_customservers_launch_checklist.md)
-         + [Post-launch phase checklist](gamelift_quickstart_customservers_launch_postchecklist.md)
+      + [Game launch checklists](gamelift_quickstart_customservers_checklist.md)
+         + [Onboarding](gamelift_quickstart_customservers_prepgameserver_checklist.md)
+         + [Testing](gamelift_quickstart_customservers_test_checklist.md)
+         + [Launch](gamelift_quickstart_customservers_launch_checklist.md)
+         + [Post-launch](gamelift_quickstart_customservers_launch_postchecklist.md)
    + [Get started with Realtime Servers](realtime-plan.md)
 + [Preparing games for Amazon GameLift](integration-intro.md)
    + [Integrating games with custom game servers](integration-custom-intro.md)
@@ -81,7 +79,7 @@ Amazon's trademarks and trade dress may not be used in
       + [Upload a Realtime Servers script to GameLift](realtime-script-uploading.md)
    + [Setting up GameLift fleets](fleets-intro.md)
       + [GameLift fleet design guide](fleets-design.md)
-         + [Choosing computing resources](gamelift-ec2-instances.md)
+         + [Choosing GameLift computing resources](gamelift-ec2-instances.md)
          + [Managing how game servers are launched for hosting](fleets-multiprocess.md)
          + [Using Spot Instances with GameLift](spot-tasks.md)
       + [Create a new GameLift fleet](fleets-creating-all.md)
@@ -118,18 +116,18 @@ Amazon's trademarks and trade dress may not be used in
    + [Logging server messages in Amazon GameLift](logging-server-messages.md)
       + [Logging server messages (custom servers)](logging-server-messages-custom.md)
       + [Logging server messages (Realtime Servers)](logging-server-messages-rts.md)
-+ [Security in Amazon GameLift](security.md)
-   + [Data protection in GameLift](data-protection.md)
-   + [Identity and access management for GameLift](security-iam.md)
-      + [How GameLift works with IAM](security_iam_service-with-iam.md)
-      + [GameLift identity-based policy examples](security_iam_id-based-policy-examples.md)
++ [Security in](security.md)
+   + [Data protection in](data-protection.md)
+   + [Identity and access management for Amazon GameLift](security-iam.md)
+      + [How Amazon GameLift works with IAM](security_iam_service-with-iam.md)
+      + [Identity-based policy examples for Amazon GameLift](security_iam_id-based-policy-examples.md)
       + [Troubleshooting GameLift identity and access](security_iam_troubleshoot.md)
-   + [Logging and monitoring with GameLift](logging-and-monitoring.md)
-   + [Compliance validation for GameLift](gamelift-compliance.md)
-   + [Resilience in GameLift](disaster-recovery-resiliency.md)
-   + [Infrastructure security in GameLift](infrastructure-security.md)
-   + [Configuration and vulnerability analysis in GameLift](vulnerability-analysis-management.md)
-   + [Security best practices for Amazon GameLift](security-best-practices.md)
+   + [Logging and monitoring with](logging-and-monitoring.md)
+   + [Compliance validation for](gamelift-compliance.md)
+   + [Resilience in](disaster-recovery-resiliency.md)
+   + [Infrastructure security in](infrastructure-security.md)
+   + [Configuration and vulnerability analysis in](vulnerability-analysis-management.md)
+   + [Security best practices for](security-best-practices.md)
 + [Amazon GameLift reference guides](reference-intro.md)
    + [GameLift service API reference (AWS SDK)](reference-awssdk.md)
    + [Amazon GameLift Realtime Servers reference](reference-rtssdk.md)

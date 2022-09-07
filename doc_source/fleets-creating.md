@@ -37,16 +37,16 @@ After you create a new fleet, the fleet's status passes through several stages a
 
 1. On the **Select locations** page, select one or more additional remote locations to deploy instances to\. The home Region is automatically selected based on the Region you are accessing the console from\. If you select additional locations, fleet instances are also deployed in these locations\. 
 **Important**  
-To use opt\-in Regions, enable them in your AWS account\.  
-Fleets with instances in opt\-in Regions created before February 28, 2022 are unaffected\.
-To create new multi\-location fleets or update existing multi\-location fleets, first enable any opt\-in Regions that you choose to use\.
-For more information about opt\-in Regions and how to enable them, see [Managing AWS Regions](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html) in the *AWS General Reference*\.
+To use Regions that aren't enabled by default, enable them in your AWS account\.  
+Fleets with Regions that aren't enabled that you created before February 28, 2022 are unaffected\.
+To create new multi\-location fleets or to update existing multi\-location fleets, first enable any Regions that you choose to use\.
+For more information about Regions that aren't enabled by default and how to enable them, see [Managing AWS Regions](https://docs.aws.amazon.com/general/latest/gr/rande-manage.html) in the *AWS General Reference*\.
 
 1. Choose **Next**\.
 
-1. On the **Define instance details page**, choose **On\-demand** or **Spot** instances for this fleet\. For more information about fleet types, see [Choosing computing resources](gamelift-ec2-instances.md)\.
+1. On the **Define instance details page**, choose **On\-demand** or **Spot** instances for this fleet\. For more information about fleet types, see [Choosing GameLift computing resources](gamelift-ec2-instances.md)\.
 
-1. Select an Amazon EC2 **Instance type** from the list\. For more information about choosing an instance type, see [Choosing computing resources](gamelift-ec2-instances.md)\. After you create the fleet, you can't change the instance type\.
+1. Select an Amazon EC2 **Instance type** from the list\. For more information about choosing an instance type, see [Choosing GameLift computing resources](gamelift-ec2-instances.md)\. After you create the fleet, you can't change the instance type\.
 
 1. Choose **Next**\.
 

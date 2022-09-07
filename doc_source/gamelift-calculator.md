@@ -42,14 +42,14 @@ To get started, open the [Configure Amazon GameLift page](https://calculator.aws
   For example, with a 20 percent idle buffer, a fleet supporting players with 100 active instances maintains 20 idle instances\.
 + **Spot instance %**
 
-  GameLift fleets can use a combination of On\-Demand Instances and Spot Instances\. While On\-Demand Instances offer more reliable availability, Spot Instances offer a highly cost\-efficient alternative\. We recommend using a combination to optimize both cost savings and availability\. For information about how GameLift uses Spot Instances, see [On\-Demand versus Spot Instances](gamelift-ec2-instances.md#gamelift-ec2-instances-spot)\.
+  GameLift fleets can use a combination of On\-Demand Instances and Spot Instances\. While On\-Demand Instances offer more reliable availability, Spot Instances offer a highly cost\-efficient alternative\. We recommend using a combination to optimize both cost savings and availability\. For information about how GameLift uses Spot Instances, see [On\-Demand Instances versus Spot Instances](gamelift-ec2-instances.md#gamelift-ec2-instances-spot)\.
 
   For this field, enter the percentage of Spot Instances to maintain in a fleet\. We recommend a Spot Instance percentage between 50 and 85 percent\. The default value is **50** percent\.
 
   For example, if you deploy a fleet with 100 instances and specify **40** percent, GameLift works to maintain 60 On\-Demand Instances and 40 Spot Instances\. 
 + **Instance type**
 
-  GameLift fleets can use a range of Amazon EC2 instance types that vary in computing power, memory, storage, and networking capabilities\. When you configure a GameLift fleet, choose an instance type that best fits your game's needs\. For information about selecting an instance type with GameLift, see [Choosing computing resources](gamelift-ec2-instances.md)\.
+  GameLift fleets can use a range of Amazon EC2 instance types that vary in computing power, memory, storage, and networking capabilities\. When you configure a GameLift fleet, choose an instance type that best fits your game's needs\. For information about selecting an instance type with GameLift, see [Choosing GameLift computing resources](gamelift-ec2-instances.md)\.
 
   If you know the instance type that you're using or plan to use in your GameLift fleet, choose that type\. If you're not sure what type to choose, consider choosing **c5\.large**\. This is a high\-availability type with average size and capabilities\.
 + **Operating system**

@@ -1,8 +1,10 @@
-# GameLift identity\-based policy examples<a name="security_iam_id-based-policy-examples"></a>
+# Identity\-based policy examples for Amazon GameLift<a name="security_iam_id-based-policy-examples"></a>
 
-By default, IAM users and roles don't have permission to create or modify GameLift resources\. They also can't perform tasks using the AWS Management Console, AWS CLI, or AWS API\. An IAM administrator must create IAM policies that grant users and roles permission to perform specific API operations on the specified resources they need\. The administrator must then attach those policies to the IAM users or groups that require those permissions\.
+By default, users and roles don't have permission to create or modify GameLift resources\. They also can't perform tasks by using the AWS Management Console, AWS Command Line Interface \(AWS CLI\), or AWS API\. An IAM administrator must create IAM policies that grant users and roles permission to perform actions on the resources that they need\. The administrator must then attach those policies for users that require them\.
 
-To learn how to create an IAM identity\-based policy using these example JSON policy documents, see [Creating policies on the JSON tab](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create.html#access_policies_create-json-editor) in the *IAM User Guide*\.
+To learn how to create an IAM identity\-based policy by using these example JSON policy documents, see [Creating IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_create-console.html) in the *IAM User Guide*\.
+
+For details about actions and resource types defined by GameLift, including the format of the ARNs for each of the resource types, see [Actions, resources, and condition keys for Amazon GameLift](https://docs.aws.amazon.com/service-authorization/latest/reference/list_amazongamelift.html) in the *Service Authorization Reference*\.
 
 **Topics**
 + [Policy best practices](#security_iam_service-with-iam-policy-best-practices)
@@ -15,18 +17,22 @@ To learn how to create an IAM identity\-based policy using these example JSON po
 
 ## Policy best practices<a name="security_iam_service-with-iam-policy-best-practices"></a>
 
-Identity\-based policies are very powerful\. They determine whether someone can create, access, or delete GameLift resources in your account\. These actions can incur costs for your AWS account\. When you create or edit identity\-based policies, follow these guidelines and recommendations:
-+ **Get started using AWS managed policies** – To start using GameLift quickly, use AWS managed policies to give your employees the permissions they need\. These policies are already available in your account and are maintained and updated by AWS\. For more information, see [Get started using permissions with AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#bp-use-aws-defined-policies) in the *IAM User Guide*\.
-+ **Grant least privilege** – When you create custom policies, grant only the permissions required to perform a task\. Start with a minimum set of permissions and grant additional permissions as necessary\. Doing so is more secure than starting with permissions that are too lenient and then trying to tighten them later\. For more information, see [Grant least privilege](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html#grant-least-privilege) in the *IAM User Guide*\.
-+ **Enable MFA for sensitive operations** – For extra security, require IAM users to use multi\-factor authentication \(MFA\) to access sensitive resources or API operations\. For more information, see [Using multi\-factor authentication \(MFA\) in AWS](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa.html) in the *IAM User Guide*\.
-+ **Use policy conditions for extra security** – To the extent that it's practical, define the conditions under which your identity\-based policies allow access to a resource\. For example, you can write conditions to specify a range of allowable IP addresses that a request must come from\. You can also write conditions to allow requests only within a specified date or time range, or to require the use of SSL or MFA\. For more information, see [IAM JSON policy elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
+Identity\-based policies determine whether someone can create, access, or delete GameLift resources in your account\. These actions can incur costs for your AWS account\. When you create or edit identity\-based policies, follow these guidelines and recommendations:
++ **Get started with AWS managed policies and move toward least\-privilege permissions** – To get started granting permissions to your users and workloads, use the *AWS managed policies* that grant permissions for many common use cases\. They are available in your AWS account\. We recommend that you reduce permissions further by defining AWS customer managed policies that are specific to your use cases\. For more information, see [AWS managed policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_managed-vs-inline.html#aws-managed-policies) or [AWS managed policies for job functions](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_job-functions.html) in the *IAM User Guide*\.
++ **Apply least\-privilege permissions** – When you set permissions with IAM policies, grant only the permissions required to perform a task\. You do this by defining the actions that can be taken on specific resources under specific conditions, also known as *least\-privilege permissions*\. For more information about using IAM to apply permissions, see [ Policies and permissions in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies.html) in the *IAM User Guide*\.
++ **Use conditions in IAM policies to further restrict access** – You can add a condition to your policies to limit access to actions and resources\. For example, you can write a policy condition to specify that all requests must be sent using SSL\. You can also use conditions to grant access to service actions if they are used through a specific AWS service, such as AWS CloudFormation\. For more information, see [ IAM JSON policy elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
++ **Use IAM Access Analyzer to validate your IAM policies to ensure secure and functional permissions** – IAM Access Analyzer validates new and existing policies so that the policies adhere to the IAM policy language \(JSON\) and IAM best practices\. IAM Access Analyzer provides more than 100 policy checks and actionable recommendations to help you author secure and functional policies\. For more information, see [IAM Access Analyzer policy validation](https://docs.aws.amazon.com/IAM/latest/UserGuide/access-analyzer-policy-validation.html) in the *IAM User Guide*\.
++ **Require multi\-factor authentication \(MFA\)** – If you have a scenario that requires IAM users or root users in your account, turn on MFA for additional security\. To require MFA when API operations are called, add MFA conditions to your policies\. For more information, see [ Configuring MFA\-protected API access](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_mfa_configure-api-require.html) in the *IAM User Guide*\.
+
+For more information about best practices in IAM, see [Security best practices in IAM](https://docs.aws.amazon.com/IAM/latest/UserGuide/best-practices.html) in the *IAM User Guide*\.
 
 ## Using the GameLift console<a name="security_iam_id-based-policy-examples-console"></a>
 
 To access the GameLift console, you must have a minimum set of permissions\. These permissions must allow you to list and view details about the GameLift resources in your AWS account\. If you create an identity\-based policy that is more restrictive than the minimum required permissions, the console won't function as intended for entities \(IAM users or roles\) with that policy\.
 
-To ensure that those entities can still use the GameLift console, add an inline policy to users and groups with the following policy syntax\. For more information, see [Adding permissions to a user](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) in the *IAM User Guide*\. You don't need to allow minimum console permissions for users that are making calls only to the AWS CLI or the AWS API, such as players using game clients\. Instead, allow access to only the actions that match the API operation that you're trying to perform\. 
-+ Permissions required to use all GameLift console features: see inline policy syntax for administrators in [IAM policy examples for GameLift](gamelift-iam-policy-examples.md)\.
+To ensure that those entities can still use the GameLift console, add an inline policy to users and groups with the following policy syntax\. For more information, see [Adding permissions to a user \(console\)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_change-permissions.html#users_change_permissions-add-console) in the *IAM User Guide*\. You don't need to allow minimum console permissions for users that make calls only using the AWS CLI or AWS API operations\. For example, players using game clients\. Instead, allow access only to the actions that match the API operation that you're trying to perform\.
+
+For information about the permissions required to use all GameLift console features, see the inline policy syntax for administrators in [Administrator policy examples](gamelift-iam-policy-examples.md#iam-policy-simple-example)\.
 
 ## Allow users to view their own permissions<a name="security_iam_id-based-policy-examples-view-own-permissions"></a>
 
@@ -69,13 +75,13 @@ This example shows how you might create a policy that allows IAM users to view t
 
 ## Allow player access for game sessions<a name="security_iam_id-based-policy-examples-player-access"></a>
 
-You want to grant access that is needed by game clients \(or client services that manage requests from game clients\) to create new game sessions and request player placement in an available game session\. There are several ways that your game might accomplish this task, including using game session placements with queues, matchmaking, or manual placement\. To view policy examples for these scenarios, see the inline policy syntax for players in [IAM policy examples for GameLift](gamelift-iam-policy-examples.md)\.
+To place players into game sessions, game clients and backend services need permissions\. For policy examples for these scenarios, see the inline policy syntax for players in [Player policy examples](gamelift-iam-policy-examples.md#iam-policy-admin-game-dev-example)\.
 
 ## Allow access to one GameLift queue<a name="security_iam_id-based-policy-examples-access-one-bucket"></a>
 
-In this example, you want to grant an IAM user in your AWS account access to one of your GameLift queues, `gamesessionqueue/examplequeue123`, including the ability to add, update, and delete queue destinations\. 
+The following example provides a user with access to one of your GameLift queues—`gamesessionqueue/examplequeue123`—including the ability to add, update, and delete queue destinations\.
 
-This policy grants permissions to the user for the following actions: `gamelift:UpdateGameSessionQueue`, `gamelift:DeleteGameSessionQueue`, and `gamelift:DescribeGameSessionQueues`\. As shown, this policy uses the resource element to limit access to a single queue\.
+This policy grants the user permissions to perform for the following actions: `gamelift:UpdateGameSessionQueue`, `gamelift:DeleteGameSessionQueue`, and `gamelift:DescribeGameSessionQueues`\. As shown, this policy uses the `Resource` element to limit access to a single queue\.
 
 ```
 {
@@ -104,7 +110,7 @@ This policy grants permissions to the user for the following actions: `gamelift:
 
 ## View GameLift fleets based on tags<a name="security_iam_id-based-policy-examples-view-fleet-tags"></a>
 
-You can use conditions in your identity\-based policy to control access to GameLift resources based on tags\. This example shows how you might create a policy that allows viewing a fleet\. However, permission is granted only if the fleet tag `Owner` has the value of that user's user name\. This policy also grants the permissions necessary to complete this action on the console\.
+You can use conditions in your identity\-based policy to control access to GameLift resources based on tags\. This example shows how you can create a policy that allows viewing a fleet if the `Owner` tag matches the user's user name\. This policy also grants the permissions necessary to complete this operation in the console\.
 
 ```
 {
@@ -129,11 +135,9 @@ You can use conditions in your identity\-based policy to control access to GameL
 }
 ```
 
-You can attach this policy to the IAM users in your account\. If a user named `richard-roe` attempts to view a GameLift fleet, the fleet must be tagged `Owner=richard-roe` or `owner=richard-roe`\. Otherwise he is denied access\. The condition tag key `Owner` matches both `Owner` and `owner` because condition key names are not case\-sensitive\. For more information, see [IAM JSON policy elements: Condition](https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_elements_condition.html) in the *IAM User Guide*\.
-
 ## Access a game build file in Amazon S3<a name="security_iam_id-based-policy-examples-access-storage-loc"></a>
 
-Once your game server has been integrated with GameLift, you must upload the build files to the managed GameLift service\. You must grant permissions to GameLift to access the build files in Amazon S3\. You can do this by attaching the following policy to an IAM role:" 
+After you integrate your game server with GameLift, upload the build files to Amazon S3\. For GameLift to access the build files, use the following policy\.
 
 ```
 {
@@ -151,4 +155,4 @@ Once your game server has been integrated with GameLift, you must upload the bui
 }
 ```
 
-For more information about uploading GameLift game files, see [Upload a custom server build to GameLift](gamelift-build-cli-uploading.md)\. 
+For more information about uploading GameLift game files, see [Upload a custom server build to GameLift](gamelift-build-cli-uploading.md)\.
