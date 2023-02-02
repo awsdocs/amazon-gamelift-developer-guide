@@ -5,24 +5,25 @@ With Amazon GameLift, you can deploy, operate, and scale dedicated, low\-cost se
 ## Features of GameLift<a name="gamelift-features"></a>
 
 The features and benefits of using GameLift include:
-+ Use your own custom multiplayer game servers or use ready\-to\-go Realtime Servers that require minimal configuration and little\-or\-no backend experience\.
-+ Provide a low\-latency player experience to support fast\-action gameplay\.
-+ Reduce engineering and operational effort to deploy and operate game servers globally\.
++ Use your own custom multiplayer game servers or use ready\-to\-go Realtime servers that require minimal configuration and little\-or\-no backend experience\.
 + Get started fast and pay only for what you use, with no upfront costs and no long\-term commitments\.
 + Reduce costs by up to 90 percent with [Amazon Elastic Compute Cloud \(Amazon EC2\)](http://aws.amazon.com/ec2/) Spot Instances\.
 + Use auto scaling to manage your hosting capacity\.
 + Use the GameLift FleetIQ algorithm with your own Amazon EC2 compute resources\.
 + Use GameLift FlexMatch to define matchmaking for your multiplayer games\.
++ Use GameLift Anywhere to quickly and iteratively test your game server and client builds\. With GameLift Anywhere, you can use GameLift tools and algorithms with your own hardware\.
 
 **Tip**  
-For more information about GameLift features, including Realtime Servers, [try out the GameLift sample games](gamelift-explore.md)\.
+For more information about trying out GameLift features, see [Getting started with Amazon GameLift](getting-started-intro.md)\.
 
 ## Get started with GameLift solutions<a name="gamelift-intro-flavors"></a>
 
-GameLift offers a range of solutions for game developers:
-+ GameLift hosting for custom\-built game servers
-+ GameLift hosting with Realtime Servers
-+ GameLift FleetIQ game hosting optimizations with Amazon EC2
+**Topics**
++ [GameLift hosting for custom servers](#gamelift-intro-flavors-managed)
++ [GameLift hosting with Realtime Servers](#gamelift-intro-flavors-realtime)
++ [GameLift FleetIQ for hosting on Amazon EC2](#gamelift-intro-flavors-fleetiq)
++ [GameLift FlexMatch for matchmaking](#gamelift-intro-flavors-flexmatch)
++ [GameLift Anywhere hardware hosting](#gamelift-intro-flavors-anywhere)
 
 ### GameLift hosting for custom servers<a name="gamelift-intro-flavors-managed"></a>
 
@@ -41,7 +42,7 @@ For more information about GameLift hosting, see [How GameLift works](gamelift-h
 
 Use Realtime Servers to stand up games that don't need custom\-built game servers\. This lightweight server solution provides game servers that you can configure to fit your game\.
 
-For more information about GameLift hosting with Realtime Servers, see [How Realtime Servers work](realtime-howitworks.md)\.
+For more information about GameLift hosting with Realtime Servers, see [Integrating games with GameLift Realtime Servers](realtime-intro.md)\.
 
 **Key features**
 + Use GameLift management features, including auto scaling, multi\-location queues, game session placement with the FleetIQ algorithm, game session logging, and metrics\.
@@ -53,7 +54,7 @@ For more information about GameLift hosting with Realtime Servers, see [How Real
 
 ### GameLift FleetIQ for hosting on Amazon EC2<a name="gamelift-intro-flavors-fleetiq"></a>
 
-With GameLift FleetIQ, you can work directly with your hosting resources in Amazon EC2 and Amazon EC2 Auto Scaling\. This provides the benefit of GameLift optimizations for inexpensive, resilient game hosting\. This solution is for game developers who need more flexibility than fully managed GameLift solutions provide\.
+With GameLift FleetIQ, you can work directly with your hosting resources in Amazon EC2 and Amazon EC2 Auto Scaling\. This provides the benefit of GameLift optimizations for inexpensive, resilient game hosting\. This solution is for game developers who need more flexibility than what fully managed GameLift solutions provide\.
 
 For information about how GameLift FleetIQ works with Amazon EC2 and EC2 Auto Scaling for game hosting, see the [GameLift FleetIQ Developer Guide](https://docs.aws.amazon.com/gamelift/latest/fleetiqguide/gsg-intro.html)\.
 
@@ -64,6 +65,28 @@ For information about how GameLift FleetIQ works with Amazon EC2 and EC2 Auto Sc
 + Directly manage EC2 instances in your own AWS account\.
 + Use any of the supported game server executable formats, including Windows, Linux, containers, and Kubernetes\.
 
+### GameLift FlexMatch for matchmaking<a name="gamelift-intro-flavors-flexmatch"></a>
+
+With FlexMatch you can build custom rule sets to define multiplayer matches for your game\. FlexMatch uses rule sets to compare compatible players for each match and provide players with the best possible multiplayer experience\.
+
+For more information about FlexMatch, see [What is Amazon GameLift FlexMatch?](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-intro.html)
+
+**Key features**
++ Balance match creation speed and match quality\.
++ Match players or teams based on defined characteristics\.
++ Define rules to place players into matches based on latency\.
+
+### GameLift Anywhere hardware hosting<a name="gamelift-intro-flavors-anywhere"></a>
+
+Use GameLift Anywhere to integrate hardware anywhere in your environment into your GameLift game hosting\. You can integrate Anywhere fleets and EC2 fleets in matchmaker and game session queues to manage matchmaking and game placement across your hardware\.
+
+For more information about testing with Anywhere, see [Test your custom server integration](integration-testing.md)\. For more information about setting up an Anywhere fleet, see [Setting up GameLift fleets](fleets-intro.md)\.
+
+**Key features**
++ Perform fast, iterative testing of your game server and client builds\.
++ Use the set GameLift tools to deploy games to your own hardware\.
++ Use hardware closest to your players, anywhere\.
+
 ## Accessing GameLift<a name="gamelift-intro-access"></a>
 
 Use these tools to work with GameLift\.
@@ -72,7 +95,7 @@ Use these tools to work with GameLift\.
 The GameLift SDKs contain the libraries needed to communicate with GameLift from your game clients, game servers, and game services\. For more information, see [Download Amazon GameLift SDKs](gamelift-supported.md)\.
 
 **GameLift Realtime Client SDK**  
-The Realtime Client SDK enables a game client to connect to theRealtime server, join game sessions, and stay in sync with other players\. Download the [SDK](http://aws.amazon.com/gamelift/getting-started/) and learn more about making API calls with the [Realtime Servers client API \(C\#\)](realtime-sdk-csharp-ref.md)\.
+The Realtime Client SDK enables a game client to connect to the Realtime server, join game sessions, and stay in sync with other players\. Download the [SDK](http://aws.amazon.com/gamelift/getting-started/) and learn more about making API calls with the [Realtime Servers client API \(C\#\)](realtime-sdk-csharp-ref.md)\.
 
 **GameLift console**  
 Use the [AWS Management Console for GameLift](https://console.aws.amazon.com/gamelift) to manage your game deployments, configure resources, and track player usage and performance metrics\. The GameLift console provides a GUI alternative to managing resources programmatically with the AWS Command Line Interface \(AWS CLI\)\.
@@ -82,6 +105,6 @@ Use this command line tool to make calls to the AWS SDK, including the GameLift 
 
 ## Pricing for GameLift<a name="gamelift-intro-pricing"></a>
 
-GameLift charges for instances by duration of use and for bandwidth by quantity of data transferred\. For a complete list of charges and prices for GameLift, see [Amazon GameLift Pricing](http://aws.amazon.com/gamelift/pricing)\.
+GameLift charges for instances by duration of use, and for bandwidth by quantity of data transferred\. For a complete list of charges and prices for GameLift, see [Amazon GameLift Pricing](http://aws.amazon.com/gamelift/pricing)\.
 
 For information about calculating the cost of hosting your games or matchmaking with GameLift, see [Generating GameLift pricing estimates](gamelift-calculator.md), which describes how to use the [AWS Pricing Calculator](https://calculator.aws/#/createCalculator/GameLift)\.

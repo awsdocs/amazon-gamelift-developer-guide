@@ -4,12 +4,12 @@ Use the Amazon GameLift console or the AWS CLI to update your fleet settings, ch
 
 ## Update a fleet configuration<a name="fleets-update"></a>
 
-You can update mutable fleet attributes, port settings, and runtime configurations using the GameLift console or the AWS CLI\. To change scaling limits, see [Auto scale fleet capacity with GameLift](fleets-autoscaling.md)\.
+You can update mutable fleet attributes, port settings, and runtime configurations using the GameLift console or the AWS CLI\. To change scaling limits, see [Auto\-scale fleet capacity with GameLift](fleets-autoscaling.md)\.
 
 ------
 #### [ GameLift console ]
 
-1. In the [GameLift Console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Fleets**\.
+1. In the [GameLift console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Fleets**\.
 
 1. Choose the fleet you want to update\. A fleet must be in `ACTIVE` status before you can edit it\.
 
@@ -47,7 +47,7 @@ You can add or remove a fleet's remote locations using the GameLift console or t
 ------
 #### [ GameLift console ]
 
-1. In the [GameLift Console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Fleets**\.
+1. In the [GameLift console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Fleets**\.
 
 1. Choose the fleet you want to update\. A fleet must be in `ACTIVE` status before you can edit it\.
 
@@ -84,7 +84,7 @@ You can use either the Amazon GameLift console or the AWS CLI tool to delete a f
 ------
 #### [ GameLift console ]
 
-1. In the [GameLift Console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Fleets**\.
+1. In the [GameLift console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Fleets**\.
 
 1. Choose the fleet you want to delete\. You can only delete fleets in `ACTIVE` or `ERROR` status\.
 

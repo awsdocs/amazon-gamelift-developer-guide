@@ -15,7 +15,7 @@ You can suspend all auto scaling activity for each fleet location\. With auto sc
 ------
 #### [ Console ]
 
-1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
+1. Open the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/)\.
 
 1. In the navigation pane, choose **Hosting**, **Fleets**\.
 

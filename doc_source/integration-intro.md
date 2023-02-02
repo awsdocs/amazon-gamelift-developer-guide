@@ -1,12 +1,10 @@
 # Preparing games for Amazon GameLift<a name="integration-intro"></a>
 
-To get your multiplayer game up and running on the managed GameLift service, you need to do some work to set up communication between your game and the GameLift service\. The guides in this section provide detailed help for integrating your game with GameLift, whether you plan to deploy a custom game server or use GameLift ready\-built Realtime Servers, and for adding a matchmaking service using FlexMatch\. 
-
-**Tip**  
-For more information about GameLift features, including Realtime Servers, [try out the GameLift sample games](gamelift-explore.md)\.
+To prepare your multiplayer game for hosting on GameLift, set up communication between your game and GameLift\. The topics in this section provide detailed help for integrating your game with GameLift, custom game servers, and Realtime Servers, and for adding matchmaking with FlexMatch\.
 
 **Topics**
-+ [Integrating games with custom game servers](integration-custom-intro.md)
-+ [Integrating games with Amazon GameLift Realtime Servers](realtime-intro.md)
-+ [Adding FlexMatch matchmaking](gamelift-match-intro.md)
++ [Integrate games with custom game servers](integration-custom-intro.md)
++ [Integrating games with GameLift Realtime Servers](realtime-intro.md)
 + [Integrating games with the Amazon GameLift Plug\-in for Unity](unity-plug-in.md)
++ [Get fleet data for a GameLift instance](gamelift-sdk-server-fleetinfo.md)
++ [Adding FlexMatch matchmaking](gamelift-match-intro.md)

@@ -12,9 +12,9 @@ Resource creation using the AWS SDK with Signature Version 2 is no longer suppor
 **Current version**
 
 
-| Release | AWS SDK version | Server SDK version | Realtime client SDK version | GameLift local |  |  | C\# SDK | C\+\+ SDK | Unreal plugin |  |  | 
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
-| [2021\-06\-03](#release-notes-06032021) | [1\.8\.168](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.168) or later | 4\.0\.2 | 3\.4\.2 | 3\.4\.0 | 1\.2\.0 | 1\.0\.5 | 
+| Release | AWS SDK version | Server SDK version | Realtime client SDK version |  |  | C\# SDK | C\+\+ SDK | Unreal plugin | Go |  | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| [2023\-01\-31](#release-notes-01312023) | [1\.8\.168](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.168) or later | 5\.0\.0 | 5\.0\.0 | 3\.4\.0 | 5\.0\.1 | 1\.2\.0 | 
 
 ### Previous versions<a name="release-notes-earlier"></a>
 
@@ -23,6 +23,8 @@ Resource creation using the AWS SDK with Signature Version 2 is no longer suppor
 
 | Release | AWS SDK version | Server SDK version | Realtime client SDK version | GameLift local |  |  | C\# SDK | C\+\+ SDK | Unreal plugin |  |  | 
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | 
+| [2022\-12\-01](#release-notes-12012022) | [1\.8\.168](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.168) or later | 5\.0\.0 | 5\.0\.0 | 3\.4\.0 | 1\.2\.0 | 
+| [2021\-06\-03](#release-notes-06032021) | [1\.8\.168](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.168) or later | 4\.0\.2 | 3\.4\.2 | 3\.4\.0 | 1\.2\.0 | 1\.0\.5 | 
 | [2021\-03\-23](#release-notes-03232021) | [1\.8\.168](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.168) or later | 4\.0\.2 | 3\.4\.1 | 3\.3\.3 | 1\.1\.0 | 1\.0\.5 | 
 | [2021\-03\-16](#release-notes-03162021) | [1\.8\.163](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.163) or later | 4\.0\.2 | 3\.4\.1 | 3\.3\.3 | 1\.1\.0 | 1\.0\.5 | 
 | [2021\-02\-09](#release-notes-02092021) | [1\.8\.139](https://github.com/aws/aws-sdk-cpp/releases/tag/1.8.139) or later | 4\.0\.2 | 3\.4\.1 | 3\.3\.3 | 1\.1\.0 | 1\.0\.5 | 
@@ -61,6 +63,31 @@ Resource creation using the AWS SDK with Signature Version 2 is no longer suppor
 
 The following release notes are in chronological order, with the latest updates listed first\. GameLift was first released in 2016\. For release notes dated earlier than those listed here, see the release date links in [SDK versions](#release-notes-history)\.
 
+### January 31, 2023: GameLift server SDK supports Go<a name="release-notes-01312023"></a>
+
+**Updated SDK versions:** GameLift server SDK 5\.0\.0 to support Go\.
+
+**Learn more:**
++ Download the latest version of the GameLift server SDK at [ Amazon GameLift getting started](https://aws.amazon.com/gamelift/getting-started)
++ [GameLift server API reference for Go](integration-server-sdk-go-ref.md)
+
+### December 1, 2022: GameLift launches GameLift Anywhere and GameLift Server SDK 5\.0\.0<a name="release-notes-12012022"></a>
+
+**GameLift Anywhere** uses your game server resources to host GameLift game servers\. You can use GameLift Anywhere to integrate your own compute resources with GameLift managed EC2 compute to distribute your game servers across multiple compute types\. You can also use GameLift Anywhere to iteratively test your game servers without uploading the build to GameLift for every iteration\.
+
+Highlights:
++ New GameLift Anywhere fleet and compute types
++ GameLift Anywhere compute resource registration
++ Improved testing iteration cycle
+
+**GameLift Server SDK 5\.0\.0** introduces improvements to the existing server SDK and a new resource type, compute\. Server SDK 5\.0\.0 supports GameLift Anywhere and the use of your own compute resources for game server hosting\. 
+
+**Learn more:**
++ [Amazon GameLift server SDK reference](reference-serversdk.md)
++ [Fleet location](gamelift-compute.md#gamelift-compute-location)
++ [Choosing GameLift compute resources](gamelift-compute.md)
++ [Create a GameLift Anywhere fleet](fleets-creating-anywhere.md)
+
 ### August 25, 2022: GameLift launches support for Local Zones<a name="release-notes-08252022"></a>
 
 GameLift is now available in eight Local Zones in the United States, so you can deploy your fleets closer to players\. You can use all managed GameLift features with Local Zones by adding the Local Zones to your fleets\.
@@ -69,8 +96,8 @@ Local Zones extend AWS resources and services to the edge of the cloud, near lar
 
 **Learn more:**
 + [Local Zones](gamelift-regions.md#gamelift-regions-local-zones)
-+ [Fleet location](gamelift-ec2-instances.md#gamelift-ec2-instances-location)
-+ [Deploy a fleet](fleets-creating.md)
++ [Fleet location](gamelift-compute.md#gamelift-compute-location)
++ [Create a managed fleet](fleets-creating.md)
 
 ### June 28, 2022: GameLift launches a new console experience<a name="release-notes-06302022"></a>
 
@@ -168,7 +195,7 @@ Highlights:
 + When using an Amazon SNS topic, you can set additional access conditions that limit publishing to specific queues\.
 
 **Learn more:**
-+ [GameLift Developer Guide](https://docs.aws.amazon.com/gamelift/latest/developerguide/):
++ GameLift Developer Guide:
   + [Set up event notification for game session placement](queue-notification.md) \(new\)
   + [Game session placement events](queue-events.md) \(new\)
 + [API reference \(AWS SDK\)](https://docs.aws.amazon.com/gamelift/latest/developerguide/;reference-awssdk.html)
@@ -387,19 +414,4 @@ GameLift resources can now be created and managed through AWS CloudFormation\. T
 
 **Learn more:**
 + [Amazon GameLift resource type reference](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/AWS_GameLift.html) in the *AWS CloudFormation User Guide*
-+ [Create resources using AWS CloudFormation](resources-cloudformation.md) in the *Amazon GameLift Developer Guide*
-
-## Lumberyard compatibility<a name="gamelift-supported-compatibility"></a>
-
-For Amazon Lumberyard users, the following table lists the GameLift SDK versions that are bundled into or are compatible with the Lumberyard game engine\. 
-
-
-****  
-
-| Amazon Lumberyard version | Are bundled with GameLift SDK versions | 
-| --- | --- | 
-| 1\.4 to 1\.5 \(beta\) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/release-notes.html)  | 
-| 1\.6 to 1\.7 \(beta\) |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/release-notes.html)  | 
-|  1\.8 to 1\.14 \(beta\)   |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/release-notes.html)  | 
-| 1\.15 to 1\.25 |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/release-notes.html)  | 
-| 1\.26 and later |  [\[See the AWS documentation website for more details\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/release-notes.html)  | 
++ [Manage resources using AWS CloudFormation](resources-cloudformation.md) in the *Amazon GameLift Developer Guide*

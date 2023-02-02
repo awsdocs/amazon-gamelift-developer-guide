@@ -2,9 +2,23 @@
 
 This GameLift C\+\+ Server API reference can help you prepare your multiplayer game for use with GameLift\. For details on the integration process, see [Add GameLift to your game server](gamelift-sdk-server-api.md)\.
 
-This API is defined in `GameLiftServerAPI.h`, `LogParameters.h`, `ProcessParameters.h` \.
-+ Actions
-+ [Data types](integration-server-sdk-cpp-ref-datatypes.md)
+**Topics**
++ [AcceptPlayerSession\(\)](#integration-server-sdk-cpp-ref-acceptplayersession)
++ [ActivateGameSession\(\)](#integration-server-sdk-cpp-ref-activategamesession)
++ [DescribePlayerSessions\(\)](#integration-server-sdk-cpp-ref-describeplayersessions)
++ [GetGameSessionId\(\)](#integration-server-sdk-cpp-ref-getgamesessionid)
++ [GetInstanceCertificate\(\)](#integration-server-sdk-cpp-ref-getinstancecertificate)
++ [GetSdkVersion\(\)](#integration-server-sdk-cpp-ref-getsdk)
++ [GetTerminationTime\(\)](#integration-server-sdk-cpp-ref-getterm)
++ [InitSDK\(\)](#integration-server-sdk-cpp-ref-initsdk)
++ [ProcessEnding\(\)](#integration-server-sdk-cpp-ref-processending)
++ [ProcessReady\(\)](#integration-server-sdk-cpp-ref-processready)
++ [ProcessReadyAsync\(\)](#integration-server-sdk-cpp-ref-processreadyasync)
++ [RemovePlayerSession\(\)](#integration-server-sdk-cpp-ref-removeplayersession)
++ [StartMatchBackfill\(\)](#integration-server-sdk-cpp-ref-startmatchbackfill)
++ [StopMatchBackfill\(\)](#integration-server-sdk-cpp-ref-stopmatchbackfill)
++ [TerminateGameSession\(\)](#integration-server-sdk-cpp-ref-terminategamesession)
++ [UpdatePlayerSessionCreationPolicy\(\)](#integration-server-sdk-cpp-ref-updateplayersessioncreationpolicy)
 
 ## AcceptPlayerSession\(\)<a name="integration-server-sdk-cpp-ref-acceptplayersession"></a>
 
@@ -571,7 +585,7 @@ GenericOutcome UpdatePlayerSessionCreationPolicy(
 
 **newPlayerSessionPolicy**  
 String value indicating whether the game session accepts new players\.   
-Type: [ Aws::GameLift::Model::PlayerSessionCreationPolicy](https://sdk.amazonaws.com/cpp/api/LATEST/namespace_aws_1_1_game_lift_1_1_model.html#afa8a7527defe9e7ca0caebc239182c43) enum\. Valid values include:   
+Type: Aws::GameLift::Model::PlayerSessionCreationPolicy enum\. Valid values include:   
 + **ACCEPT\_ALL** – Accept all new player sessions\.
 + **DENY\_ALL** – Deny all new player sessions\.
 Required: Yes
@@ -585,6 +599,5 @@ Returns a generic outcome consisting of success or failure with an error message
 This example sets the current game session's join policy to accept all players\.
 
 ```
-Aws::GameLift::GenericOutcome outcome = 
-    Aws::GameLift::Server::UpdatePlayerSessionCreationPolicy(Aws::GameLift::Model::PlayerSessionCreationPolicy::ACCEPT_ALL);
+Aws::GameLift::GenericOutcome outcome = Aws::GameLift::Server::UpdatePlayerSessionCreationPolicy(Aws::GameLift::Model::PlayerSessionCreationPolicy::ACCEPT_ALL);
 ```

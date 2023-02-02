@@ -19,7 +19,7 @@ The GameLift Managed Servers SDK download contains source for the following vers
 
 Build the SDK from source as needed for the following supported development operating systems and game engines:
 + **Operating systems** – Windows, Linux
-+ **Game engines** – Amazon Lumberyard, Unreal Engine, Unity, engines that support C\+\+ or C\# libraries
++ **Game engines** – O3DE, Unreal Engine, Unity, engines that support C\+\+ or C\# libraries
 
 **Game server operating systems**
 
@@ -52,15 +52,3 @@ You can deploy Realtime servers onto hosting resources that run on the following
 ## For client services<a name="gamelift-supported-clients"></a>
 
 Create 64\-bit client services using the AWS SDK with the GameLift API\. This SDK enables client services to find or create game sessions and to join players to games that are hosted on GameLift\. To get started, [download the AWS SDK](http://aws.amazon.com/developer/tools/#SDKs)\. For more information about using the SDK with GameLift, see the [Amazon GameLift API Reference](https://docs.aws.amazon.com/gamelift/latest/apireference/Welcome.html)\.
-
-**SDK support**
-
-The AWS SDK with support for GameLift is available in the following languages\. For information about support for development environments, see the documentation for each language\.
-+ C\+\+ \([SDK docs](http://aws.amazon.com/sdk-for-cpp/)\) \([GameLift](https://sdk.amazonaws.com/cpp/api/LATEST/namespace_aws_1_1_game_lift.html)\)
-+ Java \([SDK docs](http://aws.amazon.com/sdk-for-java/)\) \([GameLift](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/services/gamelift/package-summary.html)\)
-+ \.NET \([SDK docs](http://aws.amazon.com/sdk-for-net/)\) \([GameLift](https://docs.aws.amazon.com/sdkfornet/v3/apidocs/items/GameLift/NGameLift.html)\)
-+ Go \([SDK docs](http://aws.amazon.com/sdk-for-go/)\) \([GameLift](https://docs.aws.amazon.com/sdk-for-go/api/service/gamelift/)\)
-+ Python \([SDK docs](http://aws.amazon.com/sdk-for-python/)\) \([GameLift](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/gamelift.html)\)
-+ Ruby \([SDK docs](http://aws.amazon.com/sdk-for-ruby/)\) \([GameLift](https://docs.aws.amazon.com/sdk-for-ruby/v3/api/Aws/GameLift.html)\)
-+ PHP \([SDK docs](http://aws.amazon.com/sdk-for-php/)\) \([GameLift](https://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.GameLift.GameLiftClient.html)\)
-+ JavaScript/Node\.js \([SDK docs](http://aws.amazon.com/sdk-for-node-js/)\) \([GameLift](https://docs.aws.amazon.com/AWSJavaScriptSDK/v3/latest/clients/client-gamelift/index.html)\)

@@ -1,18 +1,20 @@
 # Managing GameLift hosting resources<a name="resources-intro"></a>
 
-This section provides detailed information on setting up GameLift managed resources to run your game servers and enable them to host game sessions for players\. Whether you're deploying a fully custom game server or working with Realtime Servers, you need to configure and deploy resources, scale capacity to meet player demand, and set up a way to locate available resources to host new game sessions\. 
+This section provides detailed information about setting up Amazon GameLift managed resources to run your game servers and host game sessions for players\. You must configure and deploy resources, scale capacity to meet player demand, and locate available resources to host game sessions\.
 
-**Tip**  
-For more information about GameLift features, including Realtime Servers, [try out the GameLift sample games](gamelift-explore.md)\.
+The following diagram illustrates how GameLift resource objects relate to each other\. Use a build or script to create a fleet, give a fleet an alias, and add fleets to a game session queue using their alias\. For games that use FlexMatch matchmaking, use the game session queue and a matchmaking rule set to create a matchmaking configuration\.
 
-Here's a summary of process required to set up GameLift resources for managed hosting\. The topics in this section discuss how to design and build each resource\.
+![\[The basic structure of GameLift resources and how they relate to each other.\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/images/resources-basicobjects-vsd.png)
 
-1. Start by uploading your game server code to the GameLift service in the AWS Regions where you plan to set up fleets\. Your code might be a custom game server build or a Realtime configuration **script**\.
+****Game server code****  
++ **Build** – Your custom\-built game server software that runs on GameLift and hosts game sessions for your players\. A game build represents the set of files that run your game server on a particular operating system, and that you must integrate with GameLift\. Upload game build files to GameLift in the AWS Regions where you plan to set up fleets\. For more information, see [Upload a custom server build to GameLift](gamelift-build-cli-uploading.md)\.
++ **Script** – Your configuration and custom game logic for use with Realtime Servers\. Configure Realtime Servers for your game clients by creating a script using JavaScript, and add custom game logic to host game sessions for your players\. For more information, see [Upload a Realtime Servers script to GameLift](realtime-script-uploading.md)\.
 
-1. Next, create a **fleet** of computing resources in one or more Regions\. For each fleet, you specify the build/script to deploy, choose the type of instances \(virtual computing machine\) to use, configure them to run your game servers, and select the location\(s\) to deploy them to\. When a fleet is created, the build/script is installed on each instance in the fleet, ready to host game sessions\. 
+****Fleet****  
+A collection of compute resources that run your game servers and host game sessions for your players\. For information about where you can deploy fleets, see [GameLift hosting in AWS Regions and Local Zones](gamelift-regions.md)\. For information about creating fleets, see [Setting up GameLift fleets](fleets-intro.md)\.
 
-1. Adjust fleet capacity to host game sessions as needed to meet player demand\. Optionally, set up an auto\-scaling policy\.
+****Alias****  
+An abstract identifier for a fleet that you can use to change the fleet that your players are connected to at any time\. For more information, see [Add an alias to a GameLift fleet](aliases-creating.md)\.
 
-1. Create an **alias** for each fleet\. Although this step is optional, it is a best practice to abstract fleet identifiers to maintain uninterrupted game server availability then upgrading game builds and fleets\.
-
-1. With a set of fleets deployed, set up a game session placement mechanism to find available game servers to host new game sessions\. The most common method is to set up a **game session queue**\. A queue is able to search for available game servers across multiple locations, fleet types, and instance types\. It uses FleetIQ algorithms to select the best possible game server, based on a defined set of priorities, and starts a new game session\.
+****Game session queue****  
+A game session placement mechanism that receives requests for new game sessions and searches for available game servers to host the new sessions\. For more information about game session queues, see [Setting up GameLift queues for game session placement](queues-intro.md)\.

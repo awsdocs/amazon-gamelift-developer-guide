@@ -42,7 +42,7 @@ The **Ports** section displays the fleet's connection permissions, including IP 
 
 ## Metrics<a name="fleets-metrics-tab"></a>
 
-The **Metrics** tab displays a graphical representation of fleet metrics over time\. For more information about using metrics in GameLift, see [Monitor GameLift with Amazon CloudWatch ](monitoring-cloudwatch.md)\.
+The **Metrics** tab displays a graphical representation of fleet metrics over time\. For more information about using metrics in GameLift, see [Monitor GameLift with Amazon CloudWatch](monitoring-cloudwatch.md)\.
 
 ## Events<a name="fleets-events-tab"></a>
 
@@ -62,7 +62,7 @@ View current fleet capacity settings for each fleet location\. For more informat
 + **Available** – The service limit on instances minus the number of instances in use\. This value tells you the maximum number of instances that you can add to the location\.
 
 **Auto\-scaling policies**  
-This section covers information about auto\-scaling policies that are applied to the fleet\. You can set up or update a target\-based policy\. The fleet's rule\-based policies, which must be defined using the AWS SDK or CLI, are displayed here\. For more information about scaling, see [Auto scale fleet capacity with GameLift](fleets-autoscaling.md)\.
+This section covers information about auto\-scaling policies that are applied to the fleet\. You can set up or update a target\-based policy\. The fleet's rule\-based policies, which must be defined using the AWS SDK or CLI, are displayed here\. For more information about scaling, see [Auto\-scale fleet capacity with GameLift](fleets-autoscaling.md)\.
 
 **Scaling history**  
 View graphs of capacity changes over time\.

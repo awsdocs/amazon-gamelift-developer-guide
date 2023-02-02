@@ -1,17 +1,21 @@
-# Deploy a fleet<a name="fleets-creating"></a>
+# Create a managed fleet<a name="fleets-creating"></a>
 
-Use either the [GameLift console](https://console.aws.amazon.com/gamelift/) or the AWS Command Line Interface \(AWS CLI\) to create a fleet\. 
+Use either the [GameLift console](https://console.aws.amazon.com/gamelift/) or the AWS Command Line Interface \(AWS CLI\) to create a managed fleet\. 
 
-After you create a new fleet, the fleet's status passes through several stages as GameLift deploys the fleet and installs and starts the game servers\. The fleet is ready to host game sessions, after it reaches `ACTIVE` status\. For help with fleet creation issues, see [Debug GameLift fleet issues](fleets-creating-debug.md)\.<a name="fleets-creating-builds-fleets-page"></a><a name="fleets-creating-aws-cli"></a>
+After you create a new managed EC2 fleet, the fleet's status passes through several stages as GameLift deploys the fleet and installs and starts the game servers\. The fleet is ready to host game sessions, after it reaches `ACTIVE` status\. For help with fleet creation issues, see [Debug GameLift fleet issues](fleets-creating-debug.md)\.<a name="fleets-creating-builds-fleets-page"></a><a name="fleets-creating-aws-cli"></a>
 
 ------
 #### [ Console ]
 
-1. In the [GameLift Console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Fleets**\.
+**To create a managed EC2 fleet**
+
+1. In the [GameLift console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Fleets**\.
 
 1. On the **Fleets** page, choose **Create fleet**\.
 
-1. On the **Create fleet** page, under **Fleet details** do the following:
+1. Choose **Managed EC2**\.
+
+1. On the **Fleet details** page do the following:
 
    1. For **Name**, enter a fleet name\. We recommend including the fleet type \(Spot or On\-demand\) in your fleet names\. This makes it much easier to identify fleet types when viewing a list of fleets\.
 
@@ -44,9 +48,9 @@ For more information about Regions that aren't enabled by default and how to ena
 
 1. Choose **Next**\.
 
-1. On the **Define instance details page**, choose **On\-demand** or **Spot** instances for this fleet\. For more information about fleet types, see [Choosing GameLift computing resources](gamelift-ec2-instances.md)\.
+1. On the **Define instance details page**, choose **On\-demand** or **Spot** instances for this fleet\. For more information about fleet types, see [On\-Demand Instances versus Spot Instances](gamelift-compute.md#gamelift-compute-spot)\.
 
-1. Select an Amazon EC2 **Instance type** from the list\. For more information about choosing an instance type, see [Choosing GameLift computing resources](gamelift-ec2-instances.md)\. After you create the fleet, you can't change the instance type\.
+1. Select an Amazon EC2 **Instance type** from the list\. For more information about choosing an instance type, see [Instance types](gamelift-compute.md#gamelift-compute-instance)\. After you create the fleet, you can't change the instance type\.
 
 1. Choose **Next**\.
 

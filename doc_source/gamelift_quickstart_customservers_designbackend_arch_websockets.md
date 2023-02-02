@@ -1,29 +1,29 @@
-# Standalone game session servers with WebSocket\-based backend<a name="gamelift_quickstart_customservers_designbackend_arch_websockets"></a>
+# Standalone game session servers with a WebSocket\-based backend<a name="gamelift_quickstart_customservers_designbackend_arch_websockets"></a>
 
-The serverless architecture can be modified to use API Gateway WebSockets with GameLift\. Using this architecture, you can make matchmaking requests with WebSockets, and push notifications of matchmaking completion \(or failure\) using server\-initiated messages over WebSockets\. This architecture improves performance by having a two\-way communication between the client and the server\. The matchmaking result is received immediately after success\. WebSockets increases complexity because the WebSocket connections from clients need to be managed with a set of AWS Lambda functions \(`OnConnect` and `OnDisconnect`\)\. To store the connections, you must have a database such as Amazon DynamoDB\.
+Using an Amazon API Gateway WebSocket\-based architecture, you can make matchmaking requests with WebSockets and send push notifications for matchmaking completion using server\-initiated messages\. This architecture improves performance by having two\-way communication between the client and the server\.
 
-![\[Example WebSockets architecture\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/images/qs_arch_websockets.png)
+The following diagram shows a WebSocket\-based backend architecture that uses API Gateway and other AWS services to match players into games running on GameLift fleets\. The following list provides a description for each numbered callout in the diagram\.
 
-The diagram shows the process of getting players into games running on the GameLift game servers using WebSockets\. It includes the following steps:
+![\[Example WebSockets architecture that matches players into games running on GameLift fleets.\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/images/qs_arch_websockets.png)
 
-1. Game client requests an Amazon Cognito identity from an Amazon Cognito identity pool\. This can be connected optionally to external identity providers such as Google, Apple, Xbox Live, and Steam identities\.
+1. The game client requests an Amazon Cognito user identity from an Amazon Cognito identity pool\.
 
-1. Game client signs a WebSocket connection to the API Gateway with the Amazon Cognito credentials\.
+1. The game client signs a WebSocket connection to an API Gateway API with the Amazon Cognito credentials\.
 
-1. API Gateway calls the `OnConnect` Lambda function on the connection\. The connection information is stored in an Amazon DynamoDB table\.
+1. API Gateway calls an AWS Lambda function on the connection\. The function stores the connection information in an Amazon DynamoDB table\.
 
-1. Game client sends a message over the WebSocket connection to request a session\.
+1. The game client sends a message to a Lambda function, through the API Gateway API over the WebSocket connection, to request a session\.
 
-1. A Lambda function receives the message and requests a match through FlexMatch matchmaking\. FlexMatch allows you to define the matchmaking configuration with JSON\-based configuration documents\. The game client can send latency data against the different Regions in addition to allowing latency\-based matchmaking\.
+1. A Lambda function receives the message and then requests a match through GameLift FlexMatch matchmaking\.
 
-1. After FlexMatch has matched a suitable group of players with suitable latency to a Region, it will request a game session placement through a GameLift queue that has fleets with one or more Region locations registered to it\.
+1. After FlexMatch matches a group of players, FlexMatch requests a game session placement through a GameLift queue\.
 
-1. When the session is placed on one of the fleets, an event notification is sent to an Amazon SNS topic\.
+1. After GameLift places the session on one of the fleet's locations, GameLift sends an event notification to an Amazon Simple Notification Service \(Amazon SNS\) topic\.
 
-1. A Lambda function will receive the Amazon SNS event and process it\.
+1. A Lambda function receives the Amazon SNS event and processes it\.
 
-1. If the event is a `MatchmakingSucceeded` event, the Lambda function requests the correct player connection from DynamoDB and uses the API Gateway APIs to send a message directly to that player over the WebSocket\. The game client does not need to actively poll the status of matchmaking in this model\.
+1. If the matchmaking ticket is a `MatchmakingSucceeded` event, then the Lambda function requests the correct player connection from DynamoDB\. The function then sends a message to the game client through the API Gateway API over the WebSocket connection\. In this architecture, the game client doesn't actively poll the status of matchmaking\.
 
-1. Game client receives the port and IP address of the game server as well as the player session ID through the WebSocket connection\.
+1. The game client receives the port and IP address of the game server, along with the player session ID, through the WebSocket connection\.
 
-1. The game client connects to the game server using TCP or UDP using the port and IP address provided by the backend\. It also sends the player session ID to the game server and the game server can validate it using the GameLift Server SDK\.
+1. The game client connects to the game server using TCP or UDP using the port and IP address that the backend service provides\. The game client also sends the player session ID to the game server, which then validates the ID using the GameLift Server SDK\.

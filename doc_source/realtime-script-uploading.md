@@ -23,7 +23,7 @@ If you have your script files stored locally, you can upload them to GameLift fr
 
 **To create a script resource**
 
-1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
+1. Open the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/)\.
 
 1. In the navigation pane, choose **Hosting**, **Scripts**\.
 

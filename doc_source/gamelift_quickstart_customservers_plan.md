@@ -1,7 +1,0 @@
-# Plan the deployment of your global GameLift resources<a name="gamelift_quickstart_customservers_plan"></a>
-
-Use the following tips to help plan the deployment of your global GameLift resources\. For more information about hosting your game with GameLift, see [GameLift hosting in AWS Regions and Local Zones](gamelift-regions.md)\.
-+ A GameLift fleet has a home Region, but the fleet can also deploy resources to other locations that GameLift supports\. Choose deployment locations based on the geographic locations and latency needs of your players\.
-+ If your game uses different matchmaking logic in different locations, you can deploy your GameLift FlexMatch configurations and queues in a single location for each geographic location of your players\. 
-+ GameLift queues can handle a maximum of 100 transactions per second\. To handle more transactions per second, create multiple queues in multiple locations\.
-+ FlexMatch configurations and queues are location\-based resources\. To do cross\-location failover for fault tolerance, you can deploy a backup FlexMatch configuration and queue in a separate location and implement logic in your backend service to fail over in case of location\-wide issues\.

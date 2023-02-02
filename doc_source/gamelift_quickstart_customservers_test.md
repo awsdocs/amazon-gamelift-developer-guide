@@ -1,5 +1,0 @@
-# Test the integration locally with GameLift Local<a name="gamelift_quickstart_customservers_test"></a>
-
-Amazon GameLift Local is a Java application included with the [GameLift Managed Servers SDK](http://aws.amazon.com/gamelift/getting-started/)\. You can run this application locally to simulate the integration between your game server and GameLift\. Uploading a build and deploying fleets can take time\. To identify issues before uploading your build and deploying fleets, we recommend that you test SDK integration using GameLift Local\.
-
-With GameLift Local, you can verify that your game components are communicating with GameLift and test core functionality\. To simulate the GameLift environment as closely as possible, you can run an Amazon Linux 2 Docker container locally\. Or, you can test on an Amazon Elastic Compute Cloud \(Amazon EC2\) instance\. For more information about how to test locally, see [Testing your integration](integration-testing-local.md)\.

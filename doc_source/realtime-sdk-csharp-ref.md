@@ -1,6 +1,6 @@
 # Realtime Servers client API \(C\#\) reference<a name="realtime-sdk-csharp-ref"></a>
 
-Use the Realtime Client API to prepare your multiplayer game clients for use with Amazon GameLift Realtime Servers\. For more on the integration process, see [Get started with Realtime Servers](realtime-plan.md)\. The Client API contains a set of synchronous API calls and asynchronous callbacks that enable a game client to connect to a Realtime server and exchange messages and data with other game clients via the server\. 
+Use the Realtime Client API to prepare your multiplayer game clients for use with Amazon GameLift Realtime Servers\. For more on the integration process, see [Prepare your Realtime server](gamelift_quickstart_integration.md#realtime-plan)\. The Client API contains a set of synchronous API calls and asynchronous callbacks that enable a game client to connect to a Realtime server and exchange messages and data with other game clients via the server\. 
 
 This API is defined in the following libraries: 
 

@@ -1,10 +1,8 @@
 # Generate player IDs<a name="player-sessions-player-identifiers"></a>
 
-The managed GameLift service uses a player session to represent a player connected to a game session\. A player session must be created each time a player connects to a game session\. When a player leaves a game, the player session ends and is not reused\.
+Amazon GameLift uses a player session to represent a player connected to a game session\. GameLift creates a player session each time a player connects to a game session using a game client integrated with GameLift\. When a player leaves a game, the player session ends\. GameLift doesn't reuse player sessions\.
 
-GameLift provides a file called `Lobby.cpp` in the Amazon Lumberyard sample project [https://docs.aws.amazon.com/lumberyard/latest/userguide/sample-project-multiplayer-enhanced.html](https://docs.aws.amazon.com/lumberyard/latest/userguide/sample-project-multiplayer-enhanced.html) that demonstrates how to generate a new, random ID number for every player in every new game session\. You are not required to use the sample code; we provide it as an example\. You can also rewrite the code to persist your own unique, non\-personally identifiable player IDs\.
-
-The following sample code in `Lobby.cpp` randomly generates unique player IDs:
+The following code example randomly generates unique player IDs:
 
 ```
 bool includeBrackets = false;
@@ -12,4 +10,4 @@ bool includeDashes = true;
 string playerId = AZ::Uuid::CreateRandom().ToString<string>(includeBrackets, includeDashes);
 ```
 
-You can view player sessions by Player ID in the [AWS Management Console](https://console.aws.amazon.com/gamelift) for GameLift\. For more information on player sessions, see [View data on game and player sessions](gamelift-console-game-player-sessions-metrics.md)\. 
+For more information about player sessions, see [View data on game and player sessions](gamelift-console-game-player-sessions-metrics.md)\.

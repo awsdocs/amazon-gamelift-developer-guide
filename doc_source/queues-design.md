@@ -4,7 +4,7 @@ A GameLift game session queue is a key component in your game management layer\.
 
 These GameLift features require queues:
 + [Matchmaking with FlexMatch](https://docs.aws.amazon.com/gamelift/latest/flexmatchguide/match-tasks.html)
-+ [Using Spot Instances with GameLift](spot-tasks.md)
++ [Use Spot Instances with GameLift](spot-tasks.md)
 
 ## Create a player latency policy<a name="queues-design-latency"></a>
 
@@ -79,8 +79,8 @@ Use metrics to evaluate how well your queues are performing\. You can view metri
 
 Queue metrics can provide insight about the following:
 + **Overall queue performance** – Queue metrics indicate how successfully a queue responds to placement requests\. These metrics can also help you identify when and why placements fail\. For queues with manually scaled fleets, the `AverageWaitTime` and `QueueDepth` metrics can indicate when you should adjust capacity for a queue\.
-+ **FleetIQ algorithm performance** – For placement requests that use the FleetIQ algorithm for filtering and prioritization, queue metrics indicate how often the FleetIQ algorithm can find an ideal placement for new game sessions\. The ideal placement may prioritize using resources with the lowest possible player latency or, when Spot Instance fleets are available, resources with the lowest cost\. There are also error metrics that identify common reasons why GameLift can't find an ideal placement\. For more information on metrics, see [Monitor GameLift with Amazon CloudWatch ](monitoring-cloudwatch.md)\.
-+ **Region\-specific placements** – For multi\-location queues, metrics show successful placements by location\. For queues that use the FleetIQ algorithm, this data provides useful insight into where player activity occurs\.
++ **FleetIQ algorithm performance** – For placement requests that use the FleetIQ algorithm for filtering and prioritization, queue metrics indicate how often the FleetIQ algorithm can find an ideal placement for new game sessions\. The ideal placement may prioritize using resources with the lowest possible player latency or, when Spot Instance fleets are available, resources with the lowest cost\. There are also error metrics that identify common reasons why GameLift can't find an ideal placement\. For more information on metrics, see [Monitor GameLift with Amazon CloudWatch](monitoring-cloudwatch.md)\.
++ **Location specific placements** – For multi\-location queues, metrics show successful placements by location\. For queues that use the FleetIQ algorithm, this data provides useful insight into where player activity occurs\.
 
 When evaluating metrics for FleetIQ algorithm performance, consider the following tips:
 + To track the queue's rate of finding an ideal placement, use the `PlacementsSucceeded` metric in combination with the FleetIQ metrics for lowest latency and lowest price\.

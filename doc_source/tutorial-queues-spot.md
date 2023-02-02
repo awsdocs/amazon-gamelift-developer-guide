@@ -29,30 +29,30 @@ To set up game session placement for your player population, create a separate q
 + **By event types\.** You might create a special queue to manage games for participants in tournaments or other special events\. 
 
 **Tutorial example**  
-In this tutorial, we design a queue for a game that has one game server build variation\. At launch, we're releasing the game in two Regions: ap\-northeast\-2 \(Seoul\) and ap\-southeast\-1 \(Singapore\)\. Because these Regions are close to each other, latency isn't an issue for our players\. For this example, we have only one player segment, which means we create one queue\. In the future, when we release the game in North America, we can create a second queue that's scoped for North American players\.
+In this tutorial, we design a queue for a game that has one game server build variation\. At launch, we're releasing the game in two locations: ap\-northeast\-2 \(Seoul\) and ap\-southeast\-1 \(Singapore\)\. Because these locations are close to each other, latency isn't an issue for our players\. For this example, we have only one player segment, which means we create one queue\. In the future, when we release the game in North America, we can create a second queue that's scoped for North American players\.
 
 ## Step 2: Create Spot fleet infrastructure<a name="tutorial-queues-spot-fleet"></a>
 
-Create fleets in Regions and with game server builds or scripts that fit the scope that you defined in Step 1\. Your infrastructure should fit the following criteria:
-+ **Create fleets in at least two Regions\.** By having game servers hosted in at least one other Region, you mitigate the impact of Regional outages on your players\. You can keep your back\-up fleets scaled down, and use auto\-scaling to increase capacity if usage increases\.
-+ **Create at least one On\-Demand fleet in each Region\.** On\-Demand fleets provide back\-up game servers for your players\. You can keep your backup fleets scaled down until they're needed, and use auto\-scaling to increase On\-Demand capacity when Spot fleets are unavailable\.
-+ **Select different instance types across multiple Spot fleets in a Region\.** If one Spot Instance type becomes temporarily unavailable, the interruption affects only one Spot fleet in the Region\. Best practice is to choose widely available instance types, and use instance types in the same family \(for example, m5\.large, m5\.xlarge, m5\.2xlarge\)\. Use the [GameLift console](https://console.aws.amazon.com/gamelift/) to view historical pricing data for instance types\. 
+Create fleets in locations and with game server builds or scripts that fit the scope that you defined in Step 1\. Your infrastructure should fit the following criteria:
++ **Create fleets in at least two locations\.** By having game servers hosted in at least one other location, you mitigate the impact of Regional outages on your players\. You can keep your back\-up fleets scaled down, and use auto\-scaling to increase capacity if usage increases\.
++ **Create at least one On\-Demand fleet in each location\.** On\-Demand fleets provide back\-up game servers for your players\. You can keep your backup fleets scaled down until they're needed, and use auto\-scaling to increase On\-Demand capacity when Spot fleets are unavailable\.
++ **Select different instance types across multiple Spot fleets in a location\.** If one Spot Instance type becomes temporarily unavailable, the interruption affects only one Spot fleet in the location\. Best practice is to choose widely available instance types, and use instance types in the same family \(for example, m5\.large, m5\.xlarge, m5\.2xlarge\)\. Use the [GameLift console](https://console.aws.amazon.com/gamelift/) to view historical pricing data for instance types\. 
 + **Use the same or a similar game build or script for all fleets\.** The queue might put players into game sessions on any fleet in the queue\. Players must be able to play in any game session on any fleet\. 
 + **Use the same TLS certificate setting for all fleets\.** Game clients that connect to game sessions in your fleets must have compatible communication protocols\. 
 
-When you're ready to build your fleets, see [Deploy a fleet](fleets-creating.md) for detailed instructions on creating new fleets\.
+When you're ready to build your fleets, see [Create a managed fleet](fleets-creating.md) for detailed instructions on creating new fleets\.
 
 **Tutorial example**  
-We create a two\-Region infrastructure with at least one Spot fleet and one On\-Demand fleet in each Region\. Every fleet deploys the same game server build\. In addition, we anticipate that player traffic will be heavier in the Seoul Region, so we add more Spot fleets there\.
+We create a two location infrastructure with at least one Spot fleet and one On\-Demand fleet in each location\. Every fleet deploys the same game server build\. In addition, we anticipate that player traffic will be heavier in the Seoul location, so we add more Spot fleets there\.
 
-![\[Diagram shows the example Spot fleet infrastructure, with 3 fleets in the ap-northeast-2 (Seoul) Region and 2 fleets in the ap-southeast-1 (Singapore) Region. All instances in both fleets are using the build MBG_prod_V1. The fleet in ap-northeast-2 contains the following fleet configurations: fleet 1234_spot_1 with an instance type of c5.large, fleet 1234_spot_2 with an instance type of c5.xlarge, and fleet 1234_ondemand with an instance type of c5.large. The fleet in ap-southeast-1 contains the following fleet configurations: fleet 1234_spot_1 with an instance type of c5.large and fleet 1234_ondemand with an instance type of c5.large.\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/images/tutorial-queue-spot-step2.png)
+![\[Diagram shows the example Spot fleet infrastructure, with 3 fleets in the ap-northeast-2 (Seoul) location and 2 fleets in the ap-southeast-1 (Singapore) location. All instances in both fleets are using the build MBG_prod_V1. The fleet in ap-northeast-2 contains the following fleet configurations: fleet 1234_spot_1 with an instance type of c5.large, fleet 1234_spot_2 with an instance type of c5.xlarge, and fleet 1234_ondemand with an instance type of c5.large. The fleet in ap-southeast-1 contains the following fleet configurations: fleet 1234_spot_1 with an instance type of c5.large and fleet 1234_ondemand with an instance type of c5.large.\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/images/tutorial-queue-spot-step2.png)
 
 ## Step 3: Assign aliases for each fleet<a name="tutorial-queues-spot-alias"></a>
 
 Create a new alias for each fleet in your infrastructure\. Aliases abstract fleet identities making periodic fleet replacement simple and efficient\. For more information about creating aliases, see [Add an alias to a GameLift fleet](aliases-creating.md)\.
 
 **Tutorial example**  
-Our fleet infrastructure has five fleets, so we create five aliases using the simple routing strategy\. We need three aliases in the ap\-northeast\-2 \(Seoul\) Region, and two aliases in the ap\-southeast\-1 \(Singapore\) Region\.
+Our fleet infrastructure has five fleets, so we create five aliases using the simple routing strategy\. We need three aliases in the ap\-northeast\-2 \(Seoul\) location, and two aliases in the ap\-southeast\-1 \(Singapore\) location\.
 
 ![\[Diagram shows the example Spot fleet infrastructure described in step two with aliases added to each fleet. Fleet 1234_spot_1 has the alias MBG_spot_1, Fleet 1234_spot_2 has the alias MBG_spot_2, and fleet 1234_ondemand has the alias MBG_ondemand.\]](http://docs.aws.amazon.com/gamelift/latest/developerguide/images/tutorial-queue-spot-step3.png)
 
@@ -66,13 +66,13 @@ When creating your queue:
 Monitor your game's queue timeout rate, it's a good indicator of when something is slowing down your game session placement pipeline\.
 + Skip the section on player latency policies for now\. We'll cover this in the next step\.
 + Prioritize the fleets in your queue\. Fleet prioritization determines where the queue looks first when searching for available resources to host a new game session\. When working with Spot fleets, we recommend either of the following approaches:
-  + If your infrastructure uses a primary Region with fleets in a second Region for back\-up, prioritize fleets first by Region then by fleet type\. With this approach, GameLift places fleets in the primary Region at the top of the queue, with Spot fleets followed by On\-Demand fleets\. 
-  + If your infrastructure uses multiple Regions equally, prioritize fleets by fleet type, placing Spot fleets at the top of the queue\.
+  + If your infrastructure uses a primary location with fleets in a second location for back\-up, prioritize fleets first by location then by fleet type\. With this approach, GameLift places fleets in the primary location at the top of the queue, with Spot fleets followed by On\-Demand fleets\. 
+  + If your infrastructure uses multiple locations equally, prioritize fleets by fleet type, placing Spot fleets at the top of the queue\.
 **Note**  
-When a game session placement request contains player latency information, FleetIQ re\-prioritizes the queue's fleets by Region and tries to place game sessions where players are reporting the lowest latency\. For more information about FleetIQ, see [How GameLift queues works](queues-intro.md#queues-design-fleetiq)\.
+When a game session placement request contains player latency information, FleetIQ re\-prioritizes the queue's fleets by location and tries to place game sessions where players are reporting the lowest latency\. For more information about FleetIQ, see [How GameLift queues works](queues-intro.md#queues-design-fleetiq)\.
 
 **Tutorial example**  
-For this example, we create a new queue with the name **MBG\_spot\_queue**, and add the aliases of all five of our fleets\. We then prioritize placements first by Region and second by fleet type\. 
+For this example, we create a new queue with the name **MBG\_spot\_queue**, and add the aliases of all five of our fleets\. We then prioritize placements first by location and second by fleet type\. 
 
 Based on this configuration, this queue always attempts to place new game sessions into a Spot fleet in Seoul\. When those fleets are full, the queue uses available capacity on the Seoul On\-Demand fleet as a backup\. If all three Seoul fleets are unavailable GameLift places game sessions on the Singapore fleets\.
 

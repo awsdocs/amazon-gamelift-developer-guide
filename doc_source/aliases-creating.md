@@ -16,7 +16,7 @@ When updating the fleet\-id an alias points to, there is a transition period of 
 
 You can create an alias using either the GameLift console, as described here, or with the AWS CLI command [create\-alias](https://docs.aws.amazon.com/cli/latest/reference/gamelift/create-alias.html)\.
 
-1. In the [GameLift Console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Aliases**\.
+1. In the [GameLift console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Aliases**\.
 
 1. On the **Aliases** page, choose **Create alias**\. We recommend including the fleet type in your alias names\. This makes it much easier to identify the fleet type when viewing a list of aliases\.
 
@@ -36,7 +36,7 @@ You can create an alias using either the GameLift console, as described here, or
 
 You can edit an alias using the GameLift console or with the AWS CLI command [update\-alias](https://docs.aws.amazon.com/cli/latest/reference/gamelift/update-alias.html)\.
 
-1. In the [GameLift Console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Aliases**\.
+1. In the [GameLift console](https://console.aws.amazon.com/gamelift/), in the navigation pane, choose **Aliases**\.
 
 1. On the **Aliases** page, choose the alias you want to edit\.
 

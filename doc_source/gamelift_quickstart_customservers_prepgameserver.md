@@ -1,7 +1,0 @@
-# Prepare your custom game server<a name="gamelift_quickstart_customservers_prepgameserver"></a>
-
-The Amazon GameLift Server SDK is available for C\+\+ and C\# \(Unity\), and as an Unreal Engine plugin\. To communicate with the GameLift service for session management, you must integrate the SDK into your game server build and implement a set of callbacks\.
-
-Download the [GameLift Managed Servers SDK](http://aws.amazon.com/gamelift/getting-started/) and build it for your preferred programming language and game engine\. If you're using the Amazon Lumberyard game engine, it already includes a version of the SDK\. For more information, see [GameLift SDKs for custom game servers](gamelift-supported.md#gamelift-supported-servers)\. For information about using the GameLift SDKs with your game engine, see [Game engines and Amazon GameLift](integration-engines.md)\. For the latest information about GameLift SDK versions and SDK compatibility, see [GameLift release notes](release-notes.md)\.
-
-To enable communication with GameLift, add code to your game server project\. A game server must be able to notify GameLift about its status to start and stop game sessions when prompted and to perform other tasks\. For more information, see [Add GameLift to your game server](gamelift-sdk-server-api.md)\.

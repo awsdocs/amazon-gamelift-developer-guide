@@ -9,7 +9,7 @@ When updating the queue destination in a queue, there is a short transition peri
 ------
 #### [ Console ]
 
-1. In the [GameLift Console](https://console.aws.amazon.com/gamelift/), in the navigation page, choose **Queues**\.
+1. In the [GameLift console](https://console.aws.amazon.com/gamelift/), in the navigation page, choose **Queues**\.
 
 1. On the **Queues** page, choose **Create queue**\. 
 
@@ -61,13 +61,12 @@ The following example creates a game session queue with these configurations:
 
 ```
 aws gamelift create-game-session-queue \
-    --name "Sample test queue"
+    --name "sample-test-queue" \
     --timeout-in-seconds 300 \
-    --destinations DestinationArn=arn:aws:gamelift:us-east-1::alias/alias-a1234567-b8c9-0d1e-2fa3-b45c6d7e8910 \
-               DestinationArn=arn:aws:gamelift:us-west-2::alias/alias-b0234567-c8d9-0e1f-2ab3-c45d6e7f8901 \
+    --destinations DestinationArn="arn:aws:gamelift:us-east-1:111122223333:fleet/fleet-772266ba-8c82-4a6e-b620-a74a62a93ff8" DestinationArn="arn:aws:gamelift:us-east-1:111122223333:fleet/fleet-33f28fb6-aa8b-4867-85b4-ceb217bf5994" \
     --filter-configuration "AllowedLocations=us-east-1, ca-central-1, us-east-2, us-west-2" \
-    --priority-configuration "PriorityOrder=COST,LOCATION LocationOrder=us-east-2,ca-central-1,us-west-2,us-east-1" \
-    --notification-target "arn:aws:sns:us-west-2:111122223333:My_Placement_SNS_Topic"
+    --priority-configuration PriorityOrder="LOCATION","DESTINATION",LocationOrder="us-east-1","us-east-2","ca-central-1","us-west-2" \
+    --notification-target "arn:aws:sns:us-east-1:111122223333:gamelift-test.fifo"
 ```
 
 **Note**  

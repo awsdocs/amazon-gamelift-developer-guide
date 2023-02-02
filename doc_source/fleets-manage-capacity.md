@@ -17,7 +17,7 @@ You can do most fleet scaling activities using the GameLift console\. You can al
 
 ## To manage fleet capacity in the console<a name="fleet-manage-capacity-howto"></a>
 
-1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
+1. Open the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/)\.
 
 1. In the navigation pane, choose **Hosting**, **Fleets**\.
 
@@ -32,4 +32,4 @@ You can do most fleet scaling activities using the GameLift console\. You can al
 + [To manage fleet capacity in the console](#fleet-manage-capacity-howto)
 + [Set GameLift capacity limits](fleets-capacity-limits.md)
 + [Manually set capacity for a GameLift fleet](fleets-updating-capacity.md)
-+ [Auto scale fleet capacity with GameLift](fleets-autoscaling.md)
++ [Auto\-scale fleet capacity with GameLift](fleets-autoscaling.md)

@@ -8,6 +8,7 @@ The **Fleets** page displays the following summary information by default\. You 
 + **Name** – Friendly name given to the fleet\.
 + **Status** – The status of the fleet, which can be one of these states: **New**, **Downloading**, **Building**, and **Active**\.
 + **Creation time** – The date and time the fleet was created\.
++ **Compute type** – The type of compute used to host your games\. A fleet can be a **Managed EC2** fleet or a **Anywhere** fleet\.
 + **Instance type** – The Amazon EC2 instance type, which determines the computing capacity of fleet's instances\.
 + **Active instances** – The number of EC2 instances in use for the fleet\.
 + **Desired instances** – The number of EC2 instances to keep active\.

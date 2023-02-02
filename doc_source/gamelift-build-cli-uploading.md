@@ -2,6 +2,12 @@
 
 After you integrate your game server with GameLift, upload the build files so that GameLift can deploy it for game hosting\. This topic covers how to package your game's build files, create an optional build install script, and then upload the files using the [AWS Command Line Interface \(AWS CLI\)](http://aws.amazon.com/cli/) or an AWS SDK\.
 
+**Topics**
++ [Add a build install script](#gamelift-build-cli-uploading-install)
++ [Package your game build files](#gamelift-build-packaging)
++ [Create a GameLift build](#gamelift-build-cli-uploading-builds)
++ [Update your build files](#gamelift-build-cli-uploading-update-build-files)
+
 ## Add a build install script<a name="gamelift-build-cli-uploading-install"></a>
 
 Create an install script for the operating system \(OS\) of your game build:
@@ -97,7 +103,7 @@ When creating a build and uploading your files, you have a couple of options:
 + [Create a build from a file directory](#gamelift-build-cli-uploading-upload-build)\. This is the simplest and most commonly used method\.
 + [Create a build with files in Amazon Simple Storage Service \(Amazon S3\)](#gamelift-build-cli-uploading-create-build)\. With this option, you can manage your build versions in Amazon S3\.
 
-With both methods, GameLift creates a new build resource with a unique build ID and other metadata\. The build starts in the **Initialized** status\. After GameLift acquires the game server files, the build moves to **Ready** status\. At this point, you can deploy it by creating a new GameLift fleet\. For more information, see [Deploy a fleet](fleets-creating.md)\.
+With both methods, GameLift creates a new build resource with a unique build ID and other metadata\. The build starts in the **Initialized** status\. After GameLift acquires the game server files, the build moves to **Ready** status\. At this point, you can deploy it by creating a new GameLift fleet\. For more information, see [Create a managed fleet](fleets-creating.md)\.
 
 When GameLift sets up the new fleet, it downloads the build files to each fleet instance and installs the build file based on the build install script\. GameLift installs build files on the instances in the following locations:
 + Windows fleets: `C:\game`

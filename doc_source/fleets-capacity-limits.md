@@ -11,7 +11,7 @@ You can set capacity limits for a fleet's locations in the [GameLift console](ht
 ------
 #### [ Console ]
 
-1. Open the Amazon GameLift console at [https://console\.aws\.amazon\.com/gamelift/](https://console.aws.amazon.com/gamelift/)\.
+1. Open the [Amazon GameLift console](https://console.aws.amazon.com/gamelift/)\.
 
 1. In the navigation pane, choose **Hosting**, **Fleets**\.
 
