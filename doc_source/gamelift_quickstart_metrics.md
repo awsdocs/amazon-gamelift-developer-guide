@@ -1,8 +1,0 @@
-# Set up metrics and logging for GameLift<a name="gamelift_quickstart_metrics"></a>
-
-You can use data collected from your GameLift game servers and resources to help identify anomalies\. You can also use metrics to help improve performance\.
-
-Key areas to observe for GameLift include:
-+ **GameLift service metrics** – GameLift provides Amazon CloudWatch metrics on your resources including game servers, fleets, queues, and FlexMatch\. You can find these metrics in the GameLift console and the CloudWatch console\. For more information about GameLift metrics in CloudWatch, see [Monitor GameLift with Amazon CloudWatch](monitoring-cloudwatch.md)\.
-+ **Game server metrics** – GameLift can't access your game server metrics\. However, you can send custom metrics to CloudWatch directly from your game server by using the CloudWatch agent\. You can also use the fleet AWS Identity and Access Management \(IAM\) role and the AWS SDK to send metrics directly to CloudWatch\. For an example of how to configure metrics, see [Multiplayer Session\-based Game Hosting on AWS](https://github.com/aws-samples/aws-gamelift-and-serverless-backend-sample#multiplayer-session-based-game-hosting-on-aws) on GitHub\. This repository includes an example CloudWatch agent configuration and code for a C\# StatsD client\.
-+ **Game server logs** – To configure your game server log files on the game server, use the GameLift Server SDK configuration\. You can also use Amazon CloudWatch Logs as a real\-time log management solution, and you can configure logs with the CloudWatch agent\. For more information, see [Logging server messages in Amazon GameLift](logging-server-messages.md)\.
